@@ -22,10 +22,15 @@
         \nabla g(x_1,x_2) = \left( \; 2x_1x_2,  \; x_1^2 \right)
     \]
 
-For level sets consider of $f(x_1,x_2)$ consider:
+For the level sets of $f(x_1,x_2)$ consider:
     \[
-        x_1 + x_2 = C \implies 
+        x_1 + x_2 = C \implies x_2 = -x_1 + C
     \]
+therefore the level sets are lines that intersect the axis $x_2$ at $C$ with slope $-1$. One can use a similar approach for $g(x_1,x_2)$. However note that for $C =0$:
+    \[
+        x_1^2 x_2 = 0 \implies x_1 =0 \text{ or } x_2 = 0
+    \]
+which gives that the level sets for $C = 0$ are the two axis $x_1$ and $x_2$. 
 \end{solution}
 
 
@@ -37,7 +42,12 @@ For level sets consider of $f(x_1,x_2)$ consider:
 \end{exercise}
 
 \begin{solution}
-     
+    \[
+        \nabla \times \vec{f}(x_1,x_2,x_3) = \left( \; -e^{x_1-x_2} - 2x_1x_3, \; -e^{x_1-x_2},\;  x_3^2 - x_1 \; \right)
+    \]
+   \[
+        \nabla \dot \vec{f}(x_1,x_2,x_3) = x_2
+    \]
 \end{solution}
 
 
@@ -61,6 +71,8 @@ For level sets consider of $f(x_1,x_2)$ consider:
 \end{exercise}
 
 \begin{solution}
+
+
     \[
         \vec{\nabla} \times \vec{A}(x_1,x_2,x_3)
         :=
