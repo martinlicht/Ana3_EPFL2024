@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\input{header}
+\begin{document}
+\exsheet{2}{26}{September} % parameters are the number of the session and the day
+\def\hidesolutions{}
+
+
+\begin{exercise}
+	Sketch the level sets of the functions 
+    $$
+        f(x_1,x_2) = x_1 + x_2, \quad g(x_1,x_2) = x_1^2 x_2 
+    $$
+    for the values $0$, $1$, and $-1$.
+    Compute the gradients $\nabla f$ and  $\nabla g$.
+\end{exercise}
+
+\begin{solution}
+     
+\end{solution}
+
+
+\begin{exercise}
+	Compute the curl and the divergence of the following vector field:
+    $$
+        \vec{f}(x_1,x_2,x_3) = \left( \; x_1 x_2, \; x_3^2 x_1,\;  e^{x_1 - x_2} \; \right)
+    $$
+\end{exercise}
+
+\begin{solution}
+     
+\end{solution}
+
+
+
+
+
+\begin{exercise}
+	Show that for every three-dimensional vector field $\vec{f} \colon \mathbb{R}^3 \to \mathbb{R}^3$ we have 
+    $$
+        \nabla \cdot \left( \nabla \times \vec{f} \right) = 0
+    $$
+    Show that for every scalar field $g \colon \mathbb{R}^3 \to \mathbb{R}$ we have 
+    $$
+        \nabla \times \left( \nabla g \right) = 0
+    $$
+    Consider the following vector field:
+    $$
+        \vec{A}(x_1,x_2,x_3) := \left( \; \sin(x_2),  \; \sin(x_3), \; \sin(x_1) \; \right)
+    $$
+    Is this vector field a gradient of some scalar field?
+\end{exercise}
+
+\begin{solution}
+    $$
+        \vec{\nabla} \times \vec{A}(x_1,x_2,x_3)
+        :=
+        \left(\;
+            -\cos(x_2),  -\cos(x_3), -\cos(x_1)
+        \;\right)
+    $$
+    The curl of this vector field is not zero. 
+    If it were a gradient, then it would be zero. 
+    So it cannot be a gradient of any function.
+     
+\end{solution}
+
+
+
+\begin{exercise}
+	Given scalar fields $f, g : \mathbb{R}^3 \to \mathbb{R}$ and vector fields $\vec{A}, \vec{B} : \mathbb{R}^3 \to \mathbb{R}^3$,
+    show that 
+    \begin{gather*}
+        \nabla\left( f \cdot g \right)
+        = 
+        f \cdot \nabla g
+        +
+        g \cdot \nabla f
+        ,
+        \\
+        \nabla\cdot\left( f \cdot \vec{A} \right)
+        = 
+        ( \nabla f ) \cdot \vec{A}
+        +
+        f ( \nabla \cdot \vec{A} )
+        ,
+        \\ 
+        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
+        = 
+        \left( \nabla\times\vec{A} \right) \cdot \vec{B}
+        -
+        \vec{A} \cdot \left( \nabla\times\vec{B} \right)
+        ,
+        \\ 
+        \Delta ( f g )
+        = 
+        f \Delta g + 2 \nabla(f) \cdot \nabla( g ) + f \Delta g
+        .
+    \end{gather*}
+    Suppose that we also have two real numbers $\alpha, \beta \in \mathbb R$.
+    Show that 
+    \begin{gather*}
+        \nabla( \alpha f + \beta g )
+        = 
+        \alpha \nabla f + \beta \nabla g
+        ,
+        \\ 
+        \nabla\cdot ( \alpha \vec{A} + \beta \vec{B} )
+        = 
+        \alpha \nabla\cdot \vec{A} + \beta \nabla\cdot \vec{B}
+        ,
+        \\ 
+        \nabla\times ( \alpha \vec{A} + \beta \vec{B} )
+        = 
+        \alpha \nabla\times \vec{A} + \beta \nabla\times \vec{B}
+        .
+    \end{gather*}
+\end{exercise}
+
+\begin{solution}
+    Given scalar fields $f, g : \mathbb{R}^n \to \mathbb{R}$ and vector fields $\vecA, g : \mathbb{R}^n \to \mathbb{R}$,
+    show that 
+    \[
+        \nabla\left( f \cdot g \right)
+        = 
+        f \cdot \nabla g
+        +
+        g \cdot \nabla f
+        .
+    \]
+\end{solution}
+
+
+
+
+\end{document}

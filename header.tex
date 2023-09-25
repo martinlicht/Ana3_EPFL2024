@@ -1,0 +1,200 @@
+%%%%%%%%%%% SET MARGINS
+\setlength{\textheight}{20cm}
+\setlength{\topmargin}{-0.5cm}
+\setlength{\oddsidemargin}{+0cm}
+\setlength{\textwidth}{16.3cm}
+%\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%% PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem}
+\usepackage{capt-of}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{listings}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{empheq}
+\usepackage[ruled]{algorithm2e}
+\usepackage{mathrsfs}
+\usepackage{datetime}
+\usepackage{subcaption}
+
+% TODO: combine the two package lists and reduce redundancies 
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{float}
+\usepackage[ruled]{algorithm2e}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{float}
+\usepackage[ruled]{algorithm2e}
+\usepackage{mathrsfs}
+
+
+
+
+
+
+
+\newcommand{\Lc}[2]{{\color{blue} \sout{#1} } \textcolor{red}{#2}}
+\newcommand{\La}[1]{\textcolor{red}{#1}}
+\newcommand{\lh}{\mathscr{L}_h}
+\newcommand{\cl}{\mathscr{L}}
+\newcommand{\cf}{\mathscr{F}}
+\newcommand{\dx}{dx}
+\newcommand{\ltn}{\mathscr{l}^2}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\Rset}{\mathbb{R}}
+\newcommand{\Nset}{\mathbb{N}}
+\newcommand{\scL}{\mathcal{L}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\norm}[1]{\|{#1}\|}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\at}[1]{\big|_{#1}}
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\divergence}{\mathrm{div}}
+\newcommand{\cp}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\FF}{\texttt{FreeFem++ }}
+\newcommand{\FFns}{\texttt{FreeFem++}}
+\newcommand{\FFfull}{\texttt{FreeFem++-x11}}
+\newcommand{\cmd}[1]{ \medskip \noindent \texttt{#1} \medskip}
+\newcommand{\incmd}[1]{\texttt{#1}}
+\newcommand{\shrinkitems}{\addtolength{\itemsep}{-0.5\baselineskip}}
+\newcommand{\mtt}[1]{\mathtt{#1}}
+\newcommand{\ML}{\texttt{Matlab }}
+
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\nn}{\mathbf{n}}
+\newcommand{\vecA}{\vec{A}}
+\newcommand{\vecB}{\vec{B}}
+
+
+\newcommand{\mesh}{\mathcal{T}_h}
+\newcommand{\refel}{\widehat{K}}
+\newcommand{\ver}{\mathbf{a}}
+\newcommand{\refver}{\widehat{\mathbf{a}}}
+\newcommand{\grad}{\nabla}
+\newcommand{\refgrad}{\widehat{\nabla}}
+\newcommand{\refu}{\widehat{u}}
+\newcommand{\refbasis}{\widehat{\varphi}}
+\newcommand{\refxx}{\widehat{\xx}}
+\newcommand{\refx}{\widehat{x}}
+\newcommand{\refy}{\widehat{y}}
+\newcommand{\refrho}{\widehat{\rho}}
+\newcommand{\refh}{\widehat{h}}
+
+
+
+
+
+
+% For typesetting Python code
+\newcommand{\matlab}{{\sc Matlab}\xspace}
+\usepackage{listings}
+\lstloadlanguages{Python}
+\lstloadlanguages{csh}%
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+\definecolor{purple}{rgb}{0.58,0,0.82}
+\lstset{language=Python,                    % Use Python
+	%frame=single,                          % Single frame around code
+	basicstyle=\ttfamily\footnotesize\color{black},
+	keywordstyle=[1]\color{blue}\bf,        % Python functions bold and blue
+	keywordstyle=[2]\color{purple},         % Python function arguments purple
+	keywordstyle=[3]\color{red}\underbar,   % User functions underlined and blue
+	commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+	stringstyle=\color{purple},
+	showstringspaces=false,                 % Don't put marks in string spaces
+	tabsize=3,                              % 5 spaces per tab
+	morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+	morecomment=[l][\color{blue}]{...},
+	breaklines=true,
+	breakatwhitespace=true,
+	emptylines=1,
+	mathescape=true,
+	xleftmargin=0ex,
+	emphstyle=\bfseries\color{red}
+}
+
+
+
+
+
+%%%%%%%%%%% MACROS NAMES
+\newcommand{\lecturername}{Martin Licht}
+% \newcommand{\assistantnamea}{Jochen Hinz}
+% \newcommand{\assistantnameb}{Ivan Bioli}
+\newcommand{\semestername}{Winter Semester 2023}
+\newcommand{\lecturename}{Analysis III - 202(c)}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%%%%%%%%%%% HEADER
+\newdateformat{yeardate}{\THEYEAR}
+\newcommand{\exsheet}[3] % input is the number of the session and the day TODO What's that
+{\clearpage
+
+	\begin{center}
+		{\Large \textbf{\lecturename}}\\[2ex]
+		\semestername
+	\end{center}
+
+	% \vspace{2ex}
+	% \lecturername
+
+	\vspace{2ex}
+	{\Large Session #1: #3\,#2, \yeardate\today}
+	%\hfill
+	%{\Large EPF Lausanne}
+
+	\hrulefill
+}
+
+
+
+
+
+\usepackage{comment}
+
+\newtheorem{exercise}{Exercise}
+\newtheorem{solutionenv}{Solution}
+
+\newboolean{hide_solution}
+\ifx\hidesolutions\undefined
+\newenvironment{solution}{\begin{solutionenv}}{\end{solutionenv}}
+\setboolean{hide_solution}{false}
+\else
+\excludecomment{solution}
+\setboolean{hide_solution}{true}
+\fi
+
+\newcommand{\ifnotsolution}[1]{\ifthenelse{\boolean{hide_solution}}{#1}{}}
+\newcommand{\ifsolution}[1]{\ifthenelse{\boolean{hide_solution}}{}{#1}}
+
+
+
+
+
+
+
+
+\allowdisplaybreaks
