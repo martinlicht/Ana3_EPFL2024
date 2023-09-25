@@ -117,17 +117,165 @@
 \end{exercise}
 
 \begin{solution}
-    Given scalar fields $f, g : \mathbb{R}^n \to \mathbb{R}$ and vector fields $\vecA, g : \mathbb{R}^n \to \mathbb{R}$,
-    show that 
-    \[
+    For the first identity, we use the product rule:
+    \begin{align*}
         \nabla\left( f \cdot g \right)
-        = 
+        &= 
+        \left( \partial_1 ( f \cdot g ), \cdots, \partial_n ( f \cdot g ) \right)
+        \\&= 
+        \left( \partial_1 f \cdot g + f \cdot \partial_1 g, \cdots, \partial_n f \cdot g + f \cdot \partial_n g \right)
+        \\&= 
+        \left( \partial_1 f \cdot g, \cdots, \partial_n f \cdot g \right)
+        +
+        \left( f \cdot \partial_1 g, \cdots, f \cdot \partial_n g \right)
+        \\&= 
+        g \left( \partial_1 f, \cdots, \partial_n f \right)
+        +
+        f \left( \partial_1 g, \cdots, \partial_n g \right)
+        \\&= 
         f \cdot \nabla g
         +
         g \cdot \nabla f
         .
-    \]
-\end{solution}
+    \end{align*}
+    The second identity, again, can be proved using the product rule:
+    \begin{align*}
+        \nabla\cdot\left( f \cdot \vec{A} \right)
+        &= 
+        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
+        \\&= 
+        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
+        \\&= 
+        ( \partial_1 f ) \cdot A_{1} ) + \cdots + ( \partial_n f ) \cdot A_{n}
+        +
+        f \cdot \partial_1 ( A_{1} ) + \cdots + f \cdot \partial_n ( A_{n} )
+        \\&= 
+        \nabla(f) \cdot \vecA
+        +
+        f \cdot \nabla \cdot \vecA
+        ,
+    \end{align*}
+    As for the third identity:
+    \begin{align*}
+        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
+        &=
+        \nabla\cdot\left( 
+            A_2 B_3 - A_3 B_2,
+          - A_1 B_3 + A_3 B_1,
+            A_1 B_2 - A_2 B_1 
+        \right)
+        \\&=
+        \partial_1\left(   A_2 B_3 - A_3 B_2 \right) + \partial_2\left( - A_1 B_3 + A_3 B_1 \right) + \partial_3\left(   A_1 B_2 - A_2 B_1 \right)
+        \\&=
+        + \partial_1\left( A_2 B_3 \right) - \partial_1\left( A_3 B_2 \right) 
+        - \partial_2\left( A_1 B_3 \right) + \partial_2\left( A_3 B_1 \right) 
+        + \partial_3\left( A_1 B_2 \right) - \partial_3\left( A_1 B_2 \right)
+        \\&=
+        + \partial_1\left( A_2 \right) B_3 + A_2 \partial_1\left( B_3 \right) - \partial_1\left( A_3 \right) B_2 - A_3 \partial_1\left( B_2 \right) 
+        - \partial_2\left( A_1 \right) B_3 - A_1 \partial_2\left( B_3 \right) + \partial_2\left( A_3 \right) B_1 + A_3 \partial_2\left( B_1 \right) 
+        + \partial_3\left( A_1 \right) B_2 + A_1 \partial_3\left( B_2 \right) - \partial_3\left( A_2 \right) B_1 - A_2 \partial_3\left( B_1 \right)
+        \\&=
+         + \partial_2\left( A_3 \right) B_1 - \partial_3\left( A_2 \right) B_1 
+         - \partial_1\left( A_3 \right) B_2 + \partial_3\left( A_1 \right) B_2
+         + \partial_1\left( A_2 \right) B_3 - \partial_2\left( A_1 \right) B_3 
+         + A_1 \partial_3\left( B_2 \right) - A_1 \partial_2\left( B_3 \right)
+         - A_2 \partial_3\left( B_1 \right) + A_2 \partial_1\left( B_3 \right) 
+         + A_3 \partial_2\left( B_1 \right) - A_3 \partial_1\left( B_2 \right) 
+        \\&=
+        ( \nabla\times\vecA ) \cdot \vecB - ( \nabla\times\vecB ) \cdot \vecA
+        .
+    \end{align*}
+    We can prove the fourth identity again via direct computation, which is perfectly valid. 
+    We can also use some of the identities already shown above to reduce the effort:
+    \begin{align*}
+        \Delta ( f g )
+        &= 
+        \nabla \cdot ( \nabla ( f g ) )
+        \\&= 
+        \nabla \cdot ( g \nabla(f) + f \nabla(g) )
+        \\&= 
+        \partial_1( g \nabla(f)_1 + f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n + f \nabla(g)_n )
+        \\&= 
+        \partial_1( g \nabla(f)_1 ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_n( f \nabla(g)_n )
+        \\&= 
+        \partial_1( g \nabla(f)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( f \nabla(g)_n )
+        \\&= 
+        \nabla \cdot ( g \nabla(f) ) + \nabla \cdot ( f \nabla(g) )
+        \\&= 
+        \nabla(g) \cdot \nabla(f) + g \cdot \nabla\cdot(\nabla f) + \nabla(f) \cdot \nabla(g) + f \cdot \nabla\cdot(\nabla g)
+        = 
+        2 \nabla(f) \cdot \nabla( g ) + f \Delta g + f \Delta g
+        .
+    \end{align*}
+    The last three identities describe that gradient, divergence and curl are \emph{linear},
+    which is a concept that you have already seen in linear algebra. 
+    We verify by direct computation:
+    \begin{align*}
+        \nabla( \alpha f + \beta g )
+        &= 
+        \left( \alpha \partial_1 f_1 + \beta \partial_1 g_1, \cdots, \alpha \partial_n f_n + \beta \partial_n g_n \right)
+        \\&= 
+        \left( \alpha \partial_1 f_1, \cdots, \alpha \partial_n f_n \right)
+        +
+        \left( \beta \partial_1 g_1,  \cdots,  \beta \partial_n g_n \right)
+        \\&= 
+        \alpha \left( \partial_1 f_1, \cdots,  \partial_n f_n \right)
+        +
+        \beta \left( \partial_1 g_1,  \cdots,  \partial_n g_n \right)
+        .
+    \end{align*}
+    \begin{align*}
+        \nabla \cdot ( \alpha \vecA + \beta \vecB )
+        &= 
+        \nabla \cdot \left( \alpha A_1 + \beta B_1, \cdots, \alpha A_n + \beta B_n \right)
+        \\&= 
+        \alpha \partial_1 A_1 + \beta \partial_1 B_1 + \cdots + \alpha \partial_n A_n + \beta \partial_n B_n 
+        \\&= 
+        \alpha \partial_1 A_1 + \cdots + \alpha \partial_n A_n + \beta \partial_1 B_1 + \cdots + \beta \partial_n B_n 
+        \\&= 
+        \alpha \left( \partial_1 A_1 + \cdots + \partial_n A_n \right) + \beta \left( \partial_1 B_1 + \cdots + \partial_n B_n \right)
+        \\&= 
+        \alpha \nabla \cdot \vecA + \beta \nabla \vecB
+        .
+    \end{align*}
+    \begin{align*}
+        \nabla \times ( \alpha \vecA + \beta \vecB )
+        &= 
+        \nabla \times \left( 
+            \alpha A_1 + \beta B_1,
+            \alpha A_2 + \beta B_2,
+            \alpha A_3 + \beta B_3 
+        \right)
+        \\&= 
+        \left( 
+            \alpha \partial_2 A_3 + \beta \partial_2 B_3 - \alpha \partial_3 A_2 - \beta \partial_3 B_2,
+          - \alpha \partial_1 A_3 - \beta \partial_1 B_3 + \alpha \partial_3 A_1 + \beta \partial_3 B_1,
+            \alpha \partial_1 A_2 + \beta \partial_1 B_2 - \alpha \partial_2 A_1 - \beta \partial_2 B_1
+        \right)        
+        \\&= 
+        \left( 
+            \alpha \partial_2 A_3 - \alpha \partial_3 A_2 + \beta \partial_2 B_3 - \beta \partial_3 B_2,
+          - \alpha \partial_1 A_3 + \alpha \partial_3 A_1 - \beta \partial_1 B_3 + \beta \partial_3 B_1,
+            \alpha \partial_1 A_2 - \alpha \partial_2 A_1 + \beta \partial_1 B_2 - \beta \partial_2 B_1
+        \right)        
+        \\&= 
+        \alpha \left( 
+            \partial_2 A_3 - \partial_3 A_2,
+          - \partial_1 A_3 + \partial_3 A_1,
+            \partial_1 A_2 - \partial_2 A_1
+        \right)        
+        +
+        \beta\left( 
+            \partial_2 B_3 - \partial_3 B_2,
+          - \partial_1 B_3 + \partial_3 B_1,
+            \partial_1 B_2 - \partial_2 B_1
+        \right)        
+        \\&= 
+        \alpha \nabla \times \vecA + \beta \nabla \times \vecB
+        .
+    \end{align*}
+    
+\end{solution} 
 
 
 
