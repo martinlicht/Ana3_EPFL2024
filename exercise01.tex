@@ -4,7 +4,6 @@
 \exsheet{2}{26}{September} % parameters are the number of the session and the day
 \def\hidesolutions{}
 
-
 \begin{exercise}
 	Sketch the level sets of the functions 
     \[
@@ -93,7 +92,7 @@ Let  $g \colon \mathbb{R}^3 \to \mathbb{R}$ then:
         \vec{\nabla} \times \vec{A}(x_1,x_2,x_3)
         :=
         \left(\;
-            -\cos(x_2),  -\cos(x_3), -\cos(x_1)
+            -\cos(x_3),  \cos(x_1), -\cos(x_2)
         \;\right)
     \]
     The curl of this vector field is not zero. 
@@ -131,7 +130,7 @@ Let  $g \colon \mathbb{R}^3 \to \mathbb{R}$ then:
         \\ 
         \Delta ( f g )
         = 
-        f \Delta g + 2 \nabla(f) \cdot \nabla( g ) + f \Delta g
+        f \Delta g + 2 \nabla(f) \cdot \nabla( g ) + g \Delta f
         .
     \end{gather*}
     Suppose that we also have two real numbers $\alpha, \beta \in \mathbb R$.
@@ -247,7 +246,7 @@ Let  $g \colon \mathbb{R}^3 \to \mathbb{R}$ then:
         \\&= 
         \nabla(g) \cdot \nabla(f) + g \cdot \nabla\cdot(\nabla f) + \nabla(f) \cdot \nabla(g) + f \cdot \nabla\cdot(\nabla g)
         = 
-        2 \nabla(f) \cdot \nabla( g ) + f \Delta g + f \Delta g
+        2 \nabla(f) \cdot \nabla( g ) + f \Delta g + g\Delta f
         .
     \end{align*}
     The last three identities describe that gradient, divergence and curl are \emph{linear},
