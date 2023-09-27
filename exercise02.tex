@@ -9,12 +9,18 @@
     But sometimes we are also interested in fields with singularities. 
     Compute the gradient and the Laplacian of the function 
     \[
-        f : \bbR^3 \setminus \{0\} \rightarrow \bbR, \quad (x_1,x_2,x_3) \mapsto \frac{1}{\sqrt[root]{x_1^2+x_2^2+x_3^1}}
+        f : \bbR^3 \setminus \{0\} \rightarrow \bbR, \quad (x_1,x_2,x_3) \mapsto \frac{1}{\sqrt{x_1^2+x_2^2+x_3^1}}
     \]
     where the scalar field is twice differentiable. 
     % Sketch the gradient field.
 \end{exercise}
-\begin{solution}     
+\begin{solution}   
+	$$\grad f(x_1,x_2,x_3) =-\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}$$ 
+\begin{align*}\Delta f(x-1,x_2,x_3) &= \nabla \cdot \nabla f(x_1,x_2,x_3) \\
+								&= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right) + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right) + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)\\
+&= -\frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}} + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}\\
+&=\frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+\end{align*}
 \end{solution}
 
 \begin{exercise}
@@ -27,7 +33,10 @@
     \]
     Draw them. Are they simple, closed, differentiable, or regular? What are their tangents?
 \end{exercise}
-\begin{solution}     
+\begin{solution}    
+ For the first curve the tangent is given by $\dot{\gamma}(t) = (2t, 3t^2)$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).\\
+
+For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t),2cos(2t))$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\delta} \neq \vec{0}$).\\
 \end{solution}
 
 \begin{exercise}
@@ -45,6 +54,18 @@
     Compare the results. What are the endpoints of the two curves.  
 \end{exercise}
 \begin{solution}     
+\begin{align*}
+\int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt\\
+&= \int_{-1}^1 (1+(2t-1)^2)\left|\begin{pmatrix}2\\0\end{pmatrix}\right| dt\\
+&= \int_{-1}^1 2(1+(2t-1)^2)dt\\
+&= \int_{-1}^1 4+8t^2 -8t dt\\
+&= 2\int_{0}^1 4+8t^2 dt\\
+&=2\left[4t+\frac{8}{3}t^3 \right]_0^1 = 13\frac{1}{3}
+\end{align*}
+
+Note that in the second to last line we made use of the fact that the last term was uneven and therefore had no contribution to the integral. Additionally the first two terms were even therefore we can change the inegration limits.\\
+
+The endpoints of the second curve are: $t(-1) = (-3,0)$ and $t(1) = (1,0)$.
 \end{solution}
 
 \begin{exercise}
@@ -55,21 +76,38 @@
     \]
     Hint: you must first find a parameterization of $C$. 
 \end{exercise}
-\begin{solution}     
+\begin{solution} 
+	We choose the following parameterization for the circle $C$:
+
+$$
+ \gamma : [-\pi,\pi] \rightarrow \bbR^2, \quad t \mapsto ( 3\cos(t), 3\sin(t) )
+$$
+\begin{align*}
+\int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-\pi}^{\pi} (f\circ \gamma)(t)|\dot{\gamma}(t)|dt\\
+&= \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left|\begin{pmatrix}3\cos(t)\\3\sin(t)\end{pmatrix}\right| dt\\
+&= \int_{-\pi}^{\pi} 3\left[27\sin^2(t)+27\sin^3(t))\right]dt\\
+&= 81\int_{-\pi}^{\pi} \sin^2(t)dt+ 81\int_{-\pi}^{\pi}\sin^3(t))dt\\
+\end{align*}
+The second integral is $0$ since the integrand is uneven. For the first integral we use the cosine half-angle formula ($1 - 2\sin^2(\alpha) = \cos(2\alpha)$).
+\begin{align*}
+&= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt\\
+&= 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
+\end{align*}
+
     % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
 \end{solution}
 
-\begin{exercise}
-    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ 
-    along the circle $C$ with radius $3$ centered at the origin, where 
-    \[
-        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 3 x_2^2 + x_2^3
-    \]
-    Hint: you must first find a parameterization of $C$. 
-\end{exercise}
-\begin{solution}     
+%\begin{exercise}
+%    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ 
+%    along the circle $C$ with radius $3$ centered at the origin, where 
+%    \[
+%        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 3 x_2^2 + x_2^3
+%    \]
+%    Hint: you must first find a parameterization of $C$. 
+%\end{exercise}
+%\begin{solution}     
     % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
-\end{solution}
+%\end{solution}
 
 \begin{exercise}
     Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
@@ -82,6 +120,13 @@
     \]
 \end{exercise}
 \begin{solution}
+\begin{align*}
+\int_{\Gamma} \vec{F}(x_1,x_2) d\ell &= \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt\\
+&= \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt\\
+&= \int_{0}^{2\pi}  -\sin^2(t)dt\\
+&= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt\\
+&= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
+\end{align*}
     % TODO: we need of those cosine half angle formulas to turn the square of sin into a cos 2t      
     % TODO: the second one is easy
 \end{solution}
