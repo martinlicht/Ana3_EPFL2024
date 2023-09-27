@@ -46,26 +46,39 @@ For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t)
         f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 1 + x_1^2 + x_2^2
     \]
     \[
-        \gamma : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(2t) )
+        \gamma : [0,\pi] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(2t) )
     \]
     \[
-        \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto (2t-1,0)
+        \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto (t,0)
     \]
-    Compare the results. What are the endpoints of the two curves.  
+    Compare the results. What are the endpoints of the two curves? 
 \end{exercise}
 \begin{solution}     
-\begin{align*}
-\int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt\\
-&= \int_{-1}^1 (1+(2t-1)^2)\left|\begin{pmatrix}2\\0\end{pmatrix}\right| dt\\
-&= \int_{-1}^1 2(1+(2t-1)^2)dt\\
-&= \int_{-1}^1 4+8t^2 -8t dt\\
-&= 2\int_{0}^1 4+8t^2 dt\\
-&=2\left[4t+\frac{8}{3}t^3 \right]_0^1 = 13\frac{1}{3}
-\end{align*}
+    \begin{align*}
+        \int_{\Gamma} f(x_1,x_2) d\ell 
+        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) |\dot{\gamma}(t)|dt\\
+        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) \sqrt[]{\cos(t)^2 + \sin(t)^2} dt\\
+        &= \int_{0}^{\pi} ( 1 + 1 ) \sqrt[]{1} dt\\
+        &= \int_{0}^{\pi} 2 dt\\
+        &= 2\pi.
+    \end{align*}
+    The endpoints of the first curve are: $\gamma(0) = (-1,0)$ and $\gamma(\pi) = (1,0)$.
 
-Note that in the second to last line we made use of the fact that the last term was uneven and therefore had no contribution to the integral. Additionally the first two terms were even therefore we can change the inegration limits.\\
+    Let us now compute the second integral. We see 
+    \begin{align*}
+        \int_{\Gamma} f(x_1,x_2) d\ell 
+        &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt\\
+        &= \int_{-1}^1 (1+t^2)\left|\begin{pmatrix}1\\0\end{pmatrix}\right| dt\\
+        &= \int_{-1}^1 (1+t^2) dt\\
+        &= 2 \int_{0}^1 (1+t^2) dt\\
+        &= \left[t+\frac{t^3}{3} \right]_{0}^{1}\\
+        &= \frac 4 3.
+    \end{align*}
+    Note that from the third to fourth line, we have used that the integrand was even. 
+    The endpoints of the second curve are: $\delta(-1) = (-1,0)$ and $\delta(1) = (1,0)$.
 
-The endpoints of the second curve are: $t(-1) = (-3,0)$ and $t(1) = (1,0)$.
+    The exercise also shows that integrating a function $f$ along different curves may give different results, 
+    even if the curves share the same starting and endpoints. 
 \end{solution}
 
 \begin{exercise}
