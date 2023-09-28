@@ -46,7 +46,7 @@ For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t)
         f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 1 + x_1^2 + x_2^2
     \]
     \[
-        \gamma : [0,\pi] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(2t) )
+        \gamma : [0,\pi] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(t) )
     \]
     \[
         \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto (t,0)
@@ -129,7 +129,7 @@ The second integral is $0$ since the integrand is uneven. For the first integral
     \]
     Compute the line integral of the vector field $\vec{G}$ along the curve $\delta$, where 
     \[
-        \vec G : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( 2, 3, -1 ), \qquad \delta : [0,4]  \to \bbR^2, \quad t \mapsto  ( t^2, \cos(t), e^x )
+        \vec G : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( 2, 3, -1 ), \qquad \delta : [0,4]  \to \bbR^2, \quad t \mapsto  ( t^2, \cos(t), e^t )
     \]
 \end{exercise}
 \begin{solution}
@@ -139,6 +139,14 @@ The second integral is $0$ since the integrand is uneven. For the first integral
 &= \int_{0}^{2\pi}  -\sin^2(t)dt\\
 &= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt\\
 &= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
+\end{align*}
+
+\begin{align*}
+\int_{\Gamma} \vec{G}(x_1,x_2) d\ell &= \int_{0}^{4} (\vec{G}\circ \delta)(t)\cdot \dot{\delta}(t)dt\\
+&= \int_{0}^{4}\begin{pmatrix} 2\\ 3\\ -1\end{pmatrix} \cdot  \begin{pmatrix}t^2\\ \cos(t) \\ e^t \end{pmatrix}dt\\
+&= \int_{0}^{4} 4t - 3\sin(t) - e^t dt\\
+&= \left[2t^2 - 3\cos(t) - e^{t} \right]_{0}^{4}\\
+&= 36 -3\cos(4)-e^4
 \end{align*}
     % TODO: we need of those cosine half angle formulas to turn the square of sin into a cos 2t      
     % TODO: the second one is easy
