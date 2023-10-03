@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+%\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{3}{3}{October} % parameters are the number of the session and the day
@@ -16,7 +16,7 @@
 \end{exercise}
 \begin{solution}   
 	$$\grad f(x_1,x_2,x_3) =-\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}$$ 
-\begin{align*}\Delta f(x-1,x_2,x_3) &= \nabla \cdot \nabla f(x_1,x_2,x_3) \\
+\begin{align*}\Delta f(x_1,x_2,x_3) &= \nabla \cdot \nabla f(x_1,x_2,x_3) \\
 								&= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right) + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right) + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)\\
 &= -\frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}} + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}\\
 &=\frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
@@ -71,8 +71,8 @@ For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t)
         &= \int_{-1}^1 (1+t^2)\left|\begin{pmatrix} 1\\0 \end{pmatrix}\right| dt\\
         &= \int_{-1}^1 (1+t^2) dt\\
         &= 2 \int_{0}^1 (1+t^2) dt\\
-        &= \left[t+\frac{t^3}{3} \right]_{0}^{1}\\
-        &= \frac 4 3.
+        &= 2\left[t+\frac{t^3}{3} \right]_{0}^{1}\\
+        &= \frac 8 3.
     \end{align*}
     Note that from the third to fourth line, we have used that the integrand was even. 
     The endpoints of the second curve are: $\delta(-1) = (-1,0)$ and $\delta(1) = (1,0)$.
