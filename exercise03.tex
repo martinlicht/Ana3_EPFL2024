@@ -77,25 +77,109 @@
 \begin{exercise}
     Take a look at the functions 
     \[
-        f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_1^2 \sin(x_2).
+        f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2^2.
     \]
     Compute their integrals along the following curves:
     \begin{align*}
-        \alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
+        &\alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
         \\
-        \beta  : [0,1] \to \bbR^2, \quad t \mapsto (t,t^2),
+        &\beta  : [0,1] \to \bbR^2, \quad t \mapsto \begin{cases} (t,0) & 0 \leq t \leq 1, \\ (0,t-1) & 1 \leq t \leq 2, \end{cases}
         \\
-        \gamma : [0,1] \to \bbR^2, \quad t \mapsto (t^2,t),
+        &\gamma : [0,1] \to \bbR^2, \quad t \mapsto (t^4,t),
         \\
-        \delta : [0,2] \to \bbR^2, \quad t \mapsto \begin{cases}
-                                                    (t,0) & 0 \leq t \leq 1,
-                                                    \\
-                                                    (0,t-1) & 1 \leq t \leq 2.
-                                                   \end{cases}
+        &\delta : [0,2] \to \bbR^2, \quad t \mapsto (t^2,t).
     \end{align*}
 \end{exercise}
 \begin{solution}     
-    Note that the curves all have the same starting and end points, $(0,0)$ and $(1,1)$, but the curve integrals of the function may (generally) differ from curve to curve.  
+    
+    \begin{align*}
+        \int_A g \;d\ell
+        &=
+        %
+    \end{align*}
+    \begin{align*}
+        \int_B g \;d\ell
+        &=
+        %
+    \end{align*}
+    \begin{align*}
+        \int_\Gamma g \;d\ell
+        &=
+        \int_0^1 t^2 \sqrt{ 4t^3 + 1 } \;dt
+        =
+        \frac 2 3 \cdot \frac 1 {12} \int_0^1 \frac 3 2 \cdot 12 t^2 \left( 4t^3 + 1 \right)^{\frac 1 2} \;dt
+        =
+        \frac 2 3 \cdot \frac 1 {12} \int_0^1 \partial_t \left( 4t^3 + 1 \right)^{\frac 3 2} \;dt
+        \\&=
+        \frac 2 3 \cdot \frac 1 {12} \left[ \left( 4t^3 + 1 \right)^{\frac 3 2} \right]_0^1
+        =
+        \frac 2 3 \cdot \frac 1 {12} \left( 5^{\frac 3 2} - 1 \right)
+        =
+        \frac 1 {18} \left( 5^{\frac 3 2} - 1 \right)
+        .
+    \end{align*}
+    For the integral of $g$ over the last curve, we take a sharp look and integrate by parts:
+    \begin{align*}
+        \int_\Delta g \;d\ell
+        &=
+        \int_0^1 t^2 \left( 1 + 2t \right)^{\frac 1 2} \;dt
+        =
+        \int_0^1 t^2 \left( 2t + 1 \right)^{\frac 1 2} \;dt
+        \\&=
+        \int_0^1 t^2 \cdot \partial_t\left( \frac 4 3 \left( 1 + 2t \right)^{\frac 3 2} \right) \;dt
+        \\&=
+        \frac 4 3 \left[ t^2 \left( 2t + 1 \right)^{\frac 3 2} \right]_0^1
+        -
+        \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+        =
+        3^{\frac 3 2}
+        -
+        \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+        .
+    \end{align*}
+    We integrate by parts once more:
+    \begin{align*}
+        \int_0^1 2t \cdot \partial_t\left( \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right) \;dt
+        &=
+        \left[ 2t \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right]_0^1
+        -
+        \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+        \\&=
+        \frac 8 5 \cdot 3^{\frac 5 2}
+        -
+        \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+        \\&=
+        \frac 8 5 \cdot 3^{\frac 5 2}
+        -
+        \frac 8 5 
+        \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+        ,
+    \end{align*}
+    and then we calculate, using the substitution $u = 2t + 1$, which means $du = 2 dt$
+    \begin{align*}
+        \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+        &=
+        \frac 1 2 
+        \int_1^3 \left( u \right)^{\frac 5 2} \;du
+        =
+        \frac 1 2 
+        \left[ \frac 2 7 u^{\frac 7 2}\right]_1^3
+        =
+        \frac 1 7 
+        \left( 3^{\frac 7 2} - 1 \right)
+        .
+    \end{align*}
+    In combination,
+    \begin{align}
+        \int_\Delta g \;d\ell 
+        &= 
+        3^{\frac 3 2} - \frac 4 3 \cdot \frac 8 5 \cdot 3^{\frac 5 2} + \frac 4 3 \cdot \frac 8 5 \cdot \frac 1 7 \left( 3^{\frac 7 2} - 1 \right)
+        \\&=
+        3^{\frac 3 2} - \frac{32}{15} 3^{\frac 5 2} + \frac{32}{105} \left( 3^{\frac 7 2} - 1 \right)
+        .
+    \end{align}
+    Note that the curves all have the same starting and end points, $(0,0)$ and $(1,1)$, 
+    but the curve integrals of the function may (generally) differ from curve to curve.  
 \end{solution}
 
 \begin{exercise}[Challenge?]
