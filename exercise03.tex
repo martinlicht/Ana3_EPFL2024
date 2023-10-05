@@ -70,6 +70,10 @@
 \end{exercise}
 \begin{solution}
     % They should express this graph as a curve and then use the formula to find the length of the curve. 
+\begin{align*}
+	\int_0^2 \sqrt{1 + \left[\frac{\;d}{\;dx} (x^2\sin x)\right]^2}dx &= \int_0^2 \sqrt{1 + (2x\sin x + x^2\cos x)^2}\;dx\\
+&=\int_0^2 \sqrt{1 + 4x^2\sin^2 x + x^4\cos^2 x + 4x^3\cos x\sin x}\;dx
+\end{align*}
 \end{solution}
 
 
@@ -90,16 +94,39 @@
         &\delta : [0,2] \to \bbR^2, \quad t \mapsto (t^2,t).
     \end{align*}
 \end{exercise}
-\begin{solution}     
-    
+\begin{solution}   
+     \begin{align*}
+        \int_A f \;d\ell
+        &=\int_0^1 \sqrt{2} \;dt = \left[\sqrt{2}t\right]_0^1 = \sqrt{2}
+        %
+    \end{align*}
+    \begin{align*}
+        \int_B f \;d\ell
+        &= \int_0^2 \;dt = \left[t \right]_0^2  = 2
+        %
+    \end{align*}  
+%	\begin{align*}
+%        \int_\Gamma f \;d\ell
+%        &= \int_0^1 \sqrt{16t^6 + 1} \; dt = \int \sqrt{\tan^2\theta + 1} \frac{1}{4}\sec^2\theta \; d\theta = \int\frac{1}{4}\sec^3\theta \; d\theta\\
+%	&= \left[\frac{1}{8}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right] = \left[\frac{1}{8}(\sqrt{1+16t^3}4t^3 + \ln|\sqrt{1+16t^3} + 4t^3|)\right]_0^1 \\
+%&= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
+%	\end{align*}
+	\begin{align*}
+        \int_\Delta f \;d\ell
+        &= \int_0^1 \sqrt{4t^2 + 1} \; dt =  \int_0^{\frac{\pi}{4}} \sqrt{\tan^2\theta + 1} \frac{1}{2}\sec^2\theta \; d\theta = \int_0^{\frac{\pi}{4}}\frac{1}{2}\sec^3\theta \; d\theta\\
+	&= \left[\frac{1}{4}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right]_0^{\frac{\pi}{4}} = \left[\frac{1}{4}(\sqrt{1+t^2}2t + \ln|\sqrt{1+t^2} + 2t|)\right]_0^1 \\
+&= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
+    \end{align*}  
+	where we made the substitution $2t = \tan\theta$. Moreover note that $\sec\theta = \frac{1}{\cos\theta}$ and that we have used an integral formula to evaluate the integral.  
+
     \begin{align*}
         \int_A g \;d\ell
-        &=
+        &= \int_0^1 t^2\sqrt{2} \;dt = \left[\frac{\sqrt{2}}{3}t^3 \right]_0^1 = \frac{\sqrt{2}}{3}
         %
     \end{align*}
     \begin{align*}
         \int_B g \;d\ell
-        &=
+        &=\int_1^2 (t-1)^2 \;dt = \left[\frac{1}{3} (t-1)^3\right]_1^2 = \frac{1}{3}
         %
     \end{align*}
     \begin{align*}
