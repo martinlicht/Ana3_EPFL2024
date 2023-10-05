@@ -114,149 +114,195 @@
 \begin{exercise}
     Take a look at the functions 
     \[
-        f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2^2.
+        f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2.
     \]
     We have the following curves:
     \begin{align*}
         &\alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
         \\
-        &\beta  : [0,1] \to \bbR^2, \quad t \mapsto \begin{cases} (t,0) & 0 \leq t \leq 1, \\ (0,t-1) & 1 \leq t \leq 2, \end{cases}
+        &\beta  : [0,2] \to \bbR^2, \quad t \mapsto \begin{cases} (t,0) & 0 \leq t \leq 1, \\ (0,t-1) & 1 \leq t \leq 2, \end{cases}
         \\
-        &\gamma : [0,1] \to \bbR^2, \quad t \mapsto (t^4,t),
-        \\
-        &\delta : [0,2] \to \bbR^2, \quad t \mapsto (t^2,t).
+        &\gamma : [0,1] \to \bbR^2, \quad t \mapsto (t^2,t).
+%         \\
+%         &\delta : [0,1] \to \bbR^2, \quad t \mapsto (1-t^2,1-t).
     \end{align*}
     Compute:
     \[
         \int_A f \;d\ell, \quad \int_B f \;d\ell, \quad 
         \int_A g \;d\ell, \quad \int_B g \;d\ell, \quad 
-        \int_\Gamma g \;d\ell, \quad \int_\Delta g \;d\ell
+        \int_\Gamma g \;d\ell
+%         \quad \int_\Delta g \;d\ell
         .
     \]
 \end{exercise}
-\begin{solution}   
+\begin{solution}  
+     We compute these integrals as follows:
      \begin{align*}
         \int_A f \;d\ell
-        &=\int_0^1 \sqrt{2} \;dt = \left[\sqrt{2}t\right]_0^1 = \sqrt{2}
-        %
-    \end{align*}
-    \begin{align*}
+        =
+        \int_0^1 \sqrt{2} \;dt = \left[\sqrt{2}t\right]_0^1 = \sqrt{2}
+        ,
+        \quad 
         \int_B f \;d\ell
-        &= \int_0^2 \;dt = \left[t \right]_0^2  = 2
+        = 
+        \int_0^2 \;dt = \left[t \right]_0^2  = 2
         %
     \end{align*}  
-%	\begin{align*}
-%        \int_\Gamma f \;d\ell
-%        &= \int_0^1 \sqrt{16t^6 + 1} \; dt = \int \sqrt{\tan^2\theta + 1} \frac{1}{4}\sec^2\theta \; d\theta = \int\frac{1}{4}\sec^3\theta \; d\theta\\
-%	&= \left[\frac{1}{8}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right] = \left[\frac{1}{8}(\sqrt{1+16t^3}4t^3 + \ln|\sqrt{1+16t^3} + 4t^3|)\right]_0^1 \\
-%&= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
-%	\end{align*}
-% 	\begin{align*}
-%         \int_\Delta f \;d\ell
-%         &= \int_0^1 \sqrt{4t^2 + 1} \; dt =  \int_0^{\frac{\pi}{4}} \sqrt{\tan^2\theta + 1} \frac{1}{2}\sec^2\theta \; d\theta = \int_0^{\frac{\pi}{4}}\frac{1}{2}\sec^3\theta \; d\theta\\
-% 	&= \left[\frac{1}{4}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right]_0^{\frac{\pi}{4}} = \left[\frac{1}{4}(\sqrt{1+t^2}2t + \ln|\sqrt{1+t^2} + 2t|)\right]_0^1 \\
-% &= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
-%     \end{align*}  
-% 	where we made the substitution $2t = \tan\theta$. Moreover note that $\sec\theta = \frac{1}{\cos\theta}$ and that we have used an integral formula to evaluate the integral.  
-
     \begin{align*}
         \int_A g \;d\ell
-        &= \int_0^1 t^2\sqrt{2} \;dt = \left[\frac{\sqrt{2}}{3}t^3 \right]_0^1 = \frac{\sqrt{2}}{3}
+        &= \int_0^1 t \sqrt{2} \;dt = \left[\frac{\sqrt{2}}{2}t^2 \right]_0^1 = \frac{\sqrt{2}}{2}
         %
     \end{align*}
     \begin{align*}
         \int_B g \;d\ell
-        &=\int_1^2 (t-1)^2 \;dt = \left[\frac{1}{3} (t-1)^3\right]_1^2 = \frac{1}{3}
+        &=
+        \int_0^1 (0) \;dt + \int_1^2 (t-1) \;dt  
+        = 
+        \int_1^2 (t-1) \;dt 
+        = 
+        \left[ \frac{1}{2} (t-1)^2 \right]_1^2 = \frac{1}{2}
         %
     \end{align*}
+    For the interal of $g$ over the third curve, we proceed as follows:
     \begin{align*}
         \int_\Gamma g \;d\ell
         &=
-        \int_0^1 t^2 \sqrt{ 4t^3 + 1 } \;dt
-        =
-        \frac 2 3 \cdot \frac 1 {12} \int_0^1 \frac 3 2 \cdot 12 t^2 \left( 4t^3 + 1 \right)^{\frac 1 2} \;dt
-        =
-        \frac 2 3 \cdot \frac 1 {12} \int_0^1 \partial_t \left( 4t^3 + 1 \right)^{\frac 3 2} \;dt
+        \int_0^1 t \sqrt{ 4t^2 + 1 } \;dt
         \\&=
-        \frac 2 3 \cdot \frac 1 {12} \left[ \left( 4t^3 + 1 \right)^{\frac 3 2} \right]_0^1
+        \int_0^1 t \left( 4t^2 + 1 \right)^{\frac 1 2} \;dt
+        \\&=
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \int_0^1 \frac 3 2 \cdot 8t \left( 4t^2 + 1 \right)^{\frac 1 2} \;dt
+        \\&=
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \int_0^1 \partial_t \left( 4t^2 + 1 \right)^{\frac 3 2} \;dt
         =
-        \frac 2 3 \cdot \frac 1 {12} \left( 5^{\frac 3 2} - 1 \right)
-        =
-        \frac 1 {18} \left( 5^{\frac 3 2} - 1 \right)
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \left( 5^{\frac 3 2} - 1 \right)
+        = 
+        \frac{ 5^{\frac 3 2} - 1 }{12}
         .
     \end{align*}
-    For the integral of $g$ over the last curve, we take a sharp look and integrate by parts:
-    \begin{align*}
-        \int_\Delta g \;d\ell
-        &=
-        \int_0^1 t^2 \left( 1 + 2t \right)^{\frac 1 2} \;dt
-        =
-        \int_0^1 t^2 \left( 2t + 1 \right)^{\frac 1 2} \;dt
-        \\&=
-        \int_0^1 t^2 \cdot \partial_t\left( \frac 4 3 \left( 1 + 2t \right)^{\frac 3 2} \right) \;dt
-        \\&=
-        \frac 4 3 \left[ t^2 \left( 2t + 1 \right)^{\frac 3 2} \right]_0^1
-        -
-        \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
-        =
-        3^{\frac 3 2}
-        -
-        \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
-        .
-    \end{align*}
-    We integrate by parts once more:
-    \begin{align*}
-        \int_0^1 2t \cdot \partial_t\left( \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right) \;dt
-        &=
-        \left[ 2t \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right]_0^1
-        -
-        \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
-        \\&=
-        \frac 8 5 \cdot 3^{\frac 5 2}
-        -
-        \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
-        \\&=
-        \frac 8 5 \cdot 3^{\frac 5 2}
-        -
-        \frac 8 5 
-        \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
-        ,
-    \end{align*}
-    and then we calculate, using the substitution $u = 2t + 1$, which means $du = 2 dt$
-    \begin{align*}
-        \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
-        &=
-        \frac 1 2 
-        \int_1^3 \left( u \right)^{\frac 5 2} \;du
-        =
-        \frac 1 2 
-        \left[ \frac 2 7 u^{\frac 7 2}\right]_1^3
-        =
-        \frac 1 7 
-        \left( 3^{\frac 7 2} - 1 \right)
-        .
-    \end{align*}
-    In combination,
-    \begin{align}
-        \int_\Delta g \;d\ell 
-        &= 
-        3^{\frac 3 2} - \frac 4 3 \cdot \frac 8 5 \cdot 3^{\frac 5 2} + \frac 4 3 \cdot \frac 8 5 \cdot \frac 1 7 \left( 3^{\frac 7 2} - 1 \right)
-        \\&=
-        3^{\frac 3 2} - \frac{32}{15} 3^{\frac 5 2} + \frac{32}{105} \left( 3^{\frac 7 2} - 1 \right)
-        .
-    \end{align}
+%     For the integral of $g$ over the last curve, we take a sharp look and integrate by parts:
+%     \begin{align*}
+%         \int_\Delta g \;d\ell
+%         &=
+%         \int_0^1 t^2 \left( 1 + 4t^2 \right)^{\frac 1 2} \;dt
+%         =
+%         \int_0^1 t^2 \left( 2t + 1 \right)^{\frac 1 2} \;dt
+%         \\&=
+%         \int_0^1 t^2 \cdot \partial_t\left( \frac 4 3 \left( 1 + 2t \right)^{\frac 3 2} \right) \;dt
+%         \\&=
+%         \frac 4 3 \left[ t^2 \left( 2t + 1 \right)^{\frac 3 2} \right]_0^1
+%         -
+%         \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+%         =
+%         3^{\frac 3 2}
+%         -
+%         \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+%         .
+%     \end{align*}
+%     We integrate by parts once more:
+%     \begin{align*}
+%         \int_0^1 2t \cdot \partial_t\left( \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right) \;dt
+%         &=
+%         \left[ 2t \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right]_0^1
+%         -
+%         \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         \\&=
+%         \frac 8 5 \cdot 3^{\frac 5 2}
+%         -
+%         \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         \\&=
+%         \frac 8 5 \cdot 3^{\frac 5 2}
+%         -
+%         \frac 8 5 
+%         \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         ,
+%     \end{align*}
+%     and then we calculate, using the substitution $u = 2t + 1$, which means $du = 2 dt$
+%     \begin{align*}
+%         \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         &=
+%         \frac 1 2 
+%         \int_1^3 \left( u \right)^{\frac 5 2} \;du
+%         =
+%         \frac 1 2 
+%         \left[ \frac 2 7 u^{\frac 7 2}\right]_1^3
+%         =
+%         \frac 1 7 
+%         \left( 3^{\frac 7 2} - 1 \right)
+%         .
+%     \end{align*}
+%     In combination,
+%     \begin{align}
+%         \int_\Delta g \;d\ell 
+%         &= 
+%         3^{\frac 3 2} - \frac 4 3 \cdot \frac 8 5 \cdot 3^{\frac 5 2} + \frac 4 3 \cdot \frac 8 5 \cdot \frac 1 7 \left( 3^{\frac 7 2} - 1 \right)
+%         \\&=
+%         3^{\frac 3 2} - \frac{32}{15} 3^{\frac 5 2} + \frac{32}{105} \left( 3^{\frac 7 2} - 1 \right)
+%         .
+%     \end{align}
     Note that the curves all have the same starting and end points, $(0,0)$ and $(1,1)$, 
     but the curve integrals of the function may (generally) differ from curve to curve.  
 \end{solution}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{exercise}[Challenge?]
     Given the curve
     \[
-        \gamma : [0,\pi] \to \bbR^2, \quad t \mapsto ( \cos(2t), 3\sin(2t) )
+        \gamma : [0,\pi] \to \bbR^2, \quad t \mapsto ( 3\cos(2t), \sin(2t) )
     \]
     and a function
     \[
-        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto \left( x_1^2 + x_2^2 \right)^{\frac 3 2},
+        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto \left( x_1^2 + 81 x_2^2 \right)^{\frac 3 2},
     \]
     compute the integrals 
     \begin{align*}
@@ -266,14 +312,36 @@
 \begin{solution}     
     The integral of the gradient along this simple closed regular curve is zero.
     With regard to the integral of the scalar field along the curve, we have 
+    \begin{gather*}
+        \dot\gamma(t) = \left( -6 \sin(2t), 2\cos(2t) \right),
+        \\ 
+        |\dot\gamma(t)| 
+        = 
+        \sqrt{ 36 \sin^2(2t) + 4 \cos^2(2t) }
+        = 
+        2 \sqrt{ 9 \sin^2(2t) + \cos^2(2t) }
+        .
+    \end{gather*}
+    We also see that 
+    \begin{align*}
+        f(\gamma(t))
+        =
+        \left( 9\cos^2(2t) + 81 \sin^2(2t) \right)^{\frac 3 2}
+        &=
+        9^{\frac 3 2 }   \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        \\&=
+        27 \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        ,
+    \end{align*}
+    In combination, 
     \begin{align*}
        \int_\Gamma f d\ell
        &=
        \int_0^{\pi} f(\gamma(t)) \cdot |\dot\gamma(t)| \;dt
        \\&=
-       \int_0^{\pi} \left( \cos^2(2t) + 9\sin^2(2t) \right)^{\frac 3 2} \cdot \sqrt{ \cos^2(2t) + 9\sin^2(2t) } \;dt
+       \int_0^{\pi} 27 \left( \cos^2(2t) + 9\sin^2(2t) \right)^{\frac 3 2} \cdot 2\sqrt{ \cos^2(2t) + 9\sin^2(2t) } \;dt
        \\&=
-       \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
+       54 \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
        .
     \end{align*}
     Our life will be easier if we substitute $u = 2t$. We also use a trigonometric identity. Then
@@ -335,11 +403,19 @@
     \begin{align*}
         \int_\Gamma f d\ell
         =
-        \pi + 16 \cdot \frac \pi 2 + 64 \cdot \frac 3 8 \pi
+        54
+        \left(
+            \pi + 16 \cdot \frac \pi 2 + 64 \cdot \frac 3 8 \pi
+        \right)
         =
+        54
+        \left(
         \pi + 8\pi + 24 \pi
+        \right)
         =
-        33 \pi
+        54 \cdot 33 \pi
+        =
+        1782 \pi
         .
     \end{align*}
 \end{solution}
