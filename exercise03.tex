@@ -38,7 +38,7 @@
 \begin{exercise}
     Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
     \[
-        \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( e^{ x_1x_2 }, e^{ x_1 x_2 } )
+        \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( e^{ x_1x_2 } x_2, e^{ x_1 x_2 } x_1 )
     \]
     and 
     \[
@@ -46,34 +46,67 @@
     \]
 \end{exercise}
 \begin{solution}
-    The vector field is the gradient of $e^{ x_1x_2 }$, and so we can use the formula for conservative vector fields.
+    The vector field is the gradient of $e^{ x_1 x_2 }$, and so we can use the formula for conservative vector fields.
     We find that
     \[
         \int_\Gamma \vec F d\ell = \int_\Gamma \grad f d\ell = f(\gamma(1)) - f(\gamma(0))
     \]
     Now we only need to compute the function values of $f$. Explicitly,
     \[
-        \gamma(0) = \left( \arctan( \cos(\pi 0)^2 - \sin(\pi 0)^2 ), 1 + \sqrt[2]{\arctan(0)} \right) = \left( \arctan( 1 ), 1 + \sqrt[2]{0} \right) = \left( \pi/4, 1 \right)
+        \gamma(0) = \left( \arctan( \cos(\pi 0)^2 - \sin(\pi 0)^2 ), 1 + \sqrt[2]{\arctan(0)} \right)
+        =
+        \left( \arctan( 1 ), 1 + \sqrt[2]{0} \right) 
+        =
+        \left( \pi/4, 1 \right)
     \]
     \[
-        \gamma(1) = \left( \arctan( \cos(\pi 1)^2 - \sin(\pi 1)^2 ), 1 + \sqrt[2]{\arctan(1)} \right) = \left( \arctan( -1 ), 1 + \sqrt[2]{\pi/4} \right) = \left( -\pi/4, 1 + \sqrt[2]{\pi/4} \right)
+        \gamma(1) = \left( \arctan( \cos(\pi 1)^2 - \sin(\pi 1)^2 ), 1 + \sqrt[2]{\arctan(1)} \right)
+        =
+        \left( \arctan( -1 ), 1 + \sqrt[2]{\pi/4} \right)
+        =
+        \left( -\pi/4, 1 + \sqrt[2]{\pi/4} \right)
     \]
     We then compute
     \[
-        f(\gamma(1)) - f(\gamma(0)) = \exp\left( -\frac \pi 4 ( 1 + \sqrt[2]{\pi/4} ) \right) - \exp\left( \pi/4 \right).
+        f(\gamma(1)) - f(\gamma(0)) 
+        =
+        \exp\left( -\frac \pi 4 ( 1 + \sqrt[2]{\pi/4} ) \right) - \exp\left( \pi/4 \right).
     \]
 \end{solution}
 
 \begin{exercise}
-    What is the length of the graph of the function $g(x) = \sin(x) x^2$ over the interval $[0,2]$?
+    What is the length of the graph of the function $g(x) = x^{\frac 3 2}$ over the interval $[0,2]$?
     Simplify as much as reasonable.
 \end{exercise}
 \begin{solution}
-    % They should express this graph as a curve and then use the formula to find the length of the curve. 
-\begin{align*}
-	\int_0^2 \sqrt{1 + \left[\frac{\;d}{\;dx} (x^2\sin x)\right]^2}dx &= \int_0^2 \sqrt{1 + (2x\sin x + x^2\cos x)^2}\;dx\\
-&=\int_0^2 \sqrt{1 + 4x^2\sin^2 x + x^4\cos^2 x + 4x^3\cos x\sin x}\;dx
-\end{align*}
+    We can express the graph as a curve 
+    \[
+        \gamma : [0,2] \to \mathbb R^2, \quad t \mapsto ( t, t^{\frac 3 2} ) 
+    \]
+    As mentioned in the lecture, the integral of $1$ along that curve gives the length:
+    \[
+        \int_\Gamma 1 \;dl = \int_0^2 \left| ( 1, \frac 3 2 t^{\frac 1 2} \right| \;dt = \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt
+    \]
+    We integrate the last expression. The integrand is a derivative, up to some numerical factor:
+    \begin{align*}
+        \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt 
+        &= 
+        \frac 2 3 \cdot \frac 4 9 \int_0^2 \frac 3 2 \cdot \frac 9 4 \left( 1 + \frac 9 4 t \right)^{\frac 1 2} \;dt 
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \int_0^2 \partial_t \left( 1 + \frac 9 4 t \right)^{\frac 3 2} \;dt 
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \left[ \left( 1 + \frac 9 4 t \right)^{\frac 3 2} \right]_0^2
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \left( \left( 1 + \frac 9 2 \right)^{\frac 3 2} - 1 \right)
+        \\&= 
+        \frac{8}{27} \left( \left( \frac {11} 2 \right)^{\frac 3 2} - 1 \right)
+        .
+    \end{align*}
+    (You can also use \textit{Intégration par changement de variable}, which is the same idea in a different formalism.)
+    % \begin{align*}
+    %     \int_0^2 \sqrt{1 + \left[\frac{\;d}{\;dx} (x^2\sin x)\right]^2}dx &= \int_0^2 \sqrt{1 + (2x\sin x + x^2\cos x)^2}\;dx\\
+    % &=\int_0^2 \sqrt{1 + 4x^2\sin^2 x + x^4\cos^2 x + 4x^3\cos x\sin x}\;dx
+    % \end{align*}
 \end{solution}
 
 
@@ -83,7 +116,7 @@
     \[
         f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2^2.
     \]
-    Compute their integrals along the following curves:
+    We have the following curves:
     \begin{align*}
         &\alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
         \\
@@ -93,6 +126,13 @@
         \\
         &\delta : [0,2] \to \bbR^2, \quad t \mapsto (t^2,t).
     \end{align*}
+    Compute:
+    \[
+        \int_A f \;d\ell, \quad \int_B f \;d\ell, \quad 
+        \int_A g \;d\ell, \quad \int_B g \;d\ell, \quad 
+        \int_\Gamma g \;d\ell, \quad \int_\Delta g \;d\ell
+        .
+    \]
 \end{exercise}
 \begin{solution}   
      \begin{align*}
@@ -111,13 +151,13 @@
 %	&= \left[\frac{1}{8}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right] = \left[\frac{1}{8}(\sqrt{1+16t^3}4t^3 + \ln|\sqrt{1+16t^3} + 4t^3|)\right]_0^1 \\
 %&= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
 %	\end{align*}
-	\begin{align*}
-        \int_\Delta f \;d\ell
-        &= \int_0^1 \sqrt{4t^2 + 1} \; dt =  \int_0^{\frac{\pi}{4}} \sqrt{\tan^2\theta + 1} \frac{1}{2}\sec^2\theta \; d\theta = \int_0^{\frac{\pi}{4}}\frac{1}{2}\sec^3\theta \; d\theta\\
-	&= \left[\frac{1}{4}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right]_0^{\frac{\pi}{4}} = \left[\frac{1}{4}(\sqrt{1+t^2}2t + \ln|\sqrt{1+t^2} + 2t|)\right]_0^1 \\
-&= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
-    \end{align*}  
-	where we made the substitution $2t = \tan\theta$. Moreover note that $\sec\theta = \frac{1}{\cos\theta}$ and that we have used an integral formula to evaluate the integral.  
+% 	\begin{align*}
+%         \int_\Delta f \;d\ell
+%         &= \int_0^1 \sqrt{4t^2 + 1} \; dt =  \int_0^{\frac{\pi}{4}} \sqrt{\tan^2\theta + 1} \frac{1}{2}\sec^2\theta \; d\theta = \int_0^{\frac{\pi}{4}}\frac{1}{2}\sec^3\theta \; d\theta\\
+% 	&= \left[\frac{1}{4}(\sec\theta\tan\theta + \ln |\sec\theta+\tan\theta|)\right]_0^{\frac{\pi}{4}} = \left[\frac{1}{4}(\sqrt{1+t^2}2t + \ln|\sqrt{1+t^2} + 2t|)\right]_0^1 \\
+% &= \frac{1}{2}\sqrt{2} + \ln(\sqrt{2}+2),
+%     \end{align*}  
+% 	where we made the substitution $2t = \tan\theta$. Moreover note that $\sec\theta = \frac{1}{\cos\theta}$ and that we have used an integral formula to evaluate the integral.  
 
     \begin{align*}
         \int_A g \;d\ell
