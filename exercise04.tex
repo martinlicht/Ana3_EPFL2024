@@ -24,6 +24,10 @@
     % 
 \end{solution}
 
+
+
+
+
 \begin{exercise}
     Consider the triangle domain 
     \[
@@ -36,9 +40,19 @@
     Find the curve integral of $\vec F$ along the boundary of $T$ using Green's theorem.
 \end{exercise}
 \begin{solution}
-\end{solution}
     % 
-\end{document}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -55,9 +69,74 @@
     Find the curve integral of $\vec F$ along $\Gamma$. 
 \end{exercise}
 \begin{solution}
-\end{solution}
     % Draw a line between arc endpoints to enclose a domain.
     % The divergence of the vector field is constant.
     % Compute the integral along the bottom line and the integrate the divergence over the domain
     % We just need the area of the domain 
+\end{solution}
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Find the tangential vector $\dot\gamma(t)$, the unit tangential vector $\vec\tau$ and the unit normal $\vec n$ of the simple closed curve 
+    \begin{align*}
+        \gamma : [0,2\pi] \to \bbR^{2}, \quad t \mapsto ( \cos(t), \sin(t)( 1 + \sin(2t)^2 ) ).
+    \end{align*}
+    Find the values of $\gamma$ and $\vec\tau$ for a few values of $t \in [0,2\pi]$, such as $t = \frac{\pi}{4}, 2 \frac{\pi}{4}, 3 \frac{\pi}{4}, \dots, 7 \frac{\pi}{4}$
+\end{exercise}
+\begin{solution}
+    Some standard calculations show that 
+    \begin{align*}
+        \dot\gamma(t) 
+        &= 
+        \left( \sin(t), \cos(t) + \cos(t) \sin(2t)^{2} + \sin(t) 2 \sin(2t) \cos(2t) 2 \right)
+        \\&= 
+        \left( \sin(t), \cos(t) + \cos(t) \sin(2t)^{2} + 4 \sin(t) \sin(2t) \cos(2t) \right)
+    \end{align*}
+    Hence,{\scriptsize
+    \begin{align*}
+        &
+        |\dot\gamma(t)|
+        \\&=
+        \sqrt{
+            \sin(t)^{2}
+            +
+            \cos(t)^{2} + \cos(t)^{2} \sin(2t)^{4} + 16 \sin(t)^{2} \sin(2t)^{2} \cos(2t)^{2}
+            +
+            2\cos(t) \sin(2t)^{2} + 2\cos(t) 4 \sin(t) \sin(2t) \cos(2t) + 2 \sin(2t)^{2} 4 \sin(t) \sin(2t) \cos(2t)
+        }
+        \\&
+        =
+        \sqrt{
+            \sin(t)^{2}
+            +
+            \cos(t)^{2} + \cos(t)^{2} \sin(2t)^{4} + 16 \sin(t)^{2} \sin(2t)^{2} \cos(2t)^{2}
+            +
+            2\cos(t) \sin(2t)^{2} + 2\cos(t) 4 \sin(t) \sin(2t) \cos(2t) + 2 \sin(2t)^{2} 4 \sin(t) \sin(2t) \cos(2t)
+        }
+    \end{align*}
+    }
+
+    \begin{tikzpicture}
+        \begin{axis}[
+            domain=0:360,
+            xmin=-2,
+            xmax=2,
+            ymin=-2,
+            ymax=2,
+            xlabel={x},
+            ylabel={y}
+        ]
+        \addplot[blue, variable=\t, samples=100] ({cos(\t)}, {sin(\t)* ( 1 + 0.5 * sin(2*\t)*sin(2*\t) )});
+        \end{axis}
+    \end{tikzpicture}
+\end{solution}
+
+
 \end{document}
