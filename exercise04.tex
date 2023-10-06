@@ -4,14 +4,60 @@
 \begin{document}
 \exsheet{4}{17}{October} % parameters are the number of the session and the day
 
+
+
 \begin{exercise}
+    We have the vector field 
+    \[
+        \vec F( x_1, x_2 ) = \left( x_1 x_2, x_2^{2} \right).
+    \]
+    and the domains 
+    \begin{align*}
+        \Omega_1 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1 \right\},
+        \\
+        \Omega_2 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1, \; x_1 > 0 \right\},
+     \end{align*}
+    Verify Green's theorem for the vector field $\vec F$ with the domains $\Omega_1$ and $\Omega_2$. 
+    \textit{You need to find parameterizations of the boundary first.}
 \end{exercise}
-\begin{solution}     
+\begin{solution}   
+    % 
 \end{solution}
 
 \begin{exercise}
+    Consider the triangle domain 
+    \[
+        T &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1 > 0, \; x_2 > 0, \; x_1+x_2 < 1 \right\}.
+    \]
+    and the vector field 
+    \[
+        \vec F(x_1,x_2) = \left( x_1x_2 + \frac{x_1}{1+x_1^2+x_2^2}, x_1x_2 + \frac{x_2}{1+x_1^2+x_2^2} \right)
+    \]
+    Find the curve integral of $\vec F$ along the boundary of $T$ using Green's theorem.
 \end{exercise}
-\begin{solution}     
+\begin{solution}
 \end{solution}
+    % 
+\end{document}
 
+
+
+
+\begin{exercise}
+    Consider the parabolic arc 
+    \[
+        \Gamma := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* -1 < x_1 < 1, \; x_2 = 3 ( 1 - x_1^2 ) \right\}.
+    \]
+    Find the curve integral $\int_\Gamma \vec F \;dl$, where 
+    \[
+        \vec F(x_1,x_2) = \left( x_1 ( 2 - \cos(x_1x_2)^{2} ), x_2 ( 2 + \cos(x_1x_2)^{2} ) \right)
+    \]
+    Find the curve integral of $\vec F$ along $\Gamma$. 
+\end{exercise}
+\begin{solution}
+\end{solution}
+    % Draw a line between arc endpoints to enclose a domain.
+    % The divergence of the vector field is constant.
+    % Compute the integral along the bottom line and the integrate the divergence over the domain
+    % We just need the area of the domain 
 \end{document}
