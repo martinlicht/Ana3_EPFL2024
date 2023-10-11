@@ -6,6 +6,94 @@
 
 
 
+\begin{exercise}
+    The closed curve 
+    \begin{align*}
+        \gamma(t) = \left( \sin(t)(1+0.5 \sin(2t)), \cos(t)(1+0.5 \sin(2t)) \right)
+    \end{align*}
+    encircles a domain $\Omega$. Find the tangent $\dot\gamma(t)$, the unit tangent $\tau(t)$ and the outward pointing unit normal $\vec n(t)$.
+    Only simplify as much as reasonable. 
+\end{exercise}
+\begin{solution}
+    We calculate:
+    \begin{align*}
+        \dot\gamma(t) 
+        = \left( 
+            \cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)
+            ,
+            -\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)
+        \right)
+    \end{align*}
+    With that:
+    \begin{align*}
+        |\dot\gamma(t)|^{2}
+        &= 
+        \cos(t)^{2}( 1+0.5 \sin(2t) )^{2} + \sin(t)^{2}\cos(2t)^{2} + 2 \cos(t)( 1+0.5 \sin(2t) ) \sin(t)\cos(2t)
+        \\&\quad \quad 
+        +
+        \sin(t)^{2}( 1+0.5 \sin(2t) )^{2} + \cos(t)^{2}\cos(2t)^{2} - 2\sin(t)( 1+0.5 \sin(2t) ) \cos(t)\cos(2t)
+        \\&= 
+        ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} + 2 \cos(t)( 1+0.5 \sin(2t) ) \sin(t)\cos(2t)
+        \\&\quad \quad 
+        - 2 \sin(t)( 1+0.5 \sin(2t) ) \cos(t)\cos(2t)
+        \\&= 
+        ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2}
+        .
+    \end{align*}
+    Hence 
+    \begin{align*}
+        |\dot\gamma(t)|
+        &= 
+        \sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }
+        .
+    \end{align*}
+    We want to compute the tangent vector:
+    \begin{align*}
+        \tau(t) 
+        = 
+        \left( 
+            \frac{\cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }}
+            , 
+            \frac{-\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }} 
+        \right)
+    \end{align*}
+    Accordingly, the normal vector is:
+    \begin{align*}
+        \vec n(t) 
+        = 
+        \left( 
+            \frac{-\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }} 
+            , 
+            - \frac{\cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }}
+        \right)
+    \end{align*}
+    
+
+    \begin{tikzpicture}
+        \begin{axis}[
+            domain=0:360,
+            xmin=-2,
+            xmax=2,
+            ymin=-2,
+            ymax=2,
+            xlabel={x},
+            ylabel={y}
+        ]
+        \addplot[blue, variable=\t, samples=100] ({sin(\t)*( 1 + 0.5 * sin(2*\t) )}, {cos(\t)*( 1 + 0.5 * sin(2*\t) )});
+        \end{axis}
+    \end{tikzpicture}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
