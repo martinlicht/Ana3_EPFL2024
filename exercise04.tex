@@ -1,328 +1,434 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
-\exsheet{4}{17}{October} % parameters are the number of the session and the day
+\exsheet{4}{10}{October} % parameters are the number of the session and the day
+
+
 
 
 
 \begin{exercise}
-    The closed curve 
-    \begin{align*}
-        \gamma(t) = \left( \sin(t)(1+0.5 \sin(2t)), \cos(t)(1+0.5 \sin(2t)) \right)
-    \end{align*}
-    encircles a domain $\Omega$. Find the tangent $\dot\gamma(t)$, the unit tangent $\tau(t)$ and the outward pointing unit normal $\vec n(t)$.
-    Only simplify as much as reasonable. 
+    Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
+    \[
+        \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( x_2, 0 ), \qquad \gamma : [0,2\pi]  \to \bbR^2, \quad t \mapsto ( \cos(t), \sin(t) )
+    \]
+    Compute the line integral of the vector field $\vec{G}$ along the curve $\delta$, where 
+    \[
+        \vec G : \bbR^3 \to \bbR^3, \quad (x_1,x_2,x_3) \mapsto ( 2, 3, -1 ), \qquad \delta : [0,4]  \to \bbR^2, \quad t \mapsto  ( t^2, \cos(t), e^t )
+    \]
 \end{exercise}
 \begin{solution}
-    We calculate:
     \begin{align*}
-        \dot\gamma(t) 
-        = \left( 
-            \cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)
-            ,
-            -\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)
-        \right)
+        \int_{\Gamma} \vec{F}(x_1,x_2) d\ell &= \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt\\
+        &= \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt\\
+        &= \int_{0}^{2\pi}  -\sin^2(t)dt\\
+        &= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt\\
+        &= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
     \end{align*}
-    With that:
-    \begin{align*}
-        |\dot\gamma(t)|^{2}
-        &= 
-        \cos(t)^{2}( 1+0.5 \sin(2t) )^{2} + \sin(t)^{2}\cos(2t)^{2} + 2 \cos(t)( 1+0.5 \sin(2t) ) \sin(t)\cos(2t)
-        \\&\quad \quad 
-        +
-        \sin(t)^{2}( 1+0.5 \sin(2t) )^{2} + \cos(t)^{2}\cos(2t)^{2} - 2\sin(t)( 1+0.5 \sin(2t) ) \cos(t)\cos(2t)
-        \\&= 
-        ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} + 2 \cos(t)( 1+0.5 \sin(2t) ) \sin(t)\cos(2t)
-        \\&\quad \quad 
-        - 2 \sin(t)( 1+0.5 \sin(2t) ) \cos(t)\cos(2t)
-        \\&= 
-        ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2}
-        .
-    \end{align*}
-    Hence 
-    \begin{align*}
-        |\dot\gamma(t)|
-        &= 
-        \sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }
-        .
-    \end{align*}
-    We want to compute the tangent vector:
-    \begin{align*}
-        \tau(t) 
-        = 
-        \left( 
-            \frac{\cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }}
-            , 
-            \frac{-\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }} 
-        \right)
-    \end{align*}
-    Accordingly, the normal vector is:
-    \begin{align*}
-        \vec n(t) 
-        = 
-        \left( 
-            \frac{-\sin(t)( 1+0.5 \sin(2t) ) + \cos(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }} 
-            , 
-            - \frac{\cos(t)( 1+0.5 \sin(2t) ) + \sin(t)\cos(2t)}{\sqrt{ ( 1+0.5 \sin(2t) )^{2} + \cos(2t)^{2} }}
-        \right)
-    \end{align*}
-    
 
-    \begin{tikzpicture}
-        \begin{axis}[
-            domain=0:360,
-            xmin=-2,
-            xmax=2,
-            ymin=-2,
-            ymax=2,
-            xlabel={x},
-            ylabel={y}
-        ]
-        \addplot[blue, variable=\t, samples=100] ({sin(\t)*( 1 + 0.5 * sin(2*\t) )}, {cos(\t)*( 1 + 0.5 * sin(2*\t) )});
-        \end{axis}
-    \end{tikzpicture}
+    \begin{align*}
+        \int_{\Gamma} \vec{G}(x_1,x_2,x_3) d\ell &= \int_{0}^{4} (\vec{G}\circ \delta)(t)\cdot \dot{\delta}(t)dt\\
+        &= \int_{0}^{4}\begin{pmatrix} 2\\ 3\\ -1\end{pmatrix} \cdot  \begin{pmatrix}2t\\ -\sin(t) \\ e^t \end{pmatrix}dt\\
+        &= \int_{0}^{4} 4t - 3\sin(t) - e^t dt\\
+        &= \left[2t^2 + 3\cos(t) - e^{t} \right]_{0}^{4}\\
+        &= 32 + 3\cos4-e^4 - \left(3 - 1\right) = 30+3\cos4 -e^ 4
+    \end{align*}
+        % TODO: we need of those cosine half angle formulas to turn the square of sin into a cos 2t      
+        % TODO: the second one is easy
+\end{solution}
+
+
+\begin{exercise}
+    Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
+    \[
+        \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( e^{ x_1x_2 } x_2, e^{ x_1 x_2 } x_1 )
+    \]
+    and 
+    \[
+        \gamma : [0,1] \to \bbR^2, \quad t \mapsto \left( \arctan( \cos(\pi t)^2 - \sin(\pi t)^2 ), 1 + \sqrt[2]{\arctan(t)} \right)
+    \]
+\end{exercise}
+\begin{solution}
+    The vector field is the gradient of $e^{ x_1 x_2 }$, and so we can use the formula for conservative vector fields.
+    We find that
+    \[
+        \int_\Gamma \vec F d\ell = \int_\Gamma \grad f d\ell = f(\gamma(1)) - f(\gamma(0))
+    \]
+    Now we only need to compute the function values of $f$. Explicitly,
+    \[
+        \gamma(0) = \left( \arctan( \cos(\pi 0)^2 - \sin(\pi 0)^2 ), 1 + \sqrt[2]{\arctan(0)} \right)
+        =
+        \left( \arctan( 1 ), 1 + \sqrt[2]{0} \right) 
+        =
+        \left( \pi/4, 1 \right)
+    \]
+    \[
+        \gamma(1) = \left( \arctan( \cos(\pi 1)^2 - \sin(\pi 1)^2 ), 1 + \sqrt[2]{\arctan(1)} \right)
+        =
+        \left( \arctan( 1 ), 1 + \sqrt[2]{\pi/4} \right)
+        =
+        \left( \pi/4, 1 + \sqrt[2]{\pi/4} \right)
+    \]
+    We then compute
+    \[
+        f(\gamma(1)) - f(\gamma(0)) 
+        =
+        \exp\left( \frac \pi 4 ( 1 + \sqrt[2]{\pi/4} ) \right) - \exp\left( \pi/4 \right).
+    \]
+\end{solution}
+
+\begin{exercise}
+    What is the length of the graph of the function $g(x) = x^{\frac 3 2}$ over the interval $[0,2]$?
+    Simplify as much as reasonable.
+\end{exercise}
+\begin{solution}
+    We can express the graph as a curve 
+    \[
+        \gamma : [0,2] \to \mathbb R^2, \quad t \mapsto ( t, t^{\frac 3 2} ) 
+    \]
+    As mentioned in the lecture, the integral of $1$ along that curve gives the length:
+    \[
+        \int_\Gamma 1 \;dl = \int_0^2 \left| ( 1, \frac 3 2 t^{\frac 1 2} \right| \;dt = \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt
+    \]
+    We integrate the last expression. The integrand is a derivative, up to some numerical factor:
+    \begin{align*}
+        \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt 
+        &= 
+        \frac 2 3 \cdot \frac 4 9 \int_0^2 \frac 3 2 \cdot \frac 9 4 \left( 1 + \frac 9 4 t \right)^{\frac 1 2} \;dt 
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \int_0^2 \partial_t \left( 1 + \frac 9 4 t \right)^{\frac 3 2} \;dt 
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \left[ \left( 1 + \frac 9 4 t \right)^{\frac 3 2} \right]_0^2
+        \\&= 
+        \frac 2 3 \cdot \frac 4 9 \left( \left( 1 + \frac 9 2 \right)^{\frac 3 2} - 1 \right)
+        \\&= 
+        \frac{8}{27} \left( \left( \frac {11} 2 \right)^{\frac 3 2} - 1 \right)
+        .
+    \end{align*}
+    (You can also use \textit{Intégration par changement de variable}, which is the same idea in a different formalism.)
+    % \begin{align*}
+    %     \int_0^2 \sqrt{1 + \left[\frac{\;d}{\;dx} (x^2\sin x)\right]^2}dx &= \int_0^2 \sqrt{1 + (2x\sin x + x^2\cos x)^2}\;dx\\
+    % &=\int_0^2 \sqrt{1 + 4x^2\sin^2 x + x^4\cos^2 x + 4x^3\cos x\sin x}\;dx
+    % \end{align*}
 \end{solution}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 \begin{exercise}
-    We work over the quadratic domain 
+    Take a look at the functions 
     \[
-        \Omega := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* -1 < x_1 < 1, \; -1 < x_2 < 1 \right\}.
+        f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2.
     \]
-    Compute the integral $\iint_\Omega \divergence \vec F \;dx_1dx_2$, where 
-    \[
-        \vec F(x_1,x_2) = \left( \sin(x_1) x_2, \left( x_1^2 + x_2 \right)^5 \right)
-    \]
-\end{exercise}
-\begin{solution}
-    % Express this volume integral as a curve integral.
- We make use of the Divergence theorem to express the volume integral as a curve integral.
-
-\begin{align*}
-\int \int_{\Omega} \nabla \cdot \vec{F} \;d x_1 \:d x_2 =&\int_{\partial \Omega}\vec{F}\cdot\vec{n} \;d\ell,\\
-=&\int_{-1}^1 \vec{F}(x_1,-1)\cdot\begin{pmatrix}0\\-1\end{pmatrix} \;dx_1 + \int_{-1}^1 \vec{F}(x_1,1)\cdot\begin{pmatrix}0\\1\end{pmatrix} \;dx_1,\\
-& + \int_{-1}^1 \vec{F}(-1,x_2)\cdot\begin{pmatrix}-1\\0\end{pmatrix} \;dx_2 + \int_{-1}^1 \vec{F}(1,x_2)\cdot\begin{pmatrix}1\\0\end{pmatrix} \;dx_2,\\
-=&\int_{-1}^1 (1-x_1^ 2)^ 5 \;dx_1 + \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1 + \int_{-1}^1 \sin(1)x_2\;dx_2 +  \int_{-1}^1 -\sin(-1)x_2\;dx_2,\\
-=&  \left[\frac{1}{6}(1-x_1^ 2)^ 6 \frac{1}{-2x_1} \right]_{x_1 = -1}^{x_1 = 1} + \left[\frac{1}{6}(x_1^ 2 + 1)^ 6 \frac{1}{2x_1} \right]_{x_1 = -1}^{x_1 = 1},\\
-=& \frac{1}{6} 2 \frac{1}{2} - \frac{1}{6} 2 \frac{-1}{2} = \frac{1}{3},
-\end{align*}
-
-where we have used that $x_2$ and $x_2$ are odd functions in the fourth line. 
-\end{solution}
-
-
-
-
-\begin{exercise}
-    We have the vector field 
-    \[
-        \vec F( x_1, x_2 ) = \left( x_1 x_2, x_2^{2} \right).
-    \]
-    and the domains 
+    We have the following curves:
     \begin{align*}
-        \Omega_1 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1 \right\},
+        &\alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
         \\
-        \Omega_2 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1, \; x_1 > 0 \right\},
-     \end{align*}
-    Verify Green's theorem for the vector field $\vec F$ with the domains $\Omega_1$ and $\Omega_2$. 
-    \textit{You need to find parameterizations of the boundary first.}
-\end{exercise}
-\begin{solution}   
-   Green's theorem is given by $$\int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} = \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega$$
-We consider domain $\Omega_1$. A parameterisation for the boundary is given by $\gamma: [0,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t).$
-
-\begin{align*}
-\int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} =& \int_0^ {2\pi} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \cos t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t \\
-=& \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt = 0
-\end{align*}
-
-\begin{align*}
-\int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega =& \int \int_{\Omega} -x_1 \; d\Omega\\
-=& \int_0^ {2\pi} \int_0^1 -r\cos \theta r \;d\theta\;dr\\
-=& -\int_0^ {2\pi} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r = 0,
-\end{align*}
-
-where we have used that integrating the cosine function over a period is $0$. Boths integrals give the same value thereby verifying Green's theorem.\\
-
-We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\pi/2,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
-
-\begin{align*}
-\int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} =& \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \cos t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t + \int_1^ {-1} \begin{pmatrix}0\\t^ 2\end{pmatrix}\cdot \begin{pmatrix}0\\1\end{pmatrix}\\
-=& \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt + \int_{1}^ {-1} t^ 2 \;d t\\
-=& \left[\frac{1}{3} t^ 3\right]_1^ {-1} = \frac{2}{3}
-\end{align*}
-
-\begin{align*}
-\int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega =& \int \int_{\Omega} -x_1 \; d\Omega\\
-=& \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \int_0^1 -r\cos \theta r \;d\theta\;dr\\
-=& -\int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r\\
-=& \left[\sin \theta\right]_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \left[-\frac{1}{3}r^ 3\right]_0^{1} = -\frac{2}{3}
-\end{align*}
-
-Boths integrals give the same value thereby verifying Green's theorem.\\
-
-\end{solution}
-
-
-
-
-
-\begin{exercise}
-    Consider the triangle domain 
-    \[
-        T := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1 > 0, \; x_2 > 0, \; x_1+x_2 < 1 \right\}.
-    \]
-    and the vector field 
-    \[
-        \vec F(x_1,x_2) = \left( x_1x_2 + \frac{x_1}{1+x_1^2+x_2^2}, x_1x_2 + \frac{x_2}{1+x_1^2+x_2^2} \right)
-    \]
-    Find the curve integral of $\vec F$ along the boundary of $T$ using Green's theorem.
-\end{exercise}
-\begin{solution}
-\begin{align*}
-    \int_{\partial \Omega} \vec{F} \cdot \; d \vec{s} &= \int\int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}\; d \Omega\\
-&= \int\int_{\Omega} x_2 + \frac{2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^ {\frac{3}{2}}} - x_1 - \frac{2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^ {\frac{3}{2}}} \; d \Omega\\
-&= \int\int_{\Omega} x_2  - x_1\; d \Omega\\
-&= \int_0^ 1\int_0^ {1-x_1} x_2 - x_1 \;dx_2\;dx_1\\
-&= \int_0^ 1 \frac{1}{2}(1-x_1)^ 2 - x_1(1-x_1) \;d x\\
-&= \left[ \frac{1}{6}(1-x_1)^ 3 - \frac{1}{2} x_1^2 + \frac{1}{3}x_1^ 3 \right]_0^1 = -\frac{1}{2} + \frac{1}{3} - \frac{1}{6} = -\frac{2}{6}
-\end{align*}
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Consider the parabolic arc 
-    \[
-        \Gamma := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* -1 < x_1 < 1, \; x_2 = 3 ( 1 - x_1^2 ) \right\}.
-    \]
-    Find the curve integral $\int_\Gamma \vec F \;dl$, where 
-    \[
-        \vec F(x_1,x_2) = \left( x_1 ( 2 - \cos(x_1x_2)^{2} ), x_2 ( 2 + \cos(x_1x_2)^{2} ) \right)
-    \]
-\end{exercise}
-\begin{solution}
-    % Draw a line between arc endpoints to enclose a domain.
-    % The divergence of the vector field is constant.
-    % Compute the integral along the bottom line and the integrate the divergence over the domain
-    % We just need the area of the domain 
-
-The Idea is to make use of Divergence theorem. We do this by closing the curve $\gamma$ by introducing the curve $\delta: [-1,1] \mapsto \mathbb{R}^2, \quad t\mapsto  (t,0)$. This allows us to reformulate the problem as follows:
-
-$$
-\int_{\Gamma} \vec{F} \cdot \; d\vec{s} = \int_{\Gamma\cup \Delta} \vec{F} \cdot 
-\; d\vec{s}-\int_{\Delta} \vec{F}\cdot \;d \vec{s}
-$$
-
-For the first integral we use the Divergence theorem:
-
-\begin{align*}
-\int_{\Gamma\cup\Delta} \vec{F} \cdot 
-\; d\vec{s} &= \int_{\Omega} \nabla\cdot\vec{F}\;d \Omega\\
-&=\int_{\Omega} 4\;d \Omega\\
-&=\int_{-1}^1\int_{0}^{3(1-x_1^2)} 4 \;d x_2 ;\d x_1\\
-&=\int_{-1}^1\left[4x_2\right]_{0}^{3(1-x_1^2)}  \;d x_1\\
-&=\int_{-1}^1 12( 1-x_1^2)\;d x_1\\
-&=\left[12( 1-x_1^2)\right]_{-1}^1 = 23\frac{1}{3}\\
-\end{align*}
-
-and the value of the second integral is given by:
-
-\begin{align*}
-\int_{\Delta} \vec{F} \cdot 
-\; d\vec{s} &= \int_{-1}^1 x_1 
-\; dx_1 =0\\
-\end{align*}
-
-We conclude that:
-
-$$
-\int_{\Gamma} \vec{F} \cdot \; d\vec{s} = \int_{\Gamma\cup \Delta} \vec{F} \cdot 
-\; d\vec{s} = 23\frac{1}{3}
-$$
-
-\end{solution}
-
-\begin{exercise}
-    Find the tangential vector $\dot\gamma(t)$, the unit tangential vector $\vec\tau$ and the unit normal $\vec n$ of the simple closed curve 
-    \begin{align*}
-        \gamma : [0,2\pi] \to \bbR^{2}, \quad t \mapsto ( \cos(t), \sin(t)( 1 + \sin(2t)^2 ) ).
+        &\beta  : [0,2] \to \bbR^2, \quad t \mapsto \begin{cases} (t,0) & 0 \leq t < 1, \\ (0,t-1) & 1 \leq t \leq 2, \end{cases}
+        \\
+        &\gamma : [0,1] \to \bbR^2, \quad t \mapsto (t^2,t).
+%         \\
+%         &\delta : [0,1] \to \bbR^2, \quad t \mapsto (1-t^2,1-t).
     \end{align*}
-    Find the values of $\gamma$ and $\vec\tau$ for a few values of $t \in [0,2\pi]$, such as $t = \frac{\pi}{4}, 2 \frac{\pi}{4}, 3 \frac{\pi}{4}, \dots, 7 \frac{\pi}{4}$
+    Compute:
+    \[
+        \int_A f \;d\ell, \quad \int_B f \;d\ell, \quad 
+        \int_A g \;d\ell, \quad \int_B g \;d\ell, \quad 
+        \int_\Gamma g \;d\ell
+%         \quad \int_\Delta g \;d\ell
+        .
+    \]
 \end{exercise}
-\begin{solution}
-    Some standard calculations show that 
+\begin{solution}  
+     We compute these integrals as follows:
+     \begin{align*}
+        \int_A f \;d\ell
+        =
+        \int_0^1 \sqrt{2} \;dt = \left[\sqrt{2}t\right]_0^1 = \sqrt{2}
+        ,
+        \quad 
+        \int_B f \;d\ell
+        = 
+        \int_0^2 \;dt = \left[t \right]_0^2  = 2
+        %
+    \end{align*}  
     \begin{align*}
-        \dot\gamma(t) 
-        &= 
-        \left( \sin(t), \cos(t) + \cos(t) \sin(2t)^{2} + \sin(t) 2 \sin(2t) \cos(2t) 2 \right)
-        \\&= 
-        \left( \sin(t), \cos(t) + \cos(t) \sin(2t)^{2} + 4 \sin(t) \sin(2t) \cos(2t) \right)
+        \int_A g \;d\ell
+        &= \int_0^1 t \sqrt{2} \;dt = \left[\frac{\sqrt{2}}{2}t^2 \right]_0^1 = \frac{\sqrt{2}}{2}
+        %
     \end{align*}
-    Hence,{\scriptsize
+    \begin{align*}
+        \int_B g \;d\ell
+        &=
+        \int_0^1 (0) \;dt + \int_1^2 (t-1) \;dt  
+        = 
+        \int_1^2 (t-1) \;dt 
+        = 
+        \left[ \frac{1}{2} (t-1)^2 \right]_1^2 = \frac{1}{2}
+        %
+    \end{align*}
+    For the interal of $g$ over the third curve, we proceed as follows:
+    \begin{align*}
+        \int_\Gamma g \;d\ell
+        &=
+        \int_0^1 t \sqrt{ 4t^2 + 1 } \;dt
+        \\&=
+        \int_0^1 t \left( 4t^2 + 1 \right)^{\frac 1 2} \;dt
+        \\&=
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \int_0^1 \frac 3 2 \cdot 8t \left( 4t^2 + 1 \right)^{\frac 1 2} \;dt
+        \\&=
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \int_0^1 \partial_t \left( 4t^2 + 1 \right)^{\frac 3 2} \;dt
+        =
+        \frac 2 3 \cdot \frac 1 8 \cdot 
+        \left( 5^{\frac 3 2} - 1 \right)
+        = 
+        \frac{ 5^{\frac 3 2} - 1 }{12}
+        .
+    \end{align*}
+%     For the integral of $g$ over the last curve, we take a sharp look and integrate by parts:
+%     \begin{align*}
+%         \int_\Delta g \;d\ell
+%         &=
+%         \int_0^1 t^2 \left( 1 + 4t^2 \right)^{\frac 1 2} \;dt
+%         =
+%         \int_0^1 t^2 \left( 2t + 1 \right)^{\frac 1 2} \;dt
+%         \\&=
+%         \int_0^1 t^2 \cdot \partial_t\left( \frac 4 3 \left( 1 + 2t \right)^{\frac 3 2} \right) \;dt
+%         \\&=
+%         \frac 4 3 \left[ t^2 \left( 2t + 1 \right)^{\frac 3 2} \right]_0^1
+%         -
+%         \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+%         =
+%         3^{\frac 3 2}
+%         -
+%         \frac 4 3 \int_0^1 2t \left( 2t + 1 \right)^{\frac 3 2} \;dt
+%         .
+%     \end{align*}
+%     We integrate by parts once more:
+%     \begin{align*}
+%         \int_0^1 2t \cdot \partial_t\left( \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right) \;dt
+%         &=
+%         \left[ 2t \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \right]_0^1
+%         -
+%         \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         \\&=
+%         \frac 8 5 \cdot 3^{\frac 5 2}
+%         -
+%         \int_0^1 2 \cdot \frac 4 5 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         \\&=
+%         \frac 8 5 \cdot 3^{\frac 5 2}
+%         -
+%         \frac 8 5 
+%         \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         ,
+%     \end{align*}
+%     and then we calculate, using the substitution $u = 2t + 1$, which means $du = 2 dt$
+%     \begin{align*}
+%         \int_0^1 \left( 2t + 1 \right)^{\frac 5 2} \;dt
+%         &=
+%         \frac 1 2 
+%         \int_1^3 \left( u \right)^{\frac 5 2} \;du
+%         =
+%         \frac 1 2 
+%         \left[ \frac 2 7 u^{\frac 7 2}\right]_1^3
+%         =
+%         \frac 1 7 
+%         \left( 3^{\frac 7 2} - 1 \right)
+%         .
+%     \end{align*}
+%     In combination,
+%     \begin{align}
+%         \int_\Delta g \;d\ell 
+%         &= 
+%         3^{\frac 3 2} - \frac 4 3 \cdot \frac 8 5 \cdot 3^{\frac 5 2} + \frac 4 3 \cdot \frac 8 5 \cdot \frac 1 7 \left( 3^{\frac 7 2} - 1 \right)
+%         \\&=
+%         3^{\frac 3 2} - \frac{32}{15} 3^{\frac 5 2} + \frac{32}{105} \left( 3^{\frac 7 2} - 1 \right)
+%         .
+%     \end{align}
+    Note that the curves all have the same starting and end points, $(0,0)$ and $(1,1)$, 
+    but the curve integrals of the function may (generally) differ from curve to curve.  
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}[Challenge?]
+    Given the curve
+    \[
+        \gamma : [0,\pi] \to \bbR^2, \quad t \mapsto ( 3\cos(2t), \sin(2t) )
+    \]
+    and a function
+    \[
+        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto \left( x_1^2 + 81 x_2^2 \right)^{\frac 3 2},
+    \]
+    compute the integrals 
+    \begin{align*}
+        \int_\Gamma f \;d\ell, \quad \int_\Gamma \nabla f \;d\ell.
+    \end{align*}
+\end{exercise}
+\begin{solution}     
+    The integral of the gradient along this simple closed regular curve is zero.
+    With regard to the integral of the scalar field along the curve, we have 
+    \begin{gather*}
+        \dot\gamma(t) = \left( -6 \sin(2t), 2\cos(2t) \right),
+        \\ 
+        |\dot\gamma(t)| 
+        = 
+        \sqrt{ 36 \sin^2(2t) + 4 \cos^2(2t) }
+        = 
+        2 \sqrt{ 9 \sin^2(2t) + \cos^2(2t) }
+        .
+    \end{gather*}
+    We also see that 
+    \begin{align*}
+        f(\gamma(t))
+        =
+        \left( 9\cos^2(2t) + 81 \sin^2(2t) \right)^{\frac 3 2}
+        &=
+        9^{\frac 3 2 }   \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        \\&=
+        27 \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        ,
+    \end{align*}
+    In combination, 
+    \begin{align*}
+       \int_\Gamma f d\ell
+       &=
+       \int_0^{\pi} f(\gamma(t)) \cdot |\dot\gamma(t)| \;dt
+       \\&=
+       \int_0^{\pi} 27 \left( \cos^2(2t) + 9\sin^2(2t) \right)^{\frac 3 2} \cdot 2\sqrt{ \cos^2(2t) + 9\sin^2(2t) } \;dt
+       \\&=
+       54 \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
+       .
+    \end{align*}
+    Our life will be easier if we substitute $u = 2t$. We also use a trigonometric identity. Then
     \begin{align*}
         &
-        |\dot\gamma(t)|
+        \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
         \\&=
-        \sqrt{
-            \sin(t)^{2}
-            +
-            \cos(t)^{2} + \cos(t)^{2} \sin(2t)^{4} + 16 \sin(t)^{2} \sin(2t)^{2} \cos(2t)^{2}
-            +
-            2\cos(t) \sin(2t)^{2} + 2\cos(t) 4 \sin(t) \sin(2t) \cos(2t) + 2 \sin(2t)^{2} 4 \sin(t) \sin(2t) \cos(2t)
-        }
-        \\&
-        =
-        \sqrt{
-            \sin(t)^{2}
-            +
-            \cos(t)^{2} + \cos(t)^{2} \sin(2t)^{4} + 16 \sin(t)^{2} \sin(2t)^{2} \cos(2t)^{2}
-            +
-            2\cos(t) \sin(2t)^{2} + 2\cos(t) 4 \sin(t) \sin(2t) \cos(2t) + 2 \sin(2t)^{2} 4 \sin(t) \sin(2t) \cos(2t)
-        }
+        \frac {1} 2 \int_0^{2\pi} \left( \cos^2(u) + 9 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} \left( 1 - \sin^2(u) + 9 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} \left( 1 + 8 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} 1 + 16 \sin^2(u) + 64 \sin^4(u) \;du
+        \\&=
+        \int_0^{\pi} 1 + 16 \sin^2(u) + 64 \sin^4(u) \;du
+        \\&=
+        \pi + 16 \int_0^{\pi} \sin^2(u) \;du + 64 \int_0^{\pi} \sin^4(u) \;du
+        .
     \end{align*}
-    }
-
-    \begin{tikzpicture}
-        \begin{axis}[
-            domain=0:360,
-            xmin=-2,
-            xmax=2,
-            ymin=-2,
-            ymax=2,
-            xlabel={x},
-            ylabel={y}
-        ]
-        \addplot[blue, variable=\t, samples=100] ({cos(\t)}, {sin(\t)* ( 1 + 0.5 * sin(2*\t)*sin(2*\t) )});
-        \end{axis}
-    \end{tikzpicture}
+    We use the half-angle formula:
+    \begin{align*}
+        \sin(u)^2 = \frac 1 2 \left( 1 - \cos(2u) \right).
+    \end{align*}
+    Thus
+    \begin{align*}
+        \int_0^{\pi} \sin^2(u) \;du
+        &=
+        \frac 1 2 \int_0^{\pi} 1 - \cos(2u) \;du
+        \\&=
+        \frac \pi 2 - \int_0^{\pi} \frac 1 2 \cos(2u) \;du
+        \\&=
+        \frac \pi 2 - \int_0^{\pi} \frac 1 4 (\sin(2u))' \;du
+        \\&=
+        \frac \pi 2 - \frac 1 4 \left[ (\sin(2u))' \right]_0^\pi
+        =
+        \frac \pi 2
+        .
+    \end{align*}
+    Similarly, using the half-angle formula twice: 
+    \begin{align*}
+        \int_0^{\pi} \sin^4(u) \;du
+        &=
+        \frac 1 4 \int_0^{\pi} \left( 1 - \cos(2u) \right)^2 \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} 1 - 2 \cos(2u) + \cos(2u)^2 \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} 1 - 2 \cos(2u) + \frac 1 2 \left( 1 - \cos(4u) \right) \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} \frac 3 2 - 2 \cos(2u) - \frac 1 2 \cos(4u) \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} \frac 3 2 \;du - \frac 1 2 \int_0^{\pi} \cos(2u) \;du - \frac 1 8 \int_0^{\pi} \cos(4u) \;du
+        \\&=
+        \frac 3 8 \pi
+        .
+    \end{align*}
+    The integrals of $\cos(2u)$ and $\cos(4u)$ from $0$ to $\pi$ vanish, by the the same argument as above. 
+    In total,
+    \begin{align*}
+        \int_\Gamma f d\ell
+        =
+        54
+        \left(
+            \pi + 16 \cdot \frac \pi 2 + 64 \cdot \frac 3 8 \pi
+        \right)
+        =
+        54
+        \left(
+        \pi + 8\pi + 24 \pi
+        \right)
+        =
+        54 \cdot 33 \pi
+        =
+        1782 \pi
+        .
+    \end{align*}
 \end{solution}
+
+
+
+
+
+
 
 
 \end{document}

@@ -2,326 +2,165 @@
 \def\hidesolutions{}
 \input{header}
 \begin{document}
-\exsheet{2}{26}{September} % parameters are the number of the session and the day
-
-\begin{exercise}
-	Sketch the level sets of the functions 
-    \[
-        f(x_1,x_2) = x_1 + x_2, \quad g(x_1,x_2) = x_1^2 x_2 
-    \]
-    for the values $0$, $1$, and $-1$.
-    Compute the gradients $\nabla f$ and  $\nabla g$.
-\end{exercise}
-
-\begin{solution}
-    \[
-        \nabla f(x_1,x_2) = \begin{pmatrix} 1\\ 1 \end{pmatrix}, \quad \nabla g(x_1,x_2) =  \begin{pmatrix} 2x_1x_2\\ x_1^2 \end{pmatrix}
-    \]
-
-
-For the level sets of $f(x_1,x_2)$ consider:
-    \[
-        x_1 + x_2 = C \implies x_2 = -x_1 + C
-    \]
-therefore the level sets are lines that intersect the axis $x_2$ at $C$ with slope $-1$. One can use a similar approach for $g(x_1,x_2)$. Note that for $C =0$:
-    \[
-        x_1^2 x_2 = 0 \implies x_1 =0 \text{ or } x_2 = 0
-    \]
-which gives that the level sets for $C = 0$ are the two axis $x_1$ and $x_2$. 
-\end{solution}
+\exsheet{1}{19}{September} % parameters are the number of the session and the day
 
 
 \begin{exercise}
-	Compute the curl and the divergence of the following vector field:
+	Compute the norms (that is, lengths), the $3$ scalar products and $3$ vector products of the following vectors. 
+    Find the volume of the parallelepiped spanned by these vectors.
     \[
-        \vec{f}(x_1,x_2,x_3) = \left( \; x_1 x_2, \; x_3^2 x_1,\;  e^{x_1 - x_2} \; \right)
+    \vec{a} = \left(\begin{array}{c} 1 \\ 2 \\ -1 \end{array}\right)
+    ,
+    \vec{b} = \left(\begin{array}{c} 2 \\ -1 \\ 0 \end{array}\right)
+    ,
+    \vec{c} = \left(\begin{array}{c} 1 \\ 1 \\ 3 \end{array}\right)
     \]
 \end{exercise}
 
 \begin{solution}
-    \[
-        \nabla \times \vec{f}(x_1,x_2,x_3) = \left( \; -e^{x_1-x_2} - 2x_1x_3, \; -e^{x_1-x_2},\;  x_3^2 - x_1 \; \right)
-    \]
-   \[
-        \nabla \cdot \vec{f}(x_1,x_2,x_3) = x_2
-    \]
-\end{solution}
-
-
-
-
-
-\begin{exercise}
-	Show that for every three-dimensional vector field $\vec{f} \colon \mathbb{R}^3 \to \mathbb{R}^3$ we have 
-    \[
-        \nabla \cdot \left( \nabla \times \vec{f} \right) = 0
-    \]
-    Show that for every scalar field $g \colon \mathbb{R}^3 \to \mathbb{R}$ we have 
-    \[
-        \nabla \times \left( \nabla g \right) = 0
-    \]
-    Consider the following vector field:
-    \[
-        \vec{A}(x_1,x_2,x_3) := \left( \; \sin(x_2),  \; \sin(x_3), \; \sin(x_1) \; \right)
-    \]
-    Is this vector field a gradient of some scalar field?
-\end{exercise}
-
-\begin{solution}
-Let $\vec{f} \colon \mathbb{R}^3 \to \mathbb{R}^3$ then:
-\begin{align*}
-     \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) &= (\partial_{x_1}, \partial_{x_2}, \partial_{x_3}) \cdot (\partial _{x_2} f_3 - \partial _{x_3} f_2,\partial _{x_3} f_1 - \partial _{x_1} f_3,\partial _{x_1} f_2 - \partial _{x_2} f_1)  \\
- &=  \partial_{x_1 x_2}f_3 - \partial_{x_1 x_3}f_2 + \partial _{x_2 x_3} f_1 - \partial _{x_2 x_1} f_3 + \partial _{x_3 x_1} f_2 - \partial _{x_3 x_2} f_1
-\end{align*}
-
-We can interchange the order of the partial derivatives, since $\vec{f} \in \mathrm{C}^2$ to arrive at:
-
-\begin{align*}
- \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) &=	 \partial_{x_1 x_2}f_3 - \partial _{x_2 x_1} f_3 + \partial _{x_3 x_1} f_2 - \partial_{x_1 x_3}f_2 + \partial _{x_2 x_3} f_1  - \partial _{x_3 x_2} f_1\\
-&=	 \partial_{x_2 x_1}f_3 - \partial _{x_2 x_1} f_3 + \partial _{x_1 x_3} f_2 - \partial_{x_1 x_3}f_2 + \partial _{x_3 x_2} f_1  - \partial _{x_3 x_2} f_1 = 0\\
-&\implies  \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) =0
-\end{align*}
-
-Let  $g \colon \mathbb{R}^3 \to \mathbb{R}$ then: 
-\begin{align*}
-	\nabla \times (\nabla g(x_1,x_2,x_3)) &= \nabla \times \begin{pmatrix}\partial_{x_1} g \\ \partial_{x_2} g \\ \partial_{x_3} g \end{pmatrix} = \begin{pmatrix} \partial_{x_2x_3} g - \partial_{x_3x_2} g \\ \partial_{x_3x_1} g - \partial_{x_1x_3} g \\ \partial_{x_1x_2} g - \partial_{x_2x_1} g \end{pmatrix} = \begin{pmatrix} \partial_{x_2x_3} g - \partial_{x_2x_3} g \\ \partial_{x_1x_3} g - \partial_{x_1x_3} g \\ \partial_{x_1x_2} g - \partial_{x_1x_2} g \end{pmatrix} = \vec{0}\\
-&\implies \nabla \times (\nabla g(x_1,x_2,x_3))  = 0
-\end{align*}
-
-    \[
-        \vec{\nabla} \times \vec{A}(x_1,x_2,x_3)
-        :=
-        \left(\;
-            -\cos(x_3),  \cos(x_1), -\cos(x_2)
-        \;\right)
-    \]
-    The curl of this vector field is not zero. 
-    If it were a gradient, then it would be zero. 
-    So it cannot be a gradient of any function.
-     
-\end{solution}
-
-
-
-\begin{exercise}
-	Given scalar fields $f, g : \mathbb{R}^3 \to \mathbb{R}$ and vector fields $\vec{A}, \vec{B} : \mathbb{R}^3 \to \mathbb{R}^3$,
-    show that 
     \begin{gather*}
-        \nabla\left( f \cdot g \right)
-        = 
-        f \cdot \nabla g
-        +
-        g \cdot \nabla f
-        ,
+        \vec{a} = \sqrt{6}, \quad \vec{b} = \sqrt{5}, \quad \vec{c} = \sqrt{11}
         \\
-        \nabla\cdot\left( f \cdot \vec{A} \right)
-        = 
-        ( \nabla f ) \cdot \vec{A}
-        +
-        f ( \nabla \cdot \vec{A} )
-        ,
+        \vec{a} \cdot \vec{b} = 0,
+        \quad 
+        \vec{a} \cdot \vec{c} = 0,
+        \quad 
+        \vec{b} \cdot \vec{c} = 1,
         \\ 
-        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
-        = 
-        \left( \nabla\times\vec{A} \right) \cdot \vec{B}
-        -
-        \vec{A} \cdot \left( \nabla\times\vec{B} \right)
-        ,
-        \\ 
-        \Delta ( f g )
-        = 
-        f \Delta g + 2 \nabla(f) \cdot \nabla( g ) + g \Delta f
-        .
+        \vec{a} \times \vec{b} = \left(\begin{array}{c} -1 \\ -2 \\ -5 \end{array}\right),
+        \quad 
+        \vec{a} \times \vec{c} = \left(\begin{array}{c} 7 \\ -4 \\ -1 \end{array}\right),
+        \quad 
+        \vec{b} \times \vec{c} = \left(\begin{array}{c} -3 \\ -6 \\ 3 \end{array}\right),
     \end{gather*}
-    Suppose that we also have two real numbers $\alpha, \beta \in \mathbb R$.
-    Show that 
-    \begin{gather*}
-        \nabla( \alpha f + \beta g )
-        = 
-        \alpha \nabla f + \beta \nabla g
-        ,
-        \\ 
-        \nabla\cdot ( \alpha \vec{A} + \beta \vec{B} )
-        = 
-        \alpha \nabla\cdot \vec{A} + \beta \nabla\cdot \vec{B}
-        ,
-        \\ 
-        \nabla\times ( \alpha \vec{A} + \beta \vec{B} )
-        = 
-        \alpha \nabla\times \vec{A} + \beta \nabla\times \vec{B}
-        .
-    \end{gather*}
+    The volume of the paralleliped spanned by the three vectors is $18$.
+    
+    
+\end{solution}
+
+
+\begin{exercise}
+	Consider the function 
+    \[
+        f(x,y) = \sin\left( 2\pi x^2 + 2\pi y^2 \right)
+    \]
+    Find the first derivatives in $x$ and $y$.
+    Sketch the level sets of $f$ for the values $0$ and $1$.
 \end{exercise}
 
 \begin{solution}
-    For the first identity, we use the product rule:
+    We easily compute 
+    \[
+        \partial_x f(x,y) = \cos\left( 2\pi x^2 + 2\pi y^2 \right) \cdot 4\pi \cdot x,
+        \quad 
+        \partial_y f(x,y) = \cos\left( 2\pi x^2 + 2\pi y^2 \right) \cdot 4\pi \cdot y.
+    \]
+    The level sets are concentric circles centered at zero. One approach to understanding works as follows.
+    First, we rewrite 
+    \[
+        f(x,y) = \sin\left( 2\pi ( x^2 + y^2 ) \right)
+    \]
+    We remember 
+    that 
+    \[
+        \sin( 2\pi t ) = 0 \text{ for the positive values } t = 0, \frac 1 2, 1, \frac 3 2, \dots
+    \] 
+    and 
+    that 
+    \[
+        \sin( 2\pi t ) = 1 \text{ for the positive values } t = \frac 1 4, \frac 5 4, \frac 9 4, \dots.
+    \]
+    Hence, whenever $x^2 + y^2$ hits one these values listed above, then we are on the level of $0$ or $1$.
+    Specifically, $f(x,y) = 0$ if $(x,y)$ lies on a circle centered at zero and with radius
+    \[
+        0, \sqrt{\frac 1 2}, \sqrt{1}, \sqrt{\frac 3 2}, \sqrt{2}, \dots, 
+    \]
+    Similarly, $f(x,y) = 1$ if $(x,y)$ lies on a circle centered at zero and with radius
+    \[
+        0, \sqrt{\frac 1 4}, \sqrt{\frac 5 4}, \sqrt{\frac 9 2}, \sqrt{\frac {13} 4}, \dots. 
+    \]
+\end{solution}
+
+
+
+
+
+\begin{exercise}
+	Sketch the following vector field:
+    \[
+        f(x,y) = \left(\begin{array}{c} \sin(x) \\ sin(y) \end{array}\right)
+    \]
+\end{exercise}
+
+\begin{solution}
+    Please do this in the exercise session.
+\end{solution}
+
+
+
+\begin{exercise}
+	Compute the following integrals:
+    \[
+        \int_0^1 \int_0^1 x^2 e^y \; dx dy,
+        \quad 
+        \int_0^1 x^2 \cos(x) \; dx.
+    \]
+\end{exercise}
+
+\begin{solution}
+    For the first integral, we can either split up the integral into two factors, or we compute one after the other.
+    We find 
+    \[
+        \int_0^1 \int_0^1 x^2 e^y \; dx dy
+        =
+        \int_0^1 x^2 \; dx 
+        \cdot 
+        \int_0^1 e^y \; dy
+        =
+        \frac 1 3 \cdot ( e - 1).
+    \]
+    For the second integral, we use integration by parts. 
     \begin{align*}
-        \nabla\left( f \cdot g \right)
-        &= 
-        \left( \partial_1 ( f \cdot g ), \cdots, \partial_n ( f \cdot g ) \right)
-        \\&= 
-        \left( \partial_1 f \cdot g + f \cdot \partial_1 g, \cdots, \partial_n f \cdot g + f \cdot \partial_n g \right)
-        \\&= 
-        \left( \partial_1 f \cdot g, \cdots, \partial_n f \cdot g \right)
-        +
-        \left( f \cdot \partial_1 g, \cdots, f \cdot \partial_n g \right)
-        \\&= 
-        g \left( \partial_1 f, \cdots, \partial_n f \right)
-        +
-        f \left( \partial_1 g, \cdots, \partial_n g \right)
-        \\&= 
-        f \cdot \nabla g
-        +
-        g \cdot \nabla f
-        .
-    \end{align*}
-    The second identity, again, can be proved using the product rule:
-    \begin{align*}
-        \nabla\cdot\left( f \cdot \vec{A} \right)
-        &= 
-        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
-        \\&= 
-        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
-        \\&= 
-        ( \partial_1 f ) \cdot A_{1} ) + \cdots + ( \partial_n f ) \cdot A_{n}
-        +
-        f \cdot \partial_1 ( A_{1} ) + \cdots + f \cdot \partial_n ( A_{n} )
-        \\&= 
-        \nabla(f) \cdot \vecA
-        +
-        f \cdot \nabla \cdot \vecA
-        ,
-    \end{align*}
-    As for the third identity:
-    \begin{align*}
-        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
+        \int_0^1 x^2 \cos(x) \; dx
         &=
-        \nabla\cdot\left( 
-            A_2 B_3 - A_3 B_2,
-          - A_1 B_3 + A_3 B_1,
-            A_1 B_2 - A_2 B_1 
-        \right)
+        x^2 \sin(x) |_0^1
+        -
+        \int_0^1 2x \sin(x) \; dx
         \\&=
-        \partial_1\left(   A_2 B_3 - A_3 B_2 \right) + \partial_2\left( - A_1 B_3 + A_3 B_1 \right) + \partial_3\left(   A_1 B_2 - A_2 B_1 \right)
+        x^2 \sin(x) |_0^1
+        -
+        \left( 2x (-\cos(x)) |_0^1 - \int_0^1 2 (-\cos(x)) \; dx \right)
         \\&=
-        + \partial_1\left( A_2 B_3 \right) - \partial_1\left( A_3 B_2 \right) 
-        \\&\qquad
-        - \partial_2\left( A_1 B_3 \right) + \partial_2\left( A_3 B_1 \right) 
-        \\&\qquad
-        + \partial_3\left( A_1 B_2 \right) - \partial_3\left( A_1 B_2 \right)
-        \\&=
-        + \partial_1\left( A_2 \right) B_3 + A_2 \partial_1\left( B_3 \right) - \partial_1\left( A_3 \right) B_2 - A_3 \partial_1\left( B_2 \right) 
-        \\&\qquad
-        - \partial_2\left( A_1 \right) B_3 - A_1 \partial_2\left( B_3 \right) + \partial_2\left( A_3 \right) B_1 + A_3 \partial_2\left( B_1 \right) 
-        \\&\qquad
-        + \partial_3\left( A_1 \right) B_2 + A_1 \partial_3\left( B_2 \right) - \partial_3\left( A_2 \right) B_1 - A_2 \partial_3\left( B_1 \right)
-        \\&=
-         + \partial_2\left( A_3 \right) B_1 - \partial_3\left( A_2 \right) B_1 
-         - \partial_1\left( A_3 \right) B_2 + \partial_3\left( A_1 \right) B_2
-         + \partial_1\left( A_2 \right) B_3 - \partial_2\left( A_1 \right) B_3 
-        \\&\qquad
-         + A_1 \partial_3\left( B_2 \right) - A_1 \partial_2\left( B_3 \right)
-         - A_2 \partial_3\left( B_1 \right) + A_2 \partial_1\left( B_3 \right) 
-         + A_3 \partial_2\left( B_1 \right) - A_3 \partial_1\left( B_2 \right) 
-        \\&=
-        ( \nabla\times\vecA ) \cdot \vecB - ( \nabla\times\vecB ) \cdot \vecA
-        .
-    \end{align*}
-    We can prove the fourth identity again via direct computation, which is perfectly valid. 
-    We can also use some of the identities already shown above to reduce the effort:
-    \begin{align*}
-        \Delta ( f g )
-        &= 
-        \nabla \cdot ( \nabla ( f g ) )
-        \\&= 
-        \nabla \cdot ( g \nabla(f) + f \nabla(g) )
-        \\&= 
-        \partial_1( g \nabla(f)_1 + f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n + f \nabla(g)_n )
-        \\&= 
-        \partial_1( g \nabla(f)_1 ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_n( f \nabla(g)_n )
-        \\&= 
-        \partial_1( g \nabla(f)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( f \nabla(g)_n )
-        \\&= 
-        \nabla \cdot ( g \nabla(f) ) + \nabla \cdot ( f \nabla(g) )
-        \\&= 
-        \nabla(g) \cdot \nabla(f) + g \cdot \nabla\cdot(\nabla f) + \nabla(f) \cdot \nabla(g) + f \cdot \nabla\cdot(\nabla g)
-        = 
-        2 \nabla(f) \cdot \nabla( g ) + f \Delta g + g\Delta f
-        .
-    \end{align*}
-    The last three identities describe that gradient, divergence and curl are \emph{linear},
-    which is a concept that you have already seen in linear algebra. 
-    We verify by direct computation:
-    \begin{align*}
-        \nabla( \alpha f + \beta g )
-        &= 
-        \left( \alpha \partial_1 f_1 + \beta \partial_1 g_1, \cdots, \alpha \partial_n f_n + \beta \partial_n g_n \right)
-        \\&= 
-        \left( \alpha \partial_1 f_1, \cdots, \alpha \partial_n f_n \right)
+        x^2 \sin(x) |_0^1
+        -
+        2x (-\cos(x)) |_0^1 
         +
-        \left( \beta \partial_1 g_1,  \cdots,  \beta \partial_n g_n \right)
-        \\&= 
-        \alpha \left( \partial_1 f_1, \cdots,  \partial_n f_n \right)
-        +
-        \beta \left( \partial_1 g_1,  \cdots,  \partial_n g_n \right)
+        \int_0^1 2 (-\cos(x)) \; dx
+        \\&=
+        x^2 \sin(x) |_0^1
+        -
+        2x (-\cos(x)) |_0^1 
+        -
+        2 \int_0^1 \cos(x) \; dx
+        \\&=
+        x^2 \sin(x) |_0^1
+        -
+        2x (-\cos(x)) |_0^1 
+        -
+        2 \left( \sin(1) - \sin(0) \right)
+        \\&=
+        \sin(1)
+        -
+        2 (-\cos(1)) 
+        -
+        2 \sin(1)
+        \\&=
+        2 \cos(1)
+        - 
+        \sin(1)
         .
     \end{align*}
-    Similarly,
-    \begin{align*}
-        \nabla \cdot ( \alpha \vecA + \beta \vecB )
-        &= 
-        \nabla \cdot \left( \alpha A_1 + \beta B_1, \cdots, \alpha A_n + \beta B_n \right)
-        \\&= 
-        \alpha \partial_1 A_1 + \beta \partial_1 B_1 + \cdots + \alpha \partial_n A_n + \beta \partial_n B_n 
-        \\&= 
-        \alpha \partial_1 A_1 + \cdots + \alpha \partial_n A_n + \beta \partial_1 B_1 + \cdots + \beta \partial_n B_n 
-        \\&= 
-        \alpha \left( \partial_1 A_1 + \cdots + \partial_n A_n \right) + \beta \left( \partial_1 B_1 + \cdots + \partial_n B_n \right)
-        \\&= 
-        \alpha \nabla \cdot \vecA + \beta \nabla \vecB
-        .
-    \end{align*}
-    Lastly,
-    {\small
-    \begin{align*}
-        &
-        \nabla \times ( \alpha \vecA + \beta \vecB )
-        \\&= 
-        \nabla \times \left( 
-            \alpha A_1 + \beta B_1,
-            \alpha A_2 + \beta B_2,
-            \alpha A_3 + \beta B_3 
-        \right)
-        \\&= 
-        \left( 
-            \alpha \partial_2 A_3 + \beta \partial_2 B_3 - \alpha \partial_3 A_2 - \beta \partial_3 B_2,
-          - \alpha \partial_1 A_3 - \beta \partial_1 B_3 + \alpha \partial_3 A_1 + \beta \partial_3 B_1,
-            \alpha \partial_1 A_2 + \beta \partial_1 B_2 - \alpha \partial_2 A_1 - \beta \partial_2 B_1
-        \right)        
-        \\&= 
-        \left( 
-            \alpha \partial_2 A_3 - \alpha \partial_3 A_2 + \beta \partial_2 B_3 - \beta \partial_3 B_2,
-          - \alpha \partial_1 A_3 + \alpha \partial_3 A_1 - \beta \partial_1 B_3 + \beta \partial_3 B_1,
-            \alpha \partial_1 A_2 - \alpha \partial_2 A_1 + \beta \partial_1 B_2 - \beta \partial_2 B_1
-        \right)        
-        \\&= 
-        \alpha \left( 
-            \partial_2 A_3 - \partial_3 A_2,
-          - \partial_1 A_3 + \partial_3 A_1,
-            \partial_1 A_2 - \partial_2 A_1
-        \right)        
-        +
-        \beta\left( 
-            \partial_2 B_3 - \partial_3 B_2,
-          - \partial_1 B_3 + \partial_3 B_1,
-            \partial_1 B_2 - \partial_2 B_1
-        \right)        
-        \\&= 
-        \alpha \nabla \times \vecA + \beta \nabla \times \vecB
-        .
-    \end{align*}
-    }
-\end{solution} 
+\end{solution}
 
 
 

@@ -1,171 +1,329 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
-\exsheet{3}{3}{October} % parameters are the number of the session and the day
+\exsheet{2}{26}{September} % parameters are the number of the session and the day
 
 \begin{exercise}
-    We have focused on scalar and vector fields that are defined on the entire space. 
-    But sometimes we are also interested in fields with singularities. 
-    Compute the gradient and the Laplacian of the function 
+	Sketch the level sets of the functions 
     \[
-        f : \bbR^3 \setminus \{0\} \rightarrow \bbR, \quad (x_1,x_2,x_3) \mapsto \frac{1}{\sqrt{x_1^2+x_2^2+x_3^1}}
+        f(x_1,x_2) = x_1 + x_2, \quad g(x_1,x_2) = x_1^2 x_2 
     \]
-    where the scalar field is twice differentiable. 
-    % Sketch the gradient field.
+    for the values $0$, $1$, and $-1$.
+    Compute the gradients $\nabla f$ and  $\nabla g$.
 \end{exercise}
-\begin{solution}   
-	$$\grad f(x_1,x_2,x_3) =-\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}$$ 
-\begin{align*}\Delta f(x_1,x_2,x_3) &= \nabla \cdot \nabla f(x_1,x_2,x_3) \\
-								&= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right) + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right) + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)\\
-&= -\frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}} + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}\\
-&=\frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
-\end{align*}
-\end{solution}
 
-\begin{exercise}
-    Consider the curves 
-    \[
-        \gamma : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( t^2, t^3 )
-    \]
-    \[
-        \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( \cos(t), \sin(2t) )
-    \]
-    Draw them. Are they simple, closed, differentiable, or regular? What are their tangents?
-\end{exercise}
-\begin{solution}    
- For the first curve the tangent is given by $\dot{\gamma}(t) = (2t, 3t^2)$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).\\
-
-For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t),2cos(2t))$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\delta} \neq \vec{0}$).\\
-\end{solution}
-
-\begin{exercise}
-    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ along the two curves $\gamma$ and $\delta$, 
-    where 
-    \[
-        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 1 + x_1^2 + x_2^2
-    \]
-    \[
-        \gamma : [0,\pi] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(t) )
-    \]
-    \[
-        \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto (t,0)
-    \]
-    Compare the results. What are the endpoints of the two curves? 
-\end{exercise}
-\begin{solution}     
-    \begin{align*}
-        \int_{\Gamma} f(x_1,x_2) d\ell 
-        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) |\dot{\gamma}(t)|dt\\
-        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) \sqrt[]{\cos(t)^2 + \sin(t)^2} dt\\
-        &= \int_{0}^{\pi} ( 1 + 1 ) \sqrt[]{1} dt\\
-        &= \int_{0}^{\pi} 2 dt\\
-        &= 2\pi.
-    \end{align*}
-    The endpoints of the first curve are: $\gamma(0) = (-1,0)$ and $\gamma(\pi) = (1,0)$.
-
-    Let us now compute the second integral. We see 
-    \begin{align*}
-        \int_{\Gamma} f(x_1,x_2) d\ell 
-        &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt\\
-        &= \int_{-1}^1 (1+t^2)\left|\begin{pmatrix} 1\\0 \end{pmatrix}\right| dt\\
-        &= \int_{-1}^1 (1+t^2) dt\\
-        &= 2 \int_{0}^1 (1+t^2) dt\\
-        &= 2\left[t+\frac{t^3}{3} \right]_{0}^{1}\\
-        &= \frac 8 3.
-    \end{align*}
-    Note that from the third to fourth line, we have used that the integrand was even. 
-    The endpoints of the second curve are: $\delta(-1) = (-1,0)$ and $\delta(1) = (1,0)$.
-
-    The exercise also shows that integrating a function $f$ along different curves may give different results, 
-    even if the curves share the same starting and endpoints. 
-\end{solution}
-
-\begin{exercise}
-    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ 
-    along the circle $C$ with radius $3$ centered at the origin, where 
-    \[
-        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 3 x_2^2 + x_2^3
-    \]
-    Hint: you must first find a parameterization of $C$. 
-\end{exercise}
-\begin{solution} 
-	We may choose the following parameterization for the circle $C$:
-    $$
-        \gamma : [-\pi,\pi] \rightarrow \bbR^2, \quad t \mapsto ( 3\cos(t), 3\sin(t) )
-    $$
-    \begin{align*}
-        \int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-\pi}^{\pi} (f\circ \gamma)(t)|\dot{\gamma}(t)|dt\\
-        &=
-        \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left|\begin{pmatrix}3\cos(t)\\3\sin(t)\end{pmatrix}\right| dt\\
-        &=
-        \int_{-\pi}^{\pi} 3\left[27\sin^2(t)+27\sin^3(t))\right]dt\\
-        &=
-        81\int_{-\pi}^{\pi} \sin^2(t)dt+ 81\int_{-\pi}^{\pi}\sin^3(t))dt\\
-    \end{align*}
-    The second integral is $0$ since the integrand is uneven. For the first integral we use the cosine half-angle formula ($1 - 2\sin^2(\alpha) = \cos(2\alpha)$).
-    \begin{align*}
-        &= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt\\
-        &= 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
-    \end{align*}
-    % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
-\end{solution}
-
-\begin{exercise}
-    You are excavating a tunnel 20m beneath surface through rock from a point $A=(-1,0)$ to a point $B=(1,1)$ along a curve $\Gamma$.
-    Geological observations show that the rock mass density of the region can be modeled by 
-    \[
-        f(x_1,x_2) = \exp(x_1+x_2).
-    \]
-    The costs and abbrasion of the tools are therefore proportional to the curve integral
-    \[
-        \int_\Gamma f \; dl
-    \]
-    Compute the integral along the straight line 
-    \[
-        \gamma : [0,1] \rightarrow \bbR^2, \quad t \mapsto (-1+2t, t)
-    \]
-\end{exercise}
 \begin{solution}
-    We set up the first curve integral and compute:
+    \[
+        \nabla f(x_1,x_2) = \begin{pmatrix} 1\\ 1 \end{pmatrix}, \quad \nabla g(x_1,x_2) =  \begin{pmatrix} 2x_1x_2\\ x_1^2 \end{pmatrix}
+    \]
+
+
+For the level sets of $f(x_1,x_2)$ consider:
+    \[
+        x_1 + x_2 = C \implies x_2 = -x_1 + C
+    \]
+therefore the level sets are lines that intersect the axis $x_2$ at $C$ with slope $-1$. One can use a similar approach for $g(x_1,x_2)$. Note that for $C =0$:
+    \[
+        x_1^2 x_2 = 0 \implies x_1 =0 \text{ or } x_2 = 0
+    \]
+which gives that the level sets for $C = 0$ are the two axis $x_1$ and $x_2$. 
+\end{solution}
+
+
+\begin{exercise}
+	Compute the curl and the divergence of the following vector field:
+    \[
+        \vec{f}(x_1,x_2,x_3) = \left( \; x_1 x_2, \; x_3^2 x_1,\;  e^{x_1 - x_2} \; \right)
+    \]
+\end{exercise}
+
+\begin{solution}
+    \[
+        \nabla \times \vec{f}(x_1,x_2,x_3) = \left( \; -e^{x_1-x_2} - 2x_1x_3, \; -e^{x_1-x_2},\;  x_3^2 - x_1 \; \right)
+    \]
+   \[
+        \nabla \cdot \vec{f}(x_1,x_2,x_3) = x_2
+    \]
+\end{solution}
+
+
+
+
+
+\begin{exercise}
+	Show that for every three-dimensional vector field $\vec{f} \colon \mathbb{R}^3 \to \mathbb{R}^3$ we have 
+    \[
+        \nabla \cdot \left( \nabla \times \vec{f} \right) = 0
+    \]
+    Show that for every scalar field $g \colon \mathbb{R}^3 \to \mathbb{R}$ we have 
+    \[
+        \nabla \times \left( \nabla g \right) = 0
+    \]
+    Consider the following vector field:
+    \[
+        \vec{A}(x_1,x_2,x_3) := \left( \; \sin(x_2),  \; \sin(x_3), \; \sin(x_1) \; \right)
+    \]
+    Is this vector field a gradient of some scalar field?
+\end{exercise}
+
+\begin{solution}
+Let $\vec{f} \colon \mathbb{R}^3 \to \mathbb{R}^3$ then:
+\begin{align*}
+     \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) &= (\partial_{x_1}, \partial_{x_2}, \partial_{x_3}) \cdot (\partial _{x_2} f_3 - \partial _{x_3} f_2,\partial _{x_3} f_1 - \partial _{x_1} f_3,\partial _{x_1} f_2 - \partial _{x_2} f_1)  \\
+ &=  \partial_{x_1 x_2}f_3 - \partial_{x_1 x_3}f_2 + \partial _{x_2 x_3} f_1 - \partial _{x_2 x_1} f_3 + \partial _{x_3 x_1} f_2 - \partial _{x_3 x_2} f_1
+\end{align*}
+
+We can interchange the order of the partial derivatives, since $\vec{f} \in \mathrm{C}^2$ to arrive at:
+
+\begin{align*}
+ \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) &=	 \partial_{x_1 x_2}f_3 - \partial _{x_2 x_1} f_3 + \partial _{x_3 x_1} f_2 - \partial_{x_1 x_3}f_2 + \partial _{x_2 x_3} f_1  - \partial _{x_3 x_2} f_1\\
+&=	 \partial_{x_2 x_1}f_3 - \partial _{x_2 x_1} f_3 + \partial _{x_1 x_3} f_2 - \partial_{x_1 x_3}f_2 + \partial _{x_3 x_2} f_1  - \partial _{x_3 x_2} f_1 = 0\\
+&\implies  \nabla \cdot (\nabla \times \vec{f}(x_1,x_2,x_3)) =0
+\end{align*}
+
+Let  $g \colon \mathbb{R}^3 \to \mathbb{R}$ then: 
+\begin{align*}
+	\nabla \times (\nabla g(x_1,x_2,x_3)) &= \nabla \times \begin{pmatrix}\partial_{x_1} g \\ \partial_{x_2} g \\ \partial_{x_3} g \end{pmatrix} = \begin{pmatrix} \partial_{x_2x_3} g - \partial_{x_3x_2} g \\ \partial_{x_3x_1} g - \partial_{x_1x_3} g \\ \partial_{x_1x_2} g - \partial_{x_2x_1} g \end{pmatrix} = \begin{pmatrix} \partial_{x_2x_3} g - \partial_{x_2x_3} g \\ \partial_{x_1x_3} g - \partial_{x_1x_3} g \\ \partial_{x_1x_2} g - \partial_{x_1x_2} g \end{pmatrix} = \vec{0}\\
+&\implies \nabla \times (\nabla g(x_1,x_2,x_3))  = 0
+\end{align*}
+
+    \[
+        \vec{\nabla} \times \vec{A}(x_1,x_2,x_3)
+        :=
+        \left(\;
+            -\cos(x_3),  \cos(x_1), -\cos(x_2)
+        \;\right)
+    \]
+    The curl of this vector field is not zero. 
+    If it were a gradient, then it would be zero. 
+    So it cannot be a gradient of any function.
+     
+\end{solution}
+
+
+
+\begin{exercise}
+	Given scalar fields $f, g : \mathbb{R}^3 \to \mathbb{R}$ and vector fields $\vec{A}, \vec{B} : \mathbb{R}^3 \to \mathbb{R}^3$,
+    show that 
+    \begin{gather*}
+        \nabla\left( f \cdot g \right)
+        = 
+        f \cdot \nabla g
+        +
+        g \cdot \nabla f
+        ,
+        \\
+        \nabla\cdot\left( f \cdot \vec{A} \right)
+        = 
+        ( \nabla f ) \cdot \vec{A}
+        +
+        f ( \nabla \cdot \vec{A} )
+        ,
+        \\ 
+        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
+        = 
+        \left( \nabla\times\vec{A} \right) \cdot \vec{B}
+        -
+        \vec{A} \cdot \left( \nabla\times\vec{B} \right)
+        ,
+        \\ 
+        \Delta ( f g )
+        = 
+        f \Delta g + 2 \nabla(f) \cdot \nabla( g ) + g \Delta f
+        .
+    \end{gather*}
+    Suppose that we also have two real numbers $\alpha, \beta \in \mathbb R$.
+    Show that 
+    \begin{gather*}
+        \nabla( \alpha f + \beta g )
+        = 
+        \alpha \nabla f + \beta \nabla g
+        ,
+        \\ 
+        \nabla\cdot ( \alpha \vec{A} + \beta \vec{B} )
+        = 
+        \alpha \nabla\cdot \vec{A} + \beta \nabla\cdot \vec{B}
+        ,
+        \\ 
+        \nabla\times ( \alpha \vec{A} + \beta \vec{B} )
+        = 
+        \alpha \nabla\times \vec{A} + \beta \nabla\times \vec{B}
+        .
+    \end{gather*}
+\end{exercise}
+
+\begin{solution}
+    For the first identity, we use the product rule:
     \begin{align*}
-        \int_\Gamma f \cdot dl
-        &=
-        \int_0^1 \exp(-1+2t+t) \|(2,1)\| dt
-        \\&=
-        \int_0^1 \exp(-1+2t+t) \sqrt{5} dt
-        \\&=
-        \sqrt{5} \int_0^1 \exp(3t-1) dt
-        \\&=
-        \frac{\sqrt{5}}{3} 
-        \int_0^1 3 \exp(3t-1) dt
-        \\&=
-        \frac{\sqrt{5}}{3} 
-        \Big[ \exp(3t-1) \Big]_0^1
-        =
-        \frac{\sqrt{5}}{3} 
-        \left( \exp(2) - \exp(-1) \right)
-        =
-        \frac{\sqrt{5}}{3} 
-        \left( e^2 - \frac{1}{e} \right)
+        \nabla\left( f \cdot g \right)
+        &= 
+        \left( \partial_1 ( f \cdot g ), \cdots, \partial_n ( f \cdot g ) \right)
+        \\&= 
+        \left( \partial_1 f \cdot g + f \cdot \partial_1 g, \cdots, \partial_n f \cdot g + f \cdot \partial_n g \right)
+        \\&= 
+        \left( \partial_1 f \cdot g, \cdots, \partial_n f \cdot g \right)
+        +
+        \left( f \cdot \partial_1 g, \cdots, f \cdot \partial_n g \right)
+        \\&= 
+        g \left( \partial_1 f, \cdots, \partial_n f \right)
+        +
+        f \left( \partial_1 g, \cdots, \partial_n g \right)
+        \\&= 
+        f \cdot \nabla g
+        +
+        g \cdot \nabla f
         .
     \end{align*}
-\end{solution}
+    The second identity, again, can be proved using the product rule:
+    \begin{align*}
+        \nabla\cdot\left( f \cdot \vec{A} \right)
+        &= 
+        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
+        \\&= 
+        \partial_1 ( f \cdot A_{1} ) + \cdots + \partial_n ( f \cdot A_{n} )
+        \\&= 
+        ( \partial_1 f ) \cdot A_{1} ) + \cdots + ( \partial_n f ) \cdot A_{n}
+        +
+        f \cdot \partial_1 ( A_{1} ) + \cdots + f \cdot \partial_n ( A_{n} )
+        \\&= 
+        \nabla(f) \cdot \vecA
+        +
+        f \cdot \nabla \cdot \vecA
+        ,
+    \end{align*}
+    As for the third identity:
+    \begin{align*}
+        \nabla\cdot\left( \vec{A} \times \vec{B} \right)
+        &=
+        \nabla\cdot\left( 
+            A_2 B_3 - A_3 B_2,
+          - A_1 B_3 + A_3 B_1,
+            A_1 B_2 - A_2 B_1 
+        \right)
+        \\&=
+        \partial_1\left(   A_2 B_3 - A_3 B_2 \right) + \partial_2\left( - A_1 B_3 + A_3 B_1 \right) + \partial_3\left(   A_1 B_2 - A_2 B_1 \right)
+        \\&=
+        + \partial_1\left( A_2 B_3 \right) - \partial_1\left( A_3 B_2 \right) 
+        \\&\qquad
+        - \partial_2\left( A_1 B_3 \right) + \partial_2\left( A_3 B_1 \right) 
+        \\&\qquad
+        + \partial_3\left( A_1 B_2 \right) - \partial_3\left( A_1 B_2 \right)
+        \\&=
+        + \partial_1\left( A_2 \right) B_3 + A_2 \partial_1\left( B_3 \right) - \partial_1\left( A_3 \right) B_2 - A_3 \partial_1\left( B_2 \right) 
+        \\&\qquad
+        - \partial_2\left( A_1 \right) B_3 - A_1 \partial_2\left( B_3 \right) + \partial_2\left( A_3 \right) B_1 + A_3 \partial_2\left( B_1 \right) 
+        \\&\qquad
+        + \partial_3\left( A_1 \right) B_2 + A_1 \partial_3\left( B_2 \right) - \partial_3\left( A_2 \right) B_1 - A_2 \partial_3\left( B_1 \right)
+        \\&=
+         + \partial_2\left( A_3 \right) B_1 - \partial_3\left( A_2 \right) B_1 
+         - \partial_1\left( A_3 \right) B_2 + \partial_3\left( A_1 \right) B_2
+         + \partial_1\left( A_2 \right) B_3 - \partial_2\left( A_1 \right) B_3 
+        \\&\qquad
+         + A_1 \partial_3\left( B_2 \right) - A_1 \partial_2\left( B_3 \right)
+         - A_2 \partial_3\left( B_1 \right) + A_2 \partial_1\left( B_3 \right) 
+         + A_3 \partial_2\left( B_1 \right) - A_3 \partial_1\left( B_2 \right) 
+        \\&=
+        ( \nabla\times\vecA ) \cdot \vecB - ( \nabla\times\vecB ) \cdot \vecA
+        .
+    \end{align*}
+    We can prove the fourth identity again via direct computation, which is perfectly valid. 
+    We can also use some of the identities already shown above to reduce the effort:
+    \begin{align*}
+        \Delta ( f g )
+        &= 
+        \nabla \cdot ( \nabla ( f g ) )
+        \\&= 
+        \nabla \cdot ( g \nabla(f) + f \nabla(g) )
+        \\&= 
+        \partial_1( g \nabla(f)_1 + f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n + f \nabla(g)_n )
+        \\&= 
+        \partial_1( g \nabla(f)_1 ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_n( f \nabla(g)_n )
+        \\&= 
+        \partial_1( g \nabla(f)_1 ) + \cdots + \partial_n( g \nabla(f)_n ) + \partial_1( f \nabla(g)_1 ) + \cdots + \partial_n( f \nabla(g)_n )
+        \\&= 
+        \nabla \cdot ( g \nabla(f) ) + \nabla \cdot ( f \nabla(g) )
+        \\&= 
+        \nabla(g) \cdot \nabla(f) + g \cdot \nabla\cdot(\nabla f) + \nabla(f) \cdot \nabla(g) + f \cdot \nabla\cdot(\nabla g)
+        = 
+        2 \nabla(f) \cdot \nabla( g ) + f \Delta g + g\Delta f
+        .
+    \end{align*}
+    The last three identities describe that gradient, divergence and curl are \emph{linear},
+    which is a concept that you have already seen in linear algebra. 
+    We verify by direct computation:
+    \begin{align*}
+        \nabla( \alpha f + \beta g )
+        &= 
+        \left( \alpha \partial_1 f_1 + \beta \partial_1 g_1, \cdots, \alpha \partial_n f_n + \beta \partial_n g_n \right)
+        \\&= 
+        \left( \alpha \partial_1 f_1, \cdots, \alpha \partial_n f_n \right)
+        +
+        \left( \beta \partial_1 g_1,  \cdots,  \beta \partial_n g_n \right)
+        \\&= 
+        \alpha \left( \partial_1 f_1, \cdots,  \partial_n f_n \right)
+        +
+        \beta \left( \partial_1 g_1,  \cdots,  \partial_n g_n \right)
+        .
+    \end{align*}
+    Similarly,
+    \begin{align*}
+        \nabla \cdot ( \alpha \vecA + \beta \vecB )
+        &= 
+        \nabla \cdot \left( \alpha A_1 + \beta B_1, \cdots, \alpha A_n + \beta B_n \right)
+        \\&= 
+        \alpha \partial_1 A_1 + \beta \partial_1 B_1 + \cdots + \alpha \partial_n A_n + \beta \partial_n B_n 
+        \\&= 
+        \alpha \partial_1 A_1 + \cdots + \alpha \partial_n A_n + \beta \partial_1 B_1 + \cdots + \beta \partial_n B_n 
+        \\&= 
+        \alpha \left( \partial_1 A_1 + \cdots + \partial_n A_n \right) + \beta \left( \partial_1 B_1 + \cdots + \partial_n B_n \right)
+        \\&= 
+        \alpha \nabla \cdot \vecA + \beta \nabla \vecB
+        .
+    \end{align*}
+    Lastly,
+    {\small
+    \begin{align*}
+        &
+        \nabla \times ( \alpha \vecA + \beta \vecB )
+        \\&= 
+        \nabla \times \left( 
+            \alpha A_1 + \beta B_1,
+            \alpha A_2 + \beta B_2,
+            \alpha A_3 + \beta B_3 
+        \right)
+        \\&= 
+        \left( 
+            \alpha \partial_2 A_3 + \beta \partial_2 B_3 - \alpha \partial_3 A_2 - \beta \partial_3 B_2,
+          - \alpha \partial_1 A_3 - \beta \partial_1 B_3 + \alpha \partial_3 A_1 + \beta \partial_3 B_1,
+            \alpha \partial_1 A_2 + \beta \partial_1 B_2 - \alpha \partial_2 A_1 - \beta \partial_2 B_1
+        \right)        
+        \\&= 
+        \left( 
+            \alpha \partial_2 A_3 - \alpha \partial_3 A_2 + \beta \partial_2 B_3 - \beta \partial_3 B_2,
+          - \alpha \partial_1 A_3 + \alpha \partial_3 A_1 - \beta \partial_1 B_3 + \beta \partial_3 B_1,
+            \alpha \partial_1 A_2 - \alpha \partial_2 A_1 + \beta \partial_1 B_2 - \beta \partial_2 B_1
+        \right)        
+        \\&= 
+        \alpha \left( 
+            \partial_2 A_3 - \partial_3 A_2,
+          - \partial_1 A_3 + \partial_3 A_1,
+            \partial_1 A_2 - \partial_2 A_1
+        \right)        
+        +
+        \beta\left( 
+            \partial_2 B_3 - \partial_3 B_2,
+          - \partial_1 B_3 + \partial_3 B_1,
+            \partial_1 B_2 - \partial_2 B_1
+        \right)        
+        \\&= 
+        \alpha \nabla \times \vecA + \beta \nabla \times \vecB
+        .
+    \end{align*}
+    }
+\end{solution} 
 
 
-
-
-%\begin{exercise}
-%    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ 
-%    along the circle $C$ with radius $3$ centered at the origin, where 
-%    \[
-%        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 3 x_2^2 + x_2^3
-%    \]
-%    Hint: you must first find a parameterization of $C$. 
-%\end{exercise}
-%\begin{solution}     
-    % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
-%\end{solution}
 
 
 \end{document}
