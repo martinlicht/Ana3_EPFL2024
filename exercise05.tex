@@ -117,7 +117,7 @@
 & + \int_{-1}^1 \vec{F}(-1,x_2)\cdot\begin{pmatrix}-1\\0\end{pmatrix} \;dx_2 + \int_{-1}^1 \vec{F}(1,x_2)\cdot\begin{pmatrix}1\\0\end{pmatrix} \;dx_2,\\
 =&\int_{-1}^1 (1-x_1^ 2)^ 5 \;dx_1 + \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1 + \int_{-1}^1 \sin(1)x_2\;dx_2 +  \int_{-1}^1 -\sin(-1)x_2\;dx_2,\\
 =&  \left[\frac{1}{6}(1-x_1^ 2)^ 6 \frac{1}{-2x_1} \right]_{x_1 = -1}^{x_1 = 1} + \left[\frac{1}{6}(x_1^ 2 + 1)^ 6 \frac{1}{2x_1} \right]_{x_1 = -1}^{x_1 = 1},\\
-=& \frac{1}{6} 2 \frac{1}{2} - \frac{1}{6} 2 \frac{-1}{2} = \frac{1}{3},
+=& \frac{1}{6} 2^ 6 \frac{1}{2} - \frac{1}{6} 2^6 \frac{-1}{2} = \frac{32}{3},
 \end{align*}
 
 where we have used that $x_2$ is an odd functions in the fourth line. 
@@ -145,7 +145,7 @@ where we have used that $x_2$ is an odd functions in the fourth line.
 We consider domain $\Omega_1$. A parameterisation for the boundary is given by $\gamma: [0,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t).$
 
 \begin{align*}
-\int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} =& \int_0^ {2\pi} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \cos t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t \\
+\int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} =& \int_0^ {2\pi} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t \\
 =& \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt = 0
 \end{align*}
 
@@ -157,12 +157,12 @@ We consider domain $\Omega_1$. A parameterisation for the boundary is given by $
 
 where we have used that integrating the cosine function over a period is $0$. Boths integrals give the same value thereby verifying Green's theorem.\\
 
-We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\pi/2,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
+We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\frac{\pi}{2},\frac{\pi}{2}] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
 
 \begin{align*}
 \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} =& \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \cos t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t + \int_1^ {-1} \begin{pmatrix}0\\t^ 2\end{pmatrix}\cdot \begin{pmatrix}0\\1\end{pmatrix}\\
 =& \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt + \int_{1}^ {-1} t^ 2 \;d t\\
-=& \left[\frac{1}{3} t^ 3\right]_1^ {-1} = \frac{2}{3}
+=& \left[\frac{1}{3} t^ 3\right]_1^ {-1} = -\frac{2}{3}
 \end{align*}
 
 \begin{align*}
@@ -194,11 +194,11 @@ Both integrals give the same value thereby verifying Green's theorem.\\
 \begin{solution}
 \begin{align*}
     \int_{\partial \Omega} \vec{F} \cdot \; d \vec{s} &= \int\int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}\; d \Omega\\
-&= \int\int_{\Omega} x_2 + \frac{2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^ {\frac{3}{2}}} - x_1 - \frac{2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^ {\frac{3}{2}}} \; d \Omega\\
+&= \int\int_{\Omega} x_2 + \frac{-2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^2} - x_1 - \frac{-2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^2} \; d \Omega\\
 &= \int\int_{\Omega} x_2  - x_1\; d \Omega\\
 &= \int_0^ 1\int_0^ {1-x_1} x_2 - x_1 \;dx_2\;dx_1\\
 &= \int_0^ 1 \frac{1}{2}(1-x_1)^ 2 - x_1(1-x_1) \;d x\\
-&= \left[ \frac{1}{6}(1-x_1)^ 3 - \frac{1}{2} x_1^2 + \frac{1}{3}x_1^ 3 \right]_0^1 = -\frac{1}{2} + \frac{1}{3} - \frac{1}{6} = -\frac{2}{6}
+&= \left[ -\frac{1}{6}(1-x_1)^ 3 - \frac{1}{2} x_1^2 + \frac{1}{3}x_1^ 3 \right]_0^1 = -\frac{1}{2} + \frac{1}{3} - \frac{-1}{6} = 0
 \end{align*}
 \end{solution}
 
