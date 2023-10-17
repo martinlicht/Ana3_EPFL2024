@@ -20,19 +20,19 @@
 \end{exercise}
 \begin{solution}
     \begin{align*}
-        \int_{\Gamma} \vec{F}(x_1,x_2) d\ell &= \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt\\
-        &= \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt\\
-        &= \int_{0}^{2\pi}  -\sin^2(t)dt\\
-        &= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt\\
-        &= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
+        \int_{\Gamma} \vec{F}(x_1,x_2) d\ell &= \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt
+        \\&= \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt
+        \\&= \int_{0}^{2\pi}  -\sin^2(t)dt
+        \\&= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt
+        \\&= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
     \end{align*}
 
     \begin{align*}
-        \int_{\Gamma} \vec{G}(x_1,x_2,x_3) d\ell &= \int_{0}^{4} (\vec{G}\circ \delta)(t)\cdot \dot{\delta}(t)dt\\
-        &= \int_{0}^{4}\begin{pmatrix} 2\\ 3\\ -1\end{pmatrix} \cdot  \begin{pmatrix}2t\\ -\sin(t) \\ e^t \end{pmatrix}dt\\
-        &= \int_{0}^{4} 4t - 3\sin(t) - e^t dt\\
-        &= \left[2t^2 + 3\cos(t) - e^{t} \right]_{0}^{4}\\
-        &= 32 + 3\cos4-e^4 - \left(3 - 1\right) = 30+3\cos4 -e^ 4
+        \int_{\Gamma} \vec{G}(x_1,x_2,x_3) d\ell &= \int_{0}^{4} (\vec{G}\circ \delta)(t)\cdot \dot{\delta}(t)dt
+        \\&= \int_{0}^{4}\begin{pmatrix} 2\\ 3\\ -1\end{pmatrix} \cdot  \begin{pmatrix}2t\\ -\sin(t) \\ e^t \end{pmatrix}dt
+        \\&= \int_{0}^{4} 4t - 3\sin(t) - e^t dt
+        \\&= \left[2t^2 + 3\cos(t) - e^{t} \right]_{0}^{4}
+        \\&= 32 + 3\cos4-e^4 - \left(3 - 1\right) = 30+3\cos4 -e^ 4
     \end{align*}
         % TODO: we need of those cosine half angle formulas to turn the square of sin into a cos 2t      
         % TODO: the second one is easy

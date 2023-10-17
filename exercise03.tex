@@ -15,12 +15,28 @@
     % Sketch the gradient field.
 \end{exercise}
 \begin{solution}   
-	$$\grad f(x_1,x_2,x_3) =-\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}$$ 
-\begin{align*}\Delta f(x_1,x_2,x_3) &= \nabla \cdot \nabla f(x_1,x_2,x_3) \\
-								&= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right) + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right) + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)\\
-&= -\frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}} + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}\\
-&=\frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
-\end{align*}
+    $$
+        \grad f(x_1,x_2,x_3)
+        =
+        -\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}
+    $$ 
+    \begin{align*}
+        \Delta f(x_1,x_2,x_3) 
+        &=
+        \nabla \cdot \nabla f(x_1,x_2,x_3) 
+        \\
+        &= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
+        + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right)
+        + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
+        \\
+        &= 
+        - \frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}
+        + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+        + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+        \\
+        &=
+        \frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+    \end{align*}
 \end{solution}
 
 \begin{exercise}
@@ -34,9 +50,12 @@
     Draw them. Are they simple, closed, differentiable, or regular? What are their tangents?
 \end{exercise}
 \begin{solution}    
- For the first curve the tangent is given by $\dot{\gamma}(t) = (2t, 3t^2)$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).\\
+    For the first curve the tangent is given by $\dot{\gamma}(t) = (2t, 3t^2)$.
+    Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).
+    \\
 
-For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t),2cos(2t))$ . Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\delta} \neq \vec{0}$).\\
+    For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t),2cos(2t))$.
+    Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\delta} \neq \vec{0}$).
 \end{solution}
 
 \begin{exercise}
@@ -56,23 +75,23 @@ For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t)
 \begin{solution}     
     \begin{align*}
         \int_{\Gamma} f(x_1,x_2) d\ell 
-        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) |\dot{\gamma}(t)|dt\\
-        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) \sqrt[]{\cos(t)^2 + \sin(t)^2} dt\\
-        &= \int_{0}^{\pi} ( 1 + 1 ) \sqrt[]{1} dt\\
-        &= \int_{0}^{\pi} 2 dt\\
-        &= 2\pi.
+        &= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) |\dot{\gamma}(t)|dt
+        \\&= \int_{0}^{\pi} ( 1 + \cos(t)^2 + \sin(t)^2 ) \sqrt[]{\cos(t)^2 + \sin(t)^2} dt
+        \\&= \int_{0}^{\pi} ( 1 + 1 ) \sqrt[]{1} dt
+        \\&= \int_{0}^{\pi} 2 dt
+        \\&= 2\pi.
     \end{align*}
     The endpoints of the first curve are: $\gamma(0) = (-1,0)$ and $\gamma(\pi) = (1,0)$.
 
     Let us now compute the second integral. We see 
     \begin{align*}
         \int_{\Gamma} f(x_1,x_2) d\ell 
-        &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt\\
-        &= \int_{-1}^1 (1+t^2)\left|\begin{pmatrix} 1\\0 \end{pmatrix}\right| dt\\
-        &= \int_{-1}^1 (1+t^2) dt\\
-        &= 2 \int_{0}^1 (1+t^2) dt\\
-        &= 2\left[t+\frac{t^3}{3} \right]_{0}^{1}\\
-        &= \frac 8 3.
+        &= \int_{-1}^{1} (f\circ \delta)(t)|\dot{\delta}(t)|dt
+        \\&= \int_{-1}^1 (1+t^2)\left|\begin{pmatrix} 1\\0 \end{pmatrix}\right| dt
+        \\&= \int_{-1}^1 (1+t^2) dt
+        \\&= 2 \int_{0}^1 (1+t^2) dt
+        \\&= 2\left[t+\frac{t^3}{3} \right]_{0}^{1}
+        \\&= \frac 8 3.
     \end{align*}
     Note that from the third to fourth line, we have used that the integrand was even. 
     The endpoints of the second curve are: $\delta(-1) = (-1,0)$ and $\delta(1) = (1,0)$.
@@ -95,18 +114,18 @@ For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t)
         \gamma : [-\pi,\pi] \rightarrow \bbR^2, \quad t \mapsto ( 3\cos(t), 3\sin(t) )
     $$
     \begin{align*}
-        \int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-\pi}^{\pi} (f\circ \gamma)(t)|\dot{\gamma}(t)|dt\\
-        &=
-        \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left|\begin{pmatrix}3\cos(t)\\3\sin(t)\end{pmatrix}\right| dt\\
-        &=
-        \int_{-\pi}^{\pi} 3\left[27\sin^2(t)+27\sin^3(t))\right]dt\\
-        &=
+        \int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-\pi}^{\pi} (f\circ \gamma)(t)|\dot{\gamma}(t)|dt
+        \\&=
+        \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left|\begin{pmatrix}3\cos(t)\\3\sin(t)\end{pmatrix}\right| dt
+        \\&=
+        \int_{-\pi}^{\pi} 3\left[27\sin^2(t)+27\sin^3(t))\right]dt
+        \\&=
         81\int_{-\pi}^{\pi} \sin^2(t)dt+ 81\int_{-\pi}^{\pi}\sin^3(t))dt\\
     \end{align*}
     The second integral is $0$ since the integrand is uneven. For the first integral we use the cosine half-angle formula ($1 - 2\sin^2(\alpha) = \cos(2\alpha)$).
     \begin{align*}
-        &= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt\\
-        &= 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
+        &= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt
+        \\&= 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
     \end{align*}
     % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
 \end{solution}
