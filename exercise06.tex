@@ -86,6 +86,17 @@
     Compute cross product $\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)$ and its norm. 
 \end{exercise}
 \begin{solution}     
+We define the following parameterisation for the surface S:
+
+$$
+\Phi: [0,2\pi) \times (0,1) \mapsto S: (s,t)\mapsto (\sqrt{1+\sqrt{(2 - t)t}}\cos s, \sqrt{1+\sqrt{(2-t)t}}\sin s,t)
+$$
+
+$$\partial_s \Phi(s,t) \times \partial_t \Phi(s,t) = \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\0 \end{pmatrix} \times \begin{pmatrix} \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\cos s \\ \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\sin s \\1 \end{pmatrix} = \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\ -\frac{1 - t}{2\sqrt{(2-t)t}} \end{pmatrix} 
+$$
+
+$$\|\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)\| = \| \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\ -\frac{1 - t}{2\sqrt{(2-t)t}} \end{pmatrix} \| = \sqrt{1+\sqrt{(2 - t)t} + \frac{(1 - t)^2}{4(2-t)t}}
+$$
 
 \end{solution}
 
