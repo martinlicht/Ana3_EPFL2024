@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{6}{24}{October} % parameters are the number of the session and the day
@@ -238,7 +238,7 @@
 \begin{exercise}
     Consider the volume  
     \begin{gather*}
-        V := \left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < x_3 < 1 \right\}
+        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < x_3 < 1 \;\right\}
     \end{gather*}
     Find the the boundary $S$ of this volume and compute its surface area. 
 \end{exercise}
@@ -318,7 +318,7 @@
     \begin{gather*}
         \vec F(x_1,x_2,x_3) := ( x_1 x_3, x_2, x_2 ),
         \qquad 
-        V := \left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 1 \right\}
+        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 1 \;\right\}
         .
     \end{gather*}
     Note that $V$ is just the three-dimensional unit ball. 
@@ -438,7 +438,7 @@
 \begin{exercise}
     Find a regular parameterization $\Phi(s,t)$ of the surface 
     \begin{gather*}
-        S := \left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \quad x_1^2 + x_2^2 = 1 + x_3^2 \right\}
+        S := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_1^2 + x_2^2 = 1 + x_3^2 \;\right\}
     \end{gather*}
     Compute cross product $\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)$ and its norm. 
 \end{exercise}
@@ -450,41 +450,41 @@
         (s,t) \mapsto \left( \sqrt{1+t^{2}}\cos s, \sqrt{1+t^{2}}\sin s, t \right)
     \]
     \[
-    \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
-    = 
-    \begin{pmatrix} 
-        -\sqrt{1+\sqrt{(2 - t)t}}\sin s
-        \\ 
-        \sqrt{1+\sqrt{(2 - t)t}}\cos s
-        \\
-        0 
-    \end{pmatrix} 
-    \times 
-    \begin{pmatrix} 
-        \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\cos s 
-        \\ 
-        \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\sin s 
-        \\
-        1 
-    \end{pmatrix} 
-    = 
-    \begin{pmatrix} 
-        -\sqrt{1+\sqrt{(2 - t)t}}\sin s 
-        \\ 
-        \sqrt{1+\sqrt{(2 - t)t}}\cos s
-        \\ 
-        -\frac{1 - t}{2\sqrt{(2-t)t}} 
-    \end{pmatrix} 
+        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
+        = 
+        \begin{pmatrix} 
+            -\sqrt{1+\sqrt{(2 - t)t}}\sin s
+            \\ 
+            \sqrt{1+\sqrt{(2 - t)t}}\cos s
+            \\
+            0 
+        \end{pmatrix} 
+        \times 
+        \begin{pmatrix} 
+            \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\cos s 
+            \\ 
+            \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\sin s 
+            \\
+            1 
+        \end{pmatrix} 
+        = 
+        \begin{pmatrix} 
+            -\sqrt{1+\sqrt{(2 - t)t}}\sin s 
+            \\ 
+            \sqrt{1+\sqrt{(2 - t)t}}\cos s
+            \\ 
+            -\frac{1 - t}{2\sqrt{(2-t)t}} 
+        \end{pmatrix} 
     \]
     \[
-    \left\|
-    \partial_s \Phi(s,t) \times \partial_t \Phi(s,t)
-    \right\| 
-    = 
-    \left\| 
-    \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\ -\frac{1 - t}{2\sqrt{(2-t)t}} \end{pmatrix} \right\| 
-    = 
-    \sqrt{1+\sqrt{(2 - t)t} + \frac{(1 - t)^2}{4(2-t)t}}
+        \left\|
+        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t)
+        \right\| 
+        = 
+        \left\| 
+        \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\ -\frac{1 - t}{2\sqrt{(2-t)t}} \end{pmatrix} \right\| 
+        = 
+        \sqrt{1+\sqrt{(2 - t)t} + \frac{(1 - t)^2}{4(2-t)t}}
     \]
 \end{solution}
 
