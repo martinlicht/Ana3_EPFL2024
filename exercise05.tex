@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{5}{17}{October} % parameters are the number of the session and the day
@@ -219,9 +219,24 @@
     
     We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\frac{\pi}{2},\frac{\pi}{2}] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
     \begin{align*}
-        \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} &= \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t + \int_1^ {-1} \begin{pmatrix}0\\t^ 2\end{pmatrix}\cdot \begin{pmatrix}0\\1\end{pmatrix}
-        \\&= \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt + \int_{1}^ {-1} t^ 2 \;d t
-        \\&= \left[\frac{1}{3} t^ 3\right]_1^ {-1} = -\frac{2}{3}
+        \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} 
+        &= 
+        \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} 
+        \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \end{pmatrix} 
+        \cdot 
+        \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t 
+        + 
+        \int_1^ {-1} 
+        \begin{pmatrix} 0 \\ t^2 \end{pmatrix}
+        \cdot 
+        \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+        \\&
+        = 
+        \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt + \int_{1}^ {-1} t^ 2 \;d t
+        \\&
+        = \left[\frac{1}{3} t^ 3\right]_1^ {-1}
+        = -\frac{2}{3}
+        .
     \end{align*}
     Thus, 
     \begin{align*}
@@ -292,41 +307,49 @@
     \[
         \Gamma := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* -1 < x_1 < 1, \; x_2 = 3 ( 1 - x_1^2 ) \right\}.
     \]
-    Find the curve integral $\int_\Gamma \vec F \;dl$, where 
+    Find the curve integral $\int_\Gamma \vec F \cdot \vec{n} \;dl$, where 
     \[
-        \vec F(x_1,x_2) = \left( x_1 ( 2 - \cos(x_1x_2)^{2} ), x_2 ( 2 + \cos(x_1x_2)^{2} ) \right)
+        \vec F(x_1,x_2) 
+        = 
+        \left( 
+            x_1 ( 2 - \cos(x_1x_2)^{2} )
+            , 
+            x_2 ( 2 + \cos(x_1x_2)^{2} ) 
+        \right)
     \]
+    and where $\vec{n}$ is the unit vector along $\Gamma$, perpendicular to $\Gamma$ and having non-negative $x_2$ component.
 \end{exercise}
 \begin{solution}
     % Draw a line between arc endpoints to enclose a domain.
     % The divergence of the vector field is constant.
     % Compute the integral along the bottom line and the integrate the divergence over the domain
     % We just need the area of the domain 
-    The Idea is to make use of Divergence theorem. We do this by closing the curve $\gamma$ by introducing the curve 
+    The Idea is to make use of divergence theorem. 
+    We do this by closing the curve $\gamma$ by introducing the curve 
     \[
         \delta: [-1,1] \mapsto \mathbb{R}^2, \quad t \mapsto  (t,0).
     \]
     This allows us to reformulate the problem as follows:
     \[
-        \int_{\Gamma} \vec{F} \cdot \; d\ell
+        \int_{\Gamma} \vec{F} \cdot \vec{n} \; d\ell
         =
-        \int_{\Gamma\cup \Delta} \vec{F} \cdot \; d\ell
+        \int_{\Gamma\cup \Delta} \vec{F} \cdot \vec{n} \; d\ell
         -
-        \int_{\Delta} \vec{F}\cdot \;d \ell
+        \int_{\Delta} \vec{F}\cdot \vec{n} \;d \ell
     \]
     For the first integral on the right-hand side we use the divergence theorem
     \begin{align*}
-        \int_{\Gamma\cup\Delta} \vec{F} \cdot \; d\ell 
-        &= 
+        \int_{\Gamma\cup\Delta} \vec{F} \cdot \vec{n} \; d\ell 
+        = 
         \int_{\Omega} \nabla\cdot\vec{F}\;d \Omega
-        \\&=
+        =
         \int_{\Omega} 4\;d \Omega
         .
     \end{align*}
     We need to compute the area of the domain $\Omega$ and proceed as follows: 
     \begin{align*}
         4\int_{\Omega} 1\;d \Omega
-        \\&=
+        &=
         4 \int_{-1}^1\int_{0}^{3(1-x_1^2)} 1 \;d x_2 \;d x_1
         \\&=
         4 \int_{-1}^1\left[x_2\right]_{0}^{3(1-x_1^2)} \;d x_1
@@ -334,26 +357,27 @@
         4 \int_{-1}^1 3( 1-x_1^2)\;d x_1
         \\&=
         4 \left[ 3 x_1 - x_1^3 \right]_{-1}^1
-        \\&=
+        =
         4 \left( \left[ 3 - 1 \right] - \left[ -3 + 1 \right] \right)
         = 
         16
         .
     \end{align*}
-    The value of the second integral is given by:
+    The value of the second integral is given by the integral of $\vec{F}$ against the vector $(0,-1)$:
     \begin{align*}
-        \int_{\Delta} \vec{F} \cdot \; d\vec{s} 
-        &
+        \int_{\Delta} \vec{F} \cdot \binom{0}{-1} \; dl
         =
-        \int_{-1}^1 x_1 \; dx_1
+        \int_{-1}^1 0 \; dx_1
         =
         0
         .
     \end{align*}
     We conclude that:
     \begin{align*}
-        \int_{\Gamma} \vec{F} \cdot \; d\vec{s} = \int_{\Gamma\cup \Delta} \vec{F} \cdot 
-        \\&=
+        \int_{\Gamma} \vec{F} \cdot \vec{n} \; dl
+        = 
+        \int_{\Gamma\cup \Delta} \vec{F} \cdot \vec{n} \; dl
+        =
         \left[ 12 x_1 - 4 x_1^3 \right]_{-1}^1
         =
         ( 12 - 4 ) - ( -12 + 4 )
