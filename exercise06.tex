@@ -117,7 +117,7 @@ $$
 with
 
 $$
-\|\Phi_{\theta}\times \Phi_{z}\|  = \|\begin{pmatrix} -z\sin\theta \\ z\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\1 \end{pmatrix}\| = \|\begin{pmatrix} z\cos\theta \\ z\sin\theta \\ -z \end{pmatrix}\| = \sqrt{2}z
+\|\partial_{\theta}\Phi\times \partial_z\Phi\|  = \|\begin{pmatrix} -z\sin\theta \\ z\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\1 \end{pmatrix}\| = \|\begin{pmatrix} z\cos\theta \\ z\sin\theta \\ -z \end{pmatrix}\| = \sqrt{2}z
 $$
 
 Now the surface integral is given by:
@@ -148,14 +148,14 @@ Now the surface integral is given by:
     Find the set $\partial\Omega$. Find the area of $\partial\Omega$. 
 \end{exercise}
 \begin{solution} 
-The boundary of this domain consist of two parts:
+The boundary of this domain consist of two surfaces:
 
 $$
-\partial \Omega_a =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < 1, x_3 = 1 \right\} 
+S_a =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < 1, x_3 = 1 \right\} 
 $$
 
 $$
-\partial \Omega_b =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 = x_3, 0<x_3<1 \right\} 
+S_b =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 = x_3, 0<x_3<1 \right\} 
 $$
 
 and we have that $\partial \Omega = \partial \Omega_a \cup \partial \Omega_b$. To calculate the area we need a parameterisation of both surfaces:
@@ -171,11 +171,11 @@ $$
 Moreover we have that:
 
 $$
-\|\Phi_{a,\theta}\times \Phi_{a,r}\|  = \|\begin{pmatrix} -r\sin\theta \\ r\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\0 \end{pmatrix}\| = \|\begin{pmatrix} 0 \\ 0 \\ -r \end{pmatrix}\| = r
+\|\partial_{\theta}\Phi_{a}\times \partial_r\Phi_{a}\|  = \|\begin{pmatrix} -r\sin\theta \\ r\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\0 \end{pmatrix}\| = \|\begin{pmatrix} 0 \\ 0 \\ -r \end{pmatrix}\| = r
 $$
 
 $$
-\|\Phi_{b,\theta}\times \Phi_{b,z}\|  = \|\begin{pmatrix} -\sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \frac{1}{2\sqrt{z}}\cos\theta \\  \frac{1}{2\sqrt{z}}\sin\theta \\1 \end{pmatrix}\| = \|\begin{pmatrix} \sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\-\frac{1}{2} \end{pmatrix}\| = \sqrt{z+\frac{1}{4}}
+\|\partial_{\theta}\Phi_{b}\times \partial_z\Phi_{b}\|  = \|\begin{pmatrix} -\sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \frac{1}{2\sqrt{z}}\cos\theta \\  \frac{1}{2\sqrt{z}}\sin\theta \\1 \end{pmatrix}\| = \|\begin{pmatrix} \sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\-\frac{1}{2} \end{pmatrix}\| = \sqrt{z+\frac{1}{4}}
 $$
 
 Now the area is given by:
@@ -184,7 +184,7 @@ Now the area is given by:
         &
 	\iint_{\partial\Omega} 1 \;d (\partial \Omega)
         \\&
-        =	\iint_{\partial\Omega_a} 1 \;d (\partial \Omega_a) + 	\iint_{\partial\Omega_a} 1 \;d (\partial \Omega_a)
+        =	\iint_{\partial\Omega_a} 1 \;dS_a + 	\iint_{\partial\Omega_a} 1 \;dS_b
         \\&
         = \int_0^{2\pi} \int_0^1 r \;d r\;d\theta + \int_0^{2\pi} \int_0^1\sqrt{z+\frac{1}{4}}\;d z \;d \theta
         \\&
@@ -245,14 +245,14 @@ $$
 
 with 
 $$
-\Phi_{\theta}\times \Phi_{\phi}  = \begin{pmatrix} -\sin\theta\sin\phi\\ \cos\theta\sin\phi \\0 \end{pmatrix} \times \begin{pmatrix} -\cos\theta\cos\phi\\ \sin\theta\cos\phi \\-\sin\phi \end{pmatrix} = -\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} 
+\partial_{\theta}\Phi\times \partial_{\phi}\Phi  = \begin{pmatrix} -\sin\theta\sin\phi\\ \cos\theta\sin\phi \\0 \end{pmatrix} \times \begin{pmatrix} -\cos\theta\cos\phi\\ \sin\theta\cos\phi \\-\sin\phi \end{pmatrix} = -\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} 
 $$
 
 Note this is inward pointing. Therefore we need an extra minus sign.
 
     \begin{align*}
         &
-        \oint \vec{F}\cdot \vec{n} \;d(\partial \Omega)
+        \oint \vec{F}\cdot \vec{n} \;dS
         \\&
         =
         \int_{0}^{2\pi}\int_0^{\pi} \begin{pmatrix}\cos\theta\sin\phi\cos\phi\\ \sin\theta\sin\phi \\ \sin\theta\sin\phi \end{pmatrix}\cdot\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} \;d\phi\;d\theta
