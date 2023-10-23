@@ -472,27 +472,27 @@
         \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
         = 
         \begin{pmatrix} 
-            -\sqrt{1+\sqrt{(2 - t)t}}\sin s
+            -\sqrt{1+t^2}\sin s
             \\ 
-            \sqrt{1+\sqrt{(2 - t)t}}\cos s
+            \sqrt{1+t^2}\cos s
             \\
             0 
         \end{pmatrix} 
         \times 
         \begin{pmatrix} 
-            \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\cos s 
+            \frac{- t}{\sqrt{1+t^2}}\cos s 
             \\ 
-            \frac{1 - t}{2\sqrt{1+\sqrt{(2-t)t}}\sqrt{(2-t)t}}\sin s 
+            \frac{- t}{\sqrt{1+t^2}}\sin s 
             \\
             1 
         \end{pmatrix} 
         = 
         \begin{pmatrix} 
-            -\sqrt{1+\sqrt{(2 - t)t}}\sin s 
+            \sqrt{1+t^2}\cos s 
             \\ 
-            \sqrt{1+\sqrt{(2 - t)t}}\cos s
+            \sqrt{1+t^2}\sin s
             \\ 
-            -\frac{1 - t}{2\sqrt{(2-t)t}} 
+            t
         \end{pmatrix} 
     \]
     \[
@@ -501,9 +501,15 @@
         \right\| 
         = 
         \left\| 
-        \begin{pmatrix} -\sqrt{1+\sqrt{(2 - t)t}}\sin s \\ \sqrt{1+\sqrt{(2 - t)t}}\cos s\\ -\frac{1 - t}{2\sqrt{(2-t)t}} \end{pmatrix} \right\| 
+        \begin{pmatrix} 
+            \sqrt{1+t^2}\cos s 
+            \\ 
+            \sqrt{1+t^2}\sin s
+            \\ 
+            t
+        \end{pmatrix} \right\| 
         = 
-        \sqrt{1+\sqrt{(2 - t)t} + \frac{(1 - t)^2}{4(2-t)t}}
+        \sqrt{1+2t^2}
     \]
 \end{solution}
 
