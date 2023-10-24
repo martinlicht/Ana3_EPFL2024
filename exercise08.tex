@@ -14,4 +14,40 @@
 \begin{solution}     
 \end{solution}
 
+\begin{exercise}
+    \textit{This is for fun and entertainment only.}
+    Compute 
+    \[
+        \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 }
+    \]
+    without using a calculator.
+\end{exercise}
+\begin{solution}
+    Inside the square root, we find 
+    \begin{align*}
+        &
+        500 \cdot 501 \cdot 502 \cdot 503 + 1
+        \\&=
+        500 \cdot (500+1) \cdot (500+2) \cdot (500+3) + 1
+        \\&=
+        500^4 + 6 \cdot 500^3 + ( 2 + 3 + 6 ) \cdot 500^2 + 6 \cdot 500 + 1
+        \\&=
+        500^4 + 6 \cdot 500^3 + 11 \cdot 500^2 + 6 \cdot 500 + 1
+        .
+    \end{align*}
+    A sharp look reveals that this equals 
+    \begin{align*}
+        &
+        500^4 + 6 \cdot 500^3 + 11 \cdot 500^2 + 6 \cdot 500 + 1
+        =
+        ( 500^2 + 3 \cdot 500 + 1 )^2
+        .
+    \end{align*}
+    Therefore,
+    \[
+        \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 } = 500^2 + 3 \cdot 500 + 1 = 250000 + 1500 + 1
+    \]
+    The total result is $251501$. Which happens to be a prime number.
+\end{solution}
+
 \end{document}
