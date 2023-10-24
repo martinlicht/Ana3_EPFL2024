@@ -4,14 +4,159 @@
 \begin{document}
 \exsheet{7}{31}{October} % parameters are the number of the session and the day
 
+
+
+
 \begin{exercise}
+    Consider the volume 
+    \begin{align}
+     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 5 \right\},
+    \end{align}
+    \begin{itemize}
+     \item
+     What is the surface $S$ of this volume?
+     \item 
+     Find the outward pointing unit normal $\vec n$ along the surface $S$ of this volume. Write $\vec n$ in terms of $(x_1,x_2,x_3)$ at any point on the surface $S$. 
+     \item
+     Find a parameterization of the surface $S$.
+     \item
+     Find a vector field $\vec F$ such that $\vec F \cdot \vec n = x_1^2 + x_2 + x_3$ along the surface $S$.
+     \item 
+     Use the divergence theorem to compute 
+     \begin{align}
+        \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3.
+     \end{align}
+    \end{itemize}
 \end{exercise}
 \begin{solution}     
+    \begin{itemize}
+     \item
+     \item 
+     \item
+     \item
+     \item 
+    \end{itemize}
+\end{solution}
+
+
+\begin{exercise}
+    Consider the volume 
+    \begin{align}
+     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
+    \end{align}
+    Suppose we have a vector field 
+    \begin{align}
+        \vec F(x_1,x_2,x_3) = \left( x_1^2 x_2, 3 x_2^{2} x_3, 9 x_3^{2} x_1 \right)
+    \end{align}
+    Use Gauss theorem to compute the surface integral 
+    \begin{align}
+        \oiint_{S} \vec F d\sigma.
+    \end{align}
+\end{exercise}
+\begin{solution}     
+    Given any scalar function $g : V \to \bbR$, we have 
+    \begin{align}
+     \iiint_V g(x_1,x_2,x_3) dx_1dx_2dx_3
+     =
+     \int_{0}^{1}
+     \int_{0}^{1 - x_2}
+     \int_{0}^{1 - x_2 - x_3}
+     ...
+     g(x_1,x_2,x_3) dx_1dx_2dx_3
+     .
+    \end{align}
+\end{solution}
+
+
+
+\begin{exercise}
+    Let $S$ be a surface with parameterization $\Phi : \Omega \to S$ as follows:
+    \begin{align}
+     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
+     \\
+     \Omega = \left\{ (s,t) \in \bbR^3 \suchthat* s + t < 1, \; s, t > 0 \right\},
+     \quad 
+     \Phi : \Omega \to S, \quad (s,t) \mapsto (s,t,1-s-t).
+    \end{align}
+    We consider the vector fields 
+    \begin{align}
+        \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, x_1 x_2), \quad \vec G(x_1,x_2,x_3) := (-x_2, x_1,x_3)
+    \end{align}
+    \begin{itemize}
+     \item
+     Find the unit normal $\vec n$ given associated with that parameterization.
+     \item
+     Compute the scalar fields $\vec F \cdot \vec n$ and $\vec G \cdot \vec n$ and calculate the integrals of these scalar fields over $S$.
+     \item
+     Compute the integrals using the formula 
+     \begin{align}
+        \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
+     \end{align}
+     and compare the result. 
+     \item 
+     Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
+     \item 
+     Compute the integrals 
+     \begin{align}
+        \oint_C \vec F dl, \quad \oint_C \vec G dl.
+     \end{align}
+     \item 
+     Can you exclude that $\vec F$ or $\vec G$ are gradients of a scalar field?
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+    \begin{itemize}
+     \item
+     \item
+     \item
+     \item 
+     \item 
+     \item 
+     Both $\vec F$ and $\vec G$ have non-zero curl, so they cannot be gradients of a scalar field. 
+    \end{itemize}
 \end{solution}
 
 \begin{exercise}
+    Let $S$ be the surface with parameterization $\Phi : \Omega \to S$ as follows:
+    \begin{align}
+     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 = 1, \; -1 < x_3 < 1 \right\},
+    \end{align}
+    Suppose we have a vector field 
+    \begin{align}
+        \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, 0 ).
+    \end{align}
+    \begin{itemize}
+     \item
+     Find a parameterization of the unit normal $\vec n$ given associated with that parameterization.
+     \item
+     Compute the scalar fields $\vec F \cdot \vec n$ and $\vec G \cdot \vec n$ and calculate the integrals of these scalar fields over $S$.
+     \item
+     Compute the integrals using the formula 
+     \begin{align}
+        \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
+     \end{align}
+     and compare the result. 
+     \item 
+     Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
+     \item 
+     Compute the integrals 
+     \begin{align}
+        \oint_C \vec F dl, \quad \oint_C \vec G dl.
+     \end{align}
+     \item 
+     Can you exclude that $\vec F$ or $\vec G$ are gradients of a scalar field?
+    \end{itemize}
 \end{exercise}
 \begin{solution}     
+    \begin{itemize}
+     \item
+     \item
+     \item
+     \item 
+     \item 
+     \item 
+     Both $\vec F$ and $\vec G$ have non-zero curl, so they cannot be gradients of a scalar field. 
+    \end{itemize}
 \end{solution}
 
 \begin{exercise}
@@ -39,40 +184,6 @@
     \end{itemize}
 \end{solution}
 
-\begin{exercise}
-    \textit{This is for fun and entertainment only.}
-    Compute 
-    \[
-        \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 }
-    \]
-    without using a calculator.
-\end{exercise}
-\begin{solution}
-    Inside the square root, we find 
-    \begin{align*}
-        &
-        500 \cdot 501 \cdot 502 \cdot 503 + 1
-        \\&=
-        500 \cdot (500+1) \cdot (500+2) \cdot (500+3) + 1
-        \\&=
-        500^4 + 6 \cdot 500^3 + ( 2 + 3 + 6 ) \cdot 500^2 + 6 \cdot 500 + 1
-        \\&=
-        500^4 + 6 \cdot 500^3 + 11 \cdot 500^2 + 6 \cdot 500 + 1
-        .
-    \end{align*}
-    A sharp look reveals that this equals 
-    \begin{align*}
-        &
-        500^4 + 6 \cdot 500^3 + 11 \cdot 500^2 + 6 \cdot 500 + 1
-        =
-        ( 500^2 + 3 \cdot 500 + 1 )^2
-        .
-    \end{align*}
-    Therefore,
-    \[
-        \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 } = 500^2 + 3 \cdot 500 + 1 = 250000 + 1500 + 1
-    \]
-    The total result is $251501$. Which happens to be a prime number.
-\end{solution}
+
 
 \end{document}
