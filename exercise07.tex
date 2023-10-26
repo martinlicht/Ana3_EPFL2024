@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{7}{31}{October} % parameters are the number of the session and the day
@@ -7,7 +7,7 @@
 
 
 
-\begin{exercise}
+\begin{exercise} % 1
     Consider the volume 
     \begin{align}
      V := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 5 \right\},
@@ -48,7 +48,7 @@ $$
 \end{solution}
 
 
-\begin{exercise}
+\begin{exercise} % 2
     Consider the volume 
     \begin{align}
      V := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
@@ -59,7 +59,7 @@ $$
     \end{align}
     Use Gauss theorem to compute the surface integral 
     \begin{align}
-        \oint_{S} \vec F d\sigma.
+        \iint_{S} \vec F d\sigma.
     \end{align}
 \end{exercise}
 \begin{solution}     
@@ -98,7 +98,7 @@ $$
 
 
 
-\begin{exercise}
+\begin{exercise} % 3
     Let $S$ be a surface with parameterization $\Phi : \Omega \to S$ as follows:
     \begin{align}
      S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
@@ -199,7 +199,7 @@ $$
     \end{itemize}
 \end{solution}
 
-\begin{exercise}
+\begin{exercise} % 4
     Let $S$ be the surface with parameterization $\Phi : \Omega \to S$ as follows:
     \begin{align}
      S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 = 1, \; -1 < x_3 < 1 \right\},
@@ -212,9 +212,9 @@ $$
      \item
      Find a parameterization of the unit normal $\vec n$ given associated with that parameterization.
      \item
-     Compute the scalar field $\vec F \cdot \vec n$ and calculate the integrals of this scalar field over $S$.
+     Compute the scalar field $\vec F \cdot \vec n$ and calculate the integrals of this scalar fields over $S$.
      \item
-     Compute the integrals using the formula 
+     Compute the integral using the formula 
      \begin{align}
         \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
      \end{align}
@@ -224,10 +224,9 @@ $$
      \item 
      Compute the integrals 
      \begin{align}
-        \oint_C \vec F dl
+        \oint_C \vec F dl.
      \end{align}
-     \item 
-     Can you exclude that $\vec F$ is a gradient of a scalar field?
+
     \end{itemize}
 \end{exercise}
 \begin{solution}     
@@ -269,7 +268,7 @@ $$
     \end{itemize}
 \end{solution}
 
-\begin{exercise}
+\begin{exercise} % 5
     Consider the surface 
     \begin{align*}
         S := \left\{ \vec x \in \bbR^{3} \suchthat* \|x\| = 1, x_3 > 0 \right\}
