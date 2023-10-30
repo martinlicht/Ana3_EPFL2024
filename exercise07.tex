@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{7}{31}{October} % parameters are the number of the session and the day
@@ -32,18 +32,24 @@
     \begin{itemize}
      \item $S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 = 5 \right\}$
      \item We can write $G(x_1,x_2,x_3) = -5 + x_1^2 + x_2^2 + x_3^2$. Then since we know that the gradient is normal to the level curves we have that:
-$$
-\vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{5}\begin{pmatrix}
-x_1\\x_2\\x_3
-\end{pmatrix}
-$$
-     \item $\Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (5\sin\phi\cos\theta, 5\sin\phi\sin\theta,\cos\phi)$
+    $$
+    \vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{5}\begin{pmatrix}
+    x_1\\x_2\\x_3
+    \end{pmatrix}
+    $$
+     \item A possible parameterization is:
+     \begin{align*}
+        \Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (5\sin\phi\cos\theta, 5\sin\phi\sin\theta,\cos\phi)
+     \end{align*}
      \item $\vec{F} = 5\begin{pmatrix}x_1\\1\\1\end{pmatrix}$
-     \item \begin{align*}
+     \item 
+     We use the divergence theorem:
+     \begin{align*}
         \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3 & = \oint_{S} \vec{F}\cdot\vec{n} d\sigma \\
 		& = \iiint_V \nabla \cdot F dV\\
-		& = \iiint_V 5 dV = \frac{4}{3}\pi5^4\\
+		& = \iiint_V 5 dV = 5 \cdot \iiint_V 1 dV = \frac{4}{3}\pi5^4\\
      \end{align*}
+     In the last step, we used the formula for the volume of the ball with radius $r=5$.
     \end{itemize}
 \end{solution}
 
@@ -57,7 +63,7 @@ $$
     \begin{align}
         \vec F(x_1,x_2,x_3) = \left( x_1^2 x_2, 3 x_2^{2} x_3, 9 x_3^{2} x_1 \right)
     \end{align}
-    Use Gauss theorem to compute the surface integral 
+    Use the divergence theorem to compute the surface integral 
     \begin{align}
         \iint_{S} \vec F d\sigma.
     \end{align}
@@ -100,13 +106,13 @@ $$
 
 \begin{exercise} % 3
     Let $S$ be a surface with parameterization $\Phi : \Omega \to S$ as follows:
-    \begin{align}
-     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
+    \begin{gather}
+     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 = 1, \; x_1, x_2, x_3 > 0 \right\},
      \\
      \Omega = \left\{ (s,t) \in \bbR^3 \suchthat* s + t < 1, \; s, t > 0 \right\},
-     \quad 
+     \\ 
      \Phi : \Omega \to S, \quad (s,t) \mapsto (s,t,1-s-t).
-    \end{align}
+    \end{gather}
     We consider the vector fields 
     \begin{align}
         \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, x_1 x_2), \quad \vec G(x_1,x_2,x_3) := (-x_2, x_1,x_3)
