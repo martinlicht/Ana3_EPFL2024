@@ -33,23 +33,23 @@
      \item $S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 = 5 \right\}$
      \item We can write $G(x_1,x_2,x_3) = -5 + x_1^2 + x_2^2 + x_3^2$. Then since we know that the gradient is normal to the level curves we have that:
     $$
-    \vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{5}\begin{pmatrix}
+    \vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{\sqrt{5}}\begin{pmatrix}
     x_1\\x_2\\x_3
     \end{pmatrix}
     $$
      \item A possible parameterization is:
      \begin{align*}
-        \Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (5\sin\phi\cos\theta, 5\sin\phi\sin\theta,\cos\phi)
+        \Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (\sqrt{5}\sin\phi\cos\theta,\sqrt{5}\sin\phi\sin\theta,sqrt{5}\cos\phi)
      \end{align*}
-     \item $\vec{F} = 5\begin{pmatrix}x_1\\1\\1\end{pmatrix}$
+     \item $\vec{F} = \sqrt{5}\begin{pmatrix}x_1\\1\\1\end{pmatrix}$
      \item 
      We use the divergence theorem:
      \begin{align*}
         \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3 & = \oint_{S} \vec{F}\cdot\vec{n} d\sigma \\
 		& = \iiint_V \nabla \cdot F dV\\
-		& = \iiint_V 5 dV = 5 \cdot \iiint_V 1 dV = \frac{4}{3}\pi5^4\\
+		& = \iiint_V \sqrt{5} dV = \sqrt{5} \cdot \iiint_V 1 dV = \frac{4}{3}\pi\sqrt{5}^4 =  \frac{4}{3}\pi\cdot 25\\
      \end{align*}
-     In the last step, we used the formula for the volume of the ball with radius $r=5$.
+     In the last step, we used the formula for the volume of the ball with radius $r=\sqrt{5}$.
     \end{itemize}
 \end{solution}
 
@@ -112,7 +112,7 @@ $$
     \begin{gather}
      S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 = 1, \; x_1, x_2, x_3 > 0 \right\},
      \\
-     \Omega = \left\{ (s,t) \in \bbR^3 \suchthat* s + t < 1, \; s, t > 0 \right\},
+     \Omega = \left\{ (s,t) \in \bbR^2 \suchthat* s + t < 1, \; s, t > 0 \right\},
      \\ 
      \Phi : \Omega \to S, \quad (s,t) \mapsto (s,t,1-s-t).
     \end{gather}
@@ -258,20 +258,29 @@ $$
 	& = \int_0^{2\pi} \int_{-1}^1 0  dsdt  = 0\\
      \end{align*}
      \item A counter clockwise parameterisation of $\partial \Omega$ is given by:
-	$$
-	\gamma: [0,2\pi) \mapsto \partial \Omega, (\theta) \mapsto (\theta, 1),
-	$$
+	\begin{align*}
+	&\gamma_1: [0,2\pi) \mapsto \partial \Omega_1, (r) \mapsto (r, 1)\\
+	&\gamma_2: [1,-1) \mapsto \partial \Omega_2, (r) \mapsto (2\pi, r)\\
+	&\gamma_3: [2\pi,0) \mapsto \partial \Omega_3, (r) \mapsto (r, -1)\\
+	&\gamma_4: [-1,1) \mapsto \partial \Omega_4, (r) \mapsto (0, r)\\
+	\end{align*}
 
 	which we can use to build a parameterization of the curve $C = \partial S$:
-	$$
-	\Phi \circ \gamma: [0,2\pi) \mapsto C, (\theta) \mapsto (\cos\theta, \sin\theta, 1)
-	$$
+	\begin{align*}
+	&\Phi \circ \gamma_1: [0,2\pi) \mapsto C_1, (r) \mapsto (\cos r, \sin r, 1)\\
+	&\Phi \circ \gamma_2: [1,-1)  \mapsto C_2, (r) \mapsto (1, 0, r)\\
+	&\Phi \circ \gamma_3: [2\pi,0) \mapsto C_3, (r) \mapsto (\cos r, \sin r, -1)\\
+	&\Phi \circ \gamma_4: [-1,1) \mapsto C_4, (r) \mapsto (1, 0, r)\\
+	\end{align*}
      \item 
 	\begin{align*}
-	\oint_C \vec{F} d\ell &= \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta\\
-	 &= \int_0^{2\pi} \begin{pmatrix} \sin\theta\\ -\cos\theta\\ 0 \end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\ \cos\phi \\ 0\end{pmatrix} d \theta\\
-	&= \int_0^{2\pi} -1 d \theta = -2\pi\\
-     \end{align*}   
+	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3\cup C_4} \vec F dl\\
+	&= \sum_{i = 1}^4\int_{C_i} \vec F(\Phi\circ \gamma_i) \cdot \frac{d(\Phi\circ \gamma_i)}{dr}dl \\
+	&= \int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr + \int_{1}^{-1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr + \int_{2\pi}^0 \begin{pmatrix}-\sin r\\ \cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr +\\
+	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr\\
+	&=2\int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr \\
+	&=-2 \int_0^{2\pi} dr = -4\pi
+	\end{align*}
      \item 
      $\vec F$ has  non-zero curl, so it cannot be a gradient of a scalar field. 
     \end{itemize}
@@ -293,7 +302,7 @@ $$
 \end{exercise}
 \begin{solution}     
     \begin{itemize}
-     \item $$\Phi: \Omega:= [0,2\pi)\times[0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\theta,\sin\theta\sin\phi,\cos\phi) $$
+     \item $$\Phi: \Omega:= [0,2\pi)\times[0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi) $$
 			$$\vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} = \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}$$
 
      \item We first parameterize the boundary of the parameter space $\Omega$ 
