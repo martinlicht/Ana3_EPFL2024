@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{7}{31}{October} % parameters are the number of the session and the day
@@ -79,10 +79,11 @@
 
 We solve each integral seperately. Note that we apply integration by parts in between steps. 
     \begin{align*}
-        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 dx_1 dx_2 dx_3 &= \int_{0}^{1}\int_{0}^{1 - x_3} (1-x_2-x_3)^2 x_2 dx_2 dx_3\\
-	&= \int_{0}^{1}\int_{0}^{1 - x_3} \frac{1}{3}(1-x_2-x_3)^3 dx_2 dx_3\\
-	&= \int_{0}^{1} \frac{1}{12}(1-x_3)^4 dx_3\\
-	&= \left[ \frac{-1}{60}(1-x_3)^5\right]_0^1 = \frac{1}{60}
+        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 dx_1 dx_2 dx_3
+        &= \int_{0}^{1}\int_{0}^{1 - x_3} (1-x_2-x_3)^2 x_2 dx_2 dx_3\\
+        &= \int_{0}^{1}\int_{0}^{1 - x_3} \frac{1}{3}(1-x_2-x_3)^3 dx_2 dx_3\\
+        &= \int_{0}^{1} \frac{1}{12}(1-x_3)^4 dx_3\\
+        &= \left[ \frac{-1}{60}(1-x_3)^5\right]_0^1 = \frac{1}{60}
     \end{align*}
     \begin{align*}
         \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 6x_2x_3  dx_1 dx_2 dx_3 &= \int_{0}^{1}\int_{0}^{1 - x_3} 6(1 - x_2 - x_3) x_2 x_3   dx_2 dx_3 \\
@@ -93,16 +94,14 @@ We solve each integral seperately. Note that we apply integration by parts in be
     \end{align*}
 	\begin{align*}
          \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 18x_3x_1 dx_1 dx_2 dx_3&= \int_{0}^{1}\int_{0}^{1 - x_3} 9x_3(1-x_2-x_3)^2   dx_2 dx_3 \\
-	&=\int_{0}^{1} 3x_3(1-x_3)^3  dx_3 \\
-	&= \int_{0}^{1} \frac{3}{4}(1-x_3)^4  dx_3 \\
-	&= \left[-\frac{3}{20}(1-x_3)^5  \right]_0^1 =\frac{3}{20}
+        &=\int_{0}^{1} 3x_3(1-x_3)^3  dx_3 \\
+        &= \int_{0}^{1} \frac{3}{4}(1-x_3)^4  dx_3 \\
+        &= \left[-\frac{3}{20}(1-x_3)^5  \right]_0^1 =\frac{3}{20}
     \end{align*}
-
-We conclude that:
-
-$$
-\int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3 = \frac{1}{60} + \frac{1}{20} + \frac{3}{20} = \frac{13}{60}
-$$
+    We conclude that:
+    $$
+    \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3 = \frac{1}{60} + \frac{1}{20} + \frac{3}{20} = \frac{13}{60}
+    $$
 \end{solution}
 
 
