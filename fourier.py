@@ -64,6 +64,38 @@ def get_coefficients_diraccomb( counter ):
         b[m] = 0
     return a_0, a, b
 
+def get_coefficients_exercise1( counter ):
+    a_0 = 0
+    a = [ 0 for m in range(0,counter) ]
+    b = [ 0 for m in range(0,counter) ]
+    for m in range(0,counter):
+        n = m+1
+        if n == 1 or n % 2 == 0: continue
+        a[m] = 0.
+        b[m] = 1. / ( n*n ) 
+    return a_0, a, b
+
+def get_coefficients_exercise2( counter ):
+    a_0 = 0
+    a = [ 0 for m in range(0,counter) ]
+    b = [ 0 for m in range(0,counter) ]
+    for m in range(0,counter):
+        n = m+1
+        if n % 2 == 0: continue
+        a[m] = (-1.)**((n+1)/2) / ( n*n*n ) 
+        b[m] = 0
+    return a_0, a, b
+
+def get_coefficients_exercise3( counter ):
+    a_0 = 0
+    a = [ 0 for m in range(0,counter) ]
+    b = [ 0 for m in range(0,counter) ]
+    for m in range(0,counter):
+        n = m+1
+        a[m] = (-1.)**(n+1) / ( n*n ) 
+        b[m] = 0
+    return a_0, a, b
+
 
 
 
@@ -77,7 +109,11 @@ while counter < N:
     a_0, a, b = get_coefficients_sawtooth( counter )
     a_0, a, b = get_coefficients_squarewave( counter )
     a_0, a, b = get_coefficients_triangle( counter )
+    a_0, a, b = get_coefficients_exercise3( counter )
+    a_0, a, b = get_coefficients_exercise2( counter )
     # a_0, a, b = get_coefficients_diraccomb( counter )
+
+    # print( a_0, a, b )
 
     for i in range(0,len(ys)):
         value = a_0

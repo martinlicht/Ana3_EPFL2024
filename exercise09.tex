@@ -5,6 +5,69 @@
 \exsheet{9}{14}{November} % parameters are the number of the session and the day
 
 \begin{exercise}
+    Compute the Fourier coefficients of the function $f$ that has period $2\pi$ and satisfies
+    \[
+        f(x) = \left\{\begin{array}{ll} 1 & 0 \leq x < \pi \\ 0 & \pi < x \leq 2\pi \end{array}\right.
+    \]
+\end{exercise}
+\begin{solution}     
+    \begin{align*}
+        a_0 
+        &= 
+        \frac{2}{2\pi} \int_0^{2\pi} f(x) \, dx 
+        = 
+        \frac{2}{2\pi} \int_0^\pi \, dx  = 1
+        .
+    \end{align*}
+    \begin{align*}
+        a_n 
+        &= 
+        \frac{2}{2\pi} \int_0^{2\pi} \cos\left(\frac{2\pi n x}{T}\right) \, dx 
+        \\&= 
+        \frac{2}{2\pi} \int_0^\pi \cos\left(\frac{2\pi n x}{T}\right) \, dx 
+        \\
+        &= 
+        \frac{2}{2\pi} \left[ \frac{T}{2\pi n} \sin\left(\frac{2\pi n x}{T}\right) \right]_{x=0}^{x=\pi}
+        \\&= 
+        \frac{2}{2\pi} \frac{T}{2\pi n} \left[ \sin\left(\frac{2\pi n \pi}{T}\right) - \sin(0) \right] 
+        \\&= 
+        \frac{2}{2\pi} \frac{T}{2\pi n} \sin\left(\frac{2\pi n \pi}{T}\right) 
+        \\&= 
+        0.
+    \end{align*}
+    \begin{align*}
+        b_n 
+        &= 
+        \frac{\pi}{2}
+        \int_0^\pi \sin(nx) \, dx 
+        \\
+        &= 
+        \frac{\pi}{2}
+        \left[-\frac{1}{n} \cos(nx)\right]_0^\pi 
+        \\
+        &= 
+        -\frac{\pi}{2}
+        \frac{1}{n} \left[ \cos(n\pi) - \cos(0) \right] 
+        \\
+        &= 
+        -
+        \frac{\pi}{2}
+        \frac{1}{n} \left[ (-1)^n - 1 \right] 
+        \\
+        &= 
+        \frac{\pi}{2}
+        \begin{cases}
+            0 & \text{if } n \text{ is even} 
+            \\
+            \frac{1}{n} & \text{if } n \text{ is odd}
+        \end{cases}
+    \end{align*}
+    Thus we find $a_0 = 1$ and $a_1 = a_2 = \dots = 0$,
+    and either $b_n = 0$ if $n$ is even and $b_n = \frac{2}{n\pi}$ if $n$ is odd. 
+\end{solution}
+
+
+\begin{exercise}
 \end{exercise}
 \begin{solution}     
 \end{solution}
