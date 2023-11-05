@@ -301,7 +301,7 @@ We solve each integral seperately. Note that we apply integration by parts in be
 \end{exercise}
 \begin{solution}     
     \begin{itemize}
-     \item $$\Phi: \Omega:= [0,2\pi)\times[0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi) $$
+     \item $$\Phi: \Omega:= [0,2\pi)\times[0,\frac{\pi}{2}) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi) $$
 			$$\vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} = \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}$$
 
      \item We first parameterize the boundary of the parameter space $\Omega$ 
@@ -322,9 +322,9 @@ $$
      \begin{align*}
 \iint_S \nabla \times \vec{F} d\sigma &= \iint_S \nabla \times \vec{F}\cdot \vec{n}||\partial_{\theta}\Phi\times \partial_{\phi}\Phi|| d\sigma\\
  &= \iint_S \begin{pmatrix} 0\\ 0\\ 2 \end{pmatrix}\cdot \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}\sin\phi d\sigma\\
-&= \int_0^{2\pi}\int_0^{\pi} 2\cos\phi\sin\phi d\phi d\theta\\
-&= \int_0^{2\pi}\int_0^{\pi} \sin2\phi d\phi d\theta\\
-&= 2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\pi} = 2\pi\\
+&= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi d\phi d\theta\\
+&= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} \sin2\phi d\phi d\theta\\
+&= 2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}} = 2\pi\\
      \end{align*}   
 
 \begin{align*}
