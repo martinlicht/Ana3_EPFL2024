@@ -272,6 +272,32 @@ $$
     \end{itemize}
 \end{exercise}
 \begin{solution}     
+The surface is parameterized by $$\Omega := [0,\pi]\times[0,\frac{\pi}{2}] \mapsto S: (\theta, \phi) \mapsto (\cos\theta\sin\phi, \sin\theta\sin\phi, \cos\phi)$$
+The boundary of domain $\Omega$ is parameterised by
+\begin{align*}
+        &\gamma_1 : \left[0,\pi\right] \to \bbR^2, \quad t \mapsto \left( t, \frac{\pi}{2} \right),\\
+        &\gamma_2 : \left[
+\frac{\pi}{2},0\right] \to \bbR^2, \quad t \mapsto \left( \pi, t \right),\\
+        &\gamma_3 : \left[
+\pi,0\right] \to \bbR^2, \quad t \mapsto \left( t, 0 \right),\\
+        &\gamma_4 : \left[0,\frac{\pi}{2}\right] \to \bbR^2, \quad t \mapsto \left( 0, t \right).
+\end{align*} 
+Now we can construct the boundary of surface $S$ as follows:
+\begin{align*}
+        &\Phi\circ\gamma_1 : \left[0,\pi\right] \to \bbR^3, \quad t \mapsto (\cos t, \sin t, 0),\\
+        &\Phi\circ\gamma_2 : \left[
+\frac{\pi}{2},0\right] \to \bbR^3, \quad t \mapsto (-\sin t, 0, \cos t),\\
+        &\Phi\circ\gamma_4 : \left[0,\frac{\pi}{2}\right] \to \bbR^3, \quad t \mapsto (\sin t, 0, \cos t).
+\end{align*}
+
+Note that we do not need $\Phi\circ\gamma_3$ to parameterise the boundary of $S$. Moreover it is not a regular parameterisation.
+
+ \begin{align*}
+         \iint_{S} \operatorname{curl} \vec F \;d\sigma &=  \int_0^{\pi} \begin{pmatrix} \cos t \sin t\\ 0 \\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin t\\ 0 \\ -\sin t\end{pmatrix}dt +  \int_{\frac{\pi}{2}}^0 \begin{pmatrix} 0\\ 0 \\ -\sin t \cos t\end{pmatrix}\cdot \begin{pmatrix} \cos t\\ 0 \\ -\sin t\end{pmatrix}dt\\ &+  \int_0^{\frac{\pi}{2}} \begin{pmatrix} 0\\0\\ \sin t\cos t\end{pmatrix}\cdot \begin{pmatrix} \cos t \\ 0 \\ -\sin t \end{pmatrix}dt\\
+=& \int_0^{\pi} -\cos t \sin^2 t dt - 2 \int_0^{\frac{\pi}{2}} \sin^2 t \cos t dt\\
+=& -\int_0^0 u^2 du - 2\int_0^1 u^2 du\\
+=& -\frac{2}{3}
+\end{align*}
 \end{solution}
 
 
