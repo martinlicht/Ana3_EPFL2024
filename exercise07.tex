@@ -179,28 +179,28 @@ We solve each integral seperately. Note that we apply integration by parts in be
      \item The boundary of $\Omega$ consists of three lines which can be parameterized in a counter clockwise way as follows:
 	\begin{align*}
 	&\gamma_1 : [0,1]\mapsto \partial \Omega_1, (r) \mapsto (r,0),\\
-	&\gamma_2 : [1,0]\mapsto \partial \Omega_2, (r) \mapsto (r,1-r),\\
-	&\gamma_3 : [1,0]\mapsto \partial \Omega_3, (r) \mapsto (0,r),
+	&\gamma_2 : [0,1]\mapsto \partial \Omega_2, (r) \mapsto (1-r,r),\\
+	&\gamma_3 : [0,1]\mapsto \partial \Omega_3, (r) \mapsto (0,1-r),
 	\end{align*}
 	which we can use to parameterize the curve $C$ which consist of three lines:
 	\begin{align*}
 	&\Phi\circ\gamma_1 : [0,1]\mapsto C_1, (r) \mapsto (r,0,1-r),\\
-	&\Phi\circ\gamma_2 : [1,0]\mapsto C_2, (r) \mapsto (r,1-r,0),\\
-	&\Phi\circ\gamma_3 : [1,0]\mapsto C_3, (r) \mapsto (0,r,1-r),
+	&\Phi\circ\gamma_2 : [0,1]\mapsto C_2, (r) \mapsto (1-r,r,0),\\
+	&\Phi\circ\gamma_3 : [0,1]\mapsto C_3, (r) \mapsto (0,1-r,r),
 	\end{align*}
      \item 
 	\begin{align*}
 	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3} \vec F dl\\
 	&= \int_{C_1} \vec F(\Phi\circ \gamma_1) \cdot \frac{d(\Phi\circ \gamma_1)}{dr}dl + \int_{C_2} \vec F(\Phi\circ \gamma_2) \cdot \frac{d(\Phi\circ \gamma_2)}{dr}dl + \int_{C_3} \vec F(\Phi\circ \gamma_3) \cdot \frac{d(\Phi\circ \gamma_3)}{dr}dl\\
-	&= \int_0^1 \begin{pmatrix}0\\-r+r^2\\0\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_1^0 \begin{pmatrix}0\\0\\r-r^2\end{pmatrix}\cdot\begin{pmatrix}1\\-1\\0\end{pmatrix}dr + \int_1^0 \begin{pmatrix}r-r^2\\0\\0\end{pmatrix}\cdot\begin{pmatrix}0\\1\\-1\end{pmatrix}dr =\\
+	&= \int_0^1 \begin{pmatrix}0\\-r+r^2\\0\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_0^1 \begin{pmatrix}0\\0\\r-r^2\end{pmatrix}\cdot\begin{pmatrix}-1\\1\\0\end{pmatrix}dr + \int_0^1 \begin{pmatrix}r-r^2\\0\\0\end{pmatrix}\cdot\begin{pmatrix}0\\-1\\1\end{pmatrix}dr =\\
 	&=0
 	\end{align*}
 	\begin{align*}
 	\oint_C \vec G dl &= \oint_{C_1 \cup C_2 \cup C_3} \vec G dl\\
 	&= \int_{C_1} \vec G(\Phi\circ \gamma_1) \cdot \frac{d(\Phi\circ \gamma_1)}{dr}dl + \int_{C_2} \vec G\Phi\circ \gamma_2) \cdot \frac{d(\Phi\circ \gamma_2)}{dr}dl + \int_{C_3} \vec G(\Phi\circ \gamma_3) \cdot \frac{d(\Phi\circ \gamma_3)}{dr}dl\\
-	&= \int_0^1 \begin{pmatrix}0\\r\\1-r\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_1^0 \begin{pmatrix}r-1\\r\\0\end{pmatrix}\cdot\begin{pmatrix}1\\-1\\0\end{pmatrix}dr + \int_1^0 \begin{pmatrix}-r\\0\\1-r\end{pmatrix}\cdot\begin{pmatrix}0\\1\\-1\end{pmatrix}dr =\\
-	&= \int_0^1 r-1dr + \int_1^0 rdr + \int_1^0 r-1dr\\
-	&= \int_1^0 rdr = -\frac{1}{2}
+	&= \int_0^1 \begin{pmatrix}0\\r\\1-r\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_0^1 \begin{pmatrix}-r\\1-r\\0\end{pmatrix}\cdot\begin{pmatrix}-1\\1\\0\end{pmatrix}dr + \int_0^1 \begin{pmatrix}r-1\\0\\r\end{pmatrix}\cdot\begin{pmatrix}0\\-1\\1\end{pmatrix}dr =\\
+	&= \int_0^1 r-1dr + \int_0^1 r + 1- r dr + \int_0^1 rdr\\
+	&= \int_0^1 2rdr = 1
 	\end{align*}
      \item 
      Both $\vec F$ and $\vec G$ have non-zero curl, so they cannot be gradients of a scalar field. 
@@ -259,25 +259,25 @@ We solve each integral seperately. Note that we apply integration by parts in be
      \item A counter clockwise parameterisation of $\partial \Omega$ is given by:
 	\begin{align*}
 	&\gamma_1: [0,2\pi) \mapsto \partial \Omega_1, (r) \mapsto (r, 1)\\
-	&\gamma_2: [1,-1) \mapsto \partial \Omega_2, (r) \mapsto (2\pi, r)\\
-	&\gamma_3: [2\pi,0) \mapsto \partial \Omega_3, (r) \mapsto (r, -1)\\
+	&\gamma_2: [-1,1) \mapsto \partial \Omega_2, (r) \mapsto (2\pi, -r)\\
+	&\gamma_3: [0,2\pi) \mapsto \partial \Omega_3, (r) \mapsto (2\pi - r, -1)\\
 	&\gamma_4: [-1,1) \mapsto \partial \Omega_4, (r) \mapsto (0, r)\\
 	\end{align*}
 
 	which we can use to build a parameterization of the curve $C = \partial S$:
 	\begin{align*}
 	&\Phi \circ \gamma_1: [0,2\pi) \mapsto C_1, (r) \mapsto (\cos r, \sin r, 1)\\
-	&\Phi \circ \gamma_2: [1,-1)  \mapsto C_2, (r) \mapsto (1, 0, r)\\
-	&\Phi \circ \gamma_3: [2\pi,0) \mapsto C_3, (r) \mapsto (\cos r, \sin r, -1)\\
+	&\Phi \circ \gamma_2: [1,-1)  \mapsto C_2, (r) \mapsto (1, 0, -r)\\
+	&\Phi \circ \gamma_3: [0,2\pi) \mapsto C_3, (r) \mapsto (\cos r, -\sin r, -1)\\
 	&\Phi \circ \gamma_4: [-1,1) \mapsto C_4, (r) \mapsto (1, 0, r)\\
 	\end{align*}
      \item 
 	\begin{align*}
 	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3\cup C_4} \vec F dl\\
 	&= \sum_{i = 1}^4\int_{C_i} \vec F(\Phi\circ \gamma_i) \cdot \frac{d(\Phi\circ \gamma_i)}{dr}dl \\
-	&= \int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr + \int_{1}^{-1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr + \int_{2\pi}^0 \begin{pmatrix}-\sin r\\ \cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr +\\
-	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr\\
-	&=2\int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr \\
+	&= \int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr + \int_{-1}^{1} \begin{pmatrix}0\\r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr + \int_0^{2\pi} \begin{pmatrix}\sin r\\ \cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\-\cos r\\ 0\end{pmatrix}dr +\\
+	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr\\
+	&=2\int_0^{2\pi} -\sin^2 r - \cos^2 rdr \\
 	&=-2 \int_0^{2\pi} dr = -4\pi
 	\end{align*}
      \item 
