@@ -5,7 +5,7 @@
 \exsheet{9}{14}{November} % parameters are the number of the session and the day
 
 \begin{exercise}
-    Compute the Fourier coefficients of the function $f$ that has period $2\pi$ and satisfies
+    Compute the Fourier coefficients of the function $f$ that has period $T = 2\pi$ and satisfies
     \[
         f(x) = \left\{\begin{array}{ll} 1 & 0 \leq x < \pi \\ 0 & \pi < x \leq 2\pi \end{array}\right.
     \]
@@ -71,7 +71,7 @@
 
 
 \begin{exercise}
-    Compute the Fourier coefficients of the following functions, which have period $1$ and have the given values over the interval $[0,1)$:
+    Compute the Fourier coefficients of the following functions, which have period $T = 1$ and have the given values over the interval $[0,1)$:
     \begin{itemize}
      \item 
      \[
@@ -157,8 +157,45 @@
 \end{solution}
 
 \begin{exercise}
+    Compute the Fourier coefficients of the following functions, which have period $T = 2\pi$ and have the given values over the interval $[0,2\pi)$:
+    \begin{itemize}
+     \item 
+     \[
+        f(x) = e^{x - \pi}
+     \]
+     \item 
+     \[
+        g(x) = e^{(x - \pi)^2}
+     \]
+     \item 
+     \[
+        h(x) = \left\{\begin{array}{ll}
+            \sin(x) & 0 \leq x < \frac \pi 2
+            \\
+            0   & \frac \pi 2 \leq x < \frac{3\pi}{2} 
+            \\
+            \sin(x) & \frac {3\pi} 2 \leq x < 2\pi
+        \end{array}\right.
+     \]
+     %
+    \end{itemize}
 \end{exercise}
 \begin{solution}     
 \end{solution}
+
+
+\begin{exercise}
+    Compute the Fourier coefficients of the function $f$, which have period $T = 2\pi$ and which satisfies 
+     \[
+        f(x) = \sin(x) \text{ if } 0 \leq x  < \pi,
+     \]
+     and 
+     \[
+        f(x) = f(-x) \text{ for all } x \in \mathbb R.
+     \]
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
 
 \end{document}
