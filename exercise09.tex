@@ -11,14 +11,17 @@
     \]
 \end{exercise}
 \begin{solution}     
+    We notice that the period $T$ equals $T = 2\pi$. 
+    The first coefficient is just the average:
     \begin{align*}
         a_0 
         &= 
-        \frac{2}{2\pi} \int_0^{2\pi} f(x) \, dx 
+        \frac{1}{2\pi} \int_0^{2\pi} f(x) \, dx 
         = 
-        \frac{2}{2\pi} \int_0^\pi \, dx  = 1
+        \frac{1}{2\pi} \int_0^\pi \, dx  = 1
         .
     \end{align*}
+    For the other coefficients, we use the formulas from the lecture:
     \begin{align*}
         a_n 
         &= 
@@ -29,7 +32,7 @@
         &= 
         \frac{2}{2\pi} \left[ \frac{T}{2\pi n} \sin\left(\frac{2\pi n x}{T}\right) \right]_{x=0}^{x=\pi}
         \\&= 
-        \frac{2}{2\pi} \frac{T}{2\pi n} \left[ \sin\left(\frac{2\pi n \pi}{T}\right) - \sin(0) \right] 
+        \frac{2}{2\pi} \frac{T}{2\pi n} \left( \sin\left(\frac{2\pi n \pi}{T}\right) - \sin(0) \right) 
         \\&= 
         \frac{2}{2\pi} \frac{T}{2\pi n} \sin\left(\frac{2\pi n \pi}{T}\right) 
         \\&= 
@@ -86,6 +89,71 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}     
+    \begin{itemize}
+        \item 
+        To compute the Fourier coefficients of $f(x) = x^2$ over the interval $[0,1)$ with a period of $1$, use the formulas from the lecture:
+        \[
+            a_0 = \int_{0}^{1} f(x) dx  = \int_{0}^{1} x^2 dx  = \left[ \frac{x^3}{3} \right]_{0}^{1} = \frac 1 3.
+        \]
+        For other coefficients, we apply integration by parts twice, and we use that $\sin$ vanishes at multiples of $\pi$:
+        \begin{align*}
+            a_n 
+            &
+            = 
+            \frac{2}{T}
+            \int_{0}^{1} x^2 \cos(2\pi n x) dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            -
+            \frac{2}{T}
+            \int_{0}^{1} \frac{ 2x \sin(2\pi n x) }{ 2\pi n } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            -
+            \frac{4}{T}
+            \int_{0}^{1} x \frac{ \sin(2\pi n x) }{ 2\pi n } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            -
+            \frac{4}{T}
+            \left[ x \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \int_{0}^{1} \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            -
+            \frac{4}{T}
+            \left[ x \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \left[ \frac{ -\sin(2\pi n x) }{ 8\pi^3 n^3 } \right]_{x=0}^{x=1}
+            .
+        \end{align*}
+        \item 
+        \[
+           g(x) = (1-x)x
+        \]
+        \item 
+        \[
+           h(x) = |\sin( 2 \pi x )|
+        \]
+        %
+       \end{itemize}
+
+    To compute the Fourier coefficients of the function \( f(x) = x^2 \) over the interval \([0,1)\) with a period of 1, use the formulas from the lecture:
+\[
+	a_0 = \int_{0}^{1} f(x) dx  = \int_{0}^{1} x^2 dx  = \left[ \frac{x^3}{3} \right]_{0}^{1} = \frac 1 3.
+\]
+
 \end{solution}
 
 \begin{exercise}
