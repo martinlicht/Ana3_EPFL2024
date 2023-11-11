@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+%\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{9}{14}{November} % parameters are the number of the session and the day
@@ -136,23 +136,123 @@
             +
             \frac{4}{T}
             \left[ \frac{ -\sin(2\pi n x) }{ 8\pi^3 n^3 } \right]_{x=0}^{x=1}
-            .
+	\\&
+	= 
+	\frac{1}{2\pi^2 n^2}
         \end{align*}
-        \item 
-        \[
-           g(x) = (1-x)x
+        \begin{align*}
+            b_n 
+            &
+            = 
+            \frac{2}{T}
+            \int_{0}^{1} x^2 \sin(2\pi n x) dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[- x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{2}{T}
+            \int_{0}^{1} \frac{ 2x \cos(2\pi n x) }{ 2\pi n } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[- x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \int_{0}^{1} \frac{ x \cos(2\pi n x) }{ 2\pi n } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ -x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \left[ x \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
+            -
+            \frac{4}{T}
+            \int_{0}^{1} \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[ -x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \left[ x \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
+            +
+            \frac{4}{T}
+            \left[ \frac{ \cos(2\pi n x) }{ 8\pi^3 n^3 } \right]_{x=0}^{x=1}
+	\\&
+	= 
+	-\frac{2}{T}\frac{1}{2\pi n} + \frac{4}{T}\frac{1}{8\pi^3n^3} -  \frac{4}{T}\frac{1}{8\pi^3n^3} = -\frac{1}{\pi n}
+        \end{align*}
+        \item To compute the fourier coefficients of $g(x) = (1-x)x$ we note that we can write $g(x) = x - f(x)$. We will only need to determine the 		fourier coefficients of $\tilde{g}(x) = x$ since we already computed the fourier coefficients of $f(x)$. Moreover $\tilde{g}(x)$ is odd therefore $a_n = 0$. 
+	\[
+            a_0 = \int_{0}^{1} \tilde{g}(x) dx  = \int_{0}^{1} x dx  = \left[ \frac{x^2}{2} \right]_{0}^{1} = \frac 1 2.
         \]
-        \item 
-        \[
-           h(x) = |\sin( 2 \pi x )|
+        \begin{align*}
+            b_n 
+            &
+            = 
+            \frac{2}{T}
+            \int_{0}^{1} x \sin(2\pi n x) dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[- x \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{2}{T}
+            \int_{0}^{1} \frac{ \cos(2\pi n x) }{ 2\pi n } dx
+            \\&
+            =
+           \frac{2}{T}
+            \left[- x \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
+            +
+            \frac{2}{T}
+            \left[ \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
+	\\&
+	= 
+	-\frac{2}{T}\frac{1}{2\pi n} =  -\frac{1}{\pi n} 
+        \end{align*}	
+	Now the fourier coefficients of $g(x)$ are given by
+        \begin{align*}
+            &b_n = -\frac{1}{\pi n} - - \frac{1}{\pi n} = 0
+            \\& 
+	a_n = 0 - \frac{1}{2\pi^2 n^2} =  - \frac{1}{2\pi^2 n^2} 
+            \\&
+	a_0 = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}
+        \end{align*}	
+	\item
+Note that $h(x)$ is even therefore $b_n = 0$. 
+	\[
+            a_0 = \frac{2}{T} \int_{0}^{\frac 1 2} \sin 2\pi x dx  =  \frac 2 T\left[ \frac{-1}{2\pi} \cos{2\pi x} \right]_{0}^{\frac 1 2} =\frac{2}{T \pi} = \frac{2}{\pi} .
         \]
-        %
+        \begin{align*}
+            a_n 
+            &
+            = 
+            \frac{4}{T}
+            \int_{0}^{\frac 1 2} \sin 2\pi x \cos(2\pi n x) dx
+            \\&
+            =
+            \frac{4}{T}
+            \int_{0}^{\frac 1 2} \frac 1 2 \sin{2\pi(n-1)x} + \frac 1 2 \sin{2\pi(n+1)x} dx
+            \\&
+            =
+            \left[- \frac{ \cos2\pi(n-1)x }{ \pi(n-1) } \right]_{x=0}^{x=\frac 1 2}
+            +
+            \left[- \frac{ \cos2\pi(n+1)x }{ \pi(n+1) } \right]_{x=0}^{x=\frac 1 2}
+	\\&
+	= 
+	-\frac{(-1)^{n-1}}{\pi(n-1)} +  \frac{1}{\pi(n-1)}  - \frac{(-1)^{n+1}}{\pi(n+1)} + \frac{1}{\pi(n+1)}
+	\\&
+	= \frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1-(-1)^{n+1}}{\pi(n+1)} 
+        \end{align*}	
+$$a_n = 
+\begin{cases}
+0 ,\quad &\text{if } n\text{ is odd,}\\
+\frac{2}{\pi(n-1)} + \frac{2}{\pi(n+1)}  ,\quad &\text{if } n\text{ is even,}
+\end{cases}
+$$
        \end{itemize}
-
-    To compute the Fourier coefficients of the function \( f(x) = x^2 \) over the interval \([0,1)\) with a period of 1, use the formulas from the lecture:
-\[
-	a_0 = \int_{0}^{1} f(x) dx  = \int_{0}^{1} x^2 dx  = \left[ \frac{x^3}{3} \right]_{0}^{1} = \frac 1 3.
-\]
 
 \end{solution}
 
@@ -181,6 +281,108 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}     
+\begin{itemize}
+\item To compute the Fourier coefficients of $f(x) = x^2$ over the interval $[0,1)$ with a period of $1$, use the formulas from the lecture:
+        \[
+            a_0 = \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} e^{x-\pi} dx  = \frac{1}{2\pi}\left[ e^{x-\pi} \right]_{0}^{2\pi} = \frac{1}{\pi}\left(e^{\pi} - e^{-\pi}\right)
+        \]
+        For other coefficients, we apply integration by parts twice, and see that we obtain the same integral again:
+        \begin{align*}
+            a_n 
+            &
+            = 
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x - \pi} \cos( n x) dx
+            \\&
+            =
+            \frac{1}{\pi}
+            \left[ e^{x - \pi} \frac{ \sin(n x) }{ n } \right]_{x=0}^{x=2\pi}
+            -
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin( n x) }{ n } dx
+            \\&
+	=
+            \frac{1}{\pi}
+            \left[ e^{x - \pi} \frac{ \sin(n x) }{ n } \right]_{x=0}^{x=2\pi}
+            -
+            \frac{1}{\pi}
+            \left[ e^{x - \pi} \frac{ -\cos(n x) }{ n^2 } \right]_{x=0}^{x=2\pi}
+            +
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x-\pi}\frac{ -\cos(n x) }{ n^2 } dx
+	\\&
+	=
+	\frac{1}{\pi}\frac{e^{\pi} - e^{-\pi}}{n^2}
+            +
+            \frac{1}{\pi}
+            \int_{0}^{\pi} e^{x-\pi}\frac{ -\cos(n x) }{ n^2 } dx
+	\\&
+	\implies a_n := 
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x - \pi} \cos( n x) dx = \frac{1}{1+\frac{1}{n^2}}\frac{1}{\pi}\frac{e^{\pi} - e^{-\pi}}{n^2} =  \frac{1}{\pi}\frac{e^{\pi} - e^{-\pi}}{1 + n^2}
+        \end{align*}
+        \begin{align*}
+            b_n 
+            &
+            = 
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x - \pi} \sin(n x) dx
+            \\&
+            =
+            \frac{1}{\pi}
+            \left[- e^{x - \pi} \frac{ \cos( n x) }{ n } \right]_{x=0}^{x=2\pi}
+            +
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} \frac{ e^{x - \pi} \cos( n x) }{ n } dx
+            \\&
+            =
+            \frac{1}{\pi}
+             \left[- e^{x - \pi} \frac{ \cos( n x) }{ n } \right]_{x=0}^{x=2\pi}
+            +
+            \frac{1}{\pi}
+            \left[ e^{x-\pi} \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=2\pi}
+            -
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin(n x) }{n^2 } dx
+            \\&
+            =
+            \frac{1}{\pi}\frac{e^{-\pi} - e^{\pi}}{n}
+            -
+            \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin(n x) }{n^2 } dx
+	\\&
+	\implies
+	b_n:= \frac{1}{\pi}
+            \int_{0}^{2\pi} e^{x - \pi} \sin(n x) dx = \frac{1}{1 + \frac{1}{n^2}} \frac{1}{\pi}\frac{e^{-\pi} - e^{\pi}}{n} = \frac{1}{\pi}  \frac{e^{-\pi} - e^{\pi}}{n + \frac{1}{n}}
+        \end{align*}
+%subquestion 2
+\item
+%subquestion 3
+\item
+\item The average of $h(x)$ over $1$ period $T$ is $0$ therefore:
+        \[
+            a_0 = 0
+        \]
+        Moreover $h(x)$ is odd therefore $a_n = 0$. For $b_n$ we have:
+        \begin{align*}
+            b_n 
+            &
+            = 
+            \frac{2}{\pi}
+            \int_{0}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
+            \\&
+            =
+             \frac{1}{\pi}
+            \int_{0}^{\frac{\pi}{2}} \cos(n-1)x - \cos(n+1)x dx
+            \\&
+            =
+            \frac{1}{\pi}
+             \left[ \frac{\sin(n-1)x}{n-1} - \frac{\sin(n+1)x}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
+            \\&
+            =
+	\frac{\sin(n-1)\frac{\pi}{2}}{n-1} - \frac{\sin(n+1)\frac{\pi}{2}}{n+1}
+        \end{align*}
+\end{itemize}
 \end{solution}
 
 
@@ -195,6 +397,39 @@
      \]
 \end{exercise}
 \begin{solution}     
+Note that $f(x)$ is even therefore $b_n = 0$. 
+	\[
+            a_0 = \frac{2}{2\pi} \int_{0}^{\pi} \sin x dx  =  \frac{1}{\pi}\left[ - \cos{x} \right]_{0}^{\pi} =0 .
+        \]
+        \begin{align*}
+            a_n 
+            &
+            = 
+            \frac{4}{T}
+            \int_{0}^{\pi} \sin x \cos(n x) dx
+            \\&
+            =
+            \frac{4}{T}
+            \int_{0}^{\pi} \frac 1 2 \sin{(n-1)x} + \frac 1 2 \sin{(n+1)x} dx
+            \\&
+            =
+           \frac{4}{T}
+            \left[- \frac{ \cos(n-1)x }{ 2(n-1) } \right]_{x=0}^{x=\pi}
+            +
+            \frac{4}{T}
+            \left[- \frac{ \cos(n+1)x }{ 2(n+1) } \right]_{x=0}^{x=\pi}
+	\\&
+	= 
+	-\frac 4 T \frac{(-1)^{n-1}}{2(n-1)} + \frac 4 T \frac{1}{2(n-1)}  -\frac 4 T \frac{(-1)^{n+1}}{2(n+1)} + \frac 4 T \frac{1}{2(n+1)}
+	\\&
+	= \frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1-(-1)^{n+1}}{\pi(n+1)} 
+        \end{align*}	
+$$a_n = 
+\begin{cases}
+0 ,\quad &\text{if } n\text{ is odd,}\\
+\frac{2}{\pi(n-1)} + \frac{2}{\pi(n+1)}  ,\quad &\text{if } n\text{ is even,}
+\end{cases}
+$$
 \end{solution}
 
 
