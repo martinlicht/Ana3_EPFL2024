@@ -473,6 +473,118 @@
         \end{align*}
     %subquestion 2
     \item
+    We compute the average 
+    \begin{align*}
+        a_0
+        :=
+        \frac{1}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} dx
+        =
+        \frac{1}{2\pi} \int_{-\pi}^{\pi} z^{3} dz
+        =
+        0
+        .
+    \end{align*}
+    We compute the coefficients of the cosine modes: for $n \geq 1$, we find 
+    \begin{align*}
+        a_n
+        &:=
+        \frac{2}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \cos(nx) dx
+        \\&=
+        \frac{1}{\pi} \int_{0}^{2\pi} (x-\pi)^{3} \cos(nx) dx
+        \\&=
+        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(n(z+\pi)) dz
+        \\&=
+        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(nz+n\pi)) dz
+        \\&=
+        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(nz)) dz
+        \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
+        .
+    \end{align*}
+    However, $z^3 \cos(nz)$ is the product of an odd and an even function, and so the integral vanishes. Explicitly:
+    \begin{align*}
+        \int_{-\pi}^{\pi} z^{3} \cos(nz)) dz
+        =
+        \int_{-\pi}^{0} z^{3} \cos(nz)) dz
+        + 
+        \int_{0}^{\pi} z^{3} \cos(nz)) dz
+        =
+        - 
+        \int_{0}^{\pi} w^{3} \cos(nw)) dw
+        + 
+        \int_{0}^{\pi} z^{3} \cos(nz)) dz
+        = 
+        0.
+    \end{align*}
+    Finally, we compute the coefficients of the sine modes:
+    \begin{align*}
+        b_n
+        &:=
+        \frac{2}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
+        \\=
+        \frac{1}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
+        \\=
+        \frac{1}{2\pi} \int_{-\pi}^{\pi} z^{3} \sin(n(z+\pi) dx
+        \\=
+        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \sin(nz)) dz
+        \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
+        .
+    \end{align*}
+    In either case, 
+    \begin{align*}
+        \int_{-\pi}^{\pi} z^{3} \sin(nz) dz
+        &=
+        2\int_{0}^{\pi} z^{3} \sin(nz) dz
+        .
+    \end{align*}
+    We perform integration by parts several times:
+    \begin{align*}
+        &
+        \int_{0}^{\pi} z^{3} \sin(nz) dz
+        \\&=
+        -
+        \frac 1 {n} 
+        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
+        +
+        \frac 3 {n}
+        \int_{0}^{\pi} z^{2} \cos(nz) dz
+        \\&=
+        -
+        \frac 1 {n} 
+        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
+        +
+        \frac 3 {n^2} 
+        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
+        -
+        \frac 6 {n^2} 
+        \int_{0}^{\pi} z \sin(nz) dz
+        \\&=
+        - \frac 1 {n} 
+        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
+        + 
+        \frac 3 {n^2}
+        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
+        -
+        \frac 6 {n^3} 
+        \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
+        +
+        \frac 6 {n^3} 
+        \int_{0}^{\pi} \cos(nz) dz
+        \\&=
+        - \frac 1 {n} 
+        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
+        + 
+        \frac 3 {n^2}
+        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
+        -
+        \frac 6 {n^3} 
+        \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
+        +
+        \frac 6 {n^4} 
+        \left[ \sin(nz) \right]_{z=0}^{z=\pi}
+        .
+    \end{align*}
+
+
     %subquestion 3
     \item 
     The average of $h(x)$ over $1$ period $T$ is $0$ therefore:
