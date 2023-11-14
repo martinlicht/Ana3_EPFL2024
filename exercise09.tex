@@ -12,7 +12,7 @@
 \end{exercise}
 \begin{solution}     
     We notice that the period $T$ equals $T = 2\pi$. 
-    The first coefficient is just the average:
+    We have defined the first coefficient to be just the average:
     \begin{align*}
         a_0 
         &= 
@@ -310,8 +310,10 @@
             \frac{(-1)^{n-1}}{\pi(n-1)} -  \frac{1}{\pi(n-1)}  - \frac{(-1)^{n+1}}{\pi(n+1)} + \frac{1}{\pi(n+1)}
             \\&
             = -\frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1-(-1)^{n+1}}{\pi(n+1)} 
+            \\&
+            = -\frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1+(-1)^{n}}{\pi(n+1)} 
         \end{align*}	
-        Therefore, when $a_1 \geq 1$:
+        Therefore, when $n \geq 1$:
         \[a_n = 
         \begin{cases}
         0 ,\quad &\text{if } n\text{ is odd,}\\
@@ -347,7 +349,7 @@
 \end{exercise}
 \begin{solution}     
     \begin{itemize}
-    \item To compute the Fourier coefficients of $f(x)$ over the interval $[0,1)$ with a period of $1$, use the formulas from the lecture:
+    \item To compute the Fourier coefficients of $f(x)$ with a period of $2\pi$, use the formulas from the lecture:
     \[
         a_0 
         = 
@@ -505,14 +507,15 @@
         \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
         .
     \end{align*}
-    However, $z^3 \cos(nz)$ is the product of an odd and an even function, and so the integral vanishes. Explicitly:
+    However, $z^3 \cos(nz)$ is the product of an odd and an even function, and so the integral vanishes. 
+    Explicitly:
     \begin{align*}
         \int_{-\pi}^{\pi} z^{3} \cos(nz)) dz
-        =
+        &=
         \int_{-\pi}^{0} z^{3} \cos(nz)) dz
         + 
         \int_{0}^{\pi} z^{3} \cos(nz)) dz
-        =
+        \\&=
         - 
         \int_{0}^{\pi} w^{3} \cos(nw)) dw
         + 
@@ -525,16 +528,16 @@
         b_n
         &:=
         \frac{2}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
-        \\=
+        \\&=
         \frac{1}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
-        \\=
-        \frac{1}{2\pi} \int_{-\pi}^{\pi} z^{3} \sin(n(z+\pi) dx
-        \\=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \sin(nz)) dz
+        \\&=
+        \frac{1}{2\pi} \int_{-\pi}^{\pi} z^{3} \sin(n(z+\pi)) dx
+        \\&=
+        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \sin(nz) dz
         \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
         .
     \end{align*}
-    In either case, 
+    In either case, since $z^3$ and $\sin(nz)$ are odd functions,
     \begin{align*}
         \int_{-\pi}^{\pi} z^{3} \sin(nz) dz
         &=
@@ -592,7 +595,7 @@
             a_n = 
             \begin{cases}
             \frac{\pi^3}{n}+\frac{6\pi}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
-            -\frac{\pi^3}{n}-\frac{6\pi(-1)^n}{n^3}   ,\quad &\text{if } n\text{ is even,}
+            -\frac{\pi^3}{n}-\frac{6\pi}{n^3}   ,\quad &\text{if } n\text{ is even,}
             \end{cases}
     \end{align*}
 % 
@@ -687,20 +690,49 @@
         b_n 
         &
         = 
+        \frac{2}{2\pi}
+        \int_{0}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
+        +
+        \frac{2}{2\pi}
+        \int_{\frac{3\pi}{2}}^{2\pi} \sin(x) \sin(n x) dx
+        \\&
+        =
+        \frac{2}{2\pi}
+        \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
+        \\&
+        =
+        \frac{1}{\pi}
+        \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
+        \\&
+        =
         \frac{2}{\pi}
         \int_{0}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
         \\&
         =
         \frac{1}{\pi}
-        \int_{0}^{\frac{\pi}{2}} \cos(n-1)x - \cos(n+1)x dx
+        \int_{0}^{\frac{\pi}{2}} \cos((n-1)x) - \cos((n+1)x) dx
         \\&
         =
         \frac{1}{\pi}
-        \left[ \frac{\sin(n-1)x}{n-1} - \frac{\sin(n+1)x}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
+        \left[ \frac{\sin((n-1)x)}{n-1} - \frac{\sin((n+1)x)}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
         \\&
         =
-        \frac{\sin(n-1)\frac{\pi}{2}}{n-1} - \frac{\sin(n+1)\frac{\pi}{2}}{n+1}
+        \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
     \end{align*}
+    If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
+    Hence $a_n$ is zero if $n$ is odd. 
+    For the even numbers, we have got another case distinction:
+    if $n=1,5,9,\dots$, then 
+    \begin{align*}
+        b_n = \frac{1}{n-1} - \frac{-1}{n+1} = \frac{1}{n-1} + \frac{1}{n+1} = \frac{n+1+n-1}{n^2+1} = \frac{2n}{n^2+1}.
+    \end{align*}
+    if $n=3,7,11,\dots$, then 
+    \begin{align*}
+        b_n = \frac{-1}{n-1} - \frac{1}{n+1} = \frac{-n-1-n+1}{n^2+1} = \frac{-2n}{n^2+1}.
+    \end{align*}
+    
+
+    
 \end{itemize}
 \end{solution}
 
@@ -727,23 +759,27 @@
             a_n 
             &
             = 
+            \frac{2}{T}
+            \int_{-\pi}^{\pi} \sin x \cos(n x) dx
+            \\&
+            = 
             \frac{4}{T}
             \int_{0}^{\pi} \sin x \cos(n x) dx
             \\&
             =
             \frac{4}{T}
-            \int_{0}^{\pi} \frac 1 2 \sin{(1-n)x} + \frac 1 2 \sin{(n+1)x} dx
+            \int_{0}^{\pi} \frac 1 2 \sin((1-n)x) + \frac 1 2 \sin((n+1)x) dx
             \\&
 		=
             \frac{4}{T}
-            \int_{0}^{\pi} -\frac 1 2 \sin{(n-1)x} + \frac 1 2 \sin{(n+1)x} dx
+            \int_{0}^{\pi} -\frac 1 2 \sin((n-1)x) + \frac 1 2 \sin((n+1)x) dx
             \\&
             =
            \frac{4}{T}
-            \left[\frac{ \cos(n-1)x }{ 2(n-1) } \right]_{x=0}^{x=\pi}
+            \left[\frac{ \cos((n-1)x) }{ 2(n-1) } \right]_{x=0}^{x=\pi}
             +
             \frac{4}{T}
-            \left[- \frac{ \cos(n+1)x }{ 2(n+1) } \right]_{x=0}^{x=\pi}
+            \left[- \frac{ \cos((n+1)x) }{ 2(n+1) } \right]_{x=0}^{x=\pi}
             \\&
             = 
             -\frac 4 T \frac{(-1)^{n-1}}{2(n-1)} - \frac 4 T \frac{1}{2(n-1)}  -\frac 4 T \frac{(-1)^{n+1}}{2(n+1)} + \frac 4 T \frac{1}{2(n+1)}
