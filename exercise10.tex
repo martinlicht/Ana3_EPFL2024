@@ -1,17 +1,76 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{10}{21}{November} % parameters are the number of the session and the day
 
 \begin{exercise}
+    Use Dirichlet's theorem to explain whether the Fourier series converges at $x \in [0,T]$ and to which value:
+    \begin{itemize}
+     \item \begin{gather*}
+            f(x) = \left\{\begin{array}{ll}
+                            x   & \text{ if $0 \leq x < 1$ }
+                            \\
+                            2 - x & \text{ if $1 \leq x < 2$ }
+                          \end{array}\right., \qquad T = 2.
+           \end{gather*}
+     \item \begin{gather*}
+            f(x) = \left\{\begin{array}{ll}
+                            \pi   & \text{ if $0 \leq x < 1$ }
+                            \\
+                            e^{x-1} & \text{ if $1 \leq x < 2$ }
+                            \\
+                            \sin(x) & \text{ if $2 \leq x < 3$ }
+                          \end{array}\right., \qquad T = 3.
+           \end{gather*}
+    \end{itemize}
+    Here, the functions have the given period $T$.
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
 \begin{exercise}
+    Give the Fourier series in complex notation, when $f$ has period $T = 2$ and 
+    \begin{gather*}
+        f(x) = x \text{ for } 0 \leq x < 2.
+    \end{gather*}
 \end{exercise}
 \begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    Find the Fourier coefficients of $\cos(x)^8$ with period $T = 2\pi$.
+    Use Parseval's identity to compute $\int_0^{2\pi} \cos(x)^{16} dx$.
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    Give the Fourier series of the function $f$ with period $T = 1$ and 
+    \begin{gather*}
+        f(x) = \cos(x) \text{ for } -1 \leq x < 1.
+    \end{gather*}
+    Give the Fourier series in standard form and in complex notation. 
+    Compare $F_3 f$ at the points $x = -\pi/4, 0, \pi/4$.
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
+
+\begin{exercise}
+    Compute the Fourier transform of the function
+    \begin{gather*}
+        f(x) = \left\{\begin{array}{ll}
+            x   & \text{ if $0 \leq x < 1$ }
+            \\
+            0   & \text{ otherwise }
+          \end{array}\right.
+    \end{gather*}
+    You can either directly use the complex exponential, or you can express it in terms of the sine and cosine function. 
+\end{exercise}
+\begin{solution}     
+    We write down the solution in two different ways, either using the complex exponential directly, or writing it as a sum of sine and cosine.
 \end{solution}
 
 \end{document}
