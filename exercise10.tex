@@ -33,7 +33,7 @@
 
 \begin{gather*}
             g(x) = \left\{\begin{array}{ll}
-                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 3$ }
+                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 0$ }
 						\\
                             \pi   & \text{ if $0 < x < 1$ }
                             \\
@@ -67,7 +67,7 @@ g(x)=x \text { for } 0 \leq x<1
 \end{equation*}
 
 \begin{equation*}
-a_0^f = \frac{1}{2},\quad a_n^f = 0, \quad b_n^f = \frac{-1}{\pi n}
+a_0^g = \frac{1}{2},\quad a_n^g = 0, \quad b_n^g = \frac{-1}{\pi n}
 \end{equation*}
 
 Moreover we can write $f$ in terms of $g$ by introducing $x = \frac{y}{2}$
@@ -79,7 +79,7 @@ $$
 which gives us the fourier coefficients of $f$
 
 \begin{equation*}
-a_0^g = 1,\quad a_n^g = 0, \quad b_n^g = \frac{-2}{\pi n}
+a_0^f = 1,\quad a_n^f = 0, \quad b_n^f = \frac{-2}{\pi n}
 \end{equation*}
 
 Using this we can obtain the fourier coefficients $c_n$:
@@ -234,13 +234,19 @@ i \alpha x} \right]_{0}^1\\
 &=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( -\frac{1}{\alpha^2} e^{-i \alpha} +\frac{1}{\alpha^2}\right)\\
 &=\frac{1}{\sqrt{2 \pi}}\left[\left(\frac{i}{\alpha}-\frac{1}{\alpha^2}\right)  e^{-i \alpha }+\frac{1}{\alpha^2}\right]
 \end{align*}
+
+Next we do it in terms of sine and cosine functions.
 $$
 \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
 $$
 
+We evaluate each integral seperately.
+
 $$\begin{aligned} \int_0^1 x \cos (\alpha x) d x & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x \\ & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 \\ & =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}\end{aligned}$$
+
 $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x \\ & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 \\ & =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha\end{aligned}$$
 
+All together we have:
 $$
 \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
 $$
