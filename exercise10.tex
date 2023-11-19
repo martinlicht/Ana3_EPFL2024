@@ -28,12 +28,12 @@
 \end{exercise}
 \begin{solution}     
 \begin{itemize}
-\item $f$ is continuous and finite on the closed interval $[0,2]$ therefore the Fourier series, $F_n f$, converges to $f$ when we take the limit of $n$ going to $\infty$.
-\item $f$ is continuous and finite on the closed intervals $[0,1]$, $[1,2]$ and $[2,3]$. However note that $f$ is not continuous in $f(0)$, $f(1)$ and $f(2)$ therefore the Fourier series, $F_n f$, converges to: 
+\item $f$ is continuous and finite on the closed interval $[0,2]$ therefore the Fourier series, $F_N f$, converges to $f$ when we take the limit of $N$ going to $\infty$.
+\item $f$ is continuous and finite on the closed intervals $[0,1]$, $[1,2]$ and $[2,3]$. However note that $f$ is not continuous in $f(0)$, $f(1)$ and $f(2)$ therefore the Fourier series, $F_N f$, converges to: 
 
 \begin{gather*}
             g(x) = \left\{\begin{array}{ll}
-                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 0$ }
+                            \frac{\sin(0) + \pi}{2} & \text{ if $x = 0$ }
 						\\
                             \pi   & \text{ if $0 < x < 1$ }
                             \\
@@ -45,11 +45,11 @@
 						\\
                             \sin(x) & \text{ if $2 < x < 3$ }
 						\\
-                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 3$ }
+                            \frac{\sin(0) + \pi}{2} & \text{ if $x = 3$ }
                           \end{array}\right., \qquad T = 3.
 \end{gather*}
 
-when we take the limit of $n$ going to $\infty$.
+when we take the limit of $N$ going to $\infty$.
 \end{itemize}
 \end{solution}
 
@@ -109,7 +109,9 @@ Using these formulas we can rewrite $f$ as follows:
 
 \begin{align*}
 \cos^8x &= (\cos^2x)^4\\
-&= (\frac 1 2 + \frac 1 2 \cos 2x)^2\\
+&= (\frac 1 2 + \frac 1 2 \cos 2x)^4\\
+&= ((\frac 1 2 + \frac 1 2 \cos 2x)^2)^2\\
+&= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
 &= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
 &= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)(\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)\\
 &= \frac{1}{16}+\frac 1 4 \cos 2x + \frac 3 8 \cos^2 2x + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
@@ -158,7 +160,7 @@ substituting our fourier coefficients and $f$ gives:
 \end{solution}
 
 \begin{exercise}
-    Give the Fourier series of the function $f$ with period $T = 1$ and 
+    Give the Fourier series of the function $f$ with period $T = 2$ and 
     \begin{gather*}
         f(x) = \cos(x) \text{ for } -1 \leq x < 1.
     \end{gather*}
@@ -229,15 +231,20 @@ f\left(\frac{\pi}{4}\right) &= 0.70711.\\
 \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
 &=\frac{1}{\sqrt{2 \pi}} \int_{0}^{1} x e^{-i \alpha x} d x\\
 &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{i\alpha} e^{-i \alpha x} d x\\
-&=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ -\frac{1}{\alpha^2} e^{-
+&=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ \frac{1}{\alpha^2} e^{-
 i \alpha x} \right]_{0}^1\\
-&=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( -\frac{1}{\alpha^2} e^{-i \alpha} +\frac{1}{\alpha^2}\right)\\
-&=\frac{1}{\sqrt{2 \pi}}\left[\left(\frac{i}{\alpha}-\frac{1}{\alpha^2}\right)  e^{-i \alpha }+\frac{1}{\alpha^2}\right]
+&=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\
+&=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} e^{-i \alpha } + \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\ 
+&=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} \cos\alpha  + \frac{1}{\alpha} \sin\alpha + \frac{1}{\alpha^2} \cos\alpha - \frac{i}{\alpha^2} \sin\alpha -\frac{1}{\alpha^2}\right)\\ 
 \end{align*}
 
 Next we do it in terms of sine and cosine functions.
 $$
-\mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
+\begin{aligned}
+\mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
+&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x)(\cos \alpha x - i\sin\alpha x) d x\\
+& = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
+\end{aligned}
 $$
 
 We evaluate each integral seperately.
@@ -248,7 +255,7 @@ $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos
 
 All together we have:
 $$
-\mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
+\mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
 $$
 \end{solution}
 
