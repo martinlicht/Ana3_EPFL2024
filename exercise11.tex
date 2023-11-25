@@ -1,17 +1,97 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{11}{28}{November} % parameters are the number of the session and the day
 
 \begin{exercise}
+    The Fourier transform of 
+    \begin{align*}
+        f(x) = e^{-5x^2}
+    \end{align*}
+    is the function 
+    \begin{align*}
+        f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+    \end{align*}
+    Find the Fourier transforms of 
+    \begin{align*}
+     f', \quad f'', \quad f''', \quad f'''', \quad g(x) = f(2x), \quad h(x) = f(x-3).
+    \end{align*}
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
 \begin{exercise}
+    Find $f : \mathbb R \to \mathbb R$ such that 
+    \begin{align*}
+        \hat f(\alpha) = \frac{3}{1+\alpha^{2}} + \frac{-1}{1+4\alpha^{2}} + \frac{ \sin( 4 \alpha + 3 ) }{ 4 \alpha + 3 }
+    \end{align*}
 \end{exercise}
 \begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    Find the Fourier transform of 
+    \begin{align*}
+        f(x) = \left\{\begin{array}{ll}
+                \sin(x) & \text{ if } 0 \leq x \leq 2 \pi 
+                \\
+                0 & \text{ otherwise }
+               \end{array}
+               \right.
+    \end{align*}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    Find the Laplace transform $F(z)$ of 
+    \begin{align*}
+        f : \bbR_{0}^{+} \to \bbR, \quad t \mapsto t^{2}.
+    \end{align*}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}[Extra]
+    We have introduced the Fourier transform 
+    \begin{align*}
+        \frakF(f)(\alpha) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x) e^{-i \alpha x} dx
+    \end{align*}
+    Different authors define the Fourier transform alternatively by:
+    \begin{align*}
+        \frakF_2(f)(\xi) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
+        ,
+        \quad 
+        \frakF_3(f)(\omega) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        .
+    \end{align*}
+    Express $\frakF_{2}(f)$ and $\frakF_{3}(f)$ in terms of $\frakF(f)$.
+\end{exercise}
+\begin{solution}    
+    Obviously, 
+    \begin{align*}
+        \frakF_{2}(f)(\omega) = \frac{1}{\sqrt{2\pi}} \frakF(f)(\omega).
+    \end{align*}
+    For the other transformation:
+    \begin{align*}
+        \frakF_3(f)(\omega) 
+        &
+        = 
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frakF(f)( 2\pi \xi )
+        .
+    \end{align*}
 \end{solution}
 
 \end{document}
