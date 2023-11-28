@@ -33,7 +33,7 @@ For the fourier transform of $g(x)$ and $h(x)$ we use the following identity fro
 $\hat{g}(\alpha)=\frac{1}{|a|} \hat{f}\left(\frac{\alpha+b}{a}\right)$
 \begin{itemize}
 \item $\begin{aligned} \mathfrak{F}(g(x))(\alpha) & =\mathfrak{F}(f(2 x))(\alpha) \\ & =\frac{1}{2} \mathfrak{F}(f(x))\left(\frac{\alpha}{2}\right) \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\left(\frac{\alpha}{2}\right)^2}{20}} \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\alpha^2}{80}}\end{aligned}$
-\item $\begin{aligned} \mathfrak{F}(h(x))(x) & =\mathfrak{F}(f(x-3))(\alpha) \\ & =\mathfrak{F}\left(\frac{1}{\sqrt{10}} e^{-5 x^2+30 x-45}\right)(x) \\ & =\mathfrak{F}\left(e^{-45} e^{30 x} f(x)\right)(\alpha) \\ & =e^{-45} \mathfrak{F}\left(e^{-i(30 i) x} f(x)\right)(\alpha) \\ & =e^{-45} \mathfrak{F}(f(x))(\alpha+30 i) \\ & =\frac{e^{-45}}{\sqrt{10}} e^{-\frac{(\alpha+30 i)^2}{20}}\end{aligned}$
+\item $\begin{aligned} \mathfrak{F}(h(x)) f(x) & =\mathfrak{F}(f(x-3))(\alpha) \\ & =\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} f(x-3) e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} f(u) e^{-i \alpha(u+3)} d u \\ & =e^{-3 \alpha i} \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} f(u) e^{-i \alpha u} d u \\ & =e^{-3 \alpha i} \mathfrak{F}(f(x))(\alpha) \\ & =\frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}-3 \alpha i}\end{aligned}$
 \end{itemize}
 \end{solution}
 
@@ -69,20 +69,10 @@ $$
     \end{align*}
 \end{exercise}
 \begin{solution} 
-We rewrite the function $f(x)$ as follows    
-$$\begin{aligned} f(x) & =\left\{\begin{array}{cl}\sin (x) & \text { if } 0 \leq x \leq 2 \pi \\ 0 & \text { else }\end{array}\right. \\ & =\left\{\begin{array}{cl}\frac{1}{2 i} e^{i x}-\frac{1}{2 i} e^{-i x} & \text { if } 0 \leq x \leq 2 \pi i \\ 0 & \text { else }\end{array}\right.\end{aligned}$$
-
-This allows us to use the following know Fourier transform from the lecture:
-
+$$\begin{aligned} \mathcal{F}(f(x))(\alpha) & =\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x\end{aligned}$$
 $$
-f(t)=\left\{\begin{array}{ll}
-e^{-i \omega t} & \text { if } b<t<c \\
-0 & \text { otherwise }
-\end{array}, \quad \Longleftrightarrow \quad \hat{f}(\alpha)=\frac{1}{i \sqrt{2 \pi}} \frac{e^{-i(\omega+\alpha) b}-e^{-i(\omega+\alpha) c}}{\omega+\alpha}\right.
+\begin{aligned} \Rightarrow \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x & =\left(\frac{1}{1-\frac{1}{\alpha^2}}\right) \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} \\ & =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} \\ & =\frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}\end{aligned}
 $$
-
-to obtain:
-$$\begin{aligned} \mathfrak{F}(f(x))(\alpha) & =\frac{1}{2 i} \frac{1}{i \sqrt{2 \pi}} \frac{-e^{-i(1+\alpha \mid 2 \pi}}{1+\alpha}-\frac{1}{2 i} \frac{1}{i \sqrt{2 \pi}} \frac{-e^{-i(-1+\alpha) 2 \pi}}{-1+\alpha} \\ & =\frac{1}{2 \sqrt{2 \pi}}\left(\frac{e^{-i(1+2 \alpha \mid 2 \pi}}{1+\alpha}-\frac{e^{-i(-1+\alpha \mid 2 \pi}}{-1+\alpha}\right) \\ & =\frac{1}{2 \sqrt{2 \pi}}\left(\frac{e^{-2 \pi i} e^{-2 \pi i \alpha}}{1+\alpha}-\frac{e^{2 \pi i} e^{-2 \pi i \alpha}}{-1+\alpha}\right) \\ & =\frac{1}{2 \sqrt{2 \pi}}\left(\frac{-2}{(1+\alpha)(-1+\alpha)}\right) e^{-2 \pi i \alpha} \\ & =-\frac{1}{\sqrt{2 \pi}}\left(\frac{1}{-\alpha^2-1}\right) e^{-2 \pi i \sigma} \\ & =\frac{1}{\sqrt{2 \pi}}\left(\frac{1}{1+\alpha^2}\right) e^{-2 \pi i \alpha}\end{aligned}$$
 \end{solution}
 
 \begin{exercise}
@@ -92,7 +82,7 @@ $$\begin{aligned} \mathfrak{F}(f(x))(\alpha) & =\frac{1}{2 i} \frac{1}{i \sqrt{2
     \end{align*}
 \end{exercise}
 \begin{solution}     
-$\begin{aligned} & F(z)=\int_0^{\infty} t^2 e^{-z t} d t=\left[-\frac{t^2}{z} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2 t}{z} e^{-z t} d t \\ &=\left[\frac{2 t}{-z^2} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2}{z^2} e^{-z t} d t \\ &=\left[-\frac{2}{z^3} e^{-z t}\right]_0^{\infty} \\ &=0+\frac{2}{z^3} \\ &=\frac{2}{z^3}\end{aligned}$
+$$\begin{aligned} & F(z)=\int_0^{\infty} t^2 e^{-z t} d t=\left[-\frac{t^2}{z} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2 t}{z} e^{-z t} d t \\ &=\left[\frac{2 t}{-z^2} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2}{z^2} e^{-z t} d t \\ &=\left[-\frac{2}{z^3} e^{-z t}\right]_0^{\infty} \\ &=0+\frac{2}{z^3} \\ &=\frac{2}{z^3}\end{aligned}$$
 $$
 F(z)=\frac{2}{z^3} \quad \text { for } \mathrm{R}(z)>0
 $$
