@@ -72,7 +72,7 @@
             2 & \text{if } n \text{ is odd}
         \end{cases}
     \end{align*}
-    Thus we find $a_0 = 1$ and $a_1 = a_2 = \dots = 0$,
+    Thus we find $a_0 = 0.5$ and $a_1 = a_2 = \dots = 0$,
     and either $b_n = 0$ if $n$ is even and $b_n = \frac{2}{n\pi}$ if $n$ is odd. 
 \end{solution}
 
@@ -720,7 +720,7 @@
         \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
     \end{align*}
     If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
-    Hence $a_n$ is zero if $n$ is odd. 
+    Hence $b_n$ is zero if $n$ is odd. 
     For the even numbers, we have got another case distinction:
     if $n=1,5,9,\dots$, then 
     \begin{align*}
@@ -760,7 +760,7 @@
             &
             = 
             \frac{2}{T}
-            \int_{-\pi}^{\pi} \sin x \cos(n x) dx
+            \int_{-\pi}^{\pi} f(x)   \cos(n x) dx
             \\&
             = 
             \frac{4}{T}
@@ -770,22 +770,89 @@
             \frac{4}{T}
             \int_{0}^{\pi} \frac 1 2 \sin((1-n)x) + \frac 1 2 \sin((n+1)x) dx
             \\&
-		=
-            \frac{4}{T}
-            \int_{0}^{\pi} -\frac 1 2 \sin((n-1)x) + \frac 1 2 \sin((n+1)x) dx
+            =
+            \frac{2}{T}
+            \int_{0}^{\pi} \sin((1-n)x) + \sin((n+1)x) dx
             \\&
             =
-           \frac{4}{T}
-            \left[\frac{ \cos((n-1)x) }{ 2(n-1) } \right]_{x=0}^{x=\pi}
+            \frac{2}{T}
+            \int_{0}^{\pi} -\sin((n-1)x) + \sin((n+1)x) dx
+            \\&
+            =
+            \frac{2}{T}
+            \left[\frac{ \cos((n-1)x) }{ (n-1) } \right]_{x=0}^{x=\pi}
             +
-            \frac{4}{T}
-            \left[- \frac{ \cos((n+1)x) }{ 2(n+1) } \right]_{x=0}^{x=\pi}
+            \frac{2}{T}
+            \left[- \frac{ \cos((n+1)x) }{ (n+1) } \right]_{x=0}^{x=\pi}
             \\&
             = 
-            -\frac 4 T \frac{(-1)^{n-1}}{2(n-1)} - \frac 4 T \frac{1}{2(n-1)}  -\frac 4 T \frac{(-1)^{n+1}}{2(n+1)} + \frac 4 T \frac{1}{2(n+1)}
+            \frac 2 T 
+            \left( 
+                \frac{ \cos((n-1)\pi) }{(n-1)} 
+                - 
+                \frac{1}{(n-1)}
+                -
+                \frac{ \cos((n+1)\pi) }{(n+1)} 
+                + 
+                \frac{1}{(n+1)}
+            \right)
             \\&
-            = -\frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1-(-1)^{n+1}}{\pi(n+1)} 
+            = 
+            \frac 2 T 
+            \left( 
+                \frac{ \cos( n \pi - \pi ) }{(n-1)} 
+                - 
+                \frac{1}{(n-1)}
+                -
+                \frac{ \cos( n \pi + \pi ) }{(n+1)} 
+                + 
+                \frac{1}{(n+1)}
+            \right)
+            \\&
+            = 
+            \frac 2 T 
+            \left( 
+                -
+                \frac{ \cos(n\pi) }{(n-1)} 
+                - 
+                \frac{1}{(n-1)}
+                +
+                \frac{ \cos(n\pi) }{(n+1)} 
+                + 
+                \frac{1}{(n+1)}
+            \right)
+            \\&
+            = 
+            \frac 2 T 
+            \left( 
+                -
+                \frac{ (-1)^n }{(n-1)} 
+                - 
+                \frac{1}{(n-1)}
+                +
+                \frac{ (-1)^n }{(n+1)} 
+                + 
+                \frac{1}{(n+1)}
+            \right)
+            \\&
+            = 
+            \frac 2 T 
+            \left( 
+                \frac{ 1 + (-1)^n }{(n+1)} 
+                -
+                \frac{ 1 + (-1)^n }{(n-1)} 
+            \right)
+            \\&
+            = 
+            \frac 1 \pi 
+            \left( 
+                \frac{ 1 + (-1)^n }{(n+1)} 
+                -
+                \frac{ 1 + (-1)^n }{(n-1)} 
+            \right)
+            .
         \end{align*}	
+        Here, if $n$ is odd, the coefficient numerators are $1 + (-1) = 0$, and if $n$ is even, they are both equal $2$. Thus:
         \[
             a_n = 
             \begin{cases}

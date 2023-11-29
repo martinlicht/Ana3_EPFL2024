@@ -33,7 +33,7 @@
 
 \begin{gather*}
             g(x) = \left\{\begin{array}{ll}
-                            \frac{\sin(0) + \pi}{2} & \text{ if $x = 0$ }
+                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 0$ }
 						\\
                             \pi   & \text{ if $0 < x < 1$ }
                             \\
@@ -45,7 +45,7 @@
 						\\
                             \sin(x) & \text{ if $2 < x < 3$ }
 						\\
-                            \frac{\sin(0) + \pi}{2} & \text{ if $x = 3$ }
+                            \frac{\sin(3) + \pi}{2} & \text{ if $x = 3$ }
                           \end{array}\right., \qquad T = 3.
 \end{gather*}
 
@@ -146,15 +146,15 @@ $$
 For the second part we use Parseval's identity which is given by: 
 
 $$
-\frac{2}{T} \int_0^T f(x)^2 d x=2 a_0+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2
+\frac{2}{T} \int_0^T f(x)^2 d x=2 a_0^2+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2
 $$
 
 substituting our fourier coefficients and $f$ gives: 
 
 \begin{align*}
 \frac{2}{T} \int_0^T f(x)^2 d x&=2 a_0+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
-\frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= \frac{70}{128} + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
-\implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(\frac{70}{128} + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right) \approx 2.4821\\
+\frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
+\implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right) = \pi\frac 6435 16384 \approx 1.2339\\
 \end{align*}
 
 \end{solution}
@@ -165,12 +165,12 @@ substituting our fourier coefficients and $f$ gives:
         f(x) = \cos(x) \text{ for } -1 \leq x < 1.
     \end{gather*}
     Give the Fourier series in standard form and in complex notation. 
-    Compare $F_3 f$ at the points $x = -\pi/4, 0, \pi/4$.
+    Compare $F_3 f$ at the points $x = -\pi/4, 0, \pi/4$ with the original function $f$.
 \end{exercise}
 \begin{solution}    
 We calculate the complex fourier coefficients 
 \begin{align*}
-c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin x 
+c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin 1
 \end{align*}
 
 \begin{align*}
@@ -185,7 +185,7 @@ c_n &= \frac 1 2 \int_{-1}^1 \cos x e^{-\pi n x i} dx\\
 Using $c_n$ we can determine $a_n$ and $b_n$
 
 $$
-a_0 = \frac 1 2,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
+a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
 $$
 
 The fourier series in standard and in complex notation are given by:
