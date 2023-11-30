@@ -1,17 +1,87 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{12}{5}{December} % parameters are the number of the session and the day
 
 \begin{exercise}
+    Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
+    where $z$ is one of the following complex numbers:
+    \begin{gather*}
+        z_1 = \frac 1 2,
+        \quad 
+        z_2 = - \frac 1 2,
+        \quad 
+        z_3 = 0.2i,
+        \quad 
+        z_4 = -0.2i,
+        \quad 
+        z_3 = - \frac 1 2 + 0.2i
+        .
+    \end{gather*}
+    \textit{You may use a calculater.}
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
 \begin{exercise}
+    We consider the Poisson problem with Dirichlet boundary conditions over the interval $[0,L]$:
+    \begin{gather*}
+        - \Delta u(x) = x^2, \quad 0 < x < L,
+        \\
+        u(0) = 1, \quad u(L) = 2
+    \end{gather*}
+    \begin{itemize}
+        \item Solve this problem directly. The solution is a polynomial of order $4$.
+        \item Extend the right-hand side $f(x) = x^2$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$.
+    \end{itemize}
 \end{exercise}
 \begin{solution}     
 \end{solution}
+
+\begin{exercise}[Extra]
+    Directly compute the solution of the problem
+    \begin{gather*}
+        - \Delta u(x) = x^2, \quad 0 < x < L,
+        \\
+        u(0) = 0, \quad u(L) = 0
+    \end{gather*}
+    and find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    We solve the Poisson problem with homogeneous Dirichlet boundary conditions over $[0,1]$:
+    \begin{gather*}
+        - \Delta u(x) = \left\{\begin{array}{ll} 0 & \text{ if } 0 < x < 0.5 \\ 0 & \text{ if } 0.5 < x < 1 \end{array}\right., \qquad 0 < x < 1,
+        \\
+        u(0) = 0, \quad u(1) = 0
+    \end{gather*}
+    \begin{itemize}
+        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    We want to find a solution to the boundary value problem 
+    \begin{gather*}
+        - \Delta u(x) + u(x) = x, \quad 0 < x < L,
+        \\
+        u(0) = 0, \quad u(L) = 0.
+    \end{gather*}
+    \begin{itemize}
+        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
 
 \end{document}
