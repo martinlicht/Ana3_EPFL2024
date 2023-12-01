@@ -26,17 +26,6 @@
 \end{solution}
 
 \begin{exercise}
-    Suppose that $f(x) = x^2$ and that
-    \[
-        g(x) = \left\{\begin{array}{cc} e^{-x} & \text{ if $x > 0$ }, \\ 0 & \text{ otherwise. } \end{array}\right.
-    \]
-    Compute the convolution $h(x) = (f \star g)(x)$ .
-\end{exercise}
-
-\begin{solution}     
-\end{solution}
-
-\begin{exercise}
     We consider the Poisson problem with Dirichlet boundary conditions over the interval $[0,L]$:
     \begin{gather*}
         - \Delta u(x) = x^2, \quad 0 < x < L,
@@ -67,12 +56,12 @@
 \begin{exercise}
     We solve the Poisson problem with homogeneous Dirichlet boundary conditions over $[0,1]$:
     \begin{gather*}
-        - \Delta u(x) = \left\{\begin{array}{ll} 0 & \text{ if } 0 < x < 0.5 \\ 0 & \text{ if } 0.5 < x < 1 \end{array}\right., \qquad 0 < x < 1,
+        - \Delta u(x) = \left\{\begin{array}{ll} x & \text{ if } 0 < x < 0.5 \\ 0 & \text{ if } 0.5 < x < 1 \end{array}\right., \qquad 0 < x < 1,
         \\
         u(0) = 0, \quad u(1) = 0
     \end{gather*}
     \begin{itemize}
-        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Extend the right-hand side $f(x)$ to an odd function with period $2L$ and compute its Fourier coefficients.
         \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
     \end{itemize}
 \end{exercise}
