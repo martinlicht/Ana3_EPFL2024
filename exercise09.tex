@@ -571,10 +571,10 @@
         + 
         \frac 3 {n^2}
         \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
-        -
+        +
         \frac 6 {n^3} 
         \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
-        +
+        -
         \frac 6 {n^3} 
         \int_{0}^{\pi} \cos(nz) dz
         \\&=
@@ -583,20 +583,20 @@
         + 
         \frac 3 {n^2}
         \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
-        -
+        +
         \frac 6 {n^3} 
         \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
         +
         \frac 6 {n^4} 
         \left[ \sin(nz) \right]_{z=0}^{z=\pi}
         \\&=
-	-\frac{\pi^3(-1)^n}{n}-\frac{6\pi(-1)^n}{n^3} 
+	-\frac{\pi^3(-1)^n}{n}+\frac{6\pi(-1)^n}{n^3} 
 	\\&\implies
             b_n = 
             \begin{cases}
-            \frac{2\pi^2}{n}+\frac{12}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
-            -\frac{2\pi^2}{n}-\frac{12}{n^3}   ,\quad &\text{if } n\text{ is even,}
-            \end{cases}
+            \frac{2\pi^2}{n}-\frac{12}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
+            -\frac{2\pi^2}{n}+\frac{12}{n^3}   ,\quad &\text{if } n\text{ is even,}
+            \end{cases}\cdot \left\{\begin{array}{ll} -1 & \text{ if $n$ is odd } \\ 1 & \text{ if $n$ is even } \end{array}\right. =  -\frac{2\pi^2}{n}+\frac{12}{n^3}
     \end{align*}
 % 
 % 
