@@ -4,33 +4,47 @@
 \begin{document}
 \exsheet{13}{12}{December} % parameters are the number of the session and the day
 
+
+
+
 \begin{exercise}
-    Suppose that $f(x) = |x|$ is the absolute value function and that 
-    \[
-        g(x) = \left\{\begin{array}{cc} \frac 1 2 & \text{ if $-1 < x < 1$ }, \\ 0 & \text{ otherwise. } \end{array}\right.
-    \]
-    Compute the convolutions $h(x) = (f \star g)(x)$ and $m(x) = (g \star g)(x)$.
+    Consider the following Fourier sine series for functions $u, f : \bbR \to \bbR$ with period $T$:
+    \begin{align*}
+        u(x) = \sum_{n=1}^{\infty} b_{n}^{u} \sin\left( \frac{2\pi n}{T} x \right)
+        ,
+        \quad 
+        f(x) = \sum_{n=1}^{\infty} b_{n}^{f} \sin\left( \frac{2\pi n}{T} x \right)
+        .
+    \end{align*}
+    Express the Fourier coefficients of $f$ by the Fourier coefficients of $u$, and vice-versa, express the Fourier coefficients of $u$ by the Fourier coefficients of $f$,
+    in the following cases:
+    \begin{enumerate}
+     \item 
+     $-u''(x) = f(x)$.
+     \item 
+     $u''''(x) = f(x)$.
+     \item 
+     $-u''(x) + 25 u(x) = f(x)$.
+     \item 
+     $u''''(x) - u''(x) = f(x)$.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    Consider the function 
+    \begin{align*}
+        f : [0,1] \to \bbR, \quad x \mapsto x^{3}.
+    \end{align*}
+    Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
+    Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
 
-\begin{exercise}
-    Suppose that $f(x) = x^2$ and that
-    \[
-        g(x) = \left\{\begin{array}{cc} e^{-x} & \text{ if $x > 0$ }, \\ 0 & \text{ otherwise. } \end{array}\right.
-    \]
-    Compute the convolution $h(x) = (f \star g)(x)$ .
-\end{exercise}
-
-\begin{solution}     
-\end{solution}
 
 
-
-\begin{exercise}
-\end{exercise}
-\begin{solution}     
-\end{solution}
 
 \end{document}
