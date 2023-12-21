@@ -107,11 +107,11 @@ Hence
     Different authors define the Fourier transform alternatively by:
     \begin{align*}
         \frakF_2(f)(\xi) 
-        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
+        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
         ,
         \quad 
         \frakF_3(f)(\omega) 
-        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
         .
     \end{align*}
     Express $\frakF_{2}(f)$ and $\frakF_{3}(f)$ in terms of $\frakF(f)$.
@@ -119,11 +119,11 @@ Hence
 \begin{solution}    
     Obviously, 
     \begin{align*}
-        \frakF_{2}(f)(\omega) = \frac{1}{\sqrt{2\pi}} \frakF(f)(\omega).
+        \frakF_{3}(f)(\omega) = \sqrt{2\pi} \frakF(f)(\omega).
     \end{align*}
     For the other transformation:
     \begin{align*}
-        \frakF_3(f)(\omega) 
+        \frakF_2(f)(\xi) 
         &
         = 
         \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
@@ -140,25 +140,25 @@ Hence
     \end{align*}
 \end{solution}
 
-\begin{exercise}
-    Compute the Fourier transform of the signal 
-    \[
-        f(t) = \left\{\begin{array}{ll} e^{t} & \text{ if } -1 \leq t \leq 1 \\ 0 & \text{ otherwise. } \end{array}\right.,
-    \]
-    and find the Fourier transform of the first to fifth derivative of $f$. 
-\end{exercise}
-\begin{solution}     
-\end{solution}
+% \begin{exercise}
+%     Compute the Fourier transform of the signal 
+%     \[
+%         f(t) = \left\{\begin{array}{ll} e^{t} & \text{ if } -1 \leq t \leq 1 \\ 0 & \text{ otherwise. } \end{array}\right.,
+%     \]
+%     and find the Fourier transform of the first to fifth derivative of $f$. 
+% \end{exercise}
+% \begin{solution}     
+% \end{solution}
 
-\begin{exercise}
-    Compute the Laplace transform of 
-    \[
-        f(t) = cos( a t ),
-    \]
-    where $a > 0$ is a positive number. 
-\end{exercise}
-\begin{solution}     
-    There are different possible approaches. We use the expression of the complex exponential in terms of the cosine and sine function, and we write $z = a + ib$. Then:
-\end{solution}
+% \begin{exercise}
+%     Compute the Laplace transform of 
+%     \[
+%         f(t) = cos( a t ),
+%     \]
+%     where $a > 0$ is a positive number. 
+% \end{exercise}
+% \begin{solution}     
+%     There are different possible approaches. We use the expression of the complex exponential in terms of the cosine and sine function, and we write $z = a + ib$. Then:
+% \end{solution}
 
 \end{document}
