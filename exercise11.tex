@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{11}{28}{November} % parameters are the number of the session and the day
@@ -11,7 +11,7 @@
     \end{align*}
     is the function 
     \begin{align*}
-        f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+        \hat f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
     \end{align*}
     Find the Fourier transforms of 
     \begin{align*}
@@ -19,28 +19,48 @@
     \end{align*}
 \end{exercise}
 \begin{solution}  
-To evaluate the Fourier transform of the derivative of a function we will use the following identity from the lecture:
-\[
-    \mathfrak{F}\left(f^{(n)}\right)(\alpha)=(i \alpha)^n \mathfrak{F}(f)(\alpha)
-\]
-We then find 
-\begin{itemize}
-\item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-\item $\mathfrak{F}\left(f'' \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-\item $\mathfrak{F}\left(f' \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-\item $\mathfrak{F}\left(f' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-\end{itemize}
-For the Fourier transform of $g(x)$ we use the following identity from the lecture: 
-$g(x)=e^{-i b x} f(a x)$ has the Fourier transform
-$\hat{g}(\alpha)=\frac{1}{|a|} \hat{f}\left(\frac{\alpha+b}{a}\right)$,
-consequently:
-\begin{align*}
-    \mathfrak{F}(g(x))(\alpha) & =\mathfrak{F}(f(2 x))(\alpha) \\ & =\frac{1}{2} \mathfrak{F}(f(x))\left(\frac{\alpha}{2}\right) \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\left(\frac{\alpha}{2}\right)^2}{20}} \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\alpha^2}{80}}
-\end{align*}
-For the Fourier transform of $h(x)$ we calculate 
-\begin{align*}
-    \mathfrak{F}(h(x))(x) & =\mathfrak{F}(f(x-3))(\alpha) \\ & =\mathfrak{F}\left(\frac{1}{\sqrt{10}} e^{-5 x^2+30 x-45}\right)(x) \\ & =\mathfrak{F}\left(e^{-45} e^{30 x} f(x)\right)(\alpha) \\ & =e^{-45} \mathfrak{F}\left(e^{-i(30 i) x} f(x)\right)(\alpha) \\ & =e^{-45} \mathfrak{F}(f(x))(\alpha+30 i) \\ & =\frac{e^{-45}}{\sqrt{10}} e^{-\frac{(\alpha+30 i)^2}{20}}
-\end{align*}
+    To evaluate the Fourier transform of the derivative of a function we will use the following identity from the lecture:
+    \[
+        \mathfrak{F}\left(f^{(n)}\right)(\alpha)=(i \alpha)^n \mathfrak{F}(f)(\alpha)
+    \]
+    We then find 
+    \begin{itemize}
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'' \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \end{itemize}
+    For the Fourier transform of $g(x)$ we use the following identity from the lecture: 
+    $g(x)=e^{-i b x} f(a x)$ has the Fourier transform
+    $\hat{g}(\alpha)=\frac{1}{|a|} \hat{f}\left(\frac{\alpha+b}{a}\right)$,
+    consequently:
+    \begin{align*}
+        \mathfrak{F}(g(x))(\alpha) & =\mathfrak{F}(f(2 x))(\alpha) \\ & =\frac{1}{2} \mathfrak{F}(f(x))\left(\frac{\alpha}{2}\right) \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\left(\frac{\alpha}{2}\right)^2}{20}} \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\alpha^2}{80}}
+    \end{align*}
+    For the Fourier transform of $h(x)$ we use a change of variables:
+    \begin{align*}
+        \mathfrak{F}(h(x))(\alpha)
+        &= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5(x-3)^2} e^{ - \imath x \alpha } \;dx
+        \\&= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath (x + 3) \alpha } \;dx
+        \\&= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath x \alpha } e^{ - \imath 3 \alpha }\;dx
+        \\&= 
+        \frac{ e^{ - \imath 3 \alpha }}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath x \alpha }\;dx
+        \\&= 
+        e^{ - \imath 3 \alpha } 
+        \mathfrak{F}(f(x))(\alpha)
+        \\&= 
+        \frac{e^{ - \imath 3 \alpha }}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+        \\&= 
+        \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20} - \imath 3 \alpha }
+        .
+    \end{align*}
 \end{solution}
 
 \begin{exercise}
