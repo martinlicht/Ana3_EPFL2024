@@ -1,56 +1,113 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{3}{26}{September} % parameters are the number of the session and the day
 
+
+% \begin{exercise}
+%     We have focused on scalar and vector fields that are defined on the entire space. 
+%     But sometimes we are also interested in fields with singularities. 
+%     Compute the gradient and the Laplacian of the function 
+%     \[
+%         f : \bbR^3 \setminus \{0\} \rightarrow \bbR, \quad (x_1,x_2,x_3) \mapsto \frac{1}{\sqrt{x_1^2+x_2^2+x_3^1}}
+%     \]
+%     where the scalar field is twice differentiable. 
+%     Sketch the gradient field.
+% \end{exercise}
+% \begin{solution}   
+%     $$
+%         \grad f(x_1,x_2,x_3)
+%         =
+%         -\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}
+%     $$ 
+%     \begin{align*}
+%         \Delta f(x_1,x_2,x_3) 
+%         &=
+%         \nabla \cdot \nabla f(x_1,x_2,x_3) 
+%         \\
+%         &= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
+%         + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right)
+%         + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
+%         \\
+%         &= 
+%         - \frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}
+%         + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+%         + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+%         \\
+%         &=
+%         \frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
+%     \end{align*}
+% \end{solution}
+
 \begin{exercise}
-    We have focused on scalar and vector fields that are defined on the entire space. 
-    But sometimes we are also interested in fields with singularities. 
-    Compute the gradient and the Laplacian of the function 
-    \[
-        f : \bbR^3 \setminus \{0\} \rightarrow \bbR, \quad (x_1,x_2,x_3) \mapsto \frac{1}{\sqrt{x_1^2+x_2^2+x_3^1}}
-    \]
-    where the scalar field is twice differentiable. 
-    % Sketch the gradient field.
+    Consider the scalar field $f(x_1,x_2) = x_1 x_2$. 
+    \begin{itemize}
+     \item Describe its level sets for the values $-2, -1, 0, 1, 2$.
+     \item Draw the gradient at a few points, such as 
+     \begin{align}
+        \left( 1,0 \right), \left( 0,1 \right), \left( 1,1 \right), \left( -1,-1 \right), \left( \sqrt{2},\sqrt{2} \right), \left( \sqrt{2},-\sqrt{2} \right)
+     \end{align}
+     \item 
+     Recall the hyperbolic sine and hyperbolic cosine functions $\sinh(t)$ and $\cosh(t)$. 
+     Sketch the curve 
+     \begin{align}
+        \gamma : (-\infty,\infty) \rightarrow \bbR^{2}, \quad t \mapsto \left( \; \cosh(t), \; \sinh(t) \; \right)
+     \end{align}
+     and compute its tangent vector $\dot \gamma$.
+    \end{itemize}
 \end{exercise}
-\begin{solution}   
-    $$
-        \grad f(x_1,x_2,x_3)
-        =
-        -\frac{1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \begin{pmatrix}x_1\\ x_2\\\frac{1}{2}\end{pmatrix}
-    $$ 
-    \begin{align*}
-        \Delta f(x_1,x_2,x_3) 
-        &=
-        \nabla \cdot \nabla f(x_1,x_2,x_3) 
-        \\
-        &= \frac{\partial}{\partial x_1}\left(-\frac{x_1}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
-        + \frac{\partial}{\partial x_2}\left(-\frac{x_2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}\right)
-        + \frac{\partial}{\partial x_3}\left(-\frac{1}{2(x_1^2+x_2^2+x_3)^{\frac{3}{2}}} \right)
-        \\
-        &= 
-        - \frac{2}{(x_1^2+x_2^2+x_3)^{\frac{3}{2}}}
-        + \frac{6x_1^2 + 6x_2^2}{(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
-        + \frac{3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
-        \\
-        &=
-        \frac{4x_1^2 + 4x_2^2 -8x_3 +3}{4(x_1^2+x_2^2+x_3)^{\frac{5}{2}}}
-    \end{align*}
+\begin{solution}
+    The figure in total has got the following shape:
+    \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.0]
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        \foreach \x in {-2,-1,1,2}
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+        \foreach \y in {-2,-1,1,2}
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+
+        \draw[domain=  0.5:2, samples=100, smooth, thick,red] plot (\x,1/\x) node[right] {};
+        \draw[domain=-2:-0.5, samples=100, smooth, thick,red] plot (\x,1/\x) node[right] {};
+        \draw[domain=  0.9:2, samples=100, smooth, thick,blue] plot (\x,2/\x) node[right] {};
+        \draw[domain=-2:-0.9, samples=100, smooth, thick,blue] plot (\x,2/\x) node[right] {};
+        \draw[domain=  0.5:2, samples=100, smooth, thick,green] plot (\x,-1/\x) node[right] {};
+        \draw[domain=-2:-0.5, samples=100, smooth, thick,green] plot (\x,-1/\x) node[right] {};
+        \draw[domain=  0.9:2, samples=100, smooth, thick,cyan] plot (\x,-2/\x) node[right] {};
+        \draw[domain=-2:-0.9, samples=100, smooth, thick,cyan] plot (\x,-2/\x) node[right] {};
+        
+        \draw[domain=-1.5:1.5, samples=100, smooth, thick] plot ({cosh(\x)},{sinh(\x)}) node[right] {};
+        
+        \draw[thick,dotted,->] (0,1) -- (1,1);
+        \draw[thick,dotted,->] (1.41,1.41) -- (2.82,2.82);
+
+        \end{tikzpicture}     
+    \end{figure}
+    \begin{enumerate}
+     \item 
+     \item 
+     \item 
+    \end{enumerate}
 \end{solution}
+
+
 
 \begin{exercise}
     Consider the curves 
     \[
-        \gamma : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( t^2, t^3 )
+        \gamma : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( t^3, t^2 )
     \]
     \[
         \delta : [-1,1] \rightarrow \bbR^2, \quad t \mapsto ( \cos(t), \sin(2t) )
     \]
     Draw them. Are they simple, closed, differentiable, or regular? What are their tangents?
+    
+    Show that $\gamma$ is the graph of a function in the first coordinate.
 \end{exercise}
 \begin{solution}    
-    For the first curve the tangent is given by $\dot{\gamma}(t) = (2t, 3t^2)$.
+    For the first curve the tangent is given by $\dot{\gamma}(t) = ( 3t^2, 2t )$.
     Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).
     \\
 
@@ -59,11 +116,11 @@
 \end{solution}
 
 \begin{exercise}
-    Compute the line integral of $f : \bbR^2 \rightarrow \bbR$ along the two curves $\gamma$ and $\delta$, 
-    where 
+    Compute the line integral of
     \[
         f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto 1 + x_1^2 + x_2^2
     \]
+    along the two curves $\gamma$ and $\delta$, given by 
     \[
         \gamma : [0,\pi] \rightarrow \bbR^2, \quad t \mapsto ( -\cos(t), \sin(t) )
     \]
@@ -131,7 +188,7 @@
 \end{solution}
 
 \begin{exercise}
-    You are excavating a tunnel 20m beneath surface through rock from a point $A=(-1,0)$ to a point $B=(1,1)$ along a curve $\Gamma$.
+    You are excavating a tunnel deep beneath surface through rock from a point $A=(-1,0)$ to a point $B=(1,1)$ along a curve $\Gamma$.
     Geological observations show that the rock mass density of the region can be modeled by 
     \[
         f(x_1,x_2) = \exp(x_1+x_2).
@@ -169,6 +226,32 @@
         \left( e^2 - \frac{1}{e} \right)
         .
     \end{align*}
+\end{solution}
+
+
+\begin{exercise}
+    A matrix $A \in \bbR^{n \times n}$ is called symmetric if $A = A^{t}$ and antisymmetric if $A = - A^{t}$. 
+    \begin{enumerate}
+     \item Show that a matrix that is both symmetric and antisymmetric must be zero.
+     \item Show that every matrix $B \in \bbR^{n \times n}$ can be written as a sum $A = A_1 + A_2$ where $A_1 \in \bbR^{n \times n}$ is symmetric and $A_2 \in \bbR^{n \times n}$ is antisymmetric. 
+     \item Let $f : \bbR^{n} \rightarrow \bbR$ be a scalar field with continuous partial derivatives up to second order. 
+     Show that its Hessian is a symmetric matrix.
+     \item The \emph{trace} of a matrix is the sum of its diagonal elements. Find a scalar field in $\bbR^{2}$ whose Hessian is not zero but has zero trace.
+     \item Let $F : \bbR^{2} \rightarrow \bbR^{2}$ be a differentiable vector field. What is the antisymmetric part of its Jacobian?
+     \item Let $G : \bbR^{3} \rightarrow \bbR^{3}$ be a differentiable vector field. What is the antisymmetric part of its Jacobian?
+     \item What do you notice in the answers to the last two questions?
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}
+     \item 
+     \item 
+     \item 
+     \item We can use $f(x_1,x_2) = x_1 x_2$.
+     \item 
+     \item 
+     \item We notice that the entries in the antisymmetric parts of the Jacobians contain already all the information for the curl of the respective vector fields (in 2D and 3D). More generally, we can define the curl of a vector field $F : \bbR^{n} \rightarrow \bbR^{n}$ as the antisymmetric part of the Jacobian.
+    \end{enumerate}
 \end{solution}
 
 
