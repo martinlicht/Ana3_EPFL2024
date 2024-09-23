@@ -59,11 +59,15 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}
+    The tangent vector $\dot \gamma$ is given by
+    \begin{align*}
+        \dot \gamma(t) = \begin{pmatrix} \sinh(t) \\ \cosh(t) \end{pmatrix}.
+    \end{align*}x
     The figure in total has got the following shape:
     \def\CoordLimit{3.5}
     \begin{figure}[h]
-    \centering
-
+        \centering
+        
     \begin{tikzpicture}[scale=1.25]
         \draw[->] (-\CoordLimit,0) -- (\CoordLimit,0) node[right] {$x$};
         \draw[->] (0,-\CoordLimit) -- (0,\CoordLimit) node[above] {$y$};
@@ -89,7 +93,7 @@
         \draw[thick,dotted,-{Stealth}] (-1,-1) -- node[left] {(d)} (-2,-2);
 
         \end{tikzpicture}
-        \caption{The dotted arrows show the gradients at the points $(0, 1)$ (a), $(1, 0)$ (b), $(1, 1)$ (c), and $(-1, -1)$ (d).}
+        \caption{The dotted arrows show the gradients at the points $(0, 1)$ (a), $(1, 0)$ (b), $(1, 1)$ (c), and $(-1, -1)$ (d). The solid black line is the curve $\gamma$.}
     \end{figure}
 \end{solution}
 
