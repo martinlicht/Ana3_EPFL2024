@@ -186,8 +186,9 @@
     \end{align*}
     The second integral is $0$ since the integrand is uneven. For the first integral we use the cosine half-angle formula ($1 - 2\sin^2(\alpha) = \cos(2\alpha)$).
     \begin{align*}
-        &= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt
-        \\&= 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
+        81\int_{-\pi}^{\pi} \sin^2(t)dt
+		= 81\int_{-\pi}^{\pi} \frac{1}{2} - \frac{1}{2}\cos(2t)dt
+        = 81 \left[ \frac{1}{2} t - \frac{1}{4}\sin(2t) \right]_{-\pi}^{\pi} = 81\pi
     \end{align*}
     % Pick a parameterization, use that one integrand is odd and therefore vanishes, and use the cosine half-angle formula for the other term.
 \end{solution}
@@ -272,7 +273,7 @@
                     \frac{\partial G_z}{\partial x} -  \frac{\partial G_x}{\partial z} & \frac{\partial G_z}{\partial y} -  \frac{\partial G_y}{\partial z} & 0
                 \end{pmatrix}.
         \end{align*}
-     \item We notice that the entries in the antisymmetric parts of the Jacobians contain already all the information for the curl of the respective vector fields (in 2D and 3D). More generally, we can define the curl of a vector field $F : \bbR^{n} \rightarrow \bbR^{n}$ as the antisymmetric part of the Jacobian.
+     \item We notice that the entries in the antisymmetric parts of the Jacobians contain already all the information for the curl of the respective vector fields (in 2D and 3D). More generally, the antisymmetric part of the Jacobian of a vector field $F : \bbR^{n} \rightarrow \bbR^{n}$ is sometimes identified as the ``curl'' of that vector field in any dimension.
     \end{enumerate}
 \end{solution}
 
