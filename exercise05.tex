@@ -452,4 +452,141 @@
 \end{solution}
 
 
+
+
+
+
+
+
+
+\begin{exercise}[Challenge?]
+    Given the curve
+    \[
+        \gamma : [0,\pi] \to \bbR^2, \quad t \mapsto ( 3\cos(2t), \sin(2t) )
+    \]
+    and a function
+    \[
+        f : \bbR^2 \to \bbR, \quad (x_1,x_2) \mapsto \left( x_1^2 + 81 x_2^2 \right)^{\frac 3 2},
+    \]
+    compute the integrals 
+    \begin{align*}
+        \int_\Gamma f \;d\ell, \quad \int_\Gamma \nabla f \;d\ell.
+    \end{align*}
+\end{exercise}
+\begin{solution}     
+    The integral of the gradient along this simple closed regular curve is zero.
+    With regard to the integral of the scalar field along the curve, we have 
+    \begin{gather*}
+        \dot\gamma(t) = \left( -6 \sin(2t), 2\cos(2t) \right),
+        \\ 
+        |\dot\gamma(t)| 
+        = 
+        \sqrt{ 36 \sin^2(2t) + 4 \cos^2(2t) }
+        = 
+        2 \sqrt{ 9 \sin^2(2t) + \cos^2(2t) }
+        .
+    \end{gather*}
+    We also see that 
+    \begin{align*}
+        f(\gamma(t))
+        =
+        \left( 9\cos^2(2t) + 81 \sin^2(2t) \right)^{\frac 3 2}
+        &=
+        9^{\frac 3 2 }   \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        \\&=
+        27 \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{\frac 3 2}
+        ,
+    \end{align*}
+    In combination, 
+    \begin{align*}
+       \int_\Gamma f d\ell
+       &=
+       \int_0^{\pi} f(\gamma(t)) \cdot |\dot\gamma(t)| \;dt
+       \\&=
+       \int_0^{\pi} 27 \left( \cos^2(2t) + 9\sin^2(2t) \right)^{\frac 3 2} \cdot 2\sqrt{ \cos^2(2t) + 9\sin^2(2t) } \;dt
+       \\&=
+       54 \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
+       .
+    \end{align*}
+    Our life will be easier if we substitute $u = 2t$. We also use a trigonometric identity. Then
+    \begin{align*}
+        &
+        \int_0^{\pi} \left( \cos^2(2t) + 9 \sin^2(2t) \right)^{2} \;dt
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} \left( \cos^2(u) + 9 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} \left( 1 - \sin^2(u) + 9 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} \left( 1 + 8 \sin^2(u) \right)^{2} \;du
+        \\&=
+        \frac {1} 2 \int_0^{2\pi} 1 + 16 \sin^2(u) + 64 \sin^4(u) \;du
+        \\&=
+        \int_0^{\pi} 1 + 16 \sin^2(u) + 64 \sin^4(u) \;du
+        \\&=
+        \pi + 16 \int_0^{\pi} \sin^2(u) \;du + 64 \int_0^{\pi} \sin^4(u) \;du
+        .
+    \end{align*}
+    We use the half-angle formula:
+    \begin{align*}
+        \sin(u)^2 = \frac 1 2 \left( 1 - \cos(2u) \right).
+    \end{align*}
+    Thus
+    \begin{align*}
+        \int_0^{\pi} \sin^2(u) \;du
+        &=
+        \frac 1 2 \int_0^{\pi} 1 - \cos(2u) \;du
+        \\&=
+        \frac \pi 2 - \int_0^{\pi} \frac 1 2 \cos(2u) \;du
+        \\&=
+        \frac \pi 2 - \int_0^{\pi} \frac 1 4 (\sin(2u))' \;du
+        \\&=
+        \frac \pi 2 - \frac 1 4 \left[ (\sin(2u))' \right]_0^\pi
+        =
+        \frac \pi 2
+        .
+    \end{align*}
+    Similarly, using the half-angle formula twice: 
+    \begin{align*}
+        \int_0^{\pi} \sin^4(u) \;du
+        &=
+        \frac 1 4 \int_0^{\pi} \left( 1 - \cos(2u) \right)^2 \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} 1 - 2 \cos(2u) + \cos(2u)^2 \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} 1 - 2 \cos(2u) + \frac 1 2 \left( 1 - \cos(4u) \right) \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} \frac 3 2 - 2 \cos(2u) - \frac 1 2 \cos(4u) \;du
+        \\&=
+        \frac 1 4 \int_0^{\pi} \frac 3 2 \;du - \frac 1 2 \int_0^{\pi} \cos(2u) \;du - \frac 1 8 \int_0^{\pi} \cos(4u) \;du
+        \\&=
+        \frac 3 8 \pi
+        .
+    \end{align*}
+    The integrals of $\cos(2u)$ and $\cos(4u)$ from $0$ to $\pi$ vanish, by the the same argument as above. 
+    In total,
+    \begin{align*}
+        \int_\Gamma f d\ell
+        =
+        54
+        \left(
+            \pi + 16 \cdot \frac \pi 2 + 64 \cdot \frac 3 8 \pi
+        \right)
+        =
+        54
+        \left(
+        \pi + 8\pi + 24 \pi
+        \right)
+        =
+        54 \cdot 33 \pi
+        =
+        1782 \pi
+        .
+    \end{align*}
+\end{solution}
+
+
+
+
+
+
 \end{document}
