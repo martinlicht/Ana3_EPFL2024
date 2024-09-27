@@ -6,6 +6,63 @@
 
 
 
+\begin{exercise}
+    We review notions of potentials and conservative vector fields. Let $\Omega \subseteq \bbR^n$ be open.
+    Suppose we have a vector field $F = (F_1,\dots,F_n) \in C^1(\Omega,\bbR^n)$.
+	Recall that we have introduced the condition
+    \begin{align}\label{math:symmetry_of_jacobian}
+        \partial_i F_j = \partial_j F_i, \qquad 1 \leq i,j \leq n.
+    \end{align}
+    \begin{itemize}
+     \item Suppose that $n=2$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
+     \item Suppose that $n=3$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
+     \item Suppose that $n=1$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian}.
+     \item Suppose that $F$ admits a potential $f \in C^1(\Omega,\bbR)$, so that $\nabla f = F$. 
+     Show that if $\gamma : [a,b] \rightarrow \Omega$ is a simple regular curve, then 
+     \begin{align}
+        \int_\gamma F \;dl = f(\gamma(b)) - f(\gamma(a)).
+     \end{align}
+     Show that if $\gamma$ is closed, then 
+     \begin{align}
+        \int_\gamma F \;dl = 0.
+     \end{align}
+    \end{itemize}
+\end{exercise}
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[vector analysis in 1D]
+    Let $\Omega \subseteq (a,b)$ be an open interval in one-dimensional space.
+    \begin{itemize}
+     \item Explain why there cannot be a simple closed curve in $\Omega$.
+     \item When $\Omega = (-10,10)$, compute the integral of the scalar field 
+     \[
+        f(x) = \frac{x}{\sqrt{1+x^2}}
+     \]
+     along the curves 
+     \[
+        \gamma_1 : [0,1] \rightarrow \Omega, \quad t \mapsto (2t - 1),
+        \\
+        \gamma_2 : [-1,1] \rightarrow \Omega, \quad t \mapsto (t),
+        \\
+        \gamma_3 : [0,1] \rightarrow \Omega, \quad t \mapsto (1-2t),
+        \\
+        \gamma_4 : [0,1] \rightarrow \Omega, \quad t \mapsto (-1 + 2t^5),
+     \]
+     Compute the tangent vectors $\dot\gamma(t)$.
+    \end{itemize}
+    \item 
+    Compute the integral of the vector field 
+    \begin{align}
+        F(x) = \left( x e^{x^2} \right)
+    \end{align}
+    along the curve $\gamma_4$. Find a potential for this vector field, and write down the general form of all potentials.
+\end{exercise}
+\begin{solution}
+    This is obviously content of Analysis 1 but repackaged in the manner of vector analysis. 
+\end{solution}
+
 
 
 \begin{exercise}

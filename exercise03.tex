@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 
 \begin{document}
@@ -113,7 +113,8 @@
 \end{exercise}
 \begin{solution}    
     For the first curve the tangent is given by $\dot{\gamma}(t) = ( 3t^2, 2t )$.
-    Moreover the curve is simple (it does not intersect itself), differentiable and regular (since $\dot{\gamma} \neq \vec{0}$).
+    Moreover the curve is simple (it does not intersect itself) and differentiable.
+	However, it is not regular since $\dot{\gamma} = \vec{0}$ at $t=0$.
     \\
 
     For the second curve we have the tangent is given by $\dot{\delta}(t) = (-sin(t),2cos(2t))$.
@@ -182,11 +183,11 @@
     \begin{align*}
         \int_{\Gamma} f(x_1,x_2) d\ell &= \int_{-\pi}^{\pi} (f\circ \gamma)(t)|\dot{\gamma}(t)|dt
         \\&=
-        \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left|\begin{pmatrix}3\cos(t)\\3\sin(t)\end{pmatrix}\right| dt
+        \int_{-\pi}^{\pi} \left[3(3\sin(t))^2+(3\sin(t))^3)\right]\left\|\begin{pmatrix}-3\sin(t)\\3\cos(t)\end{pmatrix}\right\| dt
         \\&=
         \int_{-\pi}^{\pi} 3\left[27\sin^2(t)+27\sin^3(t))\right]dt
         \\&=
-        81\int_{-\pi}^{\pi} \sin^2(t)dt+ 81\int_{-\pi}^{\pi}\sin^3(t))dt\\
+        81\int_{-\pi}^{\pi} \sin^2(t)dt+ 81\int_{-\pi}^{\pi}\sin^3(t))dt
     \end{align*}
     The second integral is $0$ since the integrand is uneven. For the first integral we use the cosine half-angle formula ($1 - 2\sin^2(\alpha) = \cos(2\alpha)$).
     \begin{align*}
