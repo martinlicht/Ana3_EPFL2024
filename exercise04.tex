@@ -316,16 +316,16 @@
     We want to verify that the curve integrals do not depend on the direction of the parameterization.
     Consider the curve parameterizations
     \begin{align}
-        \gamma_+ : [0,1] \rightarrow \bbR^2, \quad t \mapsto ( t, 1 + \frac 1 3 t^3 ),
+        \gamma_+ : [0,1] \rightarrow \bbR^2, \quad t \mapsto ( t, 1 + \frac 1 2 t^2 ),
         \\
-        \gamma_- : [0,1] \rightarrow \bbR^2, \quad t \mapsto ( 1-t, 1 + \frac 1 3 (1-t)^3 ),
+        \gamma_- : [0,1] \rightarrow \bbR^2, \quad s \mapsto ( 1-s, 1 + \frac 1 2 (1-s)^2 ),
     \end{align}
     \begin{itemize}
      \item Given the scalar field 
      \[
         f(x,y) 
-        = x ( y - \frac 1 3 x^3 )
-        = x y - \frac 1 3 x^4
+        = x ( y - \frac 1 2 x^2 )
+        = x y - \frac 1 2 x^3
         ,
      \]
      show that 
@@ -347,22 +347,51 @@
      \begin{align}
         \int_{\gamma_+} f \;dl
         &=
-        \int_{\gamma_+} f( t, 1 + \frac 1 3 t^3 ) \sqrt{ 1 + t^2 }
+        \int_{0}^1 f( t, 1 + \frac 1 2 t^2 ) |\dot{\gamma}_+(t)|dt
         \\&
         =
-        \int_{\gamma_+} t \sqrt{ 1 + t^2 }
+        \int_{0}^1 t \sqrt{ 1 + t^2 }
         \\&
         =
-        \frac 1 2 \int_{\gamma_+} 2t \sqrt{ 1 + t^2 }
+        \frac 1 2 \int_{0}^1 2t \sqrt{ 1 + t^2 }
         \\&
         =
-        ...
-        .
+        \frac 1 2 \int_1^2 \sqrt{ u } \;du\\&
+        =
+        \frac 1 2 \left[ \frac 2 3 u^{\frac 3 2} \right]_1^2 = \frac 1 3 \left( 2 \sqrt{2} - 1 \right),
      \end{align}
+     where we used the substitution $u = 1 + t^2$.
      The second integral can be computed directly as well, or with a change of variables. For the latter, we use
      \begin{align}
-        ....
+        \int_{\gamma_-} f \;dl
+        &=
+        \int_{0}^1 f( 1 - s, 1 + \frac 1 2 (1 - s)^2 ) |\dot{\gamma}_-(s)|ds
+        \\&
+        =-\int_1^0 f(t, 1 + \frac 1 2 t^2) |\dot{\gamma}_-(1-t)|dt
+        \\&
+        = \int_0^1 t \sqrt{1 + (1 - (1 - t))^2} dt = \int_0^1 t \sqrt{1 + t^2} dt
+        \\&
+        = \int_{\gamma_+}f dl,
      \end{align}
+     where we used the substitution $t = 1 - s$ with $dt = -ds$.
+
+        \item We compute the tangent vectors:
+        \begin{align}
+            \dot\gamma_+(t) = \begin{pmatrix} 1 \\ t \end{pmatrix}, \quad |\dot \gamma_+(t)| = \sqrt{1 + t^2},
+            \\
+            \dot\gamma_-(s) = \begin{pmatrix} -1 \\ s - 1 \end{pmatrix}, \quad |\dot \gamma_-(s)| = \sqrt{1 + (s-1)^2}.
+        \end{align}
+        Hence, it is clear that $\dot\gamma_+(t) = - \dot\gamma_-(1-t)$. Furthermore, it is clear that $\gamma_+(t) = \gamma_-(1 - t)$. Finally, for the curve integral we find again using a change of variables that
+        \begin{align}
+            \int_{\gamma_+} F \;dl &= \int_0^1 F(\gamma_+(t)) \cdot \dot\gamma_+(t) \;dt
+            \\&
+            = -\int_0^1 F(\gamma_-(1 - t)) \cdot \dot\gamma_-(1 - t) \;dt
+            \\&
+            = \int_0^1 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
+            \\&
+            = \int_{\gamma_-} F \;dl,
+        \end{align}
+        where we have used the substitution $s = 1 - t$ with $dt = -ds$.
     \end{itemize}
 \end{solution}
 
