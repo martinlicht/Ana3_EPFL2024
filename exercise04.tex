@@ -5,83 +5,29 @@
 \exsheet{4}{3}{October} % parameters are the number of the session and the day
 
 
-
-\begin{exercise}
-    We review notions of potentials and conservative vector fields. Let $\Omega \subseteq \bbR^n$ be open.
-    Suppose we have a vector field $F = (F_1,\dots,F_n) \in C^1(\Omega,\bbR^n)$.
-	Recall that we have introduced the condition
-    \begin{align}\label{math:symmetry_of_jacobian}
-        \partial_i F_j = \partial_j F_i, \qquad 1 \leq i,j \leq n.
-    \end{align}
-    \begin{itemize}
-     \item Suppose that $n=2$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
-     \item Suppose that $n=3$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
-     \item Suppose that $n=1$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian}.
-     \item Suppose that $F$ admits a potential $f \in C^1(\Omega,\bbR)$, so that $\nabla f = F$. 
-     Show that if $\gamma : [a,b] \rightarrow \Omega$ is a simple regular curve, then 
-     \begin{align}
-        \int_\gamma F \;dl = f(\gamma(b)) - f(\gamma(a)).
-     \end{align}
-     Show that if $\gamma$ is closed, then 
-     \begin{align}
-        \int_\gamma F \;dl = 0.
-     \end{align}
-    \end{itemize}
-\end{exercise}
-\begin{solution}
-    
-\end{solution}
-
-\begin{exercise}[vector analysis in 1D]
-    Let $\Omega \subseteq (a,b)$ be an open interval in one-dimensional space.
-    \begin{itemize}
-     \item Explain why there cannot be a simple closed curve in $\Omega$.
-     \item When $\Omega = (-10,10)$, compute the integral of the scalar field 
-     \[
-        f(x) = \frac{x}{\sqrt{1+x^2}}
-     \]
-     along the curves 
-     \[
-        \gamma_1 : [0,1] \rightarrow \Omega, \quad t \mapsto (2t - 1),
-        \\
-        \gamma_2 : [-1,1] \rightarrow \Omega, \quad t \mapsto (t),
-        \\
-        \gamma_3 : [0,1] \rightarrow \Omega, \quad t \mapsto (1-2t),
-        \\
-        \gamma_4 : [0,1] \rightarrow \Omega, \quad t \mapsto (-1 + 2t^5),
-     \]
-     Compute the tangent vectors $\dot\gamma(t)$.
-    \end{itemize}
-    \item 
-    Compute the integral of the vector field 
-    \begin{align}
-        F(x) = \left( x e^{x^2} \right)
-    \end{align}
-    along the curve $\gamma_4$. Find a potential for this vector field, and write down the general form of all potentials.
-\end{exercise}
-\begin{solution}
-    This is obviously content of Analysis 1 but repackaged in the manner of vector analysis. 
-\end{solution}
-
-
-
 \begin{exercise}
     Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
-    \[
+    \begin{align*}
         \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( x_2, 0 ), \qquad \gamma : [0,2\pi]  \to \bbR^2, \quad t \mapsto ( \cos(t), \sin(t) )
-    \]
+    \end{align*}
     Compute the line integral of the vector field $\vec{G}$ along the curve $\delta$, where 
-    \[
+    \begin{align*}
         \vec G : \bbR^3 \to \bbR^3, \quad (x_1,x_2,x_3) \mapsto ( 2, 3, -1 ), \qquad \delta : [0,4]  \to \bbR^2, \quad t \mapsto  ( t^2, \cos(t), e^t )
-    \]
+    \end{align*}
 \end{exercise}
 \begin{solution}
     \begin{align*}
-        \int_{\Gamma} \vec{F}(x_1,x_2) d\ell &= \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt
-        \\&= \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt
-        \\&= \int_{0}^{2\pi}  -\sin^2(t)dt
-        \\&= \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt
-        \\&= \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
+        \int_{\Gamma} \vec{F}(x_1,x_2) d\ell 
+        &= 
+        \int_{0}^{2\pi} (\vec{F}\circ \gamma)(t)\cdot \dot{\gamma}(t)dt
+        \\&= 
+        \int_{0}^{2\pi} \begin{pmatrix}\sin t\\ 0\end{pmatrix}\cdot \begin{pmatrix} -\sin(t)\\ \cos(t)\end{pmatrix}dt
+        \\&= 
+        \int_{0}^{2\pi}  -\sin^2(t)dt
+        \\&= 
+        \int_{0}^{2\pi}  -\frac{1}{2}+\frac{1}{2}\cos(2t)dt
+        = 
+        \left[-\frac{1}{2}t + \frac{1}{4}\sin(2t)\right]_{0}^{2\pi} = -\pi
     \end{align*}
 
     \begin{align*}
@@ -98,41 +44,47 @@
 
 \begin{exercise}
     Compute the line integral of the vector field $\vec{F}$ along the curve $\gamma$, where 
-    \[
+    \begin{align*}
         \vec F : \bbR^2 \to \bbR^2, \quad (x_1,x_2) \mapsto ( e^{ x_1x_2 } x_2, e^{ x_1 x_2 } x_1 )
-    \]
+    \end{align*}
     and 
-    \[
-        \gamma : [0,1] \to \bbR^2, \quad t \mapsto \left( \arctan( \cos(\pi t)^2 - \sin(\pi t)^2 ), 1 + \sqrt[2]{\arctan(t)} \right)
-    \]
+    \begin{align*}
+        \gamma : [0,1] \to \bbR^2, \quad t \mapsto \left( \arctan( \cos(\pi t)^2 - \sin(\pi t)^2 ), 1 + \sqrt[2]{1+\arctan(t)} \right)
+    \end{align*}
 \end{exercise}
 \begin{solution}
-    The vector field is the gradient of $e^{ x_1 x_2 }$, and so we can use the formula for conservative vector fields.
+    The vector field is the gradient of $e^{ x_1 x_2 }$, and so we can use the formula for vector fields that admit a potential.
     We find that
-    \[
+    \begin{align*}
         \int_\Gamma \vec F d\ell = \int_\Gamma \grad f d\ell = f(\gamma(1)) - f(\gamma(0))
-    \]
+    \end{align*}
     Now we only need to compute the function values of $f$. Explicitly,
-    \[
-        \gamma(0) = \left( \arctan( \cos(\pi 0)^2 - \sin(\pi 0)^2 ), 1 + \sqrt[2]{\arctan(0)} \right)
+    \begin{align*}
+        \gamma(0) 
+		&= 
+		\left( \arctan( \cos(\pi 0)^2 - \sin(\pi 0)^2 ), 1 + \sqrt[2]{1+\arctan(0)} \right)
+        \\&
+		=
+        \left( \arctan( 1 ), 1 + \sqrt[2]{1} \right) 
         =
-        \left( \arctan( 1 ), 1 + \sqrt[2]{0} \right) 
+        \left( \pi/4, 2 \right)
+    \end{align*}
+    \begin{align*}
+        \gamma(1) 
+		&= 
+		\left( \arctan( \cos(\pi 1)^2 - \sin(\pi 1)^2 ), 1 + \sqrt[2]{1+\arctan(1)} \right)
+        \\&
+		=
+        \left( \arctan( 1 ), 1 + \sqrt[2]{1+\pi/4} \right)
         =
-        \left( \pi/4, 1 \right)
-    \]
-    \[
-        \gamma(1) = \left( \arctan( \cos(\pi 1)^2 - \sin(\pi 1)^2 ), 1 + \sqrt[2]{\arctan(1)} \right)
-        =
-        \left( \arctan( 1 ), 1 + \sqrt[2]{\pi/4} \right)
-        =
-        \left( \pi/4, 1 + \sqrt[2]{\pi/4} \right)
-    \]
+        \left( \pi/4, 1 + \sqrt[2]{1+\pi/4} \right)
+    \end{align*}
     We then compute
-    \[
+    \begin{align*}
         f(\gamma(1)) - f(\gamma(0)) 
         =
-        \exp\left( \frac \pi 4 ( 1 + \sqrt[2]{\pi/4} ) \right) - \exp\left( \pi/4 \right).
-    \]
+        \exp\left( \frac \pi 4 ( 1 + \sqrt[2]{1+\pi/4} ) \right) - \exp\left( \pi/2 \right).
+    \end{align*}
 \end{solution}
 
 \begin{exercise}
@@ -141,13 +93,14 @@
 \end{exercise}
 \begin{solution}
     We can express the graph as a curve 
-    \[
+    \begin{align*}
         \gamma : [0,2] \to \mathbb R^2, \quad t \mapsto ( t, t^{\frac 3 2} ) 
-    \]
-    As mentioned in the lecture, the integral of $1$ along that curve gives the length:
-    \[
-        \int_\Gamma 1 \;dl = \int_0^2 \left| ( 1, \frac 3 2 t^{\frac 1 2} \right| \;dt = \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt
-    \]
+    \end{align*}
+    As mentioned in the lecture, the integral of $1$ along that curve gives the length.
+	Hence we find:
+    \begin{align*}
+        \int_\Gamma 1 \;dl = \int_0^2 \left| \left( 1, \frac 3 2 t^{\frac 1 2} \right) \right| \;dt = \int_0^2 \sqrt{ 1 + \frac{9t}{4} } \;dt
+    \end{align*}
     We integrate the last expression. The integrand is a derivative, up to some numerical factor:
     \begin{align*}
         \int_0^2 \sqrt{ 1 + \frac 9 4 t } \;dt 
@@ -163,7 +116,8 @@
         \frac{8}{27} \left( \left( \frac {11} 2 \right)^{\frac 3 2} - 1 \right)
         .
     \end{align*}
-    (You can also use \textit{Intégration par changement de variable}, which is the same idea in a different formalism.)
+    (You can compute the integral via \textit{Intégration par changement de variable}, 
+	which is the same calculation but in a different formalism.)
     % \begin{align*}
     %     \int_0^2 \sqrt{1 + \left[\frac{\;d}{\;dx} (x^2\sin x)\right]^2}dx &= \int_0^2 \sqrt{1 + (2x\sin x + x^2\cos x)^2}\;dx\\
     % &=\int_0^2 \sqrt{1 + 4x^2\sin^2 x + x^4\cos^2 x + 4x^3\cos x\sin x}\;dx
@@ -174,9 +128,9 @@
 
 \begin{exercise}
     Take a look at the functions 
-    \[
+    \begin{align*}
         f(x_1,x_2) = 1, \quad g(x_1,x_2) = x_2.
-    \]
+    \end{align*}
     We have the following curves:
     \begin{align*}
         &\alpha : [0,1] \to \bbR^2, \quad t \mapsto (t,t),
@@ -188,13 +142,13 @@
 %         &\delta : [0,1] \to \bbR^2, \quad t \mapsto (1-t^2,1-t).
     \end{align*}
     Compute:
-    \[
+    \begin{align*}
         \int_A f \;d\ell, \quad \int_B f \;d\ell, \quad 
         \int_A g \;d\ell, \quad \int_B g \;d\ell, \quad 
         \int_\Gamma g \;d\ell
 %         \quad \int_\Delta g \;d\ell
         .
-    \]
+    \end{align*}
 \end{exercise}
 \begin{solution}  
      We compute these integrals as follows:
@@ -322,12 +276,12 @@
     \end{align}
     \begin{itemize}
      \item Given the scalar field 
-     \[
+     \begin{align*}
         f(x,y) 
         = x ( y - \frac 1 2 x^2 )
         = x y - \frac 1 2 x^3
         ,
-     \]
+     \end{align*}
      show that 
      \begin{align}
         \int_{\gamma_+} f \;dl = \int_{\gamma_-} f \;dl
@@ -343,46 +297,46 @@
 \end{exercise}
 \begin{solution}
     \begin{itemize}
-     \item We compute the first integral directly:
-     \begin{align}
-        \int_{\gamma_+} f \;dl
-        &=
-        \int_{0}^1 f( t, 1 + \frac 1 2 t^2 ) |\dot{\gamma}_+(t)|dt
-        \\&
-        =
-        \int_{0}^1 t \sqrt{ 1 + t^2 }
-        \\&
-        =
-        \frac 1 2 \int_{0}^1 2t \sqrt{ 1 + t^2 }
-        \\&
-        =
-        \frac 1 2 \int_1^2 \sqrt{ u } \;du\\&
-        =
-        \frac 1 2 \left[ \frac 2 3 u^{\frac 3 2} \right]_1^2 = \frac 1 3 \left( 2 \sqrt{2} - 1 \right),
-     \end{align}
-     where we used the substitution $u = 1 + t^2$.
-     The second integral can be computed directly as well, or with a change of variables. For the latter, we use
-     \begin{align}
-        \int_{\gamma_-} f \;dl
-        &=
-        \int_{0}^1 f( 1 - s, 1 + \frac 1 2 (1 - s)^2 ) |\dot{\gamma}_-(s)|ds
-        \\&
-        =-\int_1^0 f(t, 1 + \frac 1 2 t^2) |\dot{\gamma}_-(1-t)|dt
-        \\&
-        = \int_0^1 t \sqrt{1 + (1 - (1 - t))^2} dt = \int_0^1 t \sqrt{1 + t^2} dt
-        \\&
-        = \int_{\gamma_+}f dl,
-     \end{align}
-     where we used the substitution $t = 1 - s$ with $dt = -ds$.
+		\item We compute the first integral directly:
+		\begin{align*}
+			\int_{\gamma_+} f \;dl
+			&=
+			\int_{0}^1 f( t, 1 + \frac 1 2 t^2 ) |\dot{\gamma}_+(t)|dt
+			\\&
+			=
+			\int_{0}^1 t \sqrt{ 1 + t^2 } dt
+			\\&
+			=
+			\frac 1 2 \int_{0}^1 2t \sqrt{ 1 + t^2 } dt
+			\\&
+			=
+			\frac 1 2 \int_1^2 \sqrt{ u } \;du\\&
+			=
+			\frac 1 2 \left[ \frac 2 3 u^{\frac 3 2} \right]_1^2 = \frac 1 3 \left( 2 \sqrt{2} - 1 \right),
+		\end{align*}
+		where we used the substitution $u = 1 + t^2$.
+		The second integral can be computed directly as well, or with a change of variables. For the latter, we use
+		\begin{align*}
+			\int_{\gamma_-} f \;dl
+			&=
+			\int_{0}^1 f( 1 - s, 1 + \frac 1 2 (1 - s)^2 ) |\dot{\gamma}_-(s)|ds
+			\\&
+			=-\int_1^0 f(t, 1 + \frac 1 2 t^2) |\dot{\gamma}_-(1-t)|dt
+			\\&
+			= \int_0^1 t \sqrt{1 + (1 - (1 - t))^2} dt = \int_0^1 t \sqrt{1 + t^2} dt
+			\\&
+			= \int_{\gamma_+}f dl,
+		\end{align*}
+		where we used the substitution $t = 1 - s$ with $dt = -ds$.
 
         \item We compute the tangent vectors:
-        \begin{align}
+        \begin{align*}
             \dot\gamma_+(t) = \begin{pmatrix} 1 \\ t \end{pmatrix}, \quad |\dot \gamma_+(t)| = \sqrt{1 + t^2},
             \\
             \dot\gamma_-(s) = \begin{pmatrix} -1 \\ s - 1 \end{pmatrix}, \quad |\dot \gamma_-(s)| = \sqrt{1 + (s-1)^2}.
-        \end{align}
+        \end{align*}
         Hence, it is clear that $\dot\gamma_+(t) = - \dot\gamma_-(1-t)$. Furthermore, it is clear that $\gamma_+(t) = \gamma_-(1 - t)$. Finally, for the curve integral we find again using a change of variables that
-        \begin{align}
+        \begin{align*}
             \int_{\gamma_+} F \;dl &= \int_0^1 F(\gamma_+(t)) \cdot \dot\gamma_+(t) \;dt
             \\&
             = -\int_0^1 F(\gamma_-(1 - t)) \cdot \dot\gamma_-(1 - t) \;dt
@@ -390,7 +344,7 @@
             = \int_0^1 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
             \\&
             = \int_{\gamma_-} F \;dl,
-        \end{align}
+        \end{align*}
         where we have used the substitution $s = 1 - t$ with $dt = -ds$.
     \end{itemize}
 \end{solution}
@@ -408,9 +362,9 @@
 
 \begin{exercise}
     Consider the open cube 
-    \[
+    \begin{align*}
         \Omega = (0,1)^2 = \left\{ (x,y) \in \mathbb R^2 : 0 < x,y < 1 \right\}. 
-    \]
+    \end{align*}
     \begin{itemize}
         \item Show that $\Omega$ is convex.
         \item Let $z \in \Omega$. Show that $\Omega$ is star-shaped with respect to $z$.
@@ -420,22 +374,47 @@
 \end{exercise}
 \begin{solution}
     \item
-    \item 
+	Graphically, it is clear that each segment between points of $\Omega$ is also contained in $\Omega$. 
+	But we prove this formally. 
+	
+	Suppose that $a = (a_1,a_2), b = (b_1,b_2) \in \Omega$ and $t \in [0,1]$. We want to show that $ta + (1-t)b \in \Omega$.
+	We compute that 
+	\begin{align*}
+		ta + (1-t)b
+		&=
+		\left( t a_1 + (1-t) a_2, t b_1 + (1-t) b_2 \right)
+		\\&=
+		\left( t a_1 + (1-t) a_2, t b_1 + (1-t) b_2 \right)
+		.
+	\end{align*}
+	This point is in $\Omega$ if each coordinate is in the interval $(0,1)$. We show that for the first coordinate,
+	because the argument for the second coordinate is almost the same. 
+	Clearly,
+	\begin{align*}
+		t a_1 + (1-t) a_2 > t \min(a_1,a_2) + (1-t) \min(a_1,a_2) = \min(a_1,a_2) > 0,
+	\end{align*}
+	\begin{align*}
+		t a_1 + (1-t) a_2 < t \max(a_1,a_2) + (1-t) \max(a_1,a_2) = \max(a_1,a_2) < 1.
+	\end{align*}
+	We conclude that $\Omega$ is convex.
+	\item 
+	As already observed, the segment between any two points $z,a \in \Omega$ is already contained in $\Omega$. 
+	If we fix any point $z \in \Omega$, then $\Omega$ is star-shaped. \textit{Note that we do not use any property except that $\Omega$ is convex. Indeed, every convex domain is also star-shaped (with respect to any point inside).}
     \item 
     Given two continuous curves $\gamma_0, \gamma_1 : [a,b] \rightarrow \Omega$ with $\gamma_0(a) = \gamma_1(a) =: g_a$ and $\gamma_0(b) = \gamma_1(b) =: g_b$, we define 
-    \[
+    \begin{align*}
         \gamma : [a,b] \times [0,1] \rightarrow \bbR^2
-    \]
+    \end{align*}
     by setting 
-    \[
+    \begin{align*}
         \gamma(t,s) = (1-s) \cdot \gamma_0(t) + s \cdot \gamma_1(t).
-    \]
+    \end{align*}
     For any $t \in [a,b]$ we have $\gamma_0(t), \gamma_1(t) \in \Omega$,
     and since $\Omega$ is convex, we have $(1-s) \cdot \gamma_0(t) + s \cdot \gamma_1(t) \in \Omega$ for all $s \in [0,1]$.
     Hence $\gamma$ defines a function 
-    \[
+    \begin{align*}
         \gamma : [a,b] \times [0,1] \rightarrow \Omega
-    \]
+    \end{align*}
     Furthermore, $\gamma$ is obviously continuous in both variables. 
     
     We verify the remaing conditions. For all $t \in [a,b]$ we have 
