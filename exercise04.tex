@@ -1,44 +1,10 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{4}{3}{October} % parameters are the number of the session and the day
 
 
-
-\begin{exercise}
-    Consider a curve $u$ in one-dimensional space with
-    \begin{align*}
-        u : [1,2] \rightarrow \bbR, \qquad t \mapsto t^2 + t
-    \end{align*}
-    Verify that the curve is simple, differentiable, and regular. Compute the curve integral $\int_u f \;dl$, where 
-    \begin{align*}
-        f : \bbR \rightarrow \bbR, \qquad x \rightarrow 3x^3
-    \end{align*}
-    is the scalar field.
-\end{exercise}
-\begin{solution}
-    This is obviously just a fancy way of describing integration by substitution. 
-\end{solution}
-
-
-
-
-
-
-\begin{exercise}
-    Compute the lengths of the following curves:
-    \begin{gather*}
-        \gamma : [0,1] \rightarrow \bbR^{3}, \qquad t \mapsto \left( 3, t^2, 4t \right),
-        \\
-        \delta : [0,3] \rightarrow \bbR^{2}, \qquad t \mapsto \left( 3, t^2, 4t \right),
-        \\
-        \delta : [1,\infty) \rightarrow \bbR^{2}, \qquad t \mapsto \left( 5, e^{-t} \right)
-    \end{gather*}
-\end{exercise}
-\begin{solution}
-    
-\end{solution}
 
 
 \begin{exercise}
@@ -328,7 +294,7 @@
      \begin{align}
         F(x,y) = (-y,x)
      \end{align}
-     are identical.
+     are the negative of each other.
     \end{itemize}
 \end{exercise}
 \begin{solution}
@@ -344,13 +310,17 @@
 			\\&
 			=
 			\frac 1 2 \int_{0}^1 2t \sqrt{ 1 + t^2 } dt
-			\\&
-			=
-			\frac 1 2 \int_1^2 \sqrt{ u } \;du\\&
-			=
-			\frac 1 2 \left[ \frac 2 3 u^{\frac 3 2} \right]_1^2 = \frac 1 3 \left( 2 \sqrt{2} - 1 \right),
+			.
 		\end{align*}
-		where we used the substitution $u = 1 + t^2$.
+		We substitute $u = 1 + t^2$, so that $du = 2 dt$. Thus
+		\begin{align*}
+			\frac 1 2 \int_{0}^1 2t \sqrt{ 1 + t^2 } dt
+			&=
+			\frac 1 2 \int_1^2 \sqrt{ u } \;du
+			=
+			\frac 1 2 \left[ \frac 2 3 u^{\frac 3 2} \right]_1^2 = \frac 1 3 \left( 2 \sqrt{2} - 1 \right)
+			.
+		\end{align*}
 		The second integral can be computed directly as well, or with a change of variables. For the latter, we use
 		\begin{align*}
 			\int_{\gamma_-} f \;dl
@@ -365,23 +335,63 @@
 		\end{align*}
 		where we used the substitution $t = 1 - s$ with $dt = -ds$.
 
-        \item We compute the tangent vectors:
+        \item
+		Given the two parameterizations as stated above, 
+		\begin{align}
+			\gamma_+ &: [0,1] \rightarrow \bbR^2, \quad t \mapsto ( t, 1 + \frac 1 2 t^2 ),
+			\\
+			\gamma_- &: [0,1] \rightarrow \bbR^2, \quad s \mapsto ( 1-s, 1 + \frac 1 2 (1-s)^2 ),
+		\end{align}
+		We compute the tangent vectors:
         \begin{align*}
-            \dot\gamma_+(t) = \begin{pmatrix} 1 \\ t \end{pmatrix}, \quad |\dot \gamma_+(t)| = \sqrt{1 + t^2},
+            \dot\gamma_+(t) = \begin{pmatrix} 1 \\ t \end{pmatrix}, 
+            \qquad 
+            \dot\gamma_-(s) = \begin{pmatrix} -1 \\ s - 1 \end{pmatrix}.
+        \end{align*}
+		Their norms are 
+		\begin{align*}
+            |\dot \gamma_+(t)| = \sqrt{1 + t^2},
             \\
-            \dot\gamma_-(s) = \begin{pmatrix} -1 \\ s - 1 \end{pmatrix}, \quad |\dot \gamma_-(s)| = \sqrt{1 + (s-1)^2}.
+            |\dot \gamma_-(s)| = \sqrt{1 + (s-1)^2}.
         \end{align*}
-        Hence, it is clear that $\dot\gamma_+(t) = - \dot\gamma_-(1-t)$. Furthermore, it is clear that $\gamma_+(t) = \gamma_-(1 - t)$. Finally, for the curve integral we find again using a change of variables that
+        It is intuitive that $\dot\gamma_+(t) = - \dot\gamma_-(1-t)$, as we check easily:
         \begin{align*}
-            \int_{\gamma_+} F \;dl &= \int_0^1 F(\gamma_+(t)) \cdot \dot\gamma_+(t) \;dt
-            \\&
-            = -\int_0^1 F(\gamma_-(1 - t)) \cdot \dot\gamma_-(1 - t) \;dt
-            \\&
-            = \int_0^1 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
-            \\&
-            = \int_{\gamma_-} F \;dl,
+            \dot\gamma_-(1-t) 
+            = 
+            -
+            \begin{pmatrix} -1 \\ 1-t - 1 \end{pmatrix}
+            =
+            \begin{pmatrix}  1 \\ t       \end{pmatrix}
+            =
+            \dot\gamma_+(t)
+            .
         \end{align*}
-        where we have used the substitution $s = 1 - t$ with $dt = -ds$.
+        Finally, for the curve integral we find again,
+        using the change of variables $s = 1 - t$, hence $ds = - dt$, 
+        the following identity:
+        \begin{align*}
+            \int_{\gamma_+} F \;dl 
+            &= 
+            \int_0^1 F(\gamma_+(t)) \cdot \dot\gamma_+(t) \;dt
+            \\&
+            = 
+            -
+            \int_0^1 F(\gamma_-(1 - t)) \cdot \dot\gamma_-(1 - t) \;dt
+            \\&
+            = 
+            \int_1^0 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
+            .
+        \end{align*}
+        We switch the bounds of integration into normal order and find 
+        \begin{align*}
+            \int_1^0 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
+            = 
+            -
+            \int_0^1 F(\gamma_-(s)) \cdot \dot\gamma_-(s) \;ds
+            = 
+            -\int_{\gamma_-} F \;dl
+            .
+        \end{align*}
     \end{itemize}
 \end{solution}
 
