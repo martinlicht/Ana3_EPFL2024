@@ -19,9 +19,8 @@
     \end{align*}
     is the scalar field.
 \end{exercise}
-\begin{solution}
-    This is obviously just a fancy way of describing integration by substitution. 
-    ...............
+\begin{solution}[Remark]
+    This is just a fancy way of describing integration by substitution from Analysis I.
 \end{solution}
 \begin{solution}
     We first verify that the curve is simple, differentiable, and regular.
@@ -75,7 +74,7 @@
 \begin{exercise}[vector analysis in 1D]
     Let $\Omega \subseteq (a,b)$ be an open interval in one-dimensional space.
     \begin{itemize}
-     \item Explain why there cannot be a simple closed curve in $\Omega$.
+     \item Explain why there cannot be a simple closed continuous curve in $\Omega$.
      \item When $\Omega = (-10,10)$, compute the integral of the scalar field 
      \begin{gather*}
         f(x) = \frac{x}{\sqrt{1+x^2}}
@@ -100,11 +99,46 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}
-    This is obviously content of Analysis 1 but repackaged in the manner of vector analysis. 
+    This is content of Analysis 1 but repackaged in the manner of vector analysis. 
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item Any closed continuous curve in $\Omega$ would have to intersect itself in virtue of the Intermediate Value Theorem.
+        \item Before we compute all the line integrals, we note that the curves $\gamma_1, \gamma_3$, and $\gamma_4$ map the interval $[0, 1]$ to the interval $[-1, 1]$.
+        Hence, we can solve the corresponding line integrals by a change of variables in the line integral for $\gamma_2$.
+        Furthermore, we note that $\gamma_3$ is the reparameterization of $\gamma_1$ in the opposite direction. Hence, we conclude from Exercise 5 on Exercise Sheet 4,
+        that the corresponding line integrals must be equal. Let us now start the computations with $\gamma_2$:
+        \begin{align}
+            \int_{\gamma_2} f \;dl 
+            &= 
+            \int_{-1}^1 f(t) \;dt 
+            = 
+            \int_{-1}^1 \frac{t}{\sqrt{1+t^2}} \;dt 
+            = 0,
+        \end{align}
+        since the integrand is odd around $t = 0$. For $\gamma_1$, we have
+        \begin{align}
+            \int_{\gamma_1} f \;dl 
+            &= 
+            \int_{0}^1 f(\gamma_1(t)) |\dot \gamma_1(t)| \;dt 
+            = 
+            2\int_{0}^1 f(2t - 1) \;dt 
+            = \int_{-1}^1 f(s) \;ds = 0 = \int_{\gamma_2} f \;dl = 0.
+        \end{align}
+        As already pointed out previously, we must have $\int_{\gamma_3} f \;dl = \int_{\gamma_1} f \;dl = 0$. 
+        Finally, we find for $\gamma_4$ that $\dot \gamma_4(t) = 10t^4 \geq 0$ for $t \in [0,1]$
+        and thus
+        \begin{align}
+            \int_{\gamma_4} f \;dl 
+            = 
+            \int_{0}^1 f(\gamma_4(t)) \dot \gamma_4(t) \;dt 
+            = 
+            \int_{-1}^1 f(u) \;du = \int_{\gamma_2} f \;dl = 0,
+        \end{align}
+        where we have used the substitution $u = \gamma_4(t) = -1 + 2t^5$ with $du = \dot \gamma_4(t) \;dt$.
+        \item The general form of a potential for $F$ is $f(x) = \frac 1 2 e^{x^2} + C$, where $C$ is an arbitrary constant. We set
+        $C = -1/2$ such that $f(0) = 0$. For the curve integral of $F$ along $\gamma_4$, we thus find that
+        \begin{align}
+            \int_{\gamma_4} F dl = f(\gamma_4(1)) - f(\gamma_4(0)) = f(1) - f(-1) = \frac 1 2 (e - e^{-1}).
+        \end{align}
     \end{itemize}
 \end{solution}
 
@@ -112,13 +146,14 @@
     We review notions of potentials and conservative vector fields. Let $\Omega \subseteq \bbR^n$ be open.
     Suppose we have a vector field $F = (F_1,\dots,F_n) \in C^1(\Omega,\bbR^n)$.
 	Recall that we have introduced the condition
-    \begin{align}\label{math:symmetry_of_jacobian}
+    \begin{align}
+    \label{eq:conservative}
         \partial_i F_j = \partial_j F_i, \qquad 1 \leq i,j \leq n.
     \end{align}
     \begin{itemize}
-     \item Suppose that $n=2$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
-     \item Suppose that $n=3$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian} if and only if it is curl-free: $\operatorname{curl} F = 0$.
-     \item Suppose that $n=1$. Show that $F$ satisfies \eqref{math:symmetry_of_jacobian}.
+     \item Suppose that $n=2$. Show that $F$ satisfies \eqref{eq:conservative} if and only if it is curl-free: $\operatorname{curl} F = 0$.
+     \item Suppose that $n=3$. Show that $F$ satisfies \eqref{eq:conservative} if and only if it is curl-free: $\operatorname{curl} F = 0$.
+     \item Suppose that $n=1$. Show that $F$ satisfies \eqref{eq:conservative}.
      \item Suppose that $F$ admits a potential $f \in C^1(\Omega,\bbR)$, so that $\nabla f = F$. 
      Show that if $\gamma : [a,b] \rightarrow \Omega$ is a simple regular curve, then 
      \begin{align}
@@ -131,7 +166,35 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}
-    .............
+\begin{itemize}
+    \item We recall that the curl of a vector field $F = (F_1,F_2)$ is given by
+    \begin{align}
+        \operatorname{curl} F = \left( \partial_1 F_2 - \partial_2 F_1 \right).
+    \end{align}
+    Hence, it is clear that $\operatorname{curl} F = 0$ if and only if $F$ satisfies \eqref{eq:conservative}.
+    \item We recall that the curl of a vector field $F = (F_1,F_2,F_3)$ is given by
+    \begin{align}
+        \operatorname{curl} F = 
+        \begin{pmatrix}
+            \partial_2 F_3 - \partial_3 F_2
+            \\
+            \partial_3 F_1 - \partial_1 F_3
+            \\
+            \partial_1 F_2 - \partial_2 F_1
+        \end{pmatrix}.
+    \end{align}
+    Hence, it is clear that $\operatorname{curl} F = 0$ if and only if $F$ satisfies \eqref{eq:conservative}. 
+    Also, recall Exercise 6 from Exercise Sheet 3. On the one hand, we noticed there that the curl of a vector field is given by the off-diagonal entries of the
+    anti-symmetric part of the Jacobian matrix. On the other hand, condition \eqref{eq:conservative} is equivalent to the statement that the Jacobian matrix of $F$ is symmetric.
+    We therefore conclude that the curl vanishes if and only if the Jacobian matrix is symmetric.
+    \item For $n=1$, we have $F = (F_1)$ and the condition \eqref{eq:conservative} is trivially satisfied.
+    \item We have $\nabla f = F$. Hence, we can write the line integral as
+    \begin{align}
+        \int_\gamma F \;dl &= \int_a^b F(\gamma(t)) \cdot \dot \gamma(t) \;dt \\
+        &= \int_a^b \nabla f(\gamma(t)) \cdot \dot \gamma(t) \;dt = \int_a^b \frac{d}{dt} f(\gamma(t)) \;dt = f(\gamma(b)) - f(\gamma(a)).
+    \end{align}
+    If $\gamma$ is closed, then $\gamma(a) = \gamma(b)$ and we find that the line integral vanishes.
+\end{itemize}
 \end{solution}
 
 
@@ -158,7 +221,43 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}
-    ................
+    \begin{itemize}
+        \item We compute the tangent vectors:
+        \begin{align}
+            \dot \gamma(t) = \begin{pmatrix} 0 \\ 2t \\ 4 \end{pmatrix}, \quad \dot \delta(t) = \begin{pmatrix} 0 \\ -e^{-t} \end{pmatrix}.
+        \end{align}
+        \item The speed of the curve is given by the norm of the tangent vector:
+        \begin{align}
+            |\dot \gamma(t)| = \sqrt{4t^2 + 16} = 2 \sqrt{t^2 + 4}, \quad |\dot \delta(t)| = e^{-t}.
+        \end{align}
+        \item The unit tangent vector is given by
+        \begin{align}
+            \hat t_\gamma(t) &= \frac{\dot \gamma(t)}{|\dot \gamma(t)|}  = \frac{1}{\sqrt{t^2 + 4}} \begin{pmatrix} 0 \\ t \\ 2 \end{pmatrix},\\
+            \hat t_\delta(t) &= \frac{\dot \delta(t)}{|\dot \delta(t)|} = \begin{pmatrix} 0 \\ -1 \end{pmatrix}.
+        \end{align}
+        Note that the unit tangent vector of $\delta$ is constant!
+        \item The unit normal vector is given by the 90 degree clockwise rotation of the unit tangent vector. The corresponding rotation matrix is
+        \begin{align}
+            R = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
+        \end{align}
+        Hence, we find
+        \begin{align}
+            \hat n_\delta(t) = R \hat t_\delta(t) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.
+        \end{align}
+        \item The curves are regular because their tangent vectors never vanish.
+        \item The length of the curves is given by the integral of the speed: For $\gamma$, we find
+        \begin{align}
+            \int_0^1 |\dot \gamma(t)| dt &= 2 \int_0^1 \sqrt{t^2 + 4} dt = 4 \int_{0}^1 \sqrt{(t/2)^2 + 1} dt\\
+            &= 8 \int_0^{1/2} \sqrt{u^2 + 1} du =  4(\sqrt{2} + \sinh^{-1}(1/2)),\\
+        \end{align}
+        where we have used the substitution $u = t/2$ with $du = dt/2$. The last integral can be found with \emph{trigonometric substitution}.
+        
+        For $\delta$, we find
+        \begin{align}
+            \int_1^\infty |\dot \delta(t)| dt = \int_1^\infty e^{-t} dt = e^{-1}.
+        \end{align}
+        Note that the curve is parametrized for $t \in [1,\infty)$, but still has a finite length!
+    \end{itemize}
 \end{solution}
 
 
