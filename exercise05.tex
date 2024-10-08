@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{5}{10}{October} % parameters are the number of the session and the day
@@ -19,10 +19,8 @@
     \end{align*}
     is the scalar field.
 \end{exercise}
-\begin{solution}[Remark]
-    This is just a fancy way of describing integration by substitution from Analysis I.
-\end{solution}
 \begin{solution}
+    This is just a fancy way of describing integration by substitution from Analysis I.
     We first verify that the curve is simple, differentiable, and regular.
     \begin{itemize}
         \item 
@@ -34,7 +32,7 @@
         \item 
         The curve is regular because the derivative $\dot u(t) = 2t + 1$ is not zero over the interval $(1,2)$. 
     \end{itemize}
-    The curve integral of $f$ over $\Gamma$is given by
+    The curve integral of $f$ over $\Gamma$ is given by
     \[
         \int_u f \, dl = \int_1^2 f(u(t)) \, |\dot u(t)| \, dt 
         = 
@@ -48,7 +46,8 @@
         \int_u f \, dl = 3 \int_1^2 (t^2 + t)^3 (2t + 1) \, dt.
     \]
     This integral can be computed using standard methods of integration. 
-    We could just expand the polynomial that we integrate. Instead, we use substitution:
+    One straight-forward but technical solution is to just expand the polynomial that we integrate. 
+	However, a simpler method uses substitution:
     \begin{align}
         \int_u f \, dl 
         = 
@@ -101,7 +100,8 @@
 \begin{solution}
     This is content of Analysis 1 but repackaged in the manner of vector analysis. 
     \begin{itemize}
-        \item Any closed continuous curve in $\Omega$ would have to intersect itself in virtue of the Intermediate Value Theorem.
+        \item It is visually clear that any closed continuous curve in $\Omega$ would have to intersect itself.
+		Formally, one can use the intermediate value theorem.
         \item Before we compute all the line integrals, we note that the curves $\gamma_1, \gamma_3$, and $\gamma_4$ map the interval $[0, 1]$ to the interval $[-1, 1]$.
         Hence, we can solve the corresponding line integrals by a change of variables in the line integral for $\gamma_2$.
         Furthermore, we note that $\gamma_3$ is the reparameterization of $\gamma_1$ in the opposite direction. Hence, we conclude from Exercise 5 on Exercise Sheet 4,
@@ -215,7 +215,7 @@
         \item compute the tangent vector
         \item compute the speed of the curve
         \item find the unit tangent vector
-        \item find the unit normal along the curve that is the 90 degree clockwise rotation of unit tangent
+        \item for $\delta$, find the unit normal along the curve that is the 90 degree clockwise rotation of unit tangent
         \item argue why it is a regular curve
         \item and compute the length of the curve.
     \end{itemize}
@@ -263,37 +263,24 @@
 
 
 \begin{exercise}
-	We once again consider the vector field 
+	We consider the vector field 
 	\[
-		F : \bbR^2 \rightarrow \bbR^2, \quad (x,y) \mapsto \begin{pmatrix} \frac{y}{x^2+y^2} \\ \frac{-x}{x^2+y^2} \end{pmatrix}.
+		F : \bbR^2 \rightarrow \bbR^2, \quad (x,y) \mapsto \left( x^3, y^3 \right)
 	\]
-	We want to find a potential over the domain 
-	\[
-        \Omega = \left\{ (x,y) \in \bbR^2 : x > 0 \right\}
-	\]
+	We want to find a potential over the domain $\Omega = \bbR^{2}$. 
+	Fix a constant of integration at $(0,0)$ and define a potential via the integral of the vector field $F$ 
+	along a simple regular curve going from $(0,0)$ to $(x,y)$.
 \end{exercise}
-	\begin{itemize}
-        \item 
-        It is good to always begin with picture: make a short sketch of this domain
-        \item 
-        Our idea is that we construct a curve from $(1,0)$ to $(x,y)$ as follows:
-        \begin{align}
-            \gamma_{x,y} : [0,2] \rightarrow \bbR^2, \quad t \mapsto \left\{\begin{array}{ll}
-                                                                \left( 1, ty \right) & t \in [0,1]
-                                                                \\
-                                                                \left( 1 + (t-1)(x-1),  y \right)  & t \in (1,2]
-                                                               \end{array}\right.
-        \end{align}
-        Verify that this curve is piecewise differentiable and regular. 
-        Make a drawing and understand the path of this curve.
-        \item 
-        We fix some constant of integration $C$ at $(0,1)$. Show that 
-        \[
-            f(x,y) = \int_{\gamma_{x,y}} F \;dl.
-        \]
-        is a scalar potential for this vector field.
-	\end{itemize}
 \begin{solution}
+    \begin{align}
+        &
+        \int_{0}^{1} \left( t^{3}x^3, t^{3}y^{3} \right) \cdot \left( x,y \right) \;dt
+        =
+        \left( x^{4} + y^{4} \right) \int_{0}^{1} t^{3} \;dt
+        =
+        \frac 1 4 \left( x^{4} + y^{4} \right) 
+        .
+    \end{align}
 \end{solution}
 
 
