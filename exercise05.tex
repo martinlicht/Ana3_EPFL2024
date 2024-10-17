@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{5}{10}{October} % parameters are the number of the session and the day
@@ -272,15 +272,30 @@
 	along a simple regular curve going from $(0,0)$ to $(x,y)$.
 \end{exercise}
 \begin{solution}
+	The most simple among the simple regular curves from $(0,0)$ to $(x,y)$ is the straight line:
+	\begin{gather*}
+        \gamma : [0,1] \rightarrow \bbR^{2}, \qquad t \mapsto \left( tx, ty \right).
+    \end{gather*}
+	We compute that $\dot\gamma(t) = (x,y)$. 
+	We fix some constant of integration $f(0,0) = C$ for our yet-to-be-found potential $f \in C^1(\bbR^2,\bbR)$.
+	For any $(x,y) \in \bbR^2$, we now compute 
     \begin{align}
         &
-        \int_{0}^{1} \left( t^{3}x^3, t^{3}y^{3} \right) \cdot \left( x,y \right) \;dt
+        f(x,y) - f(0,0)
+		=
+		\int_{0}^{1} \left( t^{3}x^3, t^{3}y^{3} \right) \cdot \left( x,y \right) \;dt
         =
         \left( x^{4} + y^{4} \right) \int_{0}^{1} t^{3} \;dt
         =
         \frac 1 4 \left( x^{4} + y^{4} \right) 
         .
     \end{align}
+	Therefore,
+	\begin{align}
+        f(x,y) = \frac 1 4 \left( x^{4} + y^{4} \right) + C
+		.
+    \end{align}
+	Indeed, one easily verifies that $\nabla f = F$.
 \end{solution}
 
 

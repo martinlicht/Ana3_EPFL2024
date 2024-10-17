@@ -21,26 +21,67 @@
     \textit{You need to find parameterizations of the boundary first.}
 \end{exercise}
 \begin{solution}   
-   Green's theorem is given by 
+   Green's theorem over some domain $\Omega$ is given by 
    \begin{gather*}
         \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} 
         = 
         \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega
         .
     \end{gather*}
-    We consider domain $\Omega_1$. 
-    A parameterisation for the boundary is given by $\gamma: [0,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$.
+    Here, $\partial\Omega$ is a curve parameterized in counterclockwise direction. 
+    
+    We consider the domain $\Omega_1$. 
+    A counterclockwise parameterisation for the boundary is given by 
+    $$
+        \gamma: [0,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)
+        .
+    $$
     \begin{align*}
-        \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} &= \int_0^ {2\pi} \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t 
-        \\&= \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt = 0
+        \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} 
+        &= 
+        \int_0^ {2\pi} 
+        \begin{pmatrix} \cos t \sin t\\ \sin^2 t \end{pmatrix} 
+        \cdot 
+        \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix} \; d t 
+        \\&= 
+        \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt = 0
     \end{align*}
-    Therefore, 
+    On the other hand, 
     \begin{align*}
-        \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega &= \int \int_{\Omega} -x_1 \; d\Omega
-        \\&= \int_0^ {2\pi} \int_0^1 -r\cos \theta r \;d\theta\;dr
-        \\&= -\int_0^ {2\pi} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r = 0,
+        \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega &= \int \int_{\Omega} -x_1 \; d\Omega.
     \end{align*}
-    where we have used that integrating the cosine function over a period is $0$. Boths integrals give the same value thereby verifying Green's theorem.
+    There are different ways to compute the last integral. 
+	For example, since $\Omega$ is symmetric along the $x_2$ axis but $-x_1$ is obviously an odd function,
+	we can conclude that 
+	\begin{align*}
+        \int \int_{\Omega} -x_1 \; d\Omega = 0.
+    \end{align*}
+	Alternatively, we can use radial coordinates for the disk: 
+    \begin{align*}
+        \int \int_{\Omega} -x_1 \; d\Omega
+		= 
+		\int_0^ {2\pi} \int_0^1 -r\cos \theta r \;d\theta\;dr
+        = 
+		-\int_0^ {2\pi} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r = 0,
+    \end{align*}
+    where we have used that integrating the cosine function over a period is $0$. 
+	Yet another possibility is 
+	\begin{align*}
+        \int \int_{\Omega} -x_1 \; d\Omega
+		= 
+		-
+		\int_{-1}^{1} \int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}}
+		x_1 \;dx_2 \;dx_1
+        = 
+		\int_{-1}^{1} 
+		2x_1 \sqrt{1-x_1^2} \;dx_1
+        =
+		0
+		,
+    \end{align*}
+	where we have used that the last function is odd. 
+	In any case, the integral of the domain and the integral along the boundary give the same value, 
+	thereby verifying Green's theorem.
     
     We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\frac{\pi}{2},\frac{\pi}{2}] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
     \begin{align*}
