@@ -1,12 +1,438 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
-\exsheet{7}{24}{October} % parameters are the number of the session and the day
+\exsheet{7}{31}{October} % parameters are the number of the session and the day
 
 
 
-\begin{exercise}[Challenge?]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Verify the divergence theorem for the following vector field $\vec F$ and volume $V$:
+    \begin{gather*}
+        \vec F(x_1,x_2,x_3) := ( x_1 x_3, x_2, x_2 ),
+        \qquad 
+        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 1 \;\right\}
+        .
+    \end{gather*}
+    Note that $V$ is just the three-dimensional unit ball. 
+\end{exercise}
+\begin{solution}    
+    We have to show that the followig identity holds: 
+    \[
+    \iiint_{V}\nabla \cdot \vec{F}\;dV =  \oint \vec{F}\cdot \vec{n} \;d(\partial V)
+    \] 
+    We start with the volume integral:
+    \begin{align*}
+        &
+        \iiint_{V}\nabla \cdot \vec{F}\;dV
+        \\&
+        =
+        \iiint_{V}x_3 + 1\;dV
+        \\&
+        =
+        \int_{0}^{2\pi}\int_0^{\pi}\int_0^ 1 (r\cos\phi + 1)r^ 2\sin\phi\;d r\;d\phi\;d\theta
+        \\&
+        =
+        2\pi\int_0^1 r^3\;d r\int_0^{\pi}\cos\phi\sin\phi\;d \phi + 2\pi\int_0^1 r^2\;d r\int_0^{\pi}\sin\phi\;d \phi 
+        \\&
+        =
+        2\pi\left[ \frac{1}{4}r^ 4 \right]_0^ {1} \left[-\frac{1}{4}\cos2\phi\right]_0^{\pi} + 2\pi\left[ \frac{1}{3}r^ 3 \right]_0^ {1} \left[-\cos\phi\right]_0^{\pi}
+        \\&
+        =
+        2\pi\left(\frac{1}{4} - 0\right)\left(\frac{1}{4} - -\frac{1}{4}\right) + 2\pi\left(\frac{1}{3} - 0\right)\left(1 - - 1\right) = \frac{4\pi}{3}
+        .
+    \end{align*}
+    Next we consider the surface integral. We need a parameterisation for the surface. One can consider:
+    \[
+    \Phi: [0,2\pi) \times (0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta \sin\phi, \sin\theta\sin\phi,\cos\phi)
+    \]
+    with 
+    \[
+    \partial_{\theta}\Phi\times \partial_{\phi}\Phi  = \begin{pmatrix} -\sin\theta\sin\phi\\ \cos\theta\sin\phi \\0 \end{pmatrix} \times \begin{pmatrix} -\cos\theta\cos\phi\\ \sin\theta\cos\phi \\-\sin\phi \end{pmatrix} = -\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} 
+    \]
+    Note this is inward pointing. Therefore we need an extra minus sign.
+    \begin{align*}
+        &
+        \oint \vec{F}\cdot \vec{n} \;dS
+        \\&
+        =
+        \int_{0}^{2\pi}\int_0^{\pi} \begin{pmatrix}\cos\theta\sin\phi\cos\phi\\ \sin\theta\sin\phi \\ \sin\theta\sin\phi \end{pmatrix}\cdot\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} \;d\phi\;d\theta
+        \\&
+        =
+        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi +  \int_{0}^{2\pi}\sin\theta\;d\theta\int_0^{\pi}\sin^2\phi\cos\phi\;d\phi
+        .
+    \end{align*}
+    The last term is zero due to the fact that the integral of $\sin\theta$ over 1 period is equal to $0$. The other integrals are evaluated seperately, where we use the substiitution $u = \cos\phi$ several times:
+    \begin{align*}
+        &
+        \int_0^{\pi}\sin^3\phi\cos\phi\;d\phi 
+        \\&
+        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\cos\phi\;d\phi 
+        \\&
+        = \int_0^{\pi}\sin\phi\cos\phi - \cos^3\phi\sin\phi\;d\phi 	
+        \\&
+        = \int_{-1}^1 u + u^3 \;d u  
+        \\&
+        = \left[\frac{1}{2} u^2 +\frac{1}{4}u^4\right]_{-1}^{1} = 0
+    \end{align*}
+    Now, 
+    \begin{align*}
+        &
+        \int_0^{2\pi}\sin^2\theta\;d\theta
+        \\&
+        = \int_0^{2\pi}\frac{1}{2}(1-\cos2\theta)\;d\theta 
+        \\&
+        = \left[\frac{1}{2} \theta -\frac{1}{4}\sin2\theta\right]_{0}^{2\pi} = \pi
+    \end{align*}
+    Next, 
+    \begin{align*}
+        &
+        \int_0^{\pi}\sin^3\phi\;d\phi 
+        \\&
+        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\;d\phi 
+        \\&
+        = \int_{-1}^1 1 - u^2 \;d u  
+        \\&
+        = \left[ u - \frac{1}{3}u^3\right]_{-1}^{1} = \frac{4}{3}
+    \end{align*}
+    If we put everything together we get:
+    \begin{align*}
+        &
+        \oint \vec{F}\cdot \vec{n} \;d(\partial \Omega)
+        \\&
+        =
+        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi 
+        \\&
+        =\int_{0}^{2\pi}\cos^2\theta\;d\theta \cdot 0+ \pi\frac{4}{3} = \frac{4\pi}{3}
+        .
+    \end{align*}
+    We conclude that both integrals give the same value thereby verifying the divergence theorem.
+\end{solution}
+
+    
+
+
+
+
+
+\begin{exercise} % 1
+    Consider the volume 
+    \begin{align}
+     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 5 \right\},
+    \end{align}
+    \begin{itemize}
+    \item
+     What is the surface $S$ of this volume?
+    \item 
+     Find the outward pointing unit normal $\vec n$ along the surface $S$ of this volume. Write $\vec n$ in terms of $(x_1,x_2,x_3)$ at any point on the surface $S$. 
+    \item
+     Find a parameterization of the surface $S$.
+    \item
+     Find a vector field $\vec F$ such that $\vec F \cdot \vec n = x_1^2 + x_2 + x_3$ along the surface $S$.
+    \item 
+     Use the divergence theorem to compute 
+     \begin{align}
+        \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3.
+     \end{align}
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+    \begin{itemize}
+    \item $S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 = 5 \right\}$
+    \item We can write $G(x_1,x_2,x_3) = -5 + x_1^2 + x_2^2 + x_3^2$. Then since we know that the gradient is normal to the level curves we have that:
+    $$
+    \vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{\sqrt{5}}\begin{pmatrix}
+    x_1\\x_2\\x_3
+    \end{pmatrix}
+    $$
+    \item A possible parameterization is:
+     \begin{align*}
+        \Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (\sqrt{5}\sin\phi\cos\theta,\sqrt{5}\sin\phi\sin\theta,\sqrt{5}\cos\phi)
+     \end{align*}
+    \item $\vec{F} = \sqrt{5}\begin{pmatrix}x_1\\1\\1\end{pmatrix}$
+    \item 
+     We use the divergence theorem:
+     \begin{align*}
+        \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3 & = \oint_{S} \vec{F}\cdot\vec{n} d\sigma \\
+		& = \iiint_V \nabla \cdot F dV\\
+		& = \iiint_V \sqrt{5} dV = \sqrt{5} \cdot \iiint_V 1 dV = \frac{4}{3}\pi\sqrt{5}^4 =  \frac{4}{3}\pi\cdot 25\\
+     \end{align*}
+     In the last step, we used the formula for the volume of the ball with radius $r=\sqrt{5}$.
+    \end{itemize}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Consider the volume  
+    \begin{gather*}
+        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < x_3 < 1 \;\right\}
+    \end{gather*}
+    Find the the boundary $S$ of this volume and compute its surface area. 
+\end{exercise}
+\begin{solution} 
+    The boundary of this domain consist of two surfaces:
+    \begin{align*}
+        S_a =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < 1, x_3 = 1 \right\} 
+        ,
+        \\
+        S_b =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 = x_3, 0<x_3<1 \right\} 
+    \end{align*}
+    We have that $\partial V = \partial \Omega_a \cup \partial V_b$. 
+    To calculate the area we need a parameterisation of both surfaces:
+    \begin{align*}
+        \Phi_a: [0,2\pi) \times (0,1) \mapsto S_a: (\theta,r)\mapsto (r\cos\theta, r\sin\theta,1),
+        \\
+        \Phi_b: [0,2\pi) \times (0,1) \mapsto S_b: (\theta,z)\mapsto (\sqrt{z}\cos\theta, \sqrt{z}\sin\theta,z).
+    \end{align*}
+    Moreover we have that
+    \[
+        \left\|\partial_{\theta}\Phi_{a}\times \partial_r\Phi_{a}\right\| 
+        = 
+        \left\|\begin{pmatrix} -r\sin\theta \\ r\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\0 \end{pmatrix}\right\| 
+        = 
+        \left\|\begin{pmatrix} 0 \\ 0 \\ -r \end{pmatrix}\right\| 
+        = 
+        r
+    \]
+    and 
+    \[
+        \left\|\partial_{\theta}\Phi_{b}\times \partial_z\Phi_{b}\right\|  
+        = 
+        \left\|\begin{pmatrix} -\sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \frac{1}{2\sqrt{z}}\cos\theta \\  \frac{1}{2\sqrt{z}}\sin\theta \\1 \end{pmatrix}\right\| 
+        = 
+        \left\|\begin{pmatrix} \sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\-\frac{1}{2} \end{pmatrix}\right\| 
+        = 
+        \sqrt{z+\frac{1}{4}}
+    \]
+    Now the area is given by:
+    \begin{align*}
+        \iint_{\partial\Omega} 1 \;d (\partial \Omega)
+        &
+        =
+        \iint_{\partial\Omega_a} 1 \;dS_a + 	\iint_{\partial\Omega_b} 1 \;dS_b
+        \\&
+        = \int_0^{2\pi} \int_0^1 r \;d r\;d\theta + \int_0^{2\pi} \int_0^1\sqrt{z+\frac{1}{4}}\;d z \;d \theta
+        \\&
+        = 
+        2\pi\left[\frac{1}{2}r^2\right]_0^1 + 2\pi\left[\frac{2}{3}\left(z+\frac{1}{4}\right)^{\frac{3}{2}}\right]_0^1
+        \\&
+        = 
+        \pi + \frac{4\pi}{3}\left(\left(\frac{5}{4}\right)^{\frac{3}{2}} - \left(\frac{1}{4}\right)^{\frac{3}{2}}\right)
+        = 
+        \pi + \pi \frac{5\sqrt{5} - 1}{6}
+        = 
+        5\pi \frac{1 + \sqrt{5}}{6}
+        .
+    \end{align*}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Find a regular parameterization $\Phi(s,t)$ of the surface 
+    \begin{gather*}
+        S := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_1^2 + x_2^2 = 1 + x_3^2 \;\right\}
+    \end{gather*}
+    Compute cross product $\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)$ and its norm. 
+\end{exercise}
+\begin{solution}     
+    We define the following parameterisation for the surface $S$:
+    \[
+        \Phi: [0,2\pi) \times (0,1) \mapsto S,
+        \quad 
+        (s,t) \mapsto \left( \sqrt{1+t^{2}}\cos s, \sqrt{1+t^{2}}\sin s, t \right)
+    \]
+    \[
+        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
+        = 
+        \begin{pmatrix} 
+            -\sqrt{1+t^2}\sin s
+            \\ 
+            \sqrt{1+t^2}\cos s
+            \\
+            0 
+        \end{pmatrix} 
+        \times 
+        \begin{pmatrix} 
+            \frac{- t}{\sqrt{1+t^2}}\cos s 
+            \\ 
+            \frac{- t}{\sqrt{1+t^2}}\sin s 
+            \\
+            1 
+        \end{pmatrix} 
+        = 
+        \begin{pmatrix} 
+            \sqrt{1+t^2}\cos s 
+            \\ 
+            \sqrt{1+t^2}\sin s
+            \\ 
+            t
+        \end{pmatrix} 
+    \]
+    \[
+        \left\|
+        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t)
+        \right\| 
+        = 
+        \left\| 
+        \begin{pmatrix} 
+            \sqrt{1+t^2}\cos s 
+            \\ 
+            \sqrt{1+t^2}\sin s
+            \\ 
+            t
+        \end{pmatrix} \right\| 
+        = 
+        \sqrt{1+2t^2}
+    \]
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise} % 2
+    Consider the volume 
+    \begin{align}
+     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
+    \end{align}
+    Suppose we have a vector field 
+    \begin{align}
+        \vec F(x_1,x_2,x_3) = \left( x_1^2 x_2, 3 x_2^{2} x_3, 9 x_3^{2} x_1 \right)
+    \end{align}
+    Use the divergence theorem to compute the surface integral 
+    \begin{align}
+        \iint_{S} \vec F d\sigma.
+    \end{align}
+\end{exercise}
+\begin{solution}     
+    Given any scalar function $g : V \to \bbR$, we have 
+
+    \begin{align*}
+        \oint_{S} \vec F d\sigma & = \iiint_V \nabla \cdot F dV\\
+		&= \iiint_V 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dV\\
+		&= \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3
+    \end{align*}
+
+    We solve each integral seperately. Note that we apply integration by parts in between steps. 
+    \begin{align*}
+        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 dx_1 dx_2 dx_3
+        &= \int_{0}^{1}\int_{0}^{1 - x_3} (1-x_2-x_3)^2 x_2 dx_2 dx_3\\
+        &= \int_{0}^{1}\int_{0}^{1 - x_3} \frac{1}{3}(1-x_2-x_3)^3 dx_2 dx_3\\
+        &= \int_{0}^{1} \frac{1}{12}(1-x_3)^4 dx_3\\
+        &= \left[ \frac{-1}{60}(1-x_3)^5\right]_0^1 = \frac{1}{60}
+    \end{align*}
+    \begin{align*}
+        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 6x_2x_3  dx_1 dx_2 dx_3 &= \int_{0}^{1}\int_{0}^{1 - x_3} 6(1 - x_2 - x_3) x_2 x_3   dx_2 dx_3 \\
+	&= \int_{0}^{1}\int_{0}^{1 - x_3} 3(1 - x_2 - x_3)^2 x_2 x_3   dx_2 dx_3 \\
+	&= \int_{0}^{1} (1 - x_3)^3 x_3   dx_3 \\
+	&= \int_{0}^{1} \frac{1}{4}(1 - x_3)^4  dx_3 \\
+	&= \left[-\frac{1}{20}(1 - x_3)^5 \right]_0^1 = \frac{1}{20}
+    \end{align*}
+	\begin{align*}
+         \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 18x_3x_1 dx_1 dx_2 dx_3&= \int_{0}^{1}\int_{0}^{1 - x_3} 9x_3(1-x_2-x_3)^2   dx_2 dx_3 \\
+        &=\int_{0}^{1} 3x_3(1-x_3)^3  dx_3 \\
+        &= \int_{0}^{1} \frac{3}{4}(1-x_3)^4  dx_3 \\
+        &= \left[-\frac{3}{20}(1-x_3)^5  \right]_0^1 =\frac{3}{20}
+    \end{align*}
+    We conclude that:
+    $$
+    \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3 = \frac{1}{60} + \frac{1}{20} + \frac{3}{20} = \frac{13}{60}
+    $$
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
     Given the curve
     \begin{gather*}
         \gamma : [0,\pi] \to \bbR^2, \quad t \mapsto ( 3\cos(2t), \sin(2t) )
@@ -135,786 +561,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Verify the divergence theorem for the following vector field $\vec F$ and volume $V$:
-    \begin{gather*}
-        \vec F(x_1,x_2,x_3) := ( x_1 x_3, x_2, x_2 ),
-        \qquad 
-        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 1 \;\right\}
-        .
-    \end{gather*}
-    Note that $V$ is just the three-dimensional unit ball. 
-\end{exercise}
-\begin{solution}    
-    We have to show that the followig identity holds: 
-    \[
-    \iiint_{V}\nabla \cdot \vec{F}\;dV =  \oint \vec{F}\cdot \vec{n} \;d(\partial V)
-    \] 
-    We start with the volume integral:
-    \begin{align*}
-        &
-        \iiint_{V}\nabla \cdot \vec{F}\;dV
-        \\&
-        =
-        \iiint_{V}x_3 + 1\;dV
-        \\&
-        =
-        \int_{0}^{2\pi}\int_0^{\pi}\int_0^ 1 (r\cos\phi + 1)r^ 2\sin\phi\;d r\;d\phi\;d\theta
-        \\&
-        =
-        2\pi\int_0^1 r^3\;d r\int_0^{\pi}\cos\phi\sin\phi\;d \phi + 2\pi\int_0^1 r^2\;d r\int_0^{\pi}\sin\phi\;d \phi 
-        \\&
-        =
-        2\pi\left[ \frac{1}{4}r^ 4 \right]_0^ {1} \left[-\frac{1}{4}\cos2\phi\right]_0^{\pi} + 2\pi\left[ \frac{1}{3}r^ 3 \right]_0^ {1} \left[-\cos\phi\right]_0^{\pi}
-        \\&
-        =
-        2\pi\left(\frac{1}{4} - 0\right)\left(\frac{1}{4} - -\frac{1}{4}\right) + 2\pi\left(\frac{1}{3} - 0\right)\left(1 - - 1\right) = \frac{4\pi}{3}
-        .
-    \end{align*}
-    Next we consider the surface integral. We need a parameterisation for the surface. One can consider:
-    \[
-    \Phi: [0,2\pi) \times (0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta \sin\phi, \sin\theta\sin\phi,\cos\phi)
-    \]
-    with 
-    \[
-    \partial_{\theta}\Phi\times \partial_{\phi}\Phi  = \begin{pmatrix} -\sin\theta\sin\phi\\ \cos\theta\sin\phi \\0 \end{pmatrix} \times \begin{pmatrix} -\cos\theta\cos\phi\\ \sin\theta\cos\phi \\-\sin\phi \end{pmatrix} = -\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} 
-    \]
-    Note this is inward pointing. Therefore we need an extra minus sign.
-    \begin{align*}
-        &
-        \oint \vec{F}\cdot \vec{n} \;dS
-        \\&
-        =
-        \int_{0}^{2\pi}\int_0^{\pi} \begin{pmatrix}\cos\theta\sin\phi\cos\phi\\ \sin\theta\sin\phi \\ \sin\theta\sin\phi \end{pmatrix}\cdot\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} \;d\phi\;d\theta
-        \\&
-        =
-        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi +  \int_{0}^{2\pi}\sin\theta\;d\theta\int_0^{\pi}\sin^2\phi\cos\phi\;d\phi
-        .
-    \end{align*}
-    The last term is zero due to the fact that the integral of $\sin\theta$ over 1 period is equal to $0$. The other integrals are evaluated seperately, where we use the substiitution $u = \cos\phi$ several times:
-    \begin{align*}
-        &
-        \int_0^{\pi}\sin^3\phi\cos\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\cos\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}\sin\phi\cos\phi - \cos^3\phi\sin\phi\;d\phi 	
-        \\&
-        = \int_{-1}^1 u + u^3 \;d u  
-        \\&
-        = \left[\frac{1}{2} u^2 +\frac{1}{4}u^4\right]_{-1}^{1} = 0
-    \end{align*}
-    Now, 
-    \begin{align*}
-        &
-        \int_0^{2\pi}\sin^2\theta\;d\theta
-        \\&
-        = \int_0^{2\pi}\frac{1}{2}(1-\cos2\theta)\;d\theta 
-        \\&
-        = \left[\frac{1}{2} \theta -\frac{1}{4}\sin2\theta\right]_{0}^{2\pi} = \pi
-    \end{align*}
-    Next, 
-    \begin{align*}
-        &
-        \int_0^{\pi}\sin^3\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\;d\phi 
-        \\&
-        = \int_{-1}^1 1 - u^2 \;d u  
-        \\&
-        = \left[ u - \frac{1}{3}u^3\right]_{-1}^{1} = \frac{4}{3}
-    \end{align*}
-    If we put everything together we get:
-    \begin{align*}
-        &
-        \oint \vec{F}\cdot \vec{n} \;d(\partial \Omega)
-        \\&
-        =
-        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi 
-        \\&
-        =\int_{0}^{2\pi}\cos^2\theta\;d\theta \cdot 0+ \pi\frac{4}{3} = \frac{4\pi}{3}
-        .
-    \end{align*}
-    We conclude that both integrals give the same value thereby verifying the divergence theorem.
-\end{solution}
-
-    
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Verify the divergence theorem for the following vector field $\vec F$ and volume $V$:
-    \begin{gather*}
-        \vec F(x_1,x_2,x_3) := ( x_1 x_3, x_2, x_2 ),
-        \qquad 
-        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 1 \;\right\}
-        .
-    \end{gather*}
-    Note that $V$ is just the three-dimensional unit ball. 
-\end{exercise}
-\begin{solution}    
-    We have to show that the followig identity holds: 
-    \[
-    \iiint_{V}\nabla \cdot \vec{F}\;dV =  \oint \vec{F}\cdot \vec{n} \;d(\partial V)
-    \] 
-    We start with the volume integral:
-    \begin{align*}
-        &
-        \iiint_{V}\nabla \cdot \vec{F}\;dV
-        \\&
-        =
-        \iiint_{V}x_3 + 1\;dV
-        \\&
-        =
-        \int_{0}^{2\pi}\int_0^{\pi}\int_0^ 1 (r\cos\phi + 1)r^ 2\sin\phi\;d r\;d\phi\;d\theta
-        \\&
-        =
-        2\pi\int_0^1 r^3\;d r\int_0^{\pi}\cos\phi\sin\phi\;d \phi + 2\pi\int_0^1 r^2\;d r\int_0^{\pi}\sin\phi\;d \phi 
-        \\&
-        =
-        2\pi\left[ \frac{1}{4}r^ 4 \right]_0^ {1} \left[-\frac{1}{4}\cos2\phi\right]_0^{\pi} + 2\pi\left[ \frac{1}{3}r^ 3 \right]_0^ {1} \left[-\cos\phi\right]_0^{\pi}
-        \\&
-        =
-        2\pi\left(\frac{1}{4} - 0\right)\left(\frac{1}{4} - -\frac{1}{4}\right) + 2\pi\left(\frac{1}{3} - 0\right)\left(1 - - 1\right) = \frac{4\pi}{3}
-        .
-    \end{align*}
-    Next we consider the surface integral. We need a parameterisation for the surface. One can consider:
-    \[
-    \Phi: [0,2\pi) \times (0,\pi) \mapsto S: (\theta,\phi)\mapsto (\cos\theta \sin\phi, \sin\theta\sin\phi,\cos\phi)
-    \]
-    with 
-    \[
-    \partial_{\theta}\Phi\times \partial_{\phi}\Phi  = \begin{pmatrix} -\sin\theta\sin\phi\\ \cos\theta\sin\phi \\0 \end{pmatrix} \times \begin{pmatrix} -\cos\theta\cos\phi\\ \sin\theta\cos\phi \\-\sin\phi \end{pmatrix} = -\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} 
-    \]
-    Note this is inward pointing. Therefore we need an extra minus sign.
-    \begin{align*}
-        &
-        \oint \vec{F}\cdot \vec{n} \;dS
-        \\&
-        =
-        \int_{0}^{2\pi}\int_0^{\pi} \begin{pmatrix}\cos\theta\sin\phi\cos\phi\\ \sin\theta\sin\phi \\ \sin\theta\sin\phi \end{pmatrix}\cdot\begin{pmatrix} \cos\theta\sin^2\phi\\ \sin\theta\sin^2\phi \\\sin\phi\cos\phi \end{pmatrix} \;d\phi\;d\theta
-        \\&
-        =
-        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi +  \int_{0}^{2\pi}\sin\theta\;d\theta\int_0^{\pi}\sin^2\phi\cos\phi\;d\phi
-        .
-    \end{align*}
-    The last term is zero due to the fact that the integral of $\sin\theta$ over 1 period is equal to $0$. The other integrals are evaluated seperately, where we use the substiitution $u = \cos\phi$ several times:
-    \begin{align*}
-        &
-        \int_0^{\pi}\sin^3\phi\cos\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\cos\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}\sin\phi\cos\phi - \cos^3\phi\sin\phi\;d\phi 	
-        \\&
-        = \int_{-1}^1 u + u^3 \;d u  
-        \\&
-        = \left[\frac{1}{2} u^2 +\frac{1}{4}u^4\right]_{-1}^{1} = 0
-    \end{align*}
-    Now, 
-    \begin{align*}
-        &
-        \int_0^{2\pi}\sin^2\theta\;d\theta
-        \\&
-        = \int_0^{2\pi}\frac{1}{2}(1-\cos2\theta)\;d\theta 
-        \\&
-        = \left[\frac{1}{2} \theta -\frac{1}{4}\sin2\theta\right]_{0}^{2\pi} = \pi
-    \end{align*}
-    Next, 
-    \begin{align*}
-        &
-        \int_0^{\pi}\sin^3\phi\;d\phi 
-        \\&
-        = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\;d\phi 
-        \\&
-        = \int_{-1}^1 1 - u^2 \;d u  
-        \\&
-        = \left[ u - \frac{1}{3}u^3\right]_{-1}^{1} = \frac{4}{3}
-    \end{align*}
-    If we put everything together we get:
-    \begin{align*}
-        &
-        \oint \vec{F}\cdot \vec{n} \;d(\partial \Omega)
-        \\&
-        =
-        \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi 
-        \\&
-        =\int_{0}^{2\pi}\cos^2\theta\;d\theta \cdot 0+ \pi\frac{4}{3} = \frac{4\pi}{3}
-        .
-    \end{align*}
-    We conclude that both integrals give the same value thereby verifying the divergence theorem.
-\end{solution}
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Find a regular parameterization $\Phi(s,t)$ of the surface 
-    \begin{gather*}
-        S := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_1^2 + x_2^2 = 1 + x_3^2 \;\right\}
-    \end{gather*}
-    Compute cross product $\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)$ and its norm. 
-\end{exercise}
-\begin{solution}     
-    We define the following parameterisation for the surface $S$:
-    \[
-        \Phi: [0,2\pi) \times (0,1) \mapsto S,
-        \quad 
-        (s,t) \mapsto \left( \sqrt{1+t^{2}}\cos s, \sqrt{1+t^{2}}\sin s, t \right)
-    \]
-    \[
-        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
-        = 
-        \begin{pmatrix} 
-            -\sqrt{1+t^2}\sin s
-            \\ 
-            \sqrt{1+t^2}\cos s
-            \\
-            0 
-        \end{pmatrix} 
-        \times 
-        \begin{pmatrix} 
-            \frac{- t}{\sqrt{1+t^2}}\cos s 
-            \\ 
-            \frac{- t}{\sqrt{1+t^2}}\sin s 
-            \\
-            1 
-        \end{pmatrix} 
-        = 
-        \begin{pmatrix} 
-            \sqrt{1+t^2}\cos s 
-            \\ 
-            \sqrt{1+t^2}\sin s
-            \\ 
-            t
-        \end{pmatrix} 
-    \]
-    \[
-        \left\|
-        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t)
-        \right\| 
-        = 
-        \left\| 
-        \begin{pmatrix} 
-            \sqrt{1+t^2}\cos s 
-            \\ 
-            \sqrt{1+t^2}\sin s
-            \\ 
-            t
-        \end{pmatrix} \right\| 
-        = 
-        \sqrt{1+2t^2}
-    \]
-\end{solution}
-
-
-
-
-
-\begin{exercise}
-    Find a regular parameterization $\Phi(s,t)$ of the surface 
-    \begin{gather*}
-        S := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_1^2 + x_2^2 = 1 + x_3^2 \;\right\}
-    \end{gather*}
-    Compute cross product $\partial_s \Phi(s,t) \times \partial_t \Phi(s,t)$ and its norm. 
-\end{exercise}
-\begin{solution}     
-    We define the following parameterisation for the surface $S$:
-    \[
-        \Phi: [0,2\pi) \times (0,1) \mapsto S,
-        \quad 
-        (s,t) \mapsto \left( \sqrt{1+t^{2}}\cos s, \sqrt{1+t^{2}}\sin s, t \right)
-    \]
-    \[
-        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t) 
-        = 
-        \begin{pmatrix} 
-            -\sqrt{1+t^2}\sin s
-            \\ 
-            \sqrt{1+t^2}\cos s
-            \\
-            0 
-        \end{pmatrix} 
-        \times 
-        \begin{pmatrix} 
-            \frac{- t}{\sqrt{1+t^2}}\cos s 
-            \\ 
-            \frac{- t}{\sqrt{1+t^2}}\sin s 
-            \\
-            1 
-        \end{pmatrix} 
-        = 
-        \begin{pmatrix} 
-            \sqrt{1+t^2}\cos s 
-            \\ 
-            \sqrt{1+t^2}\sin s
-            \\ 
-            t
-        \end{pmatrix} 
-    \]
-    \[
-        \left\|
-        \partial_s \Phi(s,t) \times \partial_t \Phi(s,t)
-        \right\| 
-        = 
-        \left\| 
-        \begin{pmatrix} 
-            \sqrt{1+t^2}\cos s 
-            \\ 
-            \sqrt{1+t^2}\sin s
-            \\ 
-            t
-        \end{pmatrix} \right\| 
-        = 
-        \sqrt{1+2t^2}
-    \]
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Consider the volume  
-    \begin{gather*}
-        V := \left\{\; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < x_3 < 1 \;\right\}
-    \end{gather*}
-    Find the the boundary $S$ of this volume and compute its surface area. 
-\end{exercise}
-\begin{solution} 
-    The boundary of this domain consist of two surfaces:
-    \begin{align*}
-        S_a =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 < 1, x_3 = 1 \right\} 
-        ,
-        \\
-        S_b =\left\{ (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* x_1^2 + x_2^2 = x_3, 0<x_3<1 \right\} 
-    \end{align*}
-    We have that $\partial V = \partial \Omega_a \cup \partial V_b$. 
-    To calculate the area we need a parameterisation of both surfaces:
-    \begin{align*}
-        \Phi_a: [0,2\pi) \times (0,1) \mapsto S_a: (\theta,r)\mapsto (r\cos\theta, r\sin\theta,1),
-        \\
-        \Phi_b: [0,2\pi) \times (0,1) \mapsto S_b: (\theta,z)\mapsto (\sqrt{z}\cos\theta, \sqrt{z}\sin\theta,z).
-    \end{align*}
-    Moreover we have that
-    \[
-        \left\|\partial_{\theta}\Phi_{a}\times \partial_r\Phi_{a}\right\| 
-        = 
-        \left\|\begin{pmatrix} -r\sin\theta \\ r\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \cos\theta \\ \sin\theta \\0 \end{pmatrix}\right\| 
-        = 
-        \left\|\begin{pmatrix} 0 \\ 0 \\ -r \end{pmatrix}\right\| 
-        = 
-        r
-    \]
-    and 
-    \[
-        \left\|\partial_{\theta}\Phi_{b}\times \partial_z\Phi_{b}\right\|  
-        = 
-        \left\|\begin{pmatrix} -\sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\0 \end{pmatrix} \times \begin{pmatrix} \frac{1}{2\sqrt{z}}\cos\theta \\  \frac{1}{2\sqrt{z}}\sin\theta \\1 \end{pmatrix}\right\| 
-        = 
-        \left\|\begin{pmatrix} \sqrt{z}\sin\theta \\ \sqrt{z}\cos\theta\\-\frac{1}{2} \end{pmatrix}\right\| 
-        = 
-        \sqrt{z+\frac{1}{4}}
-    \]
-    Now the area is given by:
-    \begin{align*}
-        \iint_{\partial\Omega} 1 \;d (\partial \Omega)
-        &
-        =
-        \iint_{\partial\Omega_a} 1 \;dS_a + 	\iint_{\partial\Omega_b} 1 \;dS_b
-        \\&
-        = \int_0^{2\pi} \int_0^1 r \;d r\;d\theta + \int_0^{2\pi} \int_0^1\sqrt{z+\frac{1}{4}}\;d z \;d \theta
-        \\&
-        = 
-        2\pi\left[\frac{1}{2}r^2\right]_0^1 + 2\pi\left[\frac{2}{3}\left(z+\frac{1}{4}\right)^{\frac{3}{2}}\right]_0^1
-        \\&
-        = 
-        \pi + \frac{4\pi}{3}\left(\left(\frac{5}{4}\right)^{\frac{3}{2}} - \left(\frac{1}{4}\right)^{\frac{3}{2}}\right)
-        = 
-        \pi + \pi \frac{5\sqrt{5} - 1}{6}
-        = 
-        5\pi \frac{1 + \sqrt{5}}{6}
-        .
-    \end{align*}
-\end{solution}
-
-
-
-
-
-
-\begin{exercise} % 1
-    Consider the volume 
-    \begin{align}
-     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 < 5 \right\},
-    \end{align}
-    \begin{itemize}
-    \item
-     What is the surface $S$ of this volume?
-    \item 
-     Find the outward pointing unit normal $\vec n$ along the surface $S$ of this volume. Write $\vec n$ in terms of $(x_1,x_2,x_3)$ at any point on the surface $S$. 
-    \item
-     Find a parameterization of the surface $S$.
-    \item
-     Find a vector field $\vec F$ such that $\vec F \cdot \vec n = x_1^2 + x_2 + x_3$ along the surface $S$.
-    \item 
-     Use the divergence theorem to compute 
-     \begin{align}
-        \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3.
-     \end{align}
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item $S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 + x_3^2 = 5 \right\}$
-    \item We can write $G(x_1,x_2,x_3) = -5 + x_1^2 + x_2^2 + x_3^2$. Then since we know that the gradient is normal to the level curves we have that:
-    $$
-    \vec{n} = \frac{\nabla G}{||\nabla G||} = \frac{1}{\sqrt{5}}\begin{pmatrix}
-    x_1\\x_2\\x_3
-    \end{pmatrix}
-    $$
-    \item A possible parameterization is:
-     \begin{align*}
-        \Phi: [0,2\pi)\times[0,\pi) \mapsto S, (\theta,\phi) \mapsto (\sqrt{5}\sin\phi\cos\theta,\sqrt{5}\sin\phi\sin\theta,\sqrt{5}\cos\phi)
-     \end{align*}
-    \item $\vec{F} = \sqrt{5}\begin{pmatrix}x_1\\1\\1\end{pmatrix}$
-    \item 
-     We use the divergence theorem:
-     \begin{align*}
-        \iint_{S} x_1^2 + x_2 + x_3 dx_1 dx_2 dx_3 & = \oint_{S} \vec{F}\cdot\vec{n} d\sigma \\
-		& = \iiint_V \nabla \cdot F dV\\
-		& = \iiint_V \sqrt{5} dV = \sqrt{5} \cdot \iiint_V 1 dV = \frac{4}{3}\pi\sqrt{5}^4 =  \frac{4}{3}\pi\cdot 25\\
-     \end{align*}
-     In the last step, we used the formula for the volume of the ball with radius $r=\sqrt{5}$.
-    \end{itemize}
-\end{solution}
-
-
-\begin{exercise} % 2
-    Consider the volume 
-    \begin{align}
-     V := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 < 1, \; x_1, x_2, x_3 > 0 \right\},
-    \end{align}
-    Suppose we have a vector field 
-    \begin{align}
-        \vec F(x_1,x_2,x_3) = \left( x_1^2 x_2, 3 x_2^{2} x_3, 9 x_3^{2} x_1 \right)
-    \end{align}
-    Use the divergence theorem to compute the surface integral 
-    \begin{align}
-        \iint_{S} \vec F d\sigma.
-    \end{align}
-\end{exercise}
-\begin{solution}     
-    Given any scalar function $g : V \to \bbR$, we have 
-
-    \begin{align*}
-        \oint_{S} \vec F d\sigma & = \iiint_V \nabla \cdot F dV\\
-		&= \iiint_V 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dV\\
-		&= \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3
-    \end{align*}
-
-    We solve each integral seperately. Note that we apply integration by parts in between steps. 
-    \begin{align*}
-        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 dx_1 dx_2 dx_3
-        &= \int_{0}^{1}\int_{0}^{1 - x_3} (1-x_2-x_3)^2 x_2 dx_2 dx_3\\
-        &= \int_{0}^{1}\int_{0}^{1 - x_3} \frac{1}{3}(1-x_2-x_3)^3 dx_2 dx_3\\
-        &= \int_{0}^{1} \frac{1}{12}(1-x_3)^4 dx_3\\
-        &= \left[ \frac{-1}{60}(1-x_3)^5\right]_0^1 = \frac{1}{60}
-    \end{align*}
-    \begin{align*}
-        \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 6x_2x_3  dx_1 dx_2 dx_3 &= \int_{0}^{1}\int_{0}^{1 - x_3} 6(1 - x_2 - x_3) x_2 x_3   dx_2 dx_3 \\
-	&= \int_{0}^{1}\int_{0}^{1 - x_3} 3(1 - x_2 - x_3)^2 x_2 x_3   dx_2 dx_3 \\
-	&= \int_{0}^{1} (1 - x_3)^3 x_3   dx_3 \\
-	&= \int_{0}^{1} \frac{1}{4}(1 - x_3)^4  dx_3 \\
-	&= \left[-\frac{1}{20}(1 - x_3)^5 \right]_0^1 = \frac{1}{20}
-    \end{align*}
-	\begin{align*}
-         \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 18x_3x_1 dx_1 dx_2 dx_3&= \int_{0}^{1}\int_{0}^{1 - x_3} 9x_3(1-x_2-x_3)^2   dx_2 dx_3 \\
-        &=\int_{0}^{1} 3x_3(1-x_3)^3  dx_3 \\
-        &= \int_{0}^{1} \frac{3}{4}(1-x_3)^4  dx_3 \\
-        &= \left[-\frac{3}{20}(1-x_3)^5  \right]_0^1 =\frac{3}{20}
-    \end{align*}
-    We conclude that:
-    $$
-    \int_{0}^{1}\int_{0}^{1 - x_3}\int_{0}^{1 - x_2 - x_3} 2x_1x_2 + 6x_2x_3 + 18x_3x_1 dx_1 dx_2 dx_3 = \frac{1}{60} + \frac{1}{20} + \frac{3}{20} = \frac{13}{60}
-    $$
-\end{solution}
-
-
-
-\begin{exercise} % 3
-    Let $S$ be a surface with parameterization $\Phi : \Omega \to S$ as follows:
-    \begin{gather}
-     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 = 1, \; x_1, x_2, x_3 > 0 \right\},
-     \\
-     \Omega = \left\{ (s,t) \in \bbR^2 \suchthat* s + t < 1, \; s, t > 0 \right\},
-     \\ 
-     \Phi : \Omega \to S, \quad (s,t) \mapsto (s,t,1-s-t).
-    \end{gather}
-    We consider the vector fields 
-    \begin{align}
-        \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, x_1 x_2), \quad \vec G(x_1,x_2,x_3) := (-x_2, x_1,x_3)
-    \end{align}
-    \begin{itemize}
-    \item
-     Find the unit normal $\vec n$ given associated with that parameterization.
-    \item
-     Compute the scalar fields $\vec F \cdot \vec n$ and $\vec G \cdot \vec n$ and calculate the integrals of these scalar fields over $S$.
-    \item
-     Compute the integrals using the formula 
-     \begin{align}
-        \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
-     \end{align}
-     and compare the result. 
-    \item 
-     Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
-    \item 
-     Compute the integrals 
-     \begin{align}
-        \oint_C \vec F dl, \quad \oint_C \vec G dl.
-     \end{align}
-    \item 
-     Can you exclude that $\vec F$ or $\vec G$ are gradients of a scalar field?
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item  In a similar fashion as exercise 1 subquestion 2 we obtain the following normal vector:
-	\begin{align*}
-		\vec{n} = \frac{1}{\sqrt{3}} \begin{pmatrix}1\\1\\1\\\end{pmatrix}
-	\end{align*}
-    \item
-	\begin{align*}
-        \int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi ) dsdt &=\int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi )\frac{||\partial_S \Phi \times \partial_t \Phi ||}{||\partial_S \Phi \times \partial_t \Phi ||} dsdt \\
-        &=\int_{\Omega} \vec{F}(\Phi) \cdot \vec{n}||\partial_S \Phi \times \partial_t \Phi || dsdt \\
-        &=\int_S \vec{F}\cdot \vec{n} d\sigma
-	\end{align*}
-    \item
-	\begin{align*}
-        \partial_s\Phi\times\partial_t\Phi &= \begin{pmatrix}1\\0\\-1\\\end{pmatrix}\times\begin{pmatrix}0\\1\\-1\\\end{pmatrix} = \begin{pmatrix}1\\1\\1\\\end{pmatrix}\\
-    \end{align*}
-	\begin{align*}
-        \int_S \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi ) dsdt &= \int_0^1 \int_0^{1-t} \begin{pmatrix}t(1-s-t)\\-s(1-s-t)\\st\end{pmatrix}\cdot  \begin{pmatrix}1\\1\\1\end{pmatrix} ds dt\\
-        &= \int_0^1 \int_0^{1-t} t(1-s-t)-s(1-s-t)+st ds dt\\
-	\end{align*}
-	\begin{align*}
-        \int_0^1 \int_0^{1-t} t(1-s-t) ds dt &= \int_0^1 \frac{1}{2}t -t^2 + \frac{1}{2}t^3 dt = \frac{1}{24}\\
-        \int_0^1 \int_0^{1-t} s(1-s-t) ds dt &=\int_0^1 \int_0^{1-t} \frac{1}{2}(1-s-t)^2 ds dt =\int_0^1 \frac{1}{6}(1-t)^3 dt  =  \frac{1}{24}\\
-        \int_0^1 \int_0^{1-t} st ds dt &=\int_0^1 \frac{1}{2}(1-t)^2t dt =\int_0^1 \frac{1}{6}(1-t)^3 dt  =  \frac{1}{24}\\
-	\end{align*}
-	\begin{align*}
-    	\int_0^1 \int_0^{1-t} t(1-s-t)-s(1-s-t)+st ds dt = \frac{1}{24} - \frac{1}{24} + \frac{1}{24} =  \frac{1}{24}\\
-	\end{align*}
-	\begin{align*}
-	    \int_S \vec{G}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi ) dsdt &= \int_0^1 \int_0^{1-t} \begin{pmatrix}-t\\s\\1-s-t\end{pmatrix}\cdot  \begin{pmatrix}1\\1\\1\end{pmatrix} ds dt\\
-        &= \int_0^1 \int_0^{1-t} 1-2t ds dt\\
-        &= \int_0^1 (1-2t)(1-t) dt\\
-        &= \left[-\frac{1}{2}(1-2t)(1-t)\right]_0^1 -\int_0^1 (1-t)^2 dt \\
-        &= \frac{1}{2} -\left[-\frac{1}{3}(1-t)^3\right]_0^1 = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}\\
-	\end{align*}
-    \item The boundary of $\Omega$ consists of three lines which can be parameterized in a counter clockwise way as follows:
-	\begin{align*}
-	&\gamma_1 : [0,1]\mapsto \partial \Omega_1, (r) \mapsto (r,0),\\
-	&\gamma_2 : [0,1]\mapsto \partial \Omega_2, (r) \mapsto (1-r,r),\\
-	&\gamma_3 : [0,1]\mapsto \partial \Omega_3, (r) \mapsto (0,1-r),
-	\end{align*}
-	which we can use to parameterize the curve $C$ which consist of three lines:
-	\begin{align*}
-	&\Phi\circ\gamma_1 : [0,1]\mapsto C_1, (r) \mapsto (r,0,1-r),\\
-	&\Phi\circ\gamma_2 : [0,1]\mapsto C_2, (r) \mapsto (1-r,r,0),\\
-	&\Phi\circ\gamma_3 : [0,1]\mapsto C_3, (r) \mapsto (0,1-r,r),
-	\end{align*}
-    \item 
-	\begin{align*}
-	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3} \vec F dl\\
-	&= \int_{C_1} \vec F(\Phi\circ \gamma_1) \cdot \frac{d(\Phi\circ \gamma_1)}{dr}dl + \int_{C_2} \vec F(\Phi\circ \gamma_2) \cdot \frac{d(\Phi\circ \gamma_2)}{dr}dl + \int_{C_3} \vec F(\Phi\circ \gamma_3) \cdot \frac{d(\Phi\circ \gamma_3)}{dr}dl\\
-	&= \int_0^1 \begin{pmatrix}0\\-r+r^2\\0\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_0^1 \begin{pmatrix}0\\0\\r-r^2\end{pmatrix}\cdot\begin{pmatrix}-1\\1\\0\end{pmatrix}dr + \int_0^1 \begin{pmatrix}r-r^2\\0\\0\end{pmatrix}\cdot\begin{pmatrix}0\\-1\\1\end{pmatrix}dr =\\
-	&=0
-	\end{align*}
-	\begin{align*}
-	\oint_C \vec G dl &= \oint_{C_1 \cup C_2 \cup C_3} \vec G dl\\
-	&= \int_{C_1} \vec G(\Phi\circ \gamma_1) \cdot \frac{d(\Phi\circ \gamma_1)}{dr}dl + \int_{C_2} \vec G\Phi\circ \gamma_2) \cdot \frac{d(\Phi\circ \gamma_2)}{dr}dl + \int_{C_3} \vec G(\Phi\circ \gamma_3) \cdot \frac{d(\Phi\circ \gamma_3)}{dr}dl\\
-	&= \int_0^1 \begin{pmatrix}0\\r\\1-r\end{pmatrix}\cdot\begin{pmatrix}1\\0\\-1\end{pmatrix}dr + \int_0^1 \begin{pmatrix}-r\\1-r\\0\end{pmatrix}\cdot\begin{pmatrix}-1\\1\\0\end{pmatrix}dr + \int_0^1 \begin{pmatrix}r-1\\0\\r\end{pmatrix}\cdot\begin{pmatrix}0\\-1\\1\end{pmatrix}dr =\\
-	&= \int_0^1 r-1dr + \int_0^1 r + 1- r dr + \int_0^1 rdr\\
-	&= \int_0^1 2rdr = 1
-	\end{align*}
-    \item 
-     Both $\vec F$ and $\vec G$ have non-zero curl, so they cannot be gradients of a scalar field. 
-    \end{itemize}
-\end{solution}
-
-\begin{exercise} % 4
-    Let $S$ be the surface with parameterization $\Phi : \Omega \to S$ as follows:
-    \begin{align}
-     S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 = 1, \; -1 < x_3 < 1 \right\},
-    \end{align}
-    Suppose we have a vector field 
-    \begin{align}
-        \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, 0 ).
-    \end{align}
-    \begin{itemize}
-    \item
-     Find a parameterization of the unit normal $\vec n$ given associated with that parameterization.
-    \item
-     Compute the scalar field $\vec F \cdot \vec n$ and calculate the integrals of this scalar fields over $S$.
-    \item
-     Compute the integral using the formula 
-     \begin{align}
-        \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
-     \end{align}
-     and compare the result. 
-    \item 
-     Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
-    \item 
-     Compute the integrals 
-     \begin{align}
-        \oint_C \vec F dl.
-     \end{align}
-
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item
-    In a similar fashion as Exercise 1 Subquestion 2 we obtain the following normal vector:
-		$$\vec{n} = \begin{pmatrix} x_1\\x_2\\0 \end{pmatrix}$$
-    \item 
-	\begin{align*}
-	\vec F \cdot \vec n & = \begin{pmatrix}x_2x_3 \\ -x_1x_3\\0\end{pmatrix}\cdot \begin{pmatrix}x_1 \\ x_2\\0\end{pmatrix} = x_1x_2x_3 - x_1x_2x_3 = 0
-	\end{align*}
-	\begin{align*}
-        \int_S \vec F \cdot \vec{n}d\sigma = \int_S 0 d\sigma = 0
-     \end{align*}
-    \item
-    We define the parameterisation: 
-	$$
-	\Phi: [0,2\pi) \times [-1,1] \mapsto S, (\theta ,z) \mapsto (\cos\theta, \sin\theta ,z)
-	$$
-	\begin{align*}
-        \int_\Omega \vec F(\Phi) \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt &=\int_0^{2\pi} \int_{-1}^1 \begin{pmatrix}z\sin\theta\\ -z\cos\theta \\ 0\end{pmatrix} \cdot \begin{pmatrix}\cos\theta\\ \sin\theta \\ 0\end{pmatrix} dsdt \\
-	    & = \int_0^{2\pi} \int_{-1}^1 0  dsdt  = 0\\
-     \end{align*}
-    \item 
-    A counter clockwise parameterisation of $\partial \Omega$ is given by:
-	\begin{align*}
-	&\gamma_1: [0,2\pi) \mapsto \partial \Omega_1, (r) \mapsto (r, 1)\\
-	&\gamma_2: [-1,1) \mapsto \partial \Omega_2, (r) \mapsto (2\pi, -r)\\
-	&\gamma_3: [0,2\pi) \mapsto \partial \Omega_3, (r) \mapsto (2\pi - r, -1)\\
-	&\gamma_4: [-1,1) \mapsto \partial \Omega_4, (r) \mapsto (0, r)\\
-	\end{align*}
-	which we can use to build a parameterization of the curve $C = \partial S$:
-	\begin{align*}
-	&\Phi \circ \gamma_1: [0,2\pi) \mapsto C_1, (r) \mapsto (\cos r, \sin r, 1)\\
-	&\Phi \circ \gamma_2: [1,-1)  \mapsto C_2, (r) \mapsto (1, 0, -r)\\
-	&\Phi \circ \gamma_3: [0,2\pi) \mapsto C_3, (r) \mapsto (\cos r, -\sin r, -1)\\
-	&\Phi \circ \gamma_4: [-1,1) \mapsto C_4, (r) \mapsto (1, 0, r)\\
-	\end{align*}
-    \item 
-	\begin{align*}
-	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3\cup C_4} \vec F dl\\
-	&= \sum_{i = 1}^4\int_{C_i} \vec F(\Phi\circ \gamma_i) \cdot \frac{d(\Phi\circ \gamma_i)}{dr}dl \\
-	&= \int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr + \int_{-1}^{1} \begin{pmatrix}0\\r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr + \int_0^{2\pi} \begin{pmatrix}\sin r\\ \cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\-\cos r\\ 0\end{pmatrix}dr +\\
-	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr\\
-	&=2\int_0^{2\pi} -\sin^2 r - \cos^2 rdr \\
-	&=-2 \int_0^{2\pi} dr = -4\pi
-	\end{align*}
-    \item 
-     $\vec F$ has  non-zero curl, so it cannot be a gradient of a scalar field. 
-    \end{itemize}
-\end{solution}
-
-\begin{exercise} % 5
-    Consider the surface 
-    \begin{align*}
-        S := \left\{ \vec x \in \bbR^{3} \suchthat* \|x\| = 1, x_3 > 0 \right\}
-    \end{align*}
-    \begin{itemize}
-    \item Find a parameterization of $S$ and find the unit normal corresponding to that parameterization.
-    \item Find a parameterization of $C = \partial S$.
-    \item Verify Stokes theorem with the vector field 
-     \begin{align*}
-        \vec F(x_1,x_2,x_3) = ( -x_2, x_1, x_3 ).
-     \end{align*}   
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item $$\Phi: \Omega:= [0,2\pi)\times[0,\frac{\pi}{2}) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi) $$
-			$$\vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} = \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}$$
-
-    \item We first parameterize the boundary of the parameter space $\Omega$ 
-
-$$\gamma:[0,2\pi) \mapsto \partial \Omega : \theta \mapsto(\theta, \frac{\pi}{2}),$$
-			
-which gives us the parameterization of the boundary as follows:
-
-$$\Phi\circ \gamma:[0,2\pi) \mapsto \partial C : \theta \mapsto(\cos\theta,\sin\theta,0).$$
-
-    \item 
-        We have to show that:
-
-$$
-\iint_S \nabla \times \vec{F} d\sigma = \oint_C \vec{F} d\ell
-$$
-
-     \begin{align*}
-\iint_S \nabla \times \vec{F} d\sigma &= \iint_S \nabla \times \vec{F}\cdot \vec{n}||\partial_{\theta}\Phi\times \partial_{\phi}\Phi|| d\sigma\\
- &= \iint_S \begin{pmatrix} 0\\ 0\\ 2 \end{pmatrix}\cdot \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}\sin\phi d\sigma\\
-&= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi d\phi d\theta\\
-&= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} \sin2\phi d\phi d\theta\\
-&= 2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}} = 2\pi\\
-     \end{align*}   
-
-\begin{align*}
-\oint_C \vec{F} d\ell &= \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta\\
- &= \int_0^{2\pi} \begin{pmatrix} -\sin\theta\\ \cos\theta\\ 0 \end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\ \cos\phi \\ 0\end{pmatrix} d \theta\\
-&= \int_0^{2\pi} 1 d \theta = 2\pi\\
-     \end{align*}   
-    \end{itemize}
-\end{solution}
 
 
 
