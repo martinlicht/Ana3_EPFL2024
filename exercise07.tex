@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{7}{31}{October} % parameters are the number of the session and the day
@@ -89,18 +89,23 @@
         \int_{0}^{2\pi}\cos^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\cos\phi\;d\phi + \int_{0}^{2\pi}\sin^2\theta\;d\theta\int_0^{\pi}\sin^3\phi\;d\phi +  \int_{0}^{2\pi}\sin\theta\;d\theta\int_0^{\pi}\sin^2\phi\cos\phi\;d\phi
         .
     \end{align*}
-    The last term is zero due to the fact that the integral of $\sin\theta$ over 1 period is equal to $0$. The other integrals are evaluated seperately, where we use the substiitution $u = \cos\phi$ several times:
+    The last term is zero due to the fact that the integral of $\sin\theta$ over 1 period is equal to $0$. 
+    The other integrals are evaluated seperately, where we use the substitution $u = \cos\phi$ several times:
     \begin{align*}
         &
         \int_0^{\pi}\sin^3\phi\cos\phi\;d\phi 
         \\&
         = \int_0^{\pi}(1 - \cos^2\phi)\sin\phi\cos\phi\;d\phi 
         \\&
-        = \int_0^{\pi}\sin\phi\cos\phi - \cos^3\phi\sin\phi\;d\phi 	
+        = \int_0^{\pi}\cos\phi\sin\phi - \cos^3\phi\sin\phi\;d\phi 	
+		\\&
+        = \int_{0}^{\pi} \frac 1 2 \left[ \cos^2(\phi) \right]' + \frac 1 4 \left[ \cos^4(\phi) \right]' \;d u  
         \\&
-        = \int_{-1}^1 u + u^3 \;d u  
-        \\&
-        = \left[\frac{1}{2} u^2 +\frac{1}{4}u^4\right]_{-1}^{1} = 0
+        = \frac 1 2 \left[ \cos^2(\phi) \right]_{\phi=0}^{\phi=\pi} + \frac 1 4 \left[ \cos^4(\phi) \right]_{\phi=0}^{\phi=\pi} = 0
+			% \\&
+			% = \int_{-1}^1 u + u^3 \;d u  
+			% \\&
+			% = \left[\frac{1}{2} u^2 +\frac{1}{4}u^4\right]_{-1}^{1} = 0
     \end{align*}
     Now, 
     \begin{align*}
