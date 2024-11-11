@@ -18,32 +18,33 @@ Show that
     \begin{align}
         \left(\int_{-\infty}^\infty e^{-x^2} dx\right)^2 &= \int_{-\infty}^\infty e^{-x^2} dx \int_{-\infty}^\infty e^{-y^2} dy = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-(x^2 + y^2)} dx dy\\
         &= \int_0^{2\pi} \int_0^\infty e^{-r^2} r dr d\theta = 2\pi \int_0^\infty e^{-r^2} r dr \\
-        &= \pi \int_0^\infty e^{-u} du = \pi [-e^u]_0^\infty = \pi,
+        &= \pi \int_0^\infty e^{-u} du = \pi [-e^u]_{u=0}^{u=\infty} = \pi,
     \end{align}
-    where we have used the substitution $u = r^2$ and Fubini's Theorem. Taking the square root of both sides gives the desired result.
+    where we have used Fubini's Theorem and the substitution $u = r^2$. Taking the square root of both sides gives the desired result.
 \end{solution}
 
 
 \begin{exercise}
+	We check whether the following are distributions or not.
     \begin{itemize}    
         \item 
-        Show that 
+        Show that $T$ is a distribution, where 
         \begin{align}\label{eq:ex2 dist1}
             T(\phi) = \int_{-1}^{1} \phi(x) \ dx
+			.
         \end{align}
-        is a distribution. 
         \item 
-        Show that 
+        Show that $T$ is a distribution, where 
         \begin{align}\label{eq:ex2 dist2}
             T(\phi) = \int_{-\infty}^{\infty} \phi(x) \ dx
+			.
         \end{align}
-        is a distribution. 
         \item 
-        Show that 
+        Show that $S$ is not a distribution, where 
         \begin{align}\label{eq:ex2 dist3}
             S(\phi) = \int_{0}^{1} |\phi(x)| \ dx 
+			.
         \end{align}
-        is not a distribution.
     \end{itemize}
 \end{exercise}
 \begin{solution}
@@ -67,7 +68,8 @@ Show that
     \\
 
     The definition in \eqref{eq:ex2 dist3} is not a distribution since it is not linear in $\phi$. 
-    To see this, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. Set $\psi = -\phi \in \mathcal D$. Then we have
+	There are many different ways to see this. 
+    For example, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. Set $\psi = -\phi \in \mathcal D$. Then we have
     \begin{align}
         S(\phi + \psi) = \int_0^1 |\phi(x) + \psi(x)| \ dx = \int_0^1 0 \ dx = 0,
     \end{align}
@@ -82,18 +84,23 @@ Show that
     Suppose that $f : \mathbb R \rightarrow \mathbb R$ is an integrable function. 
     Whenever $a > 0$, show that 
     \begin{align}
-        \langle f, \phi \rangle := \frac{1}{a} \langle f, \phi(a \cdot) \rangle 
+        T( \phi ) = \frac{1}{a} \langle f, \phi(a \cdot) \rangle 
     \end{align}
+	is a distribution. 
 \end{exercise}
 \begin{solution}
     With the substitution $u = ax$, hence $du = a dx$, we find 
     \begin{align}
-        \langle f(u) \phi(u/a) \frac 1 a \ d u
+        \int f(u) \phi(u/a) \frac 1 a \ d u
         = 
-        \langle f(ax) \phi(x) \ d x 
+        \int f(ax) \phi(x) \ d x 
         .
     \end{align}
-    The desired result follows. 
+	Clearly, the function $g(x) := f(ax)$ is integrable. That means 
+	\begin{align}
+        T( \phi ) = \int g(x) \phi(x) \ dx,
+    \end{align}
+	which is a distribution. 
 \end{solution}
 
 
@@ -164,7 +171,7 @@ Show that
     The solution is plotted in Figure \ref{fig:ex5}. The function is not differentiable at $x \in \mathbb{Z}$ since the left and right derivatives do not agree.
      To compute the distributional derivative, we first observe that 
     \begin{align}
-        f(2n) = 0, & & f(2n + 1) = 1, & & f(2n - 1) = -1 & & \forall n \in \mathbb{Z}.
+        f(2n) = 0, \qquad f(2n + 1) = 1, \qquad \forall n \in \mathbb{Z}.
     \end{align}
     Furthermore, we have that
     \begin{align}
@@ -173,26 +180,71 @@ Show that
                  1 & \text{ if }  \in [2n, 2n + 1) \\
                 \end{cases}, & & \forall n \in \mathbb{Z}.
     \end{align}
-    Finally, for any $\phi \in \mathcal{D}$, there exists $N \in \mathbb{N}$ such that $\mathrm{supp}(\phi) \subset [-2N, 2N]$.\\
-    We claim that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions, where $1_{[a,b)}$ denotes the indicator function of the interval $[a,b)$.
-    Indeed, for a test function $\phi \in \mathcal{D}$, we have by definition of the distributional derivative that
-    \begin{align*}
-        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = - \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx = - \sum_{n \in \mathbb{Z}} \left ( \int_{2n - 1}^{2n} f(x) \phi'(x) \ dx + \int_{2n}^{2n + 1} f(x) \phi'(x)  \right)\ dx \\
-        &= - \sum_{n \in \mathbb{Z}} \left( [f(x) \phi(x)]_{2n - 1}^{2n} + \int_{2n - 1}^{2n} \phi(x) \ dx + [f(x) \phi(x)]_{2n}^{2n+1} - \int_{2n}^{2n + 1} \phi(x)  \ dx \right) \\
-        &= \sum_{n \in \mathbb{Z}} \left( \int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n} \phi(x) \ dx \right) - \sum_{n \in \mathbb{Z}: |n| \leq N} \left( \phi(2n) - \phi(2n - 1) \right) \\
-        & = \sum_{n \in \mathbb{Z}} \left( 2\int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n+1} \phi(x) \ dx \right) + \phi(2N + 1)  - \phi(-2N -1) \\
-        & = \int_{-\infty}^{\infty} 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)}(x) \phi(x) \ dx  = \langle 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1, \phi \rangle,
+    Finally, for any $\phi \in \mathcal{D}$, there exists $N \in \mathbb{N}$ such that $\mathrm{supp}(\phi) \subset [-2N, 2N]$.
+	\\
+	
+    So it seems that the (distributional) derivative switches between $1$ and $-1$ from interval to interval. 
+	Formally, we claim that the distributional derivative is 
+	\begin{align*}
+		f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1
+		,
     \end{align*}
-    where we have used the obersvations on $f, \phi$, a telescope sum in the sixth equation and the compact support of $\phi$ to interchange sum and integral in the last equation. This shows that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions.\\
+    where $1_{[a,b)}$ denotes the indicator function of the interval $[a,b)$.
+	Indeed, for a test function $\phi \in \mathcal{D}$, we have by definition of the distributional derivative that
+    \begin{align*}
+        \langle f', \phi \rangle 
+		&
+		= 
+		- \langle f, \phi' \rangle 
+		\\&
+		= 
+		- \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx 
+		\\&
+		= 
+		- \sum_{n \in \mathbb{Z}} \left ( \int_{2n - 1}^{2n} f(x) \phi'(x) \ dx + \int_{2n}^{2n + 1} f(x) \phi'(x)  \right)\ dx 
+		\\&
+		= 
+		- \sum_{n \in \mathbb{Z}} \left( [f(x) \phi(x)]_{2n - 1}^{2n} + \int_{2n - 1}^{2n} \phi(x) \ dx + [f(x) \phi(x)]_{2n}^{2n+1} - \int_{2n}^{2n + 1} \phi(x)  \ dx \right) 
+		\\
+        &
+		= 
+		\sum_{n \in \mathbb{Z}} \left( \int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n} \phi(x) \ dx \right) - \sum_{n \in \mathbb{Z}: |n| \leq N} \left( \phi(2n) - \phi(2n - 1) \right) 
+		\\
+        & 
+		= \sum_{n \in \mathbb{Z}} \left( 2\int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n+1} \phi(x) \ dx \right) + \phi(2N + 1)  - \phi(-2N -1) 
+		\\
+        & 
+		= 
+		\int_{-\infty}^{\infty} 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)}(x) \phi(x) \ dx  
+		= 
+		\left\langle 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1, \phi \right\rangle
+		,
+    \end{align*}
+    where we have used the obersvations on $f, \phi$, a telescope sum in the sixth equation and the compact support of $\phi$ to interchange sum and integral in the last equation. This shows that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions.
+	\\
 
     For the second distributional derivative, we compute
     \begin{align}
-        \langle f'', \phi \rangle &= - \langle f', \phi' \rangle 
-        = -\sum_{n \in \mathbb{Z}} \left( 2 \int_{2n}^{2n + 1} \phi'(x) \ dx  - \int_{2n - 1}^{2n + 1} \phi'(x) \ dx \right) \\
-        &= \sum_{n \in \mathbb{Z}} - \phi(2 n + 1) +  2\phi(2n) - \phi(2n-1) = 2 \sum_{n \in \mathbb{Z}} \phi(2n) - \phi(2n - 1)\\
-        & = \left \langle 2 \sum_{n \in \mathbb{Z}} \delta_{2n}  - \delta_{2n - 1}, \phi \right \rangle,
+        \langle f'', \phi \rangle 
+		= 
+		- \langle f', \phi' \rangle 
+        &
+		= 
+		-\sum_{n \in \mathbb{Z}} \left( 2 \int_{2n}^{2n + 1} \phi'(x) \ dx  - \int_{2n - 1}^{2n + 1} \phi'(x) \ dx \right) 
+		\\&
+		= 
+		\sum_{n \in \mathbb{Z}} - \phi(2 n + 1) +  2\phi(2n) - \phi(2n-1) 
+		\\& 
+		= 2 \sum_{n \in \mathbb{Z}} \phi(2n) - \phi(2n - 1)
+		\\& 
+		= 
+		\left \langle 2 \sum_{n \in \mathbb{Z}} \delta_{2n}  - \delta_{2n - 1}, \phi \right \rangle
+		,
     \end{align}
     where we have actually rearranged a finite sum in the fourth step since $\phi$ has compact support.
+	
+	Less formally, this is a sequence of Dirac Deltas positioned at the integers;
+	at every even integer, we place a Dirac Delta with the factor $2$, and at every odd integer we place a Dirac Delta with the factor $-2$. This corresponds to the jumps of the distributional derivative $f'$.
 \end{solution}
 
 
