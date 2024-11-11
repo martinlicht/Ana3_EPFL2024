@@ -9,11 +9,18 @@
  
 Show that 
 \begin{align}
-    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{pi}. 
+    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}. 
 \end{align}
 \textit{Hint: square the integral and convert it to polar/radial coordinates.}
 \end{exercise}
 \begin{solution}
+    Following the hint, we find
+    \begin{align}
+        \left(\int_{-\infty}^\infty e^{-x^2} dx\right)^2 &= \int_{-\infty}^\infty e^{-x^2} dx \int_{-\infty}^\infty e^{-y^2} dy = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-(x^2 + y^2)} dx dy\\
+        &= \int_0^{2\pi} \int_0^\infty e^{-r^2} r dr d\theta = 2\pi \int_0^\infty e^{-r^2} r dr \\
+        &= \pi \int_0^\infty e^{-u} du = \pi [-e^u]_0^\infty = \pi,
+    \end{align}
+    where we have used the substitution $u = r^2$ and Fubini's Theorem. Taking the square root of both sides gives the desired result.
 \end{solution}
 
 
@@ -21,25 +28,53 @@ Show that
     \begin{itemize}    
         \item 
         Show that 
-        \begin{align}
+        \begin{align}\label{eq:ex2 dist1}
             T(\phi) = \int_{-1}^{1} \phi(x) \ dx
         \end{align}
         is a distribution. 
         \item 
         Show that 
-        \begin{align}
+        \begin{align}\label{eq:ex2 dist2}
             T(\phi) = \int_{-\infty}^{\infty} \phi(x) \ dx
         \end{align}
         is a distribution. 
         \item 
         Show that 
-        \begin{align}
+        \begin{align}\label{eq:ex2 dist3}
             S(\phi) = \int_{0}^{1} |\phi(x)| \ dx 
         \end{align}
         is not a distribution.
     \end{itemize}
 \end{exercise}
 \begin{solution}
+    The definition in \eqref{eq:ex2 dist1} is clearly linear in $\phi$ as the integral is linear
+     and finite for any $\phi \in \mathcal{D}$ since continuous functions on compact sets are bounded. In particular, we have
+     \begin{align}
+            |T(\phi)| = \left| \int_{-1}^{1} \phi(x) \ dx \right| \leq \int_{-1}^{1} |\phi(x)| \ dx \leq \sup_{x \in [-1,1]} |\phi(x)| \int_{-1}^{1} dx = 2 \sup_{x \in [-1,1]} |\phi(x)|,
+     \end{align}
+     which proves the continuity.\\
+
+    The definition in \eqref{eq:ex2 dist2} is also linear in $\phi$ for the same reason as before. To show that the integral is finite for any $\phi \in \mathcal{D}$, we use the fact that $\phi$ is compactly supported and hence bounded.
+     In particular, there exists for any $\phi \in \mathcal{D}$ a compact interval $[a, b] \subset \mathbb{R}$ such that $\mathrm{supp}(\phi) \subset [a, b]$. Then we have
+    \begin{align}
+        |T(\phi)| = \left| \int_{-\infty}^{\infty} \phi(x) \ dx \right| \leq \int_{a}^{b} |\phi(x)| \ dx \leq \sup_{x \in [a,b]} |\phi(x)| \int_{a}^{b} dx = (b-a) \sup_{x \in [a,b]} |\phi(x)| < \infty,
+    \end{align}
+    which shows that the integral is finite for any $\phi \in \mathcal D$. Conversely, for any compact interval $[a, b] \in \mathbb{R}$ and $\phi \in \mathcal{D}$, such that $\mathrm{supp}(\phi) \subset [a, b]$, we have
+    \begin{align}
+        |T(\phi)| = \left| \int_{-\infty}^{\infty} \phi(x) \ dx \right| \leq \int_{a}^{b} |\phi(x)| \ dx \leq \sup_{x \in [a,b]} |\phi(x)| \int_{a}^{b} dx = (b-a) \sup_{x \in [a,b]} |\phi(x)|,
+    \end{align}
+    which shows the continuity.
+    \\
+
+    The definition in \eqref{eq:ex2 dist3} is not a distribution since it is not linear in $\phi$. 
+    To see this, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. Set $\psi = -\phi \in \mathcal D$. Then we have
+    \begin{align}
+        S(\phi + \psi) = \int_0^1 |\phi(x) + \psi(x)| \ dx = \int_0^1 0 \ dx = 0,
+    \end{align}
+    but
+    \begin{align}
+        S(\phi) + S(\psi) = \int_0^1 |\phi(x)| \ dx + \int_0^1 |\psi(x)| \ dx = 2 \int_0^1 |\phi(x)| \ dx > 0.
+    \end{align}
 \end{solution}
 
 
@@ -70,6 +105,21 @@ Show that
     \end{align}
 \end{exercise}
 \begin{solution}
+    Denote by $H(x)$ the Heaviside step function, where
+    \begin{align}
+        H(x) = \begin{cases}
+                0 & \text{ if } x < 0 \\
+                1 & \text{ if } x \geq 0.
+               \end{cases}
+    \end{align}
+    We claim that $f' = 2 H - 1$ in the sense of distributions. Indeed, for a test function $\phi \in \mathcal{D}$,
+     we have by definition of the distributional derivative that
+    \begin{align}
+        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = - \int_{-\infty}^{\infty} |x| \phi'(x) \ dx = - \int_0^\infty x \phi'(x) \ dx + \int_{-\infty}^0 x\phi'(x) \ dx \\
+        &= -[x \phi(x)]_0^\infty + \int_0^\infty \phi(x) \ dx + [x \phi(x)]_{-\infty}^0 - \int_{-\infty}^0 \phi(x) \ dx \\
+        &= \int_0^\infty \phi(x) \ dx - \int_{-\infty}^0 \phi(x) \ dx = 2 \int_0^\infty \phi(x) \ dx - \int_{-\infty}^{\infty} \phi(x) \ dx = \langle 2H - 1, \phi \rangle,
+    \end{align}
+    where we have used that $\phi$ is compactly supported and hence the boundary terms vanish. This shows that $f' = 2H - 1$ in the sense of distributions.
 \end{solution}
 
 
@@ -88,6 +138,61 @@ Show that
     \end{itemize}
 \end{exercise}
 \begin{solution}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=middle,
+            xlabel={$x$},
+            ylabel={$f(x)$},
+            xmin=-4, xmax=4,
+            ymin=0, ymax=2,
+            samples=400,
+            domain=-4:4,
+            xtick={-4,-3,...,4},
+            ytick={-1, 0, 1},
+            grid=major
+        ]
+        % Plot the piecewise periodic function
+        \addplot[thick, blue, domain=-4:4] 
+            {(mod(abs(x), 2)) * (mod(abs(x), 2) <= 1) + (2 - mod(abs(x), 2)) * (mod(abs(x), 2) > 1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Plot of the periodic function $f$.}
+    \label{fig:ex5}
+    \end{figure}
+    The solution is plotted in Figure \ref{fig:ex5}. The function is not differentiable at $x \in \mathbb{Z}$ since the left and right derivatives do not agree.
+     To compute the distributional derivative, we first observe that 
+    \begin{align}
+        f(2n) = 0, & & f(2n + 1) = 1, & & f(2n - 1) = -1 & & \forall n \in \mathbb{Z}.
+    \end{align}
+    Furthermore, we have that
+    \begin{align}
+        f'(x) = \begin{cases}
+                -1 & \text{ if } x \in [2n - 1, 2n) \\
+                 1 & \text{ if }  \in [2n, 2n + 1) \\
+                \end{cases}, & & \forall n \in \mathbb{Z}.
+    \end{align}
+    Finally, for any $\phi \in \mathcal{D}$, there exists $N \in \mathbb{N}$ such that $\mathrm{supp}(\phi) \subset [-2N, 2N]$.\\
+    We claim that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions, where $1_{[a,b)}$ denotes the indicator function of the interval $[a,b)$.
+    Indeed, for a test function $\phi \in \mathcal{D}$, we have by definition of the distributional derivative that
+    \begin{align*}
+        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = - \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx = - \sum_{n \in \mathbb{Z}} \left ( \int_{2n - 1}^{2n} f(x) \phi'(x) \ dx + \int_{2n}^{2n + 1} f(x) \phi'(x)  \right)\ dx \\
+        &= - \sum_{n \in \mathbb{Z}} \left( [f(x) \phi(x)]_{2n - 1}^{2n} + \int_{2n - 1}^{2n} \phi(x) \ dx + [f(x) \phi(x)]_{2n}^{2n+1} - \int_{2n}^{2n + 1} \phi(x)  \ dx \right) \\
+        &= \sum_{n \in \mathbb{Z}} \left( \int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n} \phi(x) \ dx \right) - \sum_{n \in \mathbb{Z}: |n| \leq N} \left( \phi(2n) - \phi(2n - 1) \right) \\
+        & = \sum_{n \in \mathbb{Z}} \left( 2\int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n+1} \phi(x) \ dx \right) + \phi(2N + 1)  - \phi(-2N -1) \\
+        & = \int_{-\infty}^{\infty} 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)}(x) \phi(x) \ dx  = \langle 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1, \phi \rangle,
+    \end{align*}
+    where we have used the obersvations on $f, \phi$, a telescope sum in the sixth equation and the compact support of $\phi$ to interchange sum and integral in the last equation. This shows that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions.\\
+
+    For the second distributional derivative, we compute
+    \begin{align}
+        \langle f'', \phi \rangle &= - \langle f', \phi' \rangle 
+        = -\sum_{n \in \mathbb{Z}} \left( 2 \int_{2n}^{2n + 1} \phi'(x) \ dx  - \int_{2n - 1}^{2n + 1} \phi'(x) \ dx \right) \\
+        &= \sum_{n \in \mathbb{Z}} - \phi(2 n + 1) +  2\phi(2n) - \phi(2n-1) = 2 \sum_{n \in \mathbb{Z}} \phi(2n) - \phi(2n - 1)\\
+        & = \left \langle 2 \sum_{n \in \mathbb{Z}} \delta_{2n}  - \delta_{2n - 1}, \phi \right \rangle,
+    \end{align}
+    where we have actually rearranged a finite sum in the fourth step since $\phi$ has compact support.
 \end{solution}
 
 
