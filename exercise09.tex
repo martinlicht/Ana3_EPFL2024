@@ -4,6 +4,7 @@
 \begin{document}
 \exsheet{9}{14}{November} % parameters are the number of the session and the day
 
+
 \begin{exercise}
     Consider the following functions with period $T$:
     \begin{itemize}
@@ -180,858 +181,247 @@ $$
     \[
         f(x) = \left\{\begin{array}{ll} 1 & 0 \leq x < \pi \\ 0 & \pi < x \leq 2\pi \end{array}\right.
     \]
+ 
+Show that 
+\begin{align}
+    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}. 
+\end{align}
+\textit{Hint: square the integral and convert it to polar/radial coordinates.}
 \end{exercise}
-\begin{solution}     
-    We notice that the period $T$ equals $T = 2\pi$. 
-    We have defined the first coefficient to be just the average:
-    \begin{align*}
-        a_0 
-        &= 
-        \frac{1}{2\pi} \int_0^{2\pi} f(x) \, dx 
-        = 
-        \frac{1}{2\pi} \int_0^\pi \, dx  = \frac 1 2
-        .
-    \end{align*}
-    For the other coefficients, we use the formulas from the lecture:
-    \begin{align*}
-        a_n 
-        &= 
-        \frac{2}{2\pi} \int_0^{2\pi} f(x) \cos\left(\frac{2\pi n x}{T}\right) \, dx 
-        \\&= 
-        \frac{2}{2\pi} \int_0^\pi \cos\left(\frac{2\pi n x}{T}\right) \, dx 
-        \\
-        &= 
-        \frac{2}{2\pi} \left[ \frac{T}{2\pi n} \sin\left(\frac{2\pi n x}{T}\right) \right]_{x=0}^{x=\pi}
-        \\&= 
-        \frac{2}{2\pi} \frac{T}{2\pi n} \left( \sin\left(\frac{2\pi n \pi}{T}\right) - \sin(0) \right) 
-        \\&= 
-        \frac{2}{2\pi} \frac{2\pi}{2\pi n} \left( \sin\left(n \pi \right) - \sin(0) \right) 
-        \\&= 
-        0
-    \end{align*}
-    because $\sin$ equals zero at integer multiples of $\pi$.
-    For the sine mode coefficients, we calculate similarly:
-    \begin{align*}
-        b_n 
-        &= 
-        \frac{2}{2\pi}
-        \int_0^{2\pi} f(x) \sin(nx) \, dx 
-        \\
-        &= 
-        \frac{1}{\pi}
-        \int_0^\pi \sin(nx) \, dx 
-        \\
-        &= 
-        \frac{1}{\pi}
-        \left[-\frac{\cos(nx)}{n} \right]_{x=0}^{x=\pi} 
-        \\
-        &= 
-        -
-        \frac{1}{\pi}
-        \frac{1}{n} \left[ \cos(n\pi) - \cos(0) \right] 
-        \\
-        &= 
-        -
-        \frac{1}{n\pi}
-        \left[ (-1)^n - 1 \right] 
-        \\
-        &= 
-        \frac{1}{n\pi}
-        \begin{cases}
-            0 & \text{if } n \text{ is even} 
-            \\
-            2 & \text{if } n \text{ is odd}
-        \end{cases}
-    \end{align*}
-    Thus we find $a_0 = 0.5$ and $a_1 = a_2 = \dots = 0$,
-    and either $b_n = 0$ if $n$ is even and $b_n = \frac{2}{n\pi}$ if $n$ is odd. 
+\begin{solution}
+    Following the hint, we find
+    \begin{align}
+        \left(\int_{-\infty}^\infty e^{-x^2} dx\right)^2 &= \int_{-\infty}^\infty e^{-x^2} dx \int_{-\infty}^\infty e^{-y^2} dy = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-(x^2 + y^2)} dx dy\\
+        &= \int_0^{2\pi} \int_0^\infty e^{-r^2} r dr d\theta = 2\pi \int_0^\infty e^{-r^2} r dr \\
+        &= \pi \int_0^\infty e^{-u} du = \pi [-e^u]_{u=0}^{u=\infty} = \pi,
+    \end{align}
+    where we have used Fubini's Theorem and the substitution $u = r^2$. Taking the square root of both sides gives the desired result.
 \end{solution}
 
 
 \begin{exercise}
-    Compute the Fourier coefficients of the following functions, which have period $T = 1$ and have the given values over the interval $[0,1)$:
-    \begin{itemize}
-     \item 
-     \[
-        f(x) = x^{2}
-     \]
-     \item 
-     \[
-        g(x) = (1-x)x
-     \]
-     \item 
-     \[
-        h(x) = |\sin( 2 \pi x )|
-     \]
-     %
+	We check whether the following are distributions or not.
+    \begin{itemize}    
+        \item 
+        Show that $T$ is a distribution, where 
+        \begin{align}\label{eq:ex2 dist1}
+            T(\phi) = \int_{-1}^{1} \phi(x) \ dx
+			.
+        \end{align}
+        \item 
+        Show that $T$ is a distribution, where 
+        \begin{align}\label{eq:ex2 dist2}
+            T(\phi) = \int_{-\infty}^{\infty} \phi(x) \ dx
+			.
+        \end{align}
+        \item 
+        Show that $S$ is not a distribution, where 
+        \begin{align}\label{eq:ex2 dist3}
+            S(\phi) = \int_{0}^{1} |\phi(x)| \ dx 
+			.
+        \end{align}
     \end{itemize}
 \end{exercise}
-\begin{solution}     
-    \begin{itemize}
-        \item 
-        To compute the Fourier coefficients of $f(x) = x^2$ over the interval $[0,1)$ with a period of $1$, use the formulas from the lecture:
-        \[
-            a_0 = \int_{0}^{1} f(x) dx  = \int_{0}^{1} x^2 dx  = \left[ \frac{x^3}{3} \right]_{0}^{1} = \frac 1 3.
-        \]
-        For other coefficients, we apply integration by parts twice, and we use that $\sin$ vanishes at multiples of $\pi$:
-        \begin{align*}
-            a_n 
-            &
-            = 
-            \frac{2}{T}
-            \int_{0}^{1} x^2 \cos(2\pi n x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            -
-            \frac{2}{T}
-            \int_{0}^{1} \frac{ 2x \sin(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            -
-            \frac{4}{T}
-            \int_{0}^{1} x \frac{ \sin(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            -
-            \frac{4}{T}
-            \left[ x \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \int_{0}^{1} \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x^2 \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            -
-            \frac{4}{T}
-            \left[ x \frac{ -\cos(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \left[ \frac{ -\sin(2\pi n x) }{ 8\pi^3 n^3 } \right]_{x=0}^{x=1}
-            \\&
-            = 
-            \frac{1}{\pi^2 n^2}
-        \end{align*}
-        \begin{align*}
-            b_n 
-            &
-            = 
-            \frac{2}{T}
-            \int_{0}^{1} x^2 \sin(2\pi n x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[- x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{2}{T}
-            \int_{0}^{1} \frac{ 2x \cos(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[- x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \int_{0}^{1} \frac{ x \cos(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ -x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \left[ x \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            -
-            \frac{4}{T}
-            \int_{0}^{1} \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ -x^2 \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \left[ x \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            +
-            \frac{4}{T}
-            \left[ \frac{ \cos(2\pi n x) }{ 8\pi^3 n^3 } \right]_{x=0}^{x=1}
-            \\&
-            = 
-            -\frac{2}{T}\frac{1}{2\pi n} + \frac{4}{T}\frac{1}{8\pi^3n^3} -  \frac{4}{T}\frac{1}{8\pi^3n^3} = -\frac{1}{\pi n}
-        \end{align*}
-        \item 
-        We notice that the function $g(x) = (1-x)x$ can be written $g(x) = x - f(x)$ over the interval $[0,1)$. 
-        In other words, $g$ is the difference of the sawtooth function (which equals $x$ over $[0,1)$ and repeats with period $T=1$),
-        and the periodic function $f(x)$ seen earlier.
-        
-        We will only need to determine the Fourier coefficients of $\tilde{g}(x) = x$ since we already computed the Fourier coefficients of $f(x)$. 
-        We calculate the average 
-        \[
-            a_0^{\tilde g} = \int_{0}^{1} \tilde{g}(x) dx  = \int_{0}^{1} x dx  = \left[ \frac{x^2}{2} \right]_{0}^{1} = \frac 1 2.
-        \]
-        We calculate 
-        \begin{align*}
-            a_n^{\tilde g} 
-            &
-            = 
-            \frac{2}{T}
-            \int_{0}^{1} x \cos(2\pi n x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            -
-            \frac{2}{T}
-            \int_{0}^{1} \frac{ \sin(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[ x \frac{ \sin(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{2}{T}
-            \left[ \frac{ \cos(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            \\&
-            =
-            \frac{2}{T}
-            \frac{1}{2\pi n}
-            \left( \sin(2\pi n) - \sin(0) \right)
-            +
-            \frac{2}{T}
-            \frac{1}{ 4\pi^2 n^2 }
-            \left( \cos(2\pi n) - \cos(0) \right)
-            \\&
-            =
-            0
-        \end{align*}	
-        Lastly, 
-        \begin{align*}
-            b_n^{\tilde g} 
-            &
-            = 
-            \frac{2}{T}
-            \int_{0}^{1} x \sin(2\pi n x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[- x \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{2}{T}
-            \int_{0}^{1} \frac{ \cos(2\pi n x) }{ 2\pi n } dx
-            \\&
-            =
-           \frac{2}{T}
-            \left[- x \frac{ \cos(2\pi n x) }{ 2\pi n } \right]_{x=0}^{x=1}
-            +
-            \frac{2}{T}
-            \left[ \frac{ \sin(2\pi n x) }{ 4\pi^2 n^2 } \right]_{x=0}^{x=1}
-            \\&
-            = 
-            -\frac{2}{T}\frac{1}{2\pi n} =  -\frac{1}{\pi n} 
-        \end{align*}	
-        Now the Fourier coefficients of $g(x)$ are given by
-                \begin{align*}
-                    &b_n = -\frac{1}{\pi n} - - \frac{1}{\pi n} = 0
-                    \\& 
-            a_n = 0 - \frac{1}{2\pi^2 n^2} =  - \frac{1}{\pi^2 n^2} 
-                    \\&
-            a_0 = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}
-        \end{align*}	
-        \item
-        Note that $h(x)$ is an even function.
-        Therefore $b_n = 0$. 
-        We calculate the average 
-        \[
-            a_0 
-            = 
-            \frac{1}{T} \int_{0}^{1} |\sin 2\pi x| dx  
-            = 
-            \frac{2}{T} \int_{0}^{\frac 1 2} \sin 2\pi x dx  
-            =  
-            \frac 2 T
-            \left[ \frac{-1}{2\pi} \cos{2\pi x} \right]_{0}^{\frac 1 2} 
-            =
-            \frac{2}{\pi} 
-            .
-        \]
-        The coefficients $a_n$ for the cosine modes with $n \geq 1$ are:
-        \begin{align*}
-            a_n 
-            &
-            = 
-            \frac{4}{T}
-            \int_{0}^{\frac 1 2} \sin 2\pi x \cos(2\pi n x) dx
-            \\&
-            =
-            \frac{4}{T}
-            \int_{0}^{\frac 1 2} \frac 1 2 \sin{2\pi(1-n)x} + \frac 1 2 \sin{2\pi(n+1)x} dx
-            \\&
-		=
-            \frac{4}{T}
-            \int_{0}^{\frac 1 2} -\frac 1 2 \sin{2\pi(n-1)x} + \frac 1 2 \sin{2\pi(n+1)x} dx
-            \\&
-            =
-            \left[\frac{ \cos2\pi(n-1)x }{ \pi(n-1) } \right]_{x=0}^{x=\frac 1 2}
-            +
-            \left[- \frac{ \cos2\pi(n+1)x }{ \pi(n+1) } \right]_{x=0}^{x=\frac 1 2}
-            \\&
-            = 
-            \frac{(-1)^{n-1}}{\pi(n-1)} -  \frac{1}{\pi(n-1)}  - \frac{(-1)^{n+1}}{\pi(n+1)} + \frac{1}{\pi(n+1)}
-            \\&
-            = -\frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1-(-1)^{n+1}}{\pi(n+1)} 
-            \\&
-            = -\frac{1+(-1)^{n}}{\pi(n-1)} +  \frac{1+(-1)^{n}}{\pi(n+1)} 
-        \end{align*}	
-        Therefore, when $n \geq 1$:
-        \[a_n = 
-        \begin{cases}
-        0 ,\quad &\text{if } n\text{ is odd,}\\
-        -\frac{2}{\pi(n-1)} + \frac{2}{\pi(n+1)}  ,\quad &\text{if } n\text{ is even,}
-        \end{cases}
-        \]
-       \end{itemize}
+\begin{solution}
+    The definition in \eqref{eq:ex2 dist1} is clearly linear in $\phi$ as the integral is linear
+     and finite for any $\phi \in \mathcal{D}$ since continuous functions on compact sets are bounded. In particular, we have
+     \begin{align}
+            |T(\phi)| = \left| \int_{-1}^{1} \phi(x) \ dx \right| \leq \int_{-1}^{1} |\phi(x)| \ dx \leq \sup_{x \in [-1,1]} |\phi(x)| \int_{-1}^{1} dx = 2 \sup_{x \in [-1,1]} |\phi(x)|,
+     \end{align}
+     which proves the continuity.\\
+
+    The definition in \eqref{eq:ex2 dist2} is also linear in $\phi$ for the same reason as before. To show that the integral is finite for any $\phi \in \mathcal{D}$, we use the fact that $\phi$ is compactly supported and hence bounded.
+     In particular, there exists for any $\phi \in \mathcal{D}$ a compact interval $[a, b] \subset \mathbb{R}$ such that $\mathrm{supp}(\phi) \subset [a, b]$. Then we have
+    \begin{align}
+        |T(\phi)| = \left| \int_{-\infty}^{\infty} \phi(x) \ dx \right| \leq \int_{a}^{b} |\phi(x)| \ dx \leq \sup_{x \in [a,b]} |\phi(x)| \int_{a}^{b} dx = (b-a) \sup_{x \in [a,b]} |\phi(x)| < \infty,
+    \end{align}
+    which shows that the integral is finite for any $\phi \in \mathcal D$. Conversely, for any compact interval $[a, b] \in \mathbb{R}$ and $\phi \in \mathcal{D}$, such that $\mathrm{supp}(\phi) \subset [a, b]$, we have
+    \begin{align}
+        |T(\phi)| = \left| \int_{-\infty}^{\infty} \phi(x) \ dx \right| \leq \int_{a}^{b} |\phi(x)| \ dx \leq \sup_{x \in [a,b]} |\phi(x)| \int_{a}^{b} dx = (b-a) \sup_{x \in [a,b]} |\phi(x)|,
+    \end{align}
+    which shows the continuity.
+    \\
+
+    The definition in \eqref{eq:ex2 dist3} is not a distribution since it is not linear in $\phi$. 
+	There are many different ways to see this. 
+    For example, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. Set $\psi = -\phi \in \mathcal D$. Then we have
+    \begin{align}
+        S(\phi + \psi) = \int_0^1 |\phi(x) + \psi(x)| \ dx = \int_0^1 0 \ dx = 0,
+    \end{align}
+    but
+    \begin{align}
+        S(\phi) + S(\psi) = \int_0^1 |\phi(x)| \ dx + \int_0^1 |\psi(x)| \ dx = 2 \int_0^1 |\phi(x)| \ dx > 0.
+    \end{align}
 \end{solution}
 
+
 \begin{exercise}
-    Compute the Fourier coefficients of the following functions, which have period $T = 2\pi$ and have the given values over the interval $[0,2\pi)$:
+    Suppose that $f : \mathbb R \rightarrow \mathbb R$ is an integrable function. 
+    Whenever $a > 0$, show that 
+    \begin{align}
+        T( \phi ) = \frac{1}{a} \langle f, \phi(a \cdot) \rangle 
+    \end{align}
+	is a distribution. 
+\end{exercise}
+\begin{solution}
+    With the substitution $u = ax$, hence $du = a dx$, we find 
+    \begin{align}
+        \int f(u) \phi(u/a) \frac 1 a \ d u
+        = 
+        \int f(ax) \phi(x) \ d x 
+        .
+    \end{align}
+	Clearly, the function $g(x) := f(ax)$ is integrable. That means 
+	\begin{align}
+        T( \phi ) = \int g(x) \phi(x) \ dx,
+    \end{align}
+	which is a distribution. 
+\end{solution}
+
+
+
+\begin{exercise}
+    Find the distributional derivative of the function 
+    \begin{align}
+        f(x) = |x|.
+    \end{align}
+\end{exercise}
+\begin{solution}
+    Denote by $H(x)$ the Heaviside step function, where
+    \begin{align}
+        H(x) = \begin{cases}
+                0 & \text{ if } x < 0 \\
+                1 & \text{ if } x \geq 0.
+               \end{cases}
+    \end{align}
+    We claim that $f' = 2 H - 1$ in the sense of distributions. Indeed, for a test function $\phi \in \mathcal{D}$,
+     we have by definition of the distributional derivative that
+    \begin{align}
+        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = - \int_{-\infty}^{\infty} |x| \phi'(x) \ dx = - \int_0^\infty x \phi'(x) \ dx + \int_{-\infty}^0 x\phi'(x) \ dx \\
+        &= -[x \phi(x)]_0^\infty + \int_0^\infty \phi(x) \ dx + [x \phi(x)]_{-\infty}^0 - \int_{-\infty}^0 \phi(x) \ dx \\
+        &= \int_0^\infty \phi(x) \ dx - \int_{-\infty}^0 \phi(x) \ dx = 2 \int_0^\infty \phi(x) \ dx - \int_{-\infty}^{\infty} \phi(x) \ dx = \langle 2H - 1, \phi \rangle,
+    \end{align}
+    where we have used that $\phi$ is compactly supported and hence the boundary terms vanish. This shows that $f' = 2H - 1$ in the sense of distributions.
+\end{solution}
+
+
+\begin{exercise}
+    Consider the function with period $2$ that satisfies 
+    \begin{align}
+        f(x) = \begin{cases}
+                -x & \text{ if } -1 < x \leq 0 \\
+                 x & \text{ if }  0 < x \leq 1 \\
+               \end{cases}
+    \end{align}
     \begin{itemize}
-     \item 
-     \[
-        f(x) = e^{x - \pi}
-     \]
-     \item 
-     \[
-        g(x) = {(x - \pi)^3}
-     \]
-     \item 
-     \[
-        h(x) = \left\{\begin{array}{ll}
-            \sin(x) & 0 \leq x < \frac \pi 2
-            \\
-            0   & \frac \pi 2 \leq x < \frac{3\pi}{2} 
-            \\
-            \sin(x) & \frac {3\pi} 2 \leq x < 2\pi
-        \end{array}\right.
-     \]
-     %
+     \item Draw a plot of this function from $-4$ to $4$.
+     \item Is this function differentiable? What is the first distributional derivative of this function?
+     \item What is the second distributional derivative of this function?
     \end{itemize}
 \end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item To compute the Fourier coefficients of $f(x)$ with a period of $2\pi$, use the formulas from the lecture:
-    \[
-        a_0 
-        = 
-        \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} e^{x-\pi} dx  = \frac{1}{2\pi}\left[ e^{x-\pi} \right]_{0}^{2\pi} = \frac{1}{\pi}\left(e^{\pi} - e^{-\pi}\right)
-    \]
-    For other coefficients, we apply integration by parts twice, and see that we obtain the same integral again:
+\begin{solution}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=middle,
+            xlabel={$x$},
+            ylabel={$f(x)$},
+            xmin=-4, xmax=4,
+            ymin=0, ymax=2,
+            samples=400,
+            domain=-4:4,
+            xtick={-4,-3,...,4},
+            ytick={-1, 0, 1},
+            grid=major
+        ]
+        % Plot the piecewise periodic function
+        \addplot[thick, blue, domain=-4:4] 
+            {(mod(abs(x), 2)) * (mod(abs(x), 2) <= 1) + (2 - mod(abs(x), 2)) * (mod(abs(x), 2) > 1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Plot of the periodic function $f$.}
+    \label{fig:ex5}
+    \end{figure}
+    The solution is plotted in Figure \ref{fig:ex5}. The function is not differentiable at $x \in \mathbb{Z}$ since the left and right derivatives do not agree.
+     To compute the distributional derivative, we first observe that 
+    \begin{align}
+        f(2n) = 0, \qquad f(2n + 1) = 1, \qquad \forall n \in \mathbb{Z}.
+    \end{align}
+    Furthermore, we have that
+    \begin{align}
+        f'(x) = \begin{cases}
+                -1 & \text{ if } x \in [2n - 1, 2n) \\
+                 1 & \text{ if }  \in [2n, 2n + 1) \\
+                \end{cases}, & & \forall n \in \mathbb{Z}.
+    \end{align}
+    Finally, for any $\phi \in \mathcal{D}$, there exists $N \in \mathbb{N}$ such that $\mathrm{supp}(\phi) \subset [-2N, 2N]$.
+	\\
+	
+    So it seems that the (distributional) derivative switches between $1$ and $-1$ from interval to interval. 
+	Formally, we claim that the distributional derivative is 
+	\begin{align*}
+		f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1
+		,
+    \end{align*}
+    where $1_{[a,b)}$ denotes the indicator function of the interval $[a,b)$.
+	Indeed, for a test function $\phi \in \mathcal{D}$, we have by definition of the distributional derivative that
     \begin{align*}
-        a_n 
+        \langle f', \phi \rangle 
+		&
+		= 
+		- \langle f, \phi' \rangle 
+		\\&
+		= 
+		- \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx 
+		\\&
+		= 
+		- \sum_{n \in \mathbb{Z}} \left ( \int_{2n - 1}^{2n} f(x) \phi'(x) \ dx + \int_{2n}^{2n + 1} f(x) \phi'(x)  \right)\ dx 
+		\\&
+		= 
+		- \sum_{n \in \mathbb{Z}} \left( [f(x) \phi(x)]_{2n - 1}^{2n} + \int_{2n - 1}^{2n} \phi(x) \ dx + [f(x) \phi(x)]_{2n}^{2n+1} - \int_{2n}^{2n + 1} \phi(x)  \ dx \right) 
+		\\
         &
-        = 
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x - \pi} \cos( n x) dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \left[ e^{x - \pi} \frac{ \sin(n x) }{ n } \right]_{x=0}^{x=2\pi}
-        -
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin( n x) }{ n } dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \left[ e^{x - \pi} \frac{ \sin(n x) }{ n } \right]_{x=0}^{x=2\pi}
-        -
-        \frac{1}{\pi}
-        \left[ e^{x - \pi} \frac{ -\cos(n x) }{ n^2 } \right]_{x=0}^{x=2\pi}
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x-\pi}\frac{ -\cos(n x) }{ n^2 } dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \left( e^{\pi} \frac{ \sin(2\pi x) }{ n } - e^{0 - \pi} \frac{ \sin(n 0) }{ n } \right)
-        -
-        \frac{1}{\pi}
-        \left( e^{\pi} \frac{ -\cos(n 2\pi) }{ n^2 } - e^{- \pi} \frac{ -\cos(n 0) }{ n^2 } \right)
-        \\&\qquad\qquad
-        +
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x-\pi}\frac{ -\cos(n x) }{ n^2 } dx
-        \\&
-        =
-        \frac{1}{\pi}\frac{e^{\pi} - e^{-\pi}}{n^2}
-        +
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x-\pi}\frac{ -\cos(n x) }{ n^2 } dx
-        \\&
-        =
-        \frac{1}{\pi}\frac{e^{\pi} - e^{-\pi}}{n^2}
-        -
-        \frac{1}{\pi}
-        \int_{0}^{2\pi} e^{x-\pi}\frac{ \cos(n x) }{ n^2 } dx
-        \end{align*}
-        We rearrange that 
-        \begin{align*}
-            \int_{0}^{2\pi} e^{x-\pi} \cos(n x) dx
-            &=
-            \frac{e^{\pi} - e^{-\pi}}{ n^2}
-            -
-            \frac{1}{n^2}
-            \int_{0}^{2\pi} e^{x-\pi} \cos(n x) dx
-            \\
-            \implies\qquad 
-            \left( 1 + \frac 1 {n^2} \right)
-            \int_{0}^{2\pi} e^{x-\pi} \cos(n x) dx
-            &=
-            \frac{e^{\pi} - e^{-\pi}}{ n^2}
-            \\
-            \implies\qquad 
-            \int_{0}^{2\pi} e^{x-\pi} \cos(n x) dx
-            &=
-            \left( 1 + \frac 1 {n^2} \right)^{-1}
-            \frac{e^{\pi} - e^{-\pi}}{ n^2}
-            .   
-        \end{align*}
-        We conclude that 
-        \begin{align*}
-            a_n := 
-            \frac{1}{\pi}
-            \int_{0}^{2\pi} e^{x - \pi} \cos( n x) dx 
-            &= 
-            \left( 1 + \frac 1 {n^2} \right)^{-1}
-            \frac{e^{\pi} - e^{-\pi}}{\pi n^2}
-            \\&= 
-            \left( \frac {n^2+ 1} {n^2} \right)^{-1}
-            \frac{e^{\pi} - e^{-\pi}}{\pi n^2}
-            \\&= 
-            \frac{n^2}{1+n^2}
-            \frac{e^{\pi} - e^{-\pi}}{\pi n^2}
-            \\&= 
-            \frac{e^{\pi} - e^{-\pi}}{(1+n^2)\pi}
-        \end{align*}
-        The coefficients of the sine modes are:
-        \begin{align*}
-            b_n 
-            &
-            = 
-            \frac{1}{\pi}
-            \int_{0}^{2\pi} e^{x - \pi} \sin(n x) dx
-            \\&
-            =
-            \frac{1}{\pi}
-            \left[- e^{x - \pi} \frac{ \cos( n x) }{ n } \right]_{x=0}^{x=2\pi}
-            +
-            \frac{1}{\pi}
-            \int_{0}^{2\pi} \frac{ e^{x - \pi} \cos( n x) }{ n } dx
-            \\&
-            =
-            \frac{1}{\pi}
-             \left[- e^{x - \pi} \frac{ \cos( n x) }{ n } \right]_{x=0}^{x=2\pi}
-            +
-            \frac{1}{\pi}
-            \left[ e^{x-\pi} \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=2\pi}
-            -
-            \frac{1}{\pi}
-            \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin(n x) }{n^2 } dx
-            \\&
-            =
-            \frac{1}{\pi}\frac{e^{-\pi} - e^{\pi}}{n}
-            -
-            \frac{1}{\pi}
-            \int_{0}^{2\pi} e^{x-\pi}\frac{ \sin(n x) }{n^2 } dx
-        \end{align*}
-        Similar as above, it follows that 
-        \begin{align*}
-            b_n:= \frac{1}{\pi}
-                    \int_{0}^{2\pi} e^{x - \pi} \sin(n x) dx = \frac{1}{1 + \frac{1}{n^2}} \frac{1}{\pi}\frac{e^{-\pi} - e^{\pi}}{n} = \frac{1}{\pi}  \frac{e^{-\pi} - e^{\pi}}{n + \frac{1}{n}}
-        \end{align*}
-    %subquestion 2
-    \item
-% <<<<<<< HEAD
-    We compute the average 
-    \begin{align*}
-        a_0
-        :=
-        \frac{1}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} dx
-        =
-        \frac{1}{2\pi} \int_{-\pi}^{\pi} z^{3} dz
-        =
-        0
-        .
+		= 
+		\sum_{n \in \mathbb{Z}} \left( \int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n} \phi(x) \ dx \right) - \sum_{n \in \mathbb{Z}: |n| \leq N} \left( \phi(2n) - \phi(2n - 1) \right) 
+		\\
+        & 
+		= \sum_{n \in \mathbb{Z}} \left( 2\int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n+1} \phi(x) \ dx \right) + \phi(2N + 1)  - \phi(-2N -1) 
+		\\
+        & 
+		= 
+		\int_{-\infty}^{\infty} 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)}(x) \phi(x) \ dx  
+		= 
+		\left\langle 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1, \phi \right\rangle
+		,
     \end{align*}
-    We compute the coefficients of the cosine modes: for $n \geq 1$, we find 
-    \begin{align*}
-        a_n
-        &:=
-        \frac{2}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \cos(nx) dx
-        \\&=
-        \frac{1}{\pi} \int_{0}^{2\pi} (x-\pi)^{3} \cos(nx) dx
-        \\&=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(n(z+\pi)) dz
-        \\&=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(nz+n\pi)) dz
-        \\&=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \cos(nz)) dz
-        \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
-        .
-    \end{align*}
-    However, $z^3 \cos(nz)$ is the product of an odd and an even function, and so the integral vanishes. 
-    Explicitly:
-    \begin{align*}
-        \int_{-\pi}^{\pi} z^{3} \cos(nz)) dz
-        &=
-        \int_{-\pi}^{0} z^{3} \cos(nz)) dz
-        + 
-        \int_{0}^{\pi} z^{3} \cos(nz)) dz
-        \\&=
-        - 
-        \int_{0}^{\pi} w^{3} \cos(nw)) dw
-        + 
-        \int_{0}^{\pi} z^{3} \cos(nz)) dz
-        = 
-        0.
-    \end{align*}
-    Finally, we compute the coefficients of the sine modes:
-    \begin{align*}
-        b_n
-        &:=
-        \frac{2}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
-        \\&=
-        \frac{1}{\pi} \int_{0}^{2\pi} (x-\pi)^{3} \sin(nx) dx
-        \\&=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \sin(n(z+\pi)) dx
-        \\&=
-        \frac{1}{\pi} \int_{-\pi}^{\pi} z^{3} \sin(nz) dz
-        \cdot \left\{\begin{array}{ll} 1 & \text{ if $n$ is even } \\ -1 & \text{ if $n$ is odd } \end{array}\right.
-        .
-    \end{align*}
-    In either case, since $z^3$ and $\sin(nz)$ are odd functions,
-    \begin{align*}
-        \int_{-\pi}^{\pi} z^{3} \sin(nz) dz
-        &=
-        2\int_{0}^{\pi} z^{3} \sin(nz) dz
-        .
-    \end{align*}
-    We perform integration by parts several times:
-    \begin{align*}
-        &
-        \int_{0}^{\pi} z^{3} \sin(nz) dz
-        \\&=
-        -
-        \frac 1 {n} 
-        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
-        +
-        \frac 3 {n}
-        \int_{0}^{\pi} z^{2} \cos(nz) dz
-        \\&=
-        -
-        \frac 1 {n} 
-        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
-        +
-        \frac 3 {n^2} 
-        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
-        -
-        \frac 6 {n^2} 
-        \int_{0}^{\pi} z \sin(nz) dz
-        \\&=
-        - \frac 1 {n} 
-        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
-        + 
-        \frac 3 {n^2}
-        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
-        +
-        \frac 6 {n^3} 
-        \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
-        -
-        \frac 6 {n^3} 
-        \int_{0}^{\pi} \cos(nz) dz
-        \\&=
-        - \frac 1 {n} 
-        \left[ z^{3} \cos(nz) \right]_{z=0}^{z=\pi}
-        + 
-        \frac 3 {n^2}
-        \left[ z^{2} \sin(nz) \right]_{z=0}^{z=\pi}
-        +
-        \frac 6 {n^3} 
-        \left[ z \cos(nz) \right]_{z=0}^{z=\pi}
-        +
-        \frac 6 {n^4} 
-        \left[ \sin(nz) \right]_{z=0}^{z=\pi}
-        \\&=
-	-\frac{\pi^3(-1)^n}{n}+\frac{6\pi(-1)^n}{n^3} 
-	\\&\implies
-            b_n = 
-            \begin{cases}
-            \frac{2\pi^2}{n}-\frac{12}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
-            -\frac{2\pi^2}{n}+\frac{12}{n^3}   ,\quad &\text{if } n\text{ is even,}
-            \end{cases}\cdot \left\{\begin{array}{ll} -1 & \text{ if $n$ is odd } \\ 1 & \text{ if $n$ is even } \end{array}\right. =  -\frac{2\pi^2}{n}+\frac{12}{n^3}
-    \end{align*}
-% 
-% 
-% =======
-% To compute the Fourier coefficients of $g(x)$ over the interval $[0,2\pi)$ with a period of $2\pi$, we use the formulas from the lecture:
-%         \[
-%             a_0 = \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} (x-\pi)^3 dx  = \left[ \frac{(x-\pi)^4}{4} \right]_{0}^{2\pi} = \frac{1}{2\pi}\frac 1 4 \pi^4 - \frac{1}{2\pi}\frac 1 4 (-\pi)^4 = 0.
-%         \]
-%         Note that the function is odd therefore $a_n = 0$. For $b_n$, we apply integration by parts thrice, and we use that $\sin$ vanishes at multiples of $\pi$:
-%         \begin{align*}
-%             b_n 
-%             &
-%             = 
-%             \frac{2}{2\pi}
-%             \int_{0}^{2\pi} (x-\pi)^3 \sin(n x) dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} (x-\pi)^3 \sin(n x) dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} \frac{ 3(x-\pi)^2 \cos(n x) }{ n } dx
-%             \\&
-%             =
-%  		\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             -
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6(x-\pi)\frac{ \sin( n x) }{n^2 } dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		-
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6\frac{ \cos( n x) }{ n^3 } dx
-%             \\&
-%             =
-%  		\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             -
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6(x-\pi)\frac{ \sin( n x) }{n^2 } dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		-
-%             \frac{2}{\pi}
-%             \left[ 6\frac{ \sin( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		\\&
-%             =\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		\\&
-% 		= -\frac{2\pi^2}{n}+\frac{12}{n^3}
-%         \end{align*}
-% >>>>>>> 602337bdc4aee219b2f971dc33945611c0773aed
-    %subquestion 3
-    \item 
-    The average of $h(x)$ over $1$ period $T$ is $0$ therefore:
-    \[
-        a_0 = 0
-    \]
-    Moreover $h(x)$ is odd therefore $a_n = 0$. For $b_n$ we have:
-    \begin{align*}
-        b_n 
-        &
-        = 
-        \frac{2}{2\pi}
-        \int_{0}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
-        +
-        \frac{2}{2\pi}
-        \int_{\frac{3\pi}{2}}^{2\pi} \sin(x) \sin(n x) dx
-        \\&
-        =
-        \frac{2}{2\pi}
-        \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
-        \\&
-        =
-        \frac{2}{\pi}
-        \int_{0}^{\frac{\pi}{2}} \sin(x) \sin(n x) dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \int_{0}^{\frac{\pi}{2}} \cos((n-1)x) - \cos((n+1)x) dx
-        \\&
-        =
-        \frac{1}{\pi}
-        \left[ \frac{\sin((n-1)x)}{n-1} - \frac{\sin((n+1)x)}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
-        \\&
-        =
-        \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
-    \end{align*}
-    If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
-    Hence $b_n$ is zero if $n$ is odd. 
-    For the even numbers, we have got another case distinction:
-    if $n=1,5,9,\dots$, then 
-    \begin{align*}
-        b_n = \frac{1}{n-1} - \frac{-1}{n+1} = \frac{1}{n-1} + \frac{1}{n+1} = \frac{n+1+n-1}{n^2+1} = \frac{2n}{n^2+1}.
-    \end{align*}
-    if $n=3,7,11,\dots$, then 
-    \begin{align*}
-        b_n = \frac{-1}{n-1} - \frac{1}{n+1} = \frac{-n-1-n+1}{n^2+1} = \frac{-2n}{n^2+1}.
-    \end{align*}
-    
+    where we have used the obersvations on $f, \phi$, a telescope sum in the sixth equation and the compact support of $\phi$ to interchange sum and integral in the last equation. This shows that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions.
+	\\
 
-    
-\end{itemize}
+    For the second distributional derivative, we compute
+    \begin{align}
+        \langle f'', \phi \rangle 
+		= 
+		- \langle f', \phi' \rangle 
+        &
+		= 
+		-\sum_{n \in \mathbb{Z}} \left( 2 \int_{2n}^{2n + 1} \phi'(x) \ dx  - \int_{2n - 1}^{2n + 1} \phi'(x) \ dx \right) 
+		\\&
+		= 
+		\sum_{n \in \mathbb{Z}} - \phi(2 n + 1) +  2\phi(2n) - \phi(2n-1) 
+		\\& 
+		= 2 \sum_{n \in \mathbb{Z}} \phi(2n) - \phi(2n - 1)
+		\\& 
+		= 
+		\left \langle 2 \sum_{n \in \mathbb{Z}} \delta_{2n}  - \delta_{2n - 1}, \phi \right \rangle
+		,
+    \end{align}
+    where we have actually rearranged a finite sum in the fourth step since $\phi$ has compact support.
+	
+	Less formally, this is a sequence of Dirac Deltas positioned at the integers;
+	at every even integer, we place a Dirac Delta with the factor $2$, and at every odd integer we place a Dirac Delta with the factor $-2$. This corresponds to the jumps of the distributional derivative $f'$.
 \end{solution}
 
-
-\begin{exercise}
-    Compute the Fourier coefficients of the function $f$ with period $T = 2\pi$ and which satisfies 
-     \[
-        f(x) = \sin(x) \text{ if } 0 \leq x  < \pi,
-     \]
-     and 
-     \[
-        f(x) = f(-x) \text{ for all } x \in \mathbb R.
-     \]
-\end{exercise}
-\begin{solution}     
-    Note that $f(x)$ is an even function,
-    therefore $b_n = 0$. 
-    The average is 
-	\[
-        a_0 = \frac{2}{2\pi} \int_{0}^{\pi} \sin x dx  =  \frac{1}{\pi}\left[ - \cos{x} \right]_{0}^{\pi} =\frac{2}{\pi} .
-    \]
-    The cosine mode coefficients are:
-    \begin{align*}
-            a_n 
-            &
-            = 
-            \frac{2}{T}
-            \int_{-\pi}^{\pi} f(x)   \cos(n x) dx
-            \\&
-            = 
-            \frac{4}{T}
-            \int_{0}^{\pi} \sin x \cos(n x) dx
-            \\&
-            =
-            \frac{4}{T}
-            \int_{0}^{\pi} \frac 1 2 \sin((1-n)x) + \frac 1 2 \sin((n+1)x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \int_{0}^{\pi} \sin((1-n)x) + \sin((n+1)x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \int_{0}^{\pi} -\sin((n-1)x) + \sin((n+1)x) dx
-            \\&
-            =
-            \frac{2}{T}
-            \left[\frac{ \cos((n-1)x) }{ (n-1) } \right]_{x=0}^{x=\pi}
-            +
-            \frac{2}{T}
-            \left[- \frac{ \cos((n+1)x) }{ (n+1) } \right]_{x=0}^{x=\pi}
-            \\&
-            = 
-            \frac 2 T 
-            \left( 
-                \frac{ \cos((n-1)\pi) }{(n-1)} 
-                - 
-                \frac{1}{(n-1)}
-                -
-                \frac{ \cos((n+1)\pi) }{(n+1)} 
-                + 
-                \frac{1}{(n+1)}
-            \right)
-            \\&
-            = 
-            \frac 2 T 
-            \left( 
-                \frac{ \cos( n \pi - \pi ) }{(n-1)} 
-                - 
-                \frac{1}{(n-1)}
-                -
-                \frac{ \cos( n \pi + \pi ) }{(n+1)} 
-                + 
-                \frac{1}{(n+1)}
-            \right)
-            \\&
-            = 
-            \frac 2 T 
-            \left( 
-                -
-                \frac{ \cos(n\pi) }{(n-1)} 
-                - 
-                \frac{1}{(n-1)}
-                +
-                \frac{ \cos(n\pi) }{(n+1)} 
-                + 
-                \frac{1}{(n+1)}
-            \right)
-            \\&
-            = 
-            \frac 2 T 
-            \left( 
-                -
-                \frac{ (-1)^n }{(n-1)} 
-                - 
-                \frac{1}{(n-1)}
-                +
-                \frac{ (-1)^n }{(n+1)} 
-                + 
-                \frac{1}{(n+1)}
-            \right)
-            \\&
-            = 
-            \frac 2 T 
-            \left( 
-                \frac{ 1 + (-1)^n }{(n+1)} 
-                -
-                \frac{ 1 + (-1)^n }{(n-1)} 
-            \right)
-            \\&
-            = 
-            \frac 1 \pi 
-            \left( 
-                \frac{ 1 + (-1)^n }{(n+1)} 
-                -
-                \frac{ 1 + (-1)^n }{(n-1)} 
-            \right)
-            .
-        \end{align*}	
-        Here, if $n$ is odd, the coefficient numerators are $1 + (-1) = 0$, and if $n$ is even, they are both equal $2$. Thus:
-        \[
-            a_n = 
-            \begin{cases}
-            0 ,\quad &\text{if } n\text{ is odd,}\\
-            -\frac{2}{\pi(n-1)} + \frac{2}{\pi(n+1)}  ,\quad &\text{if } n\text{ is even,}
-            \end{cases}
-        \]
-\end{solution}
 
 
 \end{document}
