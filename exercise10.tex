@@ -1,8 +1,61 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{10}{21}{November} % parameters are the number of the session and the day
+
+
+
+
+\begin{exercise}
+    Find the first two distributional derivatives of the following functions
+    \begin{align*}
+        ReLU(x) 
+        &= \begin{cases} 0 & \text{ if } x < 0 \\ x & \text{ if } 0 \leq x \end{cases}
+        \\
+        ReLU^{k}(x) 
+        &= \begin{cases} 0 & \text{ if } x < 0 \\ x^{k} & \text{ if } 0 \leq x \end{cases} \text{ where } k \in \mathbb N_0
+        \\
+        f(x) 
+        &= 
+        \begin{cases} 
+            -x-2            & \text{ if } -2 < x < -1
+            \\
+            - x^{2} - 2x - 1 & \text{ if } -1 < x < 0 
+            \\ 
+              x^{2} + 2x - 1 & \text{ if } 0 <  x < 1
+            \\
+            2-x            & \text{ if }  1 < x < 2
+            \\
+            0              & \text{ otherwise }  
+            % 
+        \end{cases}
+        .
+    \end{align*}
+    Here, employ the definition of distributional derivatives and check against the formula for piecewise differentiable functions as obtained during lecture. 
+\end{exercise}
+\begin{solution}
+    .
+\end{solution}
+
+
+\begin{exercise}
+    Let $f : \bbR \rightarrow \bbR$ be a function with period $1$ and 
+    \begin{align*}
+        f(x) = x, \qquad 0 < x < 1.
+    \end{align*}
+    Find the distributional derivative. 
+\end{exercise}
+\begin{solution}
+    .
+\end{solution}
+
+
+
+
+
+
+
 
 \begin{exercise}
     Use Dirichlet's theorem to explain whether the Fourier series converges at $x \in [0,T]$ and to which value:
