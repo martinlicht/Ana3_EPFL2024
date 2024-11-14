@@ -140,26 +140,38 @@
     \item 
     A counter clockwise parameterisation of $\partial \Omega$ is given by:
 	\begin{align*}
-	&\gamma_1: [0,2\pi) \mapsto \partial \Omega_1, (r) \mapsto (r, 1)\\
+	&\gamma_1: [0,2\pi) \mapsto \partial \Omega_1, (\theta) \mapsto (\theta, 1)\\
 	&\gamma_2: [-1,1) \mapsto \partial \Omega_2, (r) \mapsto (2\pi, -r)\\
-	&\gamma_3: [0,2\pi) \mapsto \partial \Omega_3, (r) \mapsto (2\pi - r, -1)\\
+	&\gamma_3: [0,2\pi) \mapsto \partial \Omega_3, (\theta) \mapsto (2\pi - \theta, -1)\\
 	&\gamma_4: [-1,1) \mapsto \partial \Omega_4, (r) \mapsto (0, r)\\
 	\end{align*}
 	which we can use to build a parameterization of the curve $C = \partial S$:
 	\begin{align*}
-	&\Phi \circ \gamma_1: [0,2\pi) \mapsto C_1, (r) \mapsto (\cos r, \sin r, 1)\\
+	&\Phi \circ \gamma_1: [0,2\pi) \mapsto C_1, (\theta) \mapsto (\cos \theta, \sin \theta, 1)\\
 	&\Phi \circ \gamma_2: [1,-1)  \mapsto C_2, (r) \mapsto (1, 0, -r)\\
-	&\Phi \circ \gamma_3: [0,2\pi) \mapsto C_3, (r) \mapsto (\cos r, -\sin r, -1)\\
+	&\Phi \circ \gamma_3: [0,2\pi) \mapsto C_3, (\theta) \mapsto (\cos \theta, -\sin \theta, -1)\\
 	&\Phi \circ \gamma_4: [-1,1) \mapsto C_4, (r) \mapsto (1, 0, r)\\
 	\end{align*}
     \item 
 	\begin{align*}
-	\oint_C \vec F dl &= \oint_{C_1 \cup C_2 \cup C_3\cup C_4} \vec F dl\\
-	&= \sum_{i = 1}^4\int_{C_i} \vec F(\Phi\circ \gamma_i) \cdot \frac{d(\Phi\circ \gamma_i)}{dr}dl \\
-	&= \int_0^{2\pi} \begin{pmatrix}\sin r\\-\cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\\cos r\\ 0\end{pmatrix}dr + \int_{-1}^{1} \begin{pmatrix}0\\r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr + \int_0^{2\pi} \begin{pmatrix}\sin r\\ \cos r\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin r\\-\cos r\\ 0\end{pmatrix}dr +\\
-	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr\\
-	&=2\int_0^{2\pi} -\sin^2 r - \cos^2 rdr \\
-	&=-2 \int_0^{2\pi} dr = -4\pi
+	\oint_C \vec F dl 
+	&= 
+	\oint_{C_1 \cup C_2 \cup C_3\cup C_4} \vec F dl
+	\\
+	&= 
+	\sum_{i = 1}^4\int_{C_i} \vec F(\Phi\circ \gamma_i) \cdot \frac{d(\Phi\circ \gamma_i)}{dr}dl 
+	\\
+	&= \int_0^{2\pi} \begin{pmatrix}\sin \theta\\-\cos \theta\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin \theta\\\cos \theta\\ 0\end{pmatrix}d\theta 
+	+ 
+	\int_{-1}^{1} \begin{pmatrix}0\\r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\-1\end{pmatrix}dr 
+	+ 
+	\int_0^{2\pi} \begin{pmatrix}\sin \theta\\ \cos \theta\\0\end{pmatrix}\cdot\begin{pmatrix}-\sin \theta\\-\cos \theta\\ 0\end{pmatrix}d\theta 
+	+
+	\\
+	&+ \int_{-1}^{1} \begin{pmatrix}0\\-r\\0\end{pmatrix}\cdot\begin{pmatrix}0\\0\\1\end{pmatrix}dr
+	\\
+	&=2\int_0^{2\pi} -\sin^2 \theta - \cos^2 \theta dr \\
+	&=-2 \int_0^{2\pi} d\theta = -4\pi
 	\end{align*}
     \item 
      $\vec F$ has  non-zero curl, so it cannot be a gradient of a scalar field. 
