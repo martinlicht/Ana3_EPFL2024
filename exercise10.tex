@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-%\def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{10}{21}{November} % parameters are the number of the session and the day
@@ -7,6 +7,62 @@
 
 
 
+\begin{exercise}
+    \begin{align*}
+        ReLU(x) 
+        &= \begin{cases} 0 & \text{ if } x < 0 \\ x & \text{ if } 0 \geq x \end{cases}
+        \\
+        ReLU^{k}(x) 
+        &= \begin{cases} 0 & \text{ if } x < 0 \\ x^{k} & \text{ if } 0 \leq x \end{cases} \text{ where } k \in \mathbb N_0
+        \\
+        f(x) 
+        &= 
+        \begin{cases} 
+            -x-2            & \text{ if } -2 < x < -1
+            \\
+            - x^{2} - 2x - 1 & \text{ if } -1 < x < 0 
+            \\ 
+              x^{2} + 2x - 1 & \text{ if } 0 <  x < 1
+            \\
+            2-x            & \text{ if }  1 < x < 2
+            \\
+            0              & \text{ otherwise }  
+            % 
+        \end{cases}
+        .
+    \end{align*}
+    Here, employ the definition of distributional derivatives and check against the formula for piecewise differentiable functions as obtained during lecture. 
+\end{exercise}
+\begin{solution}
+    \begin{itemize}
+        \item For the $ReLU$ function, we have for any $\phi \in \mathcal D(\mathbb{R})$,
+        \begin{align*}
+            \langle ReLU', \phi \rangle = -\langle ReLU, \phi' \rangle = -\int_{-\infty}^{\infty} ReLU(x) \phi'(x) dx = -\int_{0}^{\infty} x \phi'(x) dx = \int_{0}^{\infty} \phi(x) dx = \langle H, \phi \rangle,
+        \end{align*}
+        where $H$ is the Heaviside step function. Thus, we conclude that $ReLU' = H$.
+        \item For $k > 1$, we find for any $\phi \in \mathcal D(\mathbb{R})$,
+        \begin{align*}
+            \langle (ReLU^k)', \phi \rangle &= - \langle ReLU^k, \phi' \rangle = - \int_{-\infty}^{\infty} ReLU^k(x) \phi'(x) dx \\
+            &= - \int_{0}^{\infty} x^k \phi'(x) dx = \int_{0}^{\infty} k x^{k-1} \phi(x) dx = \langle k ReLU^{k-1}, \phi \rangle.
+        \end{align*}
+        Therefore, we conclude that $(ReLU^k)' = k ReLU^{k-1}$.
+        \item For the function $f$, we have for any $\phi \in \mathcal D(\mathbb{R})$,
+        \begin{align*}
+            \langle f', \phi \rangle &= - \langle f, \phi'\rangle = \int_{-2}^{-1}(x + 2) \phi'(x) dx + \int_{-1}^{0} (x^2 + 2x + 1) \phi'(x) dx\\
+            &- \int_{0}^{1} (x^2 + 2x - 1) \phi'(x) dx + \int_{1}^{2} (x - 2) \phi'(x) dx \\
+            &= \phi(-1) - \int_{-2}^{-1} \phi(x) dx + \phi(0) - \int_{-1}^{0} 2(x + 1) \phi(x)dx\\
+            &- 2\phi(1)  - \phi(0) + \int_{0}^{1} 2(x + 1) \phi(x) dx + \phi(1) - \int_{1}^{2} \phi(x) dx \\
+            &= \int_{-2}^{-1} (-1) \phi(x) dx + \int_{-1}^0 (-2(x + 1)) \phi(x) dx \\
+            &+ \int_{0}^{1} 2(x + 1) \phi(x) dx + \int_{1}^{2} (-1) \phi(x) dx + \phi(-1) - \phi(1)\\
+            &= \langle g + \delta_{-1} - \delta_{1} , \phi \rangle,
+        \end{align*}
+        where the function $g: \mathbb{R} \to \mathbb{R}$ is defined as
+        \begin{align*}
+            g(x) = \begin{cases} -1 & \text{ if } -2 < x \leq -1 \\ -2(x + 1) & \text{ if } -1 < x \leq 0 \\ 2(x + 1) & \text{ if } 0 < x \leq 1 \\ -1 & \text{ if } 1 < x \leq 2 \\ 0 & \text{ otherwise } \end{cases}.
+        \end{align*}
+        Hence, we conclude that $f' = g + \delta_{-1} - \delta_{1}$. Note that this corresponds exactly to the formula found during the lecture.
+    \end{itemize}
+\end{solution}
 \begin{exercise}
     Compute the Fourier coefficients of the function $f$ that has period $T = 2\pi$ and satisfies
     \[
@@ -80,6 +136,26 @@
 \end{solution}
 
 
+\begin{exercise}
+    Let $f : \bbR \rightarrow \bbR$ be a function with period $1$ and 
+    \begin{align*}
+        f(x) = x, \qquad 0 < x < 1.
+    \end{align*}
+    Find the distributional derivative. 
+\end{exercise}
+\begin{solution}
+    First, we note that we can express the function $f$ as
+    \begin{align*}
+        f(x) = \sum_{n \in \mathbb{Z}} 1_{[n, n+1)}(x) (x - n),
+    \end{align*}
+    where $1_{[n, n+1)}$ is the indicator function of the interval $[n, n+1)$.
+    For a function $\phi \in \mathcal{D}(\mathbb{R})$, we have
+    \begin{align*}
+        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = -\sum_{n \in \mathbb{Z}} \int_n^{n+1} (x - n) \phi'(x) dx = -\sum_{n \in \mathbb{Z}} \left[ \phi(n + 1) - \int_{-\infty}^\infty 1_{[n, n+1)}(x) \phi(x) dx\right]\\
+        &= \int_{-\infty}^\infty \phi(x) dx - \sum_{n \in \mathbb{Z}} \phi(n) = \langle 1 - \Delta_1, \phi \rangle,
+    \end{align*}
+    where $\Delta_1$ is the Dirac comb with period $1$. Thus, we conclude that $f' = 1 - \Delta_1$. Note here, that the interchanging of the infinite sum and the integral is justified by the fact that the sum actually finite due to the finite support of $\phi$.
+\end{solution}
 \begin{exercise}
     Compute the Fourier coefficients of the following functions, which have period $T = 1$ and have the given values over the interval $[0,1)$:
     \begin{itemize}
@@ -864,6 +940,9 @@
             \end{cases}
         \]
 \end{solution}
+
+
+
 
 
 
