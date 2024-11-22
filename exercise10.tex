@@ -10,7 +10,7 @@
 \begin{exercise}
     \begin{align*}
         ReLU(x) 
-        &= \begin{cases} 0 & \text{ if } x < 0 \\ x & \text{ if } 0 \geq x \end{cases}
+        &= \begin{cases} 0 & \text{ if } x < 0 \\ x & \text{ if } 0 \leq x \end{cases}
         \\
         ReLU^{k}(x) 
         &= \begin{cases} 0 & \text{ if } x < 0 \\ x^{k} & \text{ if } 0 \leq x \end{cases} \text{ where } k \in \mathbb N_0
@@ -117,7 +117,7 @@
 			= 
 			\int_{-\infty}^{0} \phi(x) dx 
 			+
-			\int_{0}^{\infty}  \phi'(x) dx + \phi(0) 
+			\int_{0}^{\infty}  \phi(x) dx + \phi(0) 
 			\\&\qquad 
 			= 
 			\int_{-\infty}^{\infty} \phi(x) dx + \phi(0) 
@@ -139,17 +139,49 @@
     Find the distributional derivative. 
 \end{exercise}
 \begin{solution}
-    First, we note that we can express the function $f$ as
+    For a test function $\phi \in \mathcal{D}(\mathbb{R})$, we have
     \begin{align*}
-        f(x) = \sum_{n \in \mathbb{Z}} 1_{[n, n+1)}(x) (x - n),
+        \langle f', \phi \rangle 
+        &= 
+        - \langle f, \phi' \rangle 
+        = 
+        -\sum_{n \in \mathbb{Z}} \int_n^{n+1} (x - n) \phi'(x) dx 
+        ,
     \end{align*}
-    where $1_{[n, n+1)}$ is the indicator function of the interval $[n, n+1)$.
-    For a function $\phi \in \mathcal{D}(\mathbb{R})$, we have
+    Here, we have used that the function looks like $x-n$ over each interval $(n,n-1)$:
+    over the interval from $n$ to $n+1$, it looks like a linear function with slope $1$ that equals $0$ at $x=n$.
+    Now, use integration by parts:
     \begin{align*}
-        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = -\sum_{n \in \mathbb{Z}} \int_n^{n+1} (x - n) \phi'(x) dx = -\sum_{n \in \mathbb{Z}} \left[ \phi(n + 1) - \int_{-\infty}^\infty 1_{[n, n+1)}(x) \phi(x) dx\right]\\
-        &= \int_{-\infty}^\infty \phi(x) dx - \sum_{n \in \mathbb{Z}} \phi(n) = \langle 1 - \Delta_1, \phi \rangle,
+        -\sum_{n \in \mathbb{Z}} \int_n^{n+1} (x - n) \phi'(x) dx 
+        &
+        = 
+        -\sum_{n \in \mathbb{Z}} \left[ \phi(n + 1) - \int_{n}^{n+1} \phi(x) dx \right]
+        \\&
+        =
+        -
+        \sum_{n \in \mathbb{Z}} \phi(n + 1)
+        +
+        \sum_{n \in \mathbb{Z}} \int_{n}^{n+1} \phi(x) dx
+        \\&
+        =
+        -
+        \sum_{n \in \mathbb{Z}} \phi(n)
+        +
+        \sum_{n \in \mathbb{Z}} \int_{n}^{n+1} \phi(x) dx
+        \\&
+        =
+        -
+        \sum_{n \in \mathbb{Z}} \phi(n)
+        +
+        \int_{-\infty}^{\infty} \phi(x) dx
+        .
     \end{align*}
-    where $\Delta_1$ is the Dirac comb with period $1$. Thus, we conclude that $f' = 1 - \Delta_1$. Note here, that the interchanging of the infinite sum and the integral is justified by the fact that the sum actually finite due to the finite support of $\phi$.
+    On a technical note, we notice that the sum only involves a finite number of terms and that the integral is finite, too, because $\phi$ is smooth with compact support. 
+    Hence, we have the distributional derivative equals the constant function $1$ minus the Dirac comb.
+    \begin{align*}
+        f' = 1 - \Delta_1.
+    \end{align*}
+    We observe that this accounts for the fact that $f$ is a piecewise linear function with slope equal $1$ on the intervals and with jumps $-1$ at each of the interval boundaries.
 \end{solution}
 
 
