@@ -578,7 +578,9 @@
 \begin{solution}     
 \begin{itemize}
 \item $f$ is continuous and finite on the closed interval $[0,2]$ therefore the Fourier series, $F_N f$, converges to $f$ when we take the limit of $N$ going to $\infty$.
-\item $f$ is continuous and finite on the closed intervals $[0,1]$, $[1,2]$ and $[2,3]$. However note that $f$ is not continuous in $f(0)$, $f(1)$ and $f(2)$ therefore the Fourier series, $F_N f$, converges to: 
+\item $f$ is continuous and finite on the closed intervals $[0,1]$, $[1,2]$ and $[2,3]$. 
+However, note that $f$ is not continuous in $0$, $f1$ and $2$.
+Therefore the Fourier series, $F f$, converges to: 
 
 \begin{gather*}
             g(x) = \left\{\begin{array}{ll}
@@ -595,10 +597,9 @@
                             \sin(x) & \text{ if $2 < x < 3$ }
 						\\
                             \frac{\sin(3) + \pi}{2} & \text{ if $x = 3$ }
-                          \end{array}\right., \qquad T = 3.
+                          \end{array}\right.
 \end{gather*}
-
-when we take the limit of $N$ going to $\infty$.
+and we extend that function $g$ to a periodic function with period $T = 3$. 
 \end{itemize}
 \end{solution}
 
@@ -610,38 +611,27 @@ when we take the limit of $N$ going to $\infty$.
 \end{exercise}
 \begin{solution}     
 We can re-use the results about the sawtooth wave.
-
-\begin{equation*}
-g(x)=x \text { for } 0 \leq x<1
-\end{equation*}
-
-\begin{equation*}
-a_0^g = \frac{1}{2},\quad a_n^g = 0, \quad b_n^g = \frac{-1}{\pi n}
-\end{equation*}
-
+\begin{gather*}
+    g(x)=x \text { for } 0 \leq x<1
+    \\
+    a_0^g = \frac{1}{2},\quad a_n^g = 0, \quad b_n^g = \frac{-1}{\pi n}
+\end{gather*}
 Moreover we can write $f$ in terms of $g$ by introducing $x = \frac{y}{2}$
-
-$$
-f(y) = 2g(y/2)
-$$
-
+\[
+    f(y) = 2g(y/2)
+\]
 which gives us the Fourier coefficients of $f$
-
-\begin{equation*}
-a_0^f = 1,\quad a_n^f = 0, \quad b_n^f = \frac{-2}{\pi n}
-\end{equation*}
-
+\begin{gather*}
+    a_0^f = 1,\quad a_n^f = 0, \quad b_n^f = \frac{-2}{\pi n}
+\end{gather*}
 Using this we can obtain the Fourier coefficients $c_n$:
-
-$$
-c_0 = a_0 = 1,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
-$$
-
+\[
+    c_0 = a_0 = 1,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
+\]
 such that 
-
-$$
-F f(x)=\sum_{n=-\infty}^{\infty} c_n e^{\pi n x i}
-$$
+\[
+    F f(x)=\sum_{n=-\infty}^{\infty} c_n e^{\pi n x i}
+\]
 \end{solution}
 
 \begin{exercise}
@@ -651,61 +641,51 @@ $$
 \begin{solution}     
 We will not use the standard approach in integrating the function $f$. Instead we try to rewrite $f$ as sum of $\cos(nx)$ using trigonometric formulas:
 \begin{align*}
-\cos^2\alpha &= \frac 1 2 + \frac 1 2 \cos 2 \alpha\\
-\cos\alpha\cos\beta &= \frac 1 2 \cos (\alpha-\beta)+ \frac 1 2 \cos (\alpha + \beta) \\
+    \cos^2\alpha &= \frac 1 2 + \frac 1 2 \cos 2 \alpha
+    \\
+    \cos\alpha\cos\beta &= \frac 1 2 \cos (\alpha-\beta)+ \frac 1 2 \cos (\alpha + \beta) \\
 \end{align*}
 Using these formulas we can rewrite $f$ as follows:
-
 \begin{align*}
-\cos^8x &= (\cos^2x)^4\\
-&= (\frac 1 2 + \frac 1 2 \cos 2x)^4\\
-&= ((\frac 1 2 + \frac 1 2 \cos 2x)^2)^2\\
-&= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
-&= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
-&= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)(\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)\\
-&= \frac{1}{16}+\frac 1 4 \cos 2x + \frac 3 8 \cos^2 2x + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
-&= \frac{1}{16}+\frac 1 4 \cos 2x + \frac 3 8 (\frac 1 2 + \frac 1 2 \cos 4x) + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
-&= \frac{4}{16}+\frac 1 4 \cos 2x + \frac{3}{16} \cos 4x + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
+    \cos^8x &= (\cos^2x)^4\\
+    &= (\frac 1 2 + \frac 1 2 \cos 2x)^4\\
+    &= ((\frac 1 2 + \frac 1 2 \cos 2x)^2)^2\\
+    &= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
+    &= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2 x)^2\\
+    &= (\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)(\frac 1 4 + \frac 1 2 \cos 2x + \frac 1 4 \cos ^2 2x)\\
+    &= \frac{1}{16}+\frac 1 4 \cos 2x + \frac 3 8 \cos^2 2x + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
+    &= \frac{1}{16}+\frac 1 4 \cos 2x + \frac 3 8 (\frac 1 2 + \frac 1 2 \cos 4x) + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
+    &= \frac{4}{16}+\frac 1 4 \cos 2x + \frac{3}{16} \cos 4x + \frac 1 4 \cos^3 2x +\frac{1}{16} \cos^4 2x\\
 \end{align*}
-
 Now we consider $\cos^3 2x$ and $\cos^4 2x$ seperately:
-
 \begin{align*}
-\cos^3 2x &= \cos 2x \cos^2 2x\\
-&= (\frac 1 2 + \frac 1 2 \cos 4x) \cos 2x\\
-&= \frac 1 2 \cos 2x + \frac 1 2 \cos 4 x \cos 2 x \\
-&= \frac 1 2 \cos 2x + \frac 1 4 \cos 6 x  + \frac 1 4 \cos 2 x \\
-&= \frac 3 4 \cos 2x + \frac 1 4 \cos 6 x \\
+    \cos^3 2x &= \cos 2x \cos^2 2x\\
+    &= (\frac 1 2 + \frac 1 2 \cos 4x) \cos 2x\\
+    &= \frac 1 2 \cos 2x + \frac 1 2 \cos 4 x \cos 2 x \\
+    &= \frac 1 2 \cos 2x + \frac 1 4 \cos 6 x  + \frac 1 4 \cos 2 x \\
+    &= \frac 3 4 \cos 2x + \frac 1 4 \cos 6 x \\
 \end{align*}
-
 \begin{align*}
-\cos^4 2x &= (\cos^2 2x)^2\\
-&=(\frac 1 2 + \frac 1 2 \cos 4x)^2\\
-&= \frac 1 4 + \frac 1 2 \cos 4x + \frac 1 4 \cos^2 4x\\
-&= \frac 1 4 + \frac 1 2 \cos 4x + \frac 1 4 (\frac 1 2 + \frac 1 2 \cos 8x)\\
-&= \frac 3 8 + \frac 1 2 \cos 4x + \frac 1 8 \cos 8x\\
+    \cos^4 2x &= (\cos^2 2x)^2\\
+    &=(\frac 1 2 + \frac 1 2 \cos 4x)^2\\
+    &= \frac 1 4 + \frac 1 2 \cos 4x + \frac 1 4 \cos^2 4x\\
+    &= \frac 1 4 + \frac 1 2 \cos 4x + \frac 1 4 (\frac 1 2 + \frac 1 2 \cos 8x)\\
+    &= \frac 3 8 + \frac 1 2 \cos 4x + \frac 1 8 \cos 8x\\
 \end{align*}
-
 putting everything together we have:
-
-$$
-\cos^8x  = \frac{35}{128} + \frac{7}{16}\cos 2x + \frac{7}{32}\cos 4x + \frac{1}{16} \cos 6x + \frac{1}{128}\cos 8x
-$$
-
+\[
+    \cos^8x  = \frac{35}{128} + \frac{7}{16}\cos 2x + \frac{7}{32}\cos 4x + \frac{1}{16} \cos 6x + \frac{1}{128}\cos 8x
+\]
 For the second part we use Parseval's identity which is given by: 
-
-$$
-\frac{2}{T} \int_0^T f(x)^2 d x=2 a_0^2+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2
-$$
-
+\[
+    \frac{2}{T} \int_0^T f(x)^2 d x=2 a_0^2+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2
+\]
 substituting our Fourier coefficients and $f$ gives: 
-
 \begin{align*}
-\frac{2}{T} \int_0^T f(x)^2 d x&=2 a_0+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
-\frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
-\implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right) = \pi\frac 6435 16384 \approx 1.2339\\
+    \frac{2}{T} \int_0^T f(x)^2 d x&=2 a_0+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
+    \frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
+    \implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right) = \pi\frac 6435 16384 \approx 1.2339\\
 \end{align*}
-
 \end{solution}
 
 \begin{exercise}
