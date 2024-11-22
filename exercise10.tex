@@ -460,8 +460,95 @@
         \end{align*}	
         \item
         Note that $h(x)$ is an even function.
-        Therefore $b_n = 0$. 
-        We calculate the average 
+        We first check that the sine modes are have coefficients equal zero.
+        \begin{align*}
+            b_n 
+            &
+            = 
+            \frac{2}{T}
+            \int_{0}^{T} |\sin( 2\pi x)| \sin(2\pi n x) dx
+            \\&
+            =
+            2
+            \int_{0}^{1} |\sin( 2\pi x)| \sin(2\pi n x) dx
+            \\&
+            =
+            2
+            \int_{0}^{\frac 1 2} \sin( 2\pi x) \sin(2\pi n x) dx
+            -
+            2
+            \int_{\frac 1 2}^{1} \sin( 2\pi x) \sin(2\pi n x) dx
+            .            
+        \end{align*}
+        One possibility to proceed is via substitution in the second integral, setting $x = y + \frac 1 2$. 
+        We then find 
+        \begin{align*}
+            &
+            \int_{\frac 1 2}^{1} 
+            \sin( 2\pi x) \sin(2\pi n x) dx
+            \\&\qquad 
+            =
+            \int_{0}^{\frac 1 2} 
+            \sin( 2\pi (x+ 0.5)) \sin(2\pi n (x+ 0.5)) dx
+            \\&\qquad 
+            =
+            \int_{0}^{\frac 1 2} 
+            \sin( 2\pi x + \pi ) \sin(2\pi n x + \pi n) dx
+            =
+            (-1)^{n+1}
+            \int_{0}^{\frac 1 2} 
+            \sin( 2\pi x ) \sin(2\pi n x + \pi n) dx
+            .
+        \end{align*}
+        In the last step, we have used the symmetry properties of the sine function. 
+        Hence 
+        \begin{align*}
+            b_n 
+            &
+            =
+            2 \left( 1 - (-1)^{n+1} \right)
+            \int_{0}^{\frac 1 2} \sin( 2\pi x) \sin(2\pi n x) dx
+            .
+        \end{align*}
+        If $n$ is odd, then the last expression is already zero. 
+        Otherwise, if $n$ is even, we want to show that last integral is zero. 
+        We use the sum formula:
+        \begin{align*}
+            \sin( 2\pi x) \sin(2\pi n x)
+            =
+            \frac{1}{2}
+            \cos( 2\pi (n-1) x)
+            -
+            \frac{1}{2}
+            \cos( 2\pi (n+1) x)
+            .
+        \end{align*}
+        With that observation, we find 
+        \begin{align*}
+            b_n 
+            &
+            =
+            \frac{1}{2}
+            \int_{0}^{\frac 1 2} 
+            \cos( 2\pi (n-1) x)
+            -
+            \cos( 2\pi (n+1) x)
+            \ dx
+            \\&
+            =
+            \frac{1}{2}
+            \left[ 
+            \frac{ \sin( 2\pi (n-1) x) }{ 2\pi (n-1)}
+            -
+            \frac{ \sin( 2\pi (n+1) x) }{ 2\pi (n+1)}
+            \right]_{x=0}^{x=\frac 1 2}
+            .
+        \end{align*}
+        For $x=0$, the two sine terms are already zero, and for $x=\frac 1 2$, the two sine terms are evaluated at integer multiples of $\pi$ and hence equal zero, too. 
+        We conclude that $b_n = 0$. 
+        
+        
+        Next, we calculate the average 
         \[
             \frac{a_0}{2}
             = 
