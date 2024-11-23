@@ -5,188 +5,14 @@
 \exsheet{9}{14}{November} % parameters are the number of the session and the day
 
 
-\begin{exercise}
-    Consider the following functions with period $T$:
-    \begin{itemize}
-        \item A function $f$ with period $T = 1$ such that 
-        \begin{align*}
-            f(x) = 
-            \left\{\begin{array}{ll}
-                1 & \text{if } 0 \leq x < 0.5 \\
-                0 & \text{if } 0.5 \leq x \leq 1
-            \end{array}\right.
-        \end{align*}
-        \item A function $g$ with period $T = 2\pi$ such that 
-        \begin{align*}
-            g(x) = 
-            \left\{\begin{array}{ll}
-                x & \text{if } 0 \leq x < \pi \\
-                2\pi - x & \text{if } \pi \leq x \leq 2\pi
-            \end{array}\right.
-        \end{align*}
-        \item A function $h$ with period $T = 1$ such that 
-        \begin{align*}
-            h(x) = -x \text{ if } 0 \leq x < 1.
-        \end{align*}
-    \end{itemize}
-    Find the Fourier coefficients of the Fourier series of these functions. 
-    \textit{You can modify the functions seen in the lecture to get the coefficients.}
-\end{exercise}
 
-\begin{solution}     
-\begin{itemize}
-\item As seen in the lecture we know the fourier coefficients of a square wave,
- $$
-l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<2 \pi\end{cases},
-$$
-
-are given by:
-
-$$
-a_n = 0\quad \text{for } n \geq 0, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{4}{n\pi}, & \text{ if n is even}\end{cases}
-$$
-
-We can express the function $f(x)$ in terms of $l(x)$ as follows:
-
-$$
-f(x) = \frac{1}{2} + \frac{1}{2}l(x)
-$$
-
-therefore the fourier coefficients of $f$ are given by:
-
-$$
-a_n = \begin{cases}\frac{1}{2}, & \text { if n} = 0 \\0,& \text{ if n }>0\end{cases}, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{2}{n\pi}, & \text{ if n is even}\end{cases}
-$$
-\item  As seen in the lecture we know the fourier coefficients of a triangle wave,
-$$
-m(x)= \begin{cases}2 x, & \text { if } 0 \leq x<0.5 \\ 2(1-x), & \text { if } 0.5 \leq x<1\end{cases}
-$$
-
-are given by:
-
-$$
-a_0 = \frac{1}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi^2}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-$$
-
-We can express the function $g(x)$ in terms of $m(x)$ as follows:
-
-$$
-g(x) = \pi m(\frac{x}{2\pi})
-$$
-
-therefore the fourier coefficients of $g$ are given by:
-
-$$
-a_0 = \frac{\pi}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-$$
-\item As seen in the lecture we know the fourier coefficients of a sawtooth wave,
-$$
-n(x)=x \text { for } 0 \leq x<1
-$$
-
-are given by:
-
-$$
-a_0 = \frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = -\frac{1}{n\pi} \text{ for } n > 0,
-$$
-
-We can express the function $h(x)$ in terms of $n(x)$ as follows:
-
-$$
-h(x) = -n(x)
-$$
-
-therefore the fourier coefficients of $h$ are given by:
-
-$$
-a_0 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = \frac{1}{n\pi} \text{ for } n > 0,
-$$
-\end{itemize}
-\end{solution}
 
 \begin{exercise}
-    Explicitly write down the coefficients $a_n$ and $b_n$ and the periods of the following Fourier series:
-    \begin{align*}
-        f(x) &= \sum_{n=1}^{\infty} \frac{1}{(2n+1)^2}\sin(2\pi (2n+1) x),
-        \\
-        g(x) &= \sum_{n=1}^{\infty} \frac{(-1)^n}{(2n-1)^3}\cos(2\pi (2n-1) x),
-        \\
-        h(x) &= \frac \pi 3 + \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2}\cos(\pi n x),
-        .
-    \end{align*}
-    Determine the Fourier coefficients of the derivatives of those functions. 
-\end{exercise}
-\begin{solution}     
-\begin{itemize}
-\item We substitute $m = 2n+1$ to obtain 
-$$
-        f(x) = \sum_{m=3|m \text{ is odd}}^{\infty} \frac{1}{m^2}\cos(2\pi m x),
-$$
-
-therefore the fourier coefficients are given by 
-$$
-a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}\frac{1}{m^2}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-$$
-
-and the period is $T = 1$. The derivative of $f(x)$ is given by:
-$$
-f'(x) = \sum_{m=3|m \text{ is odd}}^{\infty} \frac{2\pi}{m}\sin(2\pi m x),
-$$
-
-therefore the fourier coefficients of the derivative of $f(x)$ are given by 
-
-$$
-b_m = 0 \text{ for } m \geq 0, \quad a_m = \begin{cases}\frac{2\pi}{m}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-$$
-
-\item We substitute $m = 2n-1$ to obtain 
-$$
-       g(x) = \sum_{m=1|m \text{ is odd}}^{\infty} \frac{(-1)^{\frac{m+1}{2}}}{m^3}\cos(2\pi m x),
-$$
-
-therefore the fourier coefficients are given by 
-$$
-b_m = 0 \text{ for } m >0, \quad a_m = \begin{cases}\frac{(-1)^{\frac{m+1}{2}}}{m^3}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-$$
-
-and the period is $T = 1$. The derivative of $g(x)$ is given by:
-$$
-g'(x) = \sum_{m=1|m \text{ is odd}}^{\infty} -\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}\sin(2\pi m x),
-$$
-
-therefore the fourier coefficients of the derivative of $g(x)$ are given by 
-$$
-a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}-\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-$$
-\item 
-the fourier coefficients are given by 
-$$
-b_n = 0 \text{ for } n >0, \quad a_n = \begin{cases}\frac{\pi}{3}, & \text { if }n = 0 \\ -\frac{(-1)^n}{n^2}, & \text{ if } n > 1 \end{cases} 
-$$
-
-and the period $T = 2$. The derivative of $h(x)$ is given by:
-$$
-h'(x) =\sum_{n=1}^{\infty} -\frac{\pi(-1)^{n+1}}{n}\sin(\pi n x),
-$$
-
-therefore the fourier coefficients of the derivative of $h(x)$ are given by 
-$$
-a_n = 0 \text{ for } n \geq b, \quad b_n = -\frac{\pi(-1)^{n+1}}{n},\quad \text{for }n > 0
-$$
-\end{itemize}
-\end{solution}
-
-\begin{exercise}
-    Compute the Fourier coefficients of the function $f$ that has period $T = 2\pi$ and satisfies
-    \[
-        f(x) = \left\{\begin{array}{ll} 1 & 0 \leq x < \pi \\ 0 & \pi < x \leq 2\pi \end{array}\right.
-    \]
- 
-Show that 
-\begin{align}
-    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}. 
-\end{align}
-\textit{Hint: square the integral and convert it to polar/radial coordinates.}
+    Show that 
+    \begin{align}
+        \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}. 
+    \end{align}
+    \textit{Hint: square the integral and convert it to polar/radial coordinates.}
 \end{exercise}
 \begin{solution}
     Following the hint, we find
@@ -200,25 +26,25 @@ Show that
 
 
 \begin{exercise}
-	We check whether the following are distributions or not.
+    We check whether the following are distributions or not.
     \begin{itemize}    
         \item 
         Show that $T$ is a distribution, where 
         \begin{align}\label{eq:ex2 dist1}
             T(\phi) = \int_{-1}^{1} \phi(x) \ dx
-			.
+            .
         \end{align}
         \item 
         Show that $T$ is a distribution, where 
         \begin{align}\label{eq:ex2 dist2}
             T(\phi) = \int_{-\infty}^{\infty} \phi(x) \ dx
-			.
+            .
         \end{align}
         \item 
         Show that $S$ is not a distribution, where 
         \begin{align}\label{eq:ex2 dist3}
             S(\phi) = \int_{0}^{1} |\phi(x)| \ dx 
-			.
+            .
         \end{align}
     \end{itemize}
 \end{exercise}
@@ -228,7 +54,7 @@ Show that
      \begin{align}
             |T(\phi)| = \left| \int_{-1}^{1} \phi(x) \ dx \right| \leq \int_{-1}^{1} |\phi(x)| \ dx \leq \sup_{x \in [-1,1]} |\phi(x)| \int_{-1}^{1} dx = 2 \sup_{x \in [-1,1]} |\phi(x)|,
      \end{align}
-     which proves the continuity.\\
+     which proves the continuity condition.\\
 
     The definition in \eqref{eq:ex2 dist2} is also linear in $\phi$ for the same reason as before. To show that the integral is finite for any $\phi \in \mathcal{D}$, we use the fact that $\phi$ is compactly supported and hence bounded.
      In particular, there exists for any $\phi \in \mathcal{D}$ a compact interval $[a, b] \subset \mathbb{R}$ such that $\mathrm{supp}(\phi) \subset [a, b]$. Then we have
@@ -239,12 +65,14 @@ Show that
     \begin{align}
         |T(\phi)| = \left| \int_{-\infty}^{\infty} \phi(x) \ dx \right| \leq \int_{a}^{b} |\phi(x)| \ dx \leq \sup_{x \in [a,b]} |\phi(x)| \int_{a}^{b} dx = (b-a) \sup_{x \in [a,b]} |\phi(x)|,
     \end{align}
-    which shows the continuity.
+    which shows the continuity condition.
     \\
 
     The definition in \eqref{eq:ex2 dist3} is not a distribution since it is not linear in $\phi$. 
-	There are many different ways to see this. 
-    For example, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. Set $\psi = -\phi \in \mathcal D$. Then we have
+    There are many different ways to see this. 
+    For example, consider $\phi \in \mathcal{D}$ such that $\phi(x) \geq 0$ for all $x \in \mathbb{R}$. 
+    We have seen such a function in the lecture. 
+    Set $\psi = -\phi \in \mathcal D$. Then we have
     \begin{align}
         S(\phi + \psi) = \int_0^1 |\phi(x) + \psi(x)| \ dx = \int_0^1 0 \ dx = 0,
     \end{align}
@@ -259,9 +87,9 @@ Show that
     Suppose that $f : \mathbb R \rightarrow \mathbb R$ is an integrable function. 
     Whenever $a > 0$, show that 
     \begin{align}
-        T( \phi ) = \frac{1}{a} \langle f, \phi(a \cdot) \rangle 
+        T( \phi ) = a \langle f, \phi(a \cdot) \rangle 
     \end{align}
-	is a distribution. 
+    is a distribution. 
 \end{exercise}
 \begin{solution}
     With the substitution $u = ax$, hence $du = a dx$, we find 
@@ -271,11 +99,11 @@ Show that
         \int f(ax) \phi(x) \ d x 
         .
     \end{align}
-	Clearly, the function $g(x) := f(ax)$ is integrable. That means 
-	\begin{align}
+    Clearly, the function $g(x) := f(ax)$ is integrable. That means 
+    \begin{align}
         T( \phi ) = \int g(x) \phi(x) \ dx,
     \end{align}
-	which is a distribution. 
+    which is a distribution. 
 \end{solution}
 
 
@@ -287,21 +115,42 @@ Show that
     \end{align}
 \end{exercise}
 \begin{solution}
-    Denote by $H(x)$ the Heaviside step function, where
+    For any test function $\phi \in \mathcal{D}$, we have 
+    \begin{align}
+        \langle f', \phi \rangle 
+        &= 
+        - \langle f, \phi' \rangle 
+        = 
+        - \int_{-\infty}^{\infty} |x| \phi'(x) \ dx 
+        \\&
+        = 
+        - \int_0^\infty x \phi'(x) \ dx + \int_{-\infty}^0 x\phi'(x) \ dx 
+        \\
+        &= 
+        -[x \phi(x)]_0^\infty + \int_0^\infty \phi(x) \ dx + [x \phi(x)]_{-\infty}^0 - \int_{-\infty}^0 \phi(x) \ dx 
+        \\
+        &= 
+        \int_0^\infty \phi(x) \ dx - \int_{-\infty}^0 \phi(x) \ dx 
+        ,
+    \end{align}
+    where we have used that $\phi$ is compactly supported and hence the boundary terms vanish.
+    We define the function $g$ by 
+    \begin{align}
+        g(x) = \begin{cases} -1 & \text{ if } x < 0, \\ 1 & \text{ if } x \geq 0. \end{cases}
+    \end{align}
+    Apparently,
+    \begin{align}
+        \langle f', \phi \rangle = \langle g , \phi \rangle. 
+    \end{align}
+    Note that we can also write this in terms of the Heaviside step function, 
     \begin{align}
         H(x) = \begin{cases}
-                0 & \text{ if } x < 0 \\
+                0 & \text{ if } x    < 0, 
+                \\
                 1 & \text{ if } x \geq 0.
                \end{cases}
     \end{align}
-    We claim that $f' = 2 H - 1$ in the sense of distributions. Indeed, for a test function $\phi \in \mathcal{D}$,
-     we have by definition of the distributional derivative that
-    \begin{align}
-        \langle f', \phi \rangle &= - \langle f, \phi' \rangle = - \int_{-\infty}^{\infty} |x| \phi'(x) \ dx = - \int_0^\infty x \phi'(x) \ dx + \int_{-\infty}^0 x\phi'(x) \ dx \\
-        &= -[x \phi(x)]_0^\infty + \int_0^\infty \phi(x) \ dx + [x \phi(x)]_{-\infty}^0 - \int_{-\infty}^0 \phi(x) \ dx \\
-        &= \int_0^\infty \phi(x) \ dx - \int_{-\infty}^0 \phi(x) \ dx = 2 \int_0^\infty \phi(x) \ dx - \int_{-\infty}^{\infty} \phi(x) \ dx = \langle 2H - 1, \phi \rangle,
-    \end{align}
-    where we have used that $\phi$ is compactly supported and hence the boundary terms vanish. This shows that $f' = 2H - 1$ in the sense of distributions.
+    One easily sees that $g(x) = 2 H(x) - 1$ is an alternative way of writing the distributional derivative. 
 \end{solution}
 
 
@@ -343,83 +192,102 @@ Show that
     \caption{Plot of the periodic function $f$.}
     \label{fig:ex5}
     \end{figure}
-    The solution is plotted in Figure \ref{fig:ex5}. The function is not differentiable at $x \in \mathbb{Z}$ since the left and right derivatives do not agree.
-     To compute the distributional derivative, we first observe that 
-    \begin{align}
-        f(2n) = 0, \qquad f(2n + 1) = 1, \qquad \forall n \in \mathbb{Z}.
-    \end{align}
-    Furthermore, we have that
+    The solution is plotted in Figure \ref{fig:ex5}. 
+    The function is not differentiable at $x \in \mathbb{Z}$ since the left and right derivatives do not agree:
+    for example, at $x=0$ the derivative from the left equals $-1$ but the derivative from the right equals $1$.
+    
+    It remains to compute the distributional derivative. 
+    If we look at the drawing we see that the function is continuous and differentiable over the intervals between integers. 
+    Over the interval $(n,n+1)$, the derivative is either $1$ if $n$ is even or it is $-1$ if $n$ is odd. 
+    Moreover, the function does not jump. 
+    This gives us an idea what the distributional derivative should look like:
     \begin{align}
         f'(x) = \begin{cases}
-                -1 & \text{ if } x \in [2n - 1, 2n) \\
-                 1 & \text{ if }  \in [2n, 2n + 1) \\
-                \end{cases}, & & \forall n \in \mathbb{Z}.
+                 1 & \text{ if } x \in (n,n+1), \text{ $n$ even, } 
+                 \\
+                -1 & \text{ if } x \in (n,n+1), \text{ $n$ odd. } 
+               \end{cases}
     \end{align}
-    Finally, for any $\phi \in \mathcal{D}$, there exists $N \in \mathbb{N}$ such that $\mathrm{supp}(\phi) \subset [-2N, 2N]$.
-	\\
-	
-    So it seems that the (distributional) derivative switches between $1$ and $-1$ from interval to interval. 
-	Formally, we claim that the distributional derivative is 
-	\begin{align*}
-		f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1
-		,
-    \end{align*}
-    where $1_{[a,b)}$ denotes the indicator function of the interval $[a,b)$.
-	Indeed, for a test function $\phi \in \mathcal{D}$, we have by definition of the distributional derivative that
+    Let us formalize this intuition. We use the definition of distributional derivative. 
+    For any test function $\phi \in \mathcal{D}$, 
+    we have by definition of the distributional derivative that
     \begin{align*}
         \langle f', \phi \rangle 
-		&
-		= 
-		- \langle f, \phi' \rangle 
-		\\&
-		= 
-		- \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx 
-		\\&
-		= 
-		- \sum_{n \in \mathbb{Z}} \left ( \int_{2n - 1}^{2n} f(x) \phi'(x) \ dx + \int_{2n}^{2n + 1} f(x) \phi'(x)  \right)\ dx 
-		\\&
-		= 
-		- \sum_{n \in \mathbb{Z}} \left( [f(x) \phi(x)]_{2n - 1}^{2n} + \int_{2n - 1}^{2n} \phi(x) \ dx + [f(x) \phi(x)]_{2n}^{2n+1} - \int_{2n}^{2n + 1} \phi(x)  \ dx \right) 
-		\\
         &
-		= 
-		\sum_{n \in \mathbb{Z}} \left( \int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n} \phi(x) \ dx \right) - \sum_{n \in \mathbb{Z}: |n| \leq N} \left( \phi(2n) - \phi(2n - 1) \right) 
-		\\
-        & 
-		= \sum_{n \in \mathbb{Z}} \left( 2\int_{2n}^{2n + 1} \phi(x) \ dx - \int_{2n - 1}^{2n+1} \phi(x) \ dx \right) + \phi(2N + 1)  - \phi(-2N -1) 
-		\\
-        & 
-		= 
-		\int_{-\infty}^{\infty} 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)}(x) \phi(x) \ dx  
-		= 
-		\left\langle 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1, \phi \right\rangle
-		,
+        = 
+        - \langle f, \phi' \rangle 
+        \\&
+        = 
+        - \int_{-\infty}^{\infty} f(x) \phi'(x) \ dx 
+        \\&
+        = 
+        - 
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ even}}} \int_{n}^{n+1} f(x) \phi'(x) \ dx
+        -
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ odd} }} \int_{n}^{n+1} f(x) \phi'(x) \ dx
+        \\&
+        = 
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ even}}} \int_{n}^{n+1} \phi(x) \ dx - f(n+1)\phi(n+1) - f(n)\phi(n)
+        \\&\qquad 
+        -
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ odd} }} \int_{n}^{n+1} \phi(x) \ dx - f(n+1)\phi(n  ) - f(n)\phi(n)
+        \\&
+        = 
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ even}}} \int_{n}^{n+1} \phi(x) \ dx
+        -
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ odd} }} \int_{n}^{n+1} \phi(x) \ dx
+        \\&\qquad 
+        +
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ even}}} - f(n+1)\phi(n+1) - f(n)\phi(n) 
+        -
+        \sum_{\substack{n \in \mathbb{Z}\\ n \text{ odd} }} - f(n+1)\phi(n  ) - f(n)\phi(n) 
+        .
     \end{align*}
-    where we have used the obersvations on $f, \phi$, a telescope sum in the sixth equation and the compact support of $\phi$ to interchange sum and integral in the last equation. This shows that $f' = 2 \sum_{n \in \mathbb{Z}} 1_{[2n, 2n + 1)} - 1$ in the sense of distributions.
-	\\
+    We simplify this. The point evaluations cancel out each other.
+    Then 
+    \begin{align}
+        \langle f', \phi \rangle 
+        &
+        = 
+        \sum_{\substack{n \in \mathbb{Z} }} \int_{n}^{n+1} (-1)^{n} \phi(x) \ dx
+        .
+    \end{align}
+    This is exactly the form of $f'$ as proposed above. It also corresponds to our observations in the lecture. 
 
-    For the second distributional derivative, we compute
+    For the second distributional derivative, we again use the definition and simplify:
     \begin{align}
         \langle f'', \phi \rangle 
-		= 
-		- \langle f', \phi' \rangle 
         &
-		= 
-		-\sum_{n \in \mathbb{Z}} \left( 2 \int_{2n}^{2n + 1} \phi'(x) \ dx  - \int_{2n - 1}^{2n + 1} \phi'(x) \ dx \right) 
-		\\&
-		= 
-		\sum_{n \in \mathbb{Z}} - \phi(2 n + 1) +  2\phi(2n) - \phi(2n-1) 
-		\\& 
-		= 2 \sum_{n \in \mathbb{Z}} \phi(2n) - \phi(2n - 1)
-		\\& 
-		= 
-		\left \langle 2 \sum_{n \in \mathbb{Z}} \delta_{2n}  - \delta_{2n - 1}, \phi \right \rangle
-		,
+        = 
+        -
+        \langle f', \phi' \rangle 
+        \\&
+        = 
+        -
+        \sum_{\substack{n \in \mathbb{Z} }} (-1)^{n} \int_{n}^{n+1} \phi'(x) \ dx
+        \\&
+        = 
+        -
+        \sum_{\substack{n \in \mathbb{Z} }} (-1)^{n} \left( \phi(n+1) - \phi(n) \right)
+        \\&
+        = 
+        \sum_{\substack{n \in \mathbb{Z} }} (-1)^{n+1} \left( \phi(n+1) - \phi(n) \right)
+        .
     \end{align}
-    where we have actually rearranged a finite sum in the fourth step since $\phi$ has compact support.
-	
-	Less formally, this is a sequence of Dirac Deltas positioned at the integers;
-	at every even integer, we place a Dirac Delta with the factor $2$, and at every odd integer we place a Dirac Delta with the factor $-2$. This corresponds to the jumps of the distributional derivative $f'$.
+    As we now carefully observe for term in the sum:
+    when $n$ is odd, the summand is $\phi(n+1) - \phi(n)$, and when $n$ is even, then the summand is $- \phi(n+1) + \phi(n)$. 
+    In other words, for every even integer $n$ we receive two positive Dirac deltas, and for every odd integer $n$ we receive two negative Dirac deltas. 
+    Thus,
+    \begin{align}
+        \langle f'', \phi \rangle 
+        =
+        \sum_{\substack{n \in \mathbb{Z} }} (-1)^{n} 2 \delta_{n}
+        .
+    \end{align}
+	This corresponds to the jumps of the distributional derivative $f'$.
+	we jump (up)   by  $2$ at every even integer 
+	and 
+	we jump (down) by $-2$ at every odd integer.
 \end{solution}
 
 
