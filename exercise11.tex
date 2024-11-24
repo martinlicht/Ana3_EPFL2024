@@ -35,7 +35,7 @@
     \begin{itemize}
     \item To compute the Fourier coefficients of $f(x)$ with a period of $2\pi$, use the formulas from the lecture:
     \[
-        a_0 
+        \frac{ a_0 }{2}
         = 
         \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} e^{x-\pi} dx  = \frac{1}{2\pi}\left[ e^{x-\pi} \right]_{0}^{2\pi} = \frac{1}{\pi}\left(e^{\pi} - e^{-\pi}\right)
     \]
@@ -163,10 +163,9 @@
         \end{align*}
     %subquestion 2
     \item
-% <<<<<<< HEAD
     We compute the average 
     \begin{align*}
-        a_0
+        \frac{a_0}{2}
         :=
         \frac{1}{2\pi} \int_{0}^{2\pi} (x-\pi)^{3} dx
         =
@@ -277,97 +276,28 @@
 	-\frac{\pi^3(-1)^n}{n}+\frac{6\pi(-1)^n}{n^3} 
 	\\&\implies
             b_n = 
-            \begin{cases}
-            \frac{2\pi^2}{n}-\frac{12}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
-            -\frac{2\pi^2}{n}+\frac{12}{n^3}   ,\quad &\text{if } n\text{ is even,}
-            \end{cases}\cdot \left\{\begin{array}{ll} -1 & \text{ if $n$ is odd } \\ 1 & \text{ if $n$ is even } \end{array}\right. =  -\frac{2\pi^2}{n}+\frac{12}{n^3}
+            \left(
+                \begin{cases}
+                \frac{2\pi^2}{n}-\frac{12}{n^3}  ,\quad &\text{if } n\text{ is odd,}\\
+                -\frac{2\pi^2}{n}+\frac{12}{n^3}   ,\quad &\text{if } n\text{ is even,}
+                \end{cases}
+            \right)
+            \cdot 
+            \left(
+                \begin{cases}
+                    -1 & \text{ if $n$ is odd } 
+                    \\ 
+                    1 & \text{ if $n$ is even } 
+                \end{cases}
+            \right)
+            =  
+            -\frac{2\pi^2}{n}+\frac{12}{n^3}
+            .
     \end{align*}
-% 
-% 
-% =======
-% To compute the Fourier coefficients of $g(x)$ over the interval $[0,2\pi)$ with a period of $2\pi$, we use the formulas from the lecture:
-%         \[
-%             a_0 = \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} (x-\pi)^3 dx  = \left[ \frac{(x-\pi)^4}{4} \right]_{0}^{2\pi} = \frac{1}{2\pi}\frac 1 4 \pi^4 - \frac{1}{2\pi}\frac 1 4 (-\pi)^4 = 0.
-%         \]
-%         Note that the function is odd therefore $a_n = 0$. For $b_n$, we apply integration by parts thrice, and we use that $\sin$ vanishes at multiples of $\pi$:
-%         \begin{align*}
-%             b_n 
-%             &
-%             = 
-%             \frac{2}{2\pi}
-%             \int_{0}^{2\pi} (x-\pi)^3 \sin(n x) dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} (x-\pi)^3 \sin(n x) dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} \frac{ 3(x-\pi)^2 \cos(n x) }{ n } dx
-%             \\&
-%             =
-%  		\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             -
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6(x-\pi)\frac{ \sin( n x) }{n^2 } dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		-
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6\frac{ \cos( n x) }{ n^3 } dx
-%             \\&
-%             =
-%  		\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             -
-%             \frac{2}{\pi}
-%             \int_{0}^{\pi} 6(x-\pi)\frac{ \sin( n x) }{n^2 } dx
-%             \\&
-%             =
-%             \frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 3(x-\pi)^2 \frac{ \sin(n x) }{ n^2 } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		-
-%             \frac{2}{\pi}
-%             \left[ 6\frac{ \sin( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		\\&
-%             =\frac{2}{\pi}
-%             \left[- (x-\pi)^3 \frac{ \cos(n x) }{n } \right]_{x=0}^{x=\pi}
-%             +
-%             \frac{2}{\pi}
-%             \left[ 6(x-\pi)\frac{ \cos( n x) }{ n^3 } \right]_{x=0}^{x=\pi}
-% 		\\&
-% 		= -\frac{2\pi^2}{n}+\frac{12}{n^3}
-%         \end{align*}
-% >>>>>>> 602337bdc4aee219b2f971dc33945611c0773aed
-    %subquestion 3
     \item 
     The average of $h(x)$ over $1$ period $T$ is $0$ therefore:
     \[
-        a_0 = 0
+        \frac{a_0}{2} = 0
     \]
     Moreover $h(x)$ is odd therefore $a_n = 0$. For $b_n$ we have:
     \begin{align*}
@@ -432,11 +362,51 @@
      \]
 \end{exercise}
 \begin{solution}     
-    Note that $f(x)$ is an even function,
-    therefore $b_n = 0$. 
+    Note that $f(x)$ is an even function.
+    Using a change of variables, we compute 
+    \begin{align*}
+        b_n
+        &=
+        \frac{2}{T}
+        \int_{-\pi}^{\pi} f(x) \sin(n x) dx
+        \\&
+        = 
+        \frac{2}{T}
+        \int_{-\pi}^{0} f(x) \sin(n x) dx
+        +
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin(n x) dx
+        \\&
+        = 
+        (-1)
+        \frac{2}{T}
+        \int_{\pi}^{0} f(-x) \sin( -n x) dx
+        +
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin(n x) dx
+        \\&
+        = 
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin( -n x) dx
+        +
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin(n x) dx
+        \\&
+        = 
+        -
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin(n x) dx
+        +
+        \frac{2}{T}
+        \int_{0}^{\pi} f(x) \sin(n x) dx
+        =
+        0
+        .
+    \end{align*}
+    Therefore $b_n = 0$. 
     The average is 
 	\[
-        a_0 = \frac{2}{2\pi} \int_{0}^{\pi} \sin x dx  =  \frac{1}{\pi}\left[ - \cos{x} \right]_{0}^{\pi} =\frac{2}{\pi} .
+        \frac{a_0}{2} = \frac{2}{2\pi} \int_{0}^{\pi} \sin x dx  =  \frac{1}{\pi}\left[ - \cos{x} \right]_{0}^{\pi} =\frac{2}{\pi} .
     \]
     The cosine mode coefficients are:
     \begin{align*}
@@ -684,7 +654,33 @@ substituting our Fourier coefficients and $f$ gives:
 \begin{align*}
     \frac{2}{T} \int_0^T f(x)^2 d x&=2 a_0+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
     \frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
-    \implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right) = \pi\frac 6435 16384 \approx 1.2339\\
+    \implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right)
+\end{align*}
+We simplify this value:
+\begin{align*}
+    &
+    \left(\frac{35}{128}\right)^2 
+    + 
+    \left(\frac{7}{16}\right)^2 
+    + 
+    \left(\frac{7}{32}\right)^2 
+    + 
+    \left(\frac{1}{16}\right)^2 
+    + 
+    \left(\frac{1}{128}\right)^2
+    \\&
+    =
+    \left(\frac{35}{128}\right)^2 
+    + 
+    \left(\frac{56}{128}\right)^2 
+    + 
+    \left(\frac{28}{128}\right)^2 
+    + 
+    \left(\frac{8}{128}\right)^2 
+    + 
+    \left(\frac{1}{128}\right)^2
+    = 
+    \pi\frac 6435 16384 \approx 1.2339
 \end{align*}
 \end{solution}
 
@@ -699,41 +695,36 @@ substituting our Fourier coefficients and $f$ gives:
 \begin{solution}    
 We calculate the complex Fourier coefficients 
 \begin{align*}
-c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin 1
+    c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin 1
 \end{align*}
-
 \begin{align*}
-c_n &= \frac 1 2 \int_{-1}^1 \cos x e^{-\pi n x i} dx\\
-&= \frac 1 2 \int_{-1}^1 \left(\frac 1 2 e^{x i} + \frac 1 2 e^{-x i} \right) e^{-\pi n x i} dx\\
-&= \frac 1 2 \int_{-1}^1 \left(\frac 1 2 e^{(1-n\pi)x i} + \frac 1 2 e^{-(1+n\pi)x i} \right) dx\\
-&= \frac 1 2\left[\frac{1}{(1-n\pi) i}\frac 1 2 e^{(1-n\pi)x i} - \frac{1}{(1+n\pi) i}\frac 1 2 e^{-(1+n\pi)x i} \right]_{-1}^1\\
-&= \frac{1}{2(1-n\pi) i}\left( \frac 1 2 e^{(1-n\pi)i}- \frac 1 2 e^{-(1-n\pi) i}\right) - \frac{1}{2(1+n\pi) i}\left( \frac 1 2 e^{(1+n\pi)i}+ \frac 1 2 e^{-(1+n\pi) i}\right)\\
-&= \frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\\
+    c_n &= \frac 1 2 \int_{-1}^1 \cos x e^{-\pi n x i} dx\\
+    &= \frac 1 2 \int_{-1}^1 \left(\frac 1 2 e^{x i} + \frac 1 2 e^{-x i} \right) e^{-\pi n x i} dx\\
+    &= \frac 1 2 \int_{-1}^1 \left(\frac 1 2 e^{(1-n\pi)x i} + \frac 1 2 e^{-(1+n\pi)x i} \right) dx\\
+    &= \frac 1 2\left[\frac{1}{(1-n\pi) i}\frac 1 2 e^{(1-n\pi)x i} - \frac{1}{(1+n\pi) i}\frac 1 2 e^{-(1+n\pi)x i} \right]_{-1}^1\\
+    &= \frac{1}{2(1-n\pi) i}\left( \frac 1 2 e^{(1-n\pi)i}- \frac 1 2 e^{-(1-n\pi) i}\right) - \frac{1}{2(1+n\pi) i}\left( \frac 1 2 e^{(1+n\pi)i}+ \frac 1 2 e^{-(1+n\pi) i}\right)\\
+    &= \frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\\
 \end{align*}
-
 Using $c_n$ we can determine $a_n$ and $b_n$
-
 $$
-a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
+    a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
 $$
-
 The Fourier series in standard and in complex notation are given by:
-
 \begin{align*}
-F f(x)&=\sum_{n=-\infty}^{\infty} \left(\frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\right) e^{\frac{2 \pi n x}{T} i}\\
-F f(x)&=\sin(1)+\sum_{n=1}^{\infty} \left(  \frac{1}{(1-n\pi) }\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n) \right) \cos \left(\pi n x\right)
+    F f(x)&=\sum_{n=-\infty}^{\infty} \left(\frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\right) e^{\frac{2 \pi n x}{T} i}
+    \\
+    F f(x)&=\sin(1)+\sum_{n=1}^{\infty} \left(  \frac{1}{(1-n\pi) }\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n) \right) \cos \left(\pi n x\right)
 \end{align*}
-
 %use this command in wolfram "sin(1) + Sum[ (1/(1 - n*pi)*sin(1 - pi*n) + 1/(1 + n*pi)*sin(1 + pi*n))*cos(pi*n*x), {n, 1, 3}]"
 We compare $F_3f(x)$ and $f(x)$ at several points 
 \begin{gather*}
     F_3f(0) = 1.00664,\qquad 
-    F_3f\left(-\frac{\pi}{4}\right) = 0.69196,\qquad 
-    F_3f\left(\frac{\pi}{4}\right) = 0.69196,
+    F_3f\left(-\frac{\pi}{4}\right) \approx 0.69196,\qquad 
+    F_3f\left(\frac{\pi}{4}\right) \approx 0.69196,
     \\
     f(0) = 1,\qquad 
-    f\left(-\frac{\pi}{4}\right) = 0.70711,\qquad
-    f\left(\frac{\pi}{4}\right) = 0.70711.
+    f\left(-\frac{\pi}{4}\right) \approx 0.70711,\qquad
+    f\left(\frac{\pi}{4}\right) \approx 0.70711.
 \end{gather*}
 
 \end{solution}
@@ -742,104 +733,6 @@ We compare $F_3f(x)$ and $f(x)$ at several points
 
 
 
-\begin{exercise}
-    Consider the following functions with period $T$:
-    \begin{itemize}
-        \item A function $f$ with period $T = 1$ such that 
-        \begin{align*}
-            f(x) = 
-            \left\{\begin{array}{ll}
-                1 & \text{if } 0 \leq x < 0.5 \\
-                0 & \text{if } 0.5 \leq x \leq 1
-            \end{array}\right.
-        \end{align*}
-        \item A function $g$ with period $T = 2\pi$ such that 
-        \begin{align*}
-            g(x) = 
-            \left\{\begin{array}{ll}
-                x & \text{if } 0 \leq x < \pi \\
-                2\pi - x & \text{if } \pi \leq x \leq 2\pi
-            \end{array}\right.
-        \end{align*}
-        \item A function $h$ with period $T = 1$ such that 
-        \begin{align*}
-            h(x) = -x \text{ if } 0 \leq x < 1.
-        \end{align*}
-    \end{itemize}
-    Find the Fourier coefficients of the Fourier series of these functions. 
-    \textit{You can modify the functions seen in the lecture to get the coefficients.}
-\end{exercise}
-
-\begin{solution}     
-    \begin{itemize}
-    \item As seen in the lecture we know the Fourier coefficients of a square wave,
-    $$
-    l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<2 \pi\end{cases},
-    $$
-
-    are given by:
-
-    $$
-    a_n = 0\quad \text{for } n \geq 0, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{4}{n\pi}, & \text{ if n is even}\end{cases}
-    $$
-
-    We can express the function $f(x)$ in terms of $l(x)$ as follows:
-
-    $$
-    f(x) = \frac{1}{2} + \frac{1}{2}l(x)
-    $$
-
-    therefore the Fourier coefficients of $f$ are given by:
-
-    $$
-    a_n = \begin{cases}\frac{1}{2}, & \text { if n} = 0 \\0,& \text{ if n }>0\end{cases}, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{2}{n\pi}, & \text{ if n is even}\end{cases}
-    $$
-    \item  As seen in the lecture we know the Fourier coefficients of a triangle wave,
-    $$
-    m(x)= \begin{cases}2 x, & \text { if } 0 \leq x<0.5 \\ 2(1-x), & \text { if } 0.5 \leq x<1\end{cases}
-    $$
-
-    are given by:
-
-    $$
-    a_0 = \frac{1}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi^2}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-    $$
-
-    We can express the function $g(x)$ in terms of $m(x)$ as follows:
-
-    $$
-    g(x) = \pi m(\frac{x}{2\pi})
-    $$
-
-    therefore the Fourier coefficients of $g$ are given by:
-
-    $$
-    a_0 = \frac{\pi}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-    $$
-    \item As seen in the lecture we know the Fourier coefficients of a sawtooth wave,
-    $$
-    n(x)=x \text { for } 0 \leq x<1
-    $$
-
-    are given by:
-
-    $$
-    a_0 = \frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = -\frac{1}{n\pi} \text{ for } n > 0,
-    $$
-
-    We can express the function $h(x)$ in terms of $n(x)$ as follows:
-
-    $$
-    h(x) = -n(x)
-    $$
-
-    therefore the Fourier coefficients of $h$ are given by:
-
-    $$
-    a_0 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = \frac{1}{n\pi} \text{ for } n > 0,
-    $$
-    \end{itemize}
-\end{solution}
 
 
 
@@ -857,85 +750,6 @@ We compare $F_3f(x)$ and $f(x)$ at several points
 
 
 
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Explicitly write down the coefficients $a_n$ and $b_n$ and the periods of the following Fourier series:
-    \begin{align*}
-        f(x) &= \sum_{n=1}^{\infty} \frac{1}{(2n+1)^2}\sin(2\pi (2n+1) x),
-        \\
-        g(x) &= \sum_{n=1}^{\infty} \frac{(-1)^n}{(2n-1)^3}\cos(2\pi (2n-1) x),
-        \\
-        h(x) &= \frac \pi 3 + \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2}\cos(\pi n x).
-    \end{align*}
-    Determine the Fourier coefficients of the derivatives of those functions. 
-\end{exercise}
-\begin{solution}     
-    \begin{itemize}
-    \item We substitute $m = 2n+1$ to obtain 
-    $$
-            f(x) = \sum_{\substack{m=3\\m \text{ is odd}}}^{\infty} \frac{1}{m^2}\cos(2\pi m x),
-    $$
-
-    therefore the Fourier coefficients are given by 
-    $$
-    a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}\frac{1}{m^2}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-    $$
-
-    and the period is $T = 1$. The derivative of $f(x)$ is given by:
-    $$
-    f'(x) = \sum_{\substack{m=3\\m \text{ is odd}}}^{\infty} \frac{2\pi}{m}\sin(2\pi m x),
-    $$
-
-    therefore the Fourier coefficients of the derivative of $f(x)$ are given by 
-
-    $$
-    b_m = 0 \text{ for } m \geq 0, \quad a_m = \begin{cases}\frac{2\pi}{m}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-    $$
-
-    \item We substitute $m = 2n-1$ to obtain 
-    $$
-        g(x) = \sum_{\substack{ m=1 \\ m \text{ is odd}}}^{\infty} \frac{(-1)^{\frac{m+1}{2}}}{m^3}\cos(2\pi m x),
-    $$
-
-    therefore the Fourier coefficients are given by 
-    $$
-    b_m = 0 \text{ for } m >0, \quad a_m = \begin{cases}\frac{(-1)^{\frac{m+1}{2}}}{m^3}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-    $$
-
-    and the period is $T = 1$. The derivative of $g(x)$ is given by:
-    $$
-    g'(x) = \sum_{\substack{m=1\\m \text{ is odd}}}^{\infty} -\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}\sin(2\pi m x),
-    $$
-
-    therefore the Fourier coefficients of the derivative of $g(x)$ are given by 
-    $$
-    a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}-\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-    $$
-    \item 
-    the Fourier coefficients are given by 
-    $$
-    b_n = 0 \text{ for } n >0, \quad a_n = \begin{cases}\frac{\pi}{3}, & \text { if }n = 0 \\ -\frac{(-1)^n}{n^2}, & \text{ if } n > 1 \end{cases} 
-    $$
-
-    and the period $T = 2$. The derivative of $h(x)$ is given by:
-    $$
-    h'(x) =\sum_{n=1}^{\infty} -\frac{\pi(-1)^{n+1}}{n}\sin(\pi n x),
-    $$
-
-    therefore the Fourier coefficients of the derivative of $h(x)$ are given by 
-    $$
-    a_n = 0 \text{ for } n \geq b, \quad b_n = -\frac{\pi(-1)^{n+1}}{n},\quad \text{for }n > 0
-    $$
-    \end{itemize}
-\end{solution}
 
 
 
