@@ -6,6 +6,346 @@
 \exsheet{13}{12}{December} % parameters are the number of the session and the day
 
 
+
+
+\begin{exercise}
+    Compute the Fourier transform of the function
+    \begin{gather*}
+        f(x) = \left\{\begin{array}{ll}
+            x   & \text{ if $0 \leq x < 1$ }
+            \\
+            0   & \text{ otherwise }
+          \end{array}\right.
+    \end{gather*}
+    You can either directly use the complex exponential, or you can express it in terms of the sine and cosine function. 
+
+    (Interpretation: the function $f(x)$ describes a localized signal: it is zero at $x=0$, then it rises linearly up to $1$, and then it jumps back to zero and remains zero from there on. The signal is not periodic.)
+\end{exercise}
+\begin{solution}     
+    We write down the solution in two different ways, either using the complex exponential directly, or writing it as a sum of sine and cosine.
+    \begin{align*}
+        \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \int_{0}^{1} x e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{i\alpha} e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ \frac{1}{\alpha^2} e^{-
+        i \alpha x} \right]_{0}^1\\
+        &=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\
+        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} e^{-i \alpha } + \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\ 
+        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} \cos\alpha  + \frac{1}{\alpha} \sin\alpha + \frac{1}{\alpha^2} \cos\alpha - \frac{i}{\alpha^2} \sin\alpha -\frac{1}{\alpha^2}\right)\\ 
+    \end{align*}
+    Next we do it in terms of sine and cosine functions.
+    $$
+    \begin{aligned}
+    \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
+    &=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x)(\cos \alpha x - i\sin\alpha x) d x\\
+    & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
+    \end{aligned}
+    $$
+    We evaluate each integral seperately.
+    $$\begin{aligned} \int_0^1 x \cos (\alpha x) d x & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x \\ & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 \\ & =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}\end{aligned}$$
+    $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x \\ & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 \\ & =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha\end{aligned}$$
+    All together we have:
+    $$
+        \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
+    $$
+\end{solution}
+
+
+
+
+
+
+\begin{exercise}
+    The Fourier transform of 
+    \begin{align*}
+        f(x) = e^{-5x^2}
+    \end{align*}
+    is the function 
+    \begin{align*}
+        \hat f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+    \end{align*}
+    Find the Fourier transforms of 
+    \begin{align*}
+     f', \quad f'', \quad f''', \quad f'''', \quad g(x) = f(2x), \quad h(x) = f(x-3).
+    \end{align*}
+\end{exercise}
+\begin{solution}  
+    To evaluate the Fourier transform of the derivative of a function we will use the following identity from the lecture:
+    \[
+        \mathfrak{F}\left(f^{(n)}\right)(\alpha)=(i \alpha)^n \mathfrak{F}(f)(\alpha)
+    \]
+    We then find 
+    \begin{itemize}
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'' \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \end{itemize}
+    For the Fourier transform of $g(x)$ we use the following identity from the lecture: 
+    $g(x)=e^{-i b x} f(a x)$ has the Fourier transform
+    $\hat{g}(\alpha)=\frac{1}{|a|} \hat{f}\left(\frac{\alpha+b}{a}\right)$,
+    consequently:
+    \begin{align*}
+        \mathfrak{F}(g(x))(\alpha) & =\mathfrak{F}(f(2 x))(\alpha) \\ & =\frac{1}{2} \mathfrak{F}(f(x))\left(\frac{\alpha}{2}\right) \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\left(\frac{\alpha}{2}\right)^2}{20}} \\ & =\frac{1}{2 \sqrt{10}} e^{-\frac{\alpha^2}{80}}
+    \end{align*}
+    For the Fourier transform of $h(x)$ we use a change of variables:
+    \begin{align*}
+        \mathfrak{F}(h(x))(\alpha)
+        &= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5(x-3)^2} e^{ - \imath x \alpha } \;dx
+        \\&= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath (x + 3) \alpha } \;dx
+        \\&= 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath x \alpha } e^{ - \imath 3 \alpha }\;dx
+        \\&= 
+        \frac{ e^{ - \imath 3 \alpha }}{\sqrt{2\pi}}
+        \int_{-\infty}^{+\infty} e^{-5x^2} e^{ - \imath x \alpha }\;dx
+        \\&= 
+        e^{ - \imath 3 \alpha } 
+        \mathfrak{F}(f(x))(\alpha)
+        \\&= 
+        \frac{e^{ - \imath 3 \alpha }}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+        \\&= 
+        \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20} - \imath 3 \alpha }
+        .
+    \end{align*}
+\end{solution}
+
+
+
+
+
+
+
+\begin{exercise}
+    Find the Fourier transform of 
+    \begin{align*}
+        f(x) = \left\{\begin{array}{ll}
+                \sin(x) & \text{ if } 0 \leq x \leq 2 \pi 
+                \\
+                0 & \text{ otherwise }
+               \end{array}
+               \right.
+    \end{align*}
+\end{exercise}
+\begin{solution} 
+$$\begin{aligned} \mathcal{F}(f(x))(\alpha) & =\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x\end{aligned}$$
+$$
+\begin{aligned} \Rightarrow \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x & =\left(\frac{1}{1-\frac{1}{\alpha^2}}\right) \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} \\ & =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} \\ & =\frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}\end{aligned}
+$$
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Find the Laplace transform $F(z)$ of 
+    \begin{align*}
+        f : \bbR_{0}^{+} \to \bbR, \quad t \mapsto t^{2}.
+    \end{align*}
+\end{exercise}
+\begin{solution}     
+We compute 
+\begin{align*}
+    F(z)&=\int_0^{\infty} t^2 e^{-z t} d t=\left[-\frac{t^2}{z} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2 t}{z} e^{-z t} d t \\ &=\left[\frac{2 t}{-z^2} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2}{z^2} e^{-z t} d t \\ &=\left[-\frac{2}{z^3} e^{-z t}\right]_0^{\infty} \\ &=0+\frac{2}{z^3} \\ &=\frac{2}{z^3}
+    .
+\end{align*}
+Hence 
+\begin{align*}
+    F(z)=\frac{2}{z^3} \quad \text { for } \mathrm{R}(z)>0.
+\end{align*}
+\end{solution}
+
+\begin{exercise}[Extra]
+    We have introduced the Fourier transform 
+    \begin{align*}
+        \frakF(f)(\alpha) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x) e^{-i \alpha x} dx
+    \end{align*}
+    Different authors define the Fourier transform alternatively by:
+    \begin{align*}
+        \frakF_2(f)(\xi) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        ,
+        \quad 
+        \frakF_3(f)(\omega) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
+        .
+    \end{align*}
+    Express $\frakF_{2}(f)$ and $\frakF_{3}(f)$ in terms of $\frakF(f)$.
+\end{exercise}
+\begin{solution}    
+    Obviously, 
+    \begin{align*}
+        \frakF_{3}(f)(\omega) = \sqrt{2\pi} \frakF(f)(\omega).
+    \end{align*}
+    For the other transformation:
+    \begin{align*}
+        \frakF_2(f)(\xi) 
+        &
+        = 
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frakF(f)( 2\pi \xi )
+        .
+    \end{align*}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Find $f : \mathbb R \to \mathbb R$ such that 
+    \begin{align*}
+        \hat f(\alpha) = \frac{3}{1+\alpha^{2}} + \frac{-1}{1+4\alpha^{2}} + \frac{ \sin( 4 \alpha + 3 ) }{ 4 \alpha + 3 }
+    \end{align*}
+\end{exercise}
+\begin{solution}   Because of the linearity property we can treat the inverse of each term in seperately. Therefore 
+ \begin{itemize}
+    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{\sin (4 \alpha+3)}{4 a r+3}\right)(x) & =\frac{\frac{1}{4}}{\frac{1}{4}} \mathfrak{F}^{-1}\left(\frac{\sin \left(\frac{\alpha+3 / 4}{\frac{1}{4}}\right)}{\frac{\alpha+\frac{3}{4}}{\frac{1}{4}}}\right)(x) \\ & =\frac{1}{4} e^{-i \frac{3}{4} x} \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{\sin (\alpha)}{\alpha}\right)\left(\frac{x}{4}\right) \\ & = \begin{cases}\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & \text { if }-4 \leq x \leq 4 \\ 0 & \text { else }\end{cases} \end{aligned}$
+    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{3}{1+\alpha^2}\right)(x) & =3 \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+a^2}\right)(x) \\ & =3 \sqrt{\frac{\pi}{2}} e^{-|x|}\end{aligned}$
+    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) & =-\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) \\ & =-\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid \\ & =-\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) \\ & =-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}\end{aligned}$
+ \end{itemize}
+ All together this gives
+    $$
+    f(x) = \begin{cases}-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|}+\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & -4 \leq x \leq 4 \\ -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|} & \text { else }\end{cases}
+    $$
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
+    where $z$ is one of the following complex numbers:
+    \begin{gather*}
+        z_1 = \frac 1 2,
+        \quad 
+        z_2 = - \frac 1 2,
+        \quad 
+        z_3 = 0.2i,
+        \quad 
+        z_4 = -0.2i,
+        \quad 
+        z_3 = - \frac 1 2 + 0.2i
+        .
+    \end{gather*}
+    \textit{You may use a calculater.}
+\end{exercise}
+
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    We consider the Poisson problem with Dirichlet boundary conditions over the interval $[0,L]$:
+    \begin{gather*}
+        - \Delta u(x) = x^2, \quad 0 < x < L,
+        \\
+        u(0) = 1, \quad u(L) = 2
+    \end{gather*}
+    \begin{itemize}
+        \item Solve this problem directly. The solution is a polynomial of order $4$.
+        \item Extend the right-hand side $f(x) = x^2$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}[Extra]
+    Directly compute the solution of the problem
+    \begin{gather*}
+        - \Delta u(x) = x^2, \quad 0 < x < L,
+        \\
+        u(0) = 0, \quad u(L) = 0
+    \end{gather*}
+    and find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    We solve the Poisson problem with homogeneous Dirichlet boundary conditions over $[0,1]$:
+    \begin{gather*}
+        - \Delta u(x) = \left\{\begin{array}{ll} x & \text{ if } 0 < x \leq 0.5 \\ 0 & \text{ if } 0.5 < x \leq 1 \end{array}\right., \qquad 0 < x < 1,
+        \\
+        u(0) = 0, \quad u(1) = 0
+    \end{gather*}
+    \begin{itemize}
+        \item Extend the right-hand side $f(x)$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}
+    We want to find a solution to the boundary value problem 
+    \begin{gather*}
+        - \Delta u(x) + u(x) = x, \quad 0 < x < L,
+        \\
+        u(0) = 0, \quad u(L) = 0.
+    \end{gather*}
+    \begin{itemize}
+        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
+
+
 \begin{exercise}
     Consider the following Fourier sine series for two functions $u, f : \bbR \to \bbR$ with period $T$:
     \begin{align*}
