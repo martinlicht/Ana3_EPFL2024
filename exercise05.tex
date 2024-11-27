@@ -137,7 +137,7 @@
         \item The general form of a potential for $F$ is $f(x) = \frac 1 2 e^{x^2} + C$, where $C$ is an arbitrary constant. We set
         $C = -1/2$ such that $f(0) = 0$. For the curve integral of $F$ along $\gamma_4$, we thus find that
         \begin{align}
-            \int_{\gamma_4} F dl = f(\gamma_4(1)) - f(\gamma_4(0)) = f(1) - f(-1) = \frac 1 2 (e - e^{-1}).
+            \int_{\gamma_4} F dl = f(\gamma_4(1)) - f(\gamma_4(0)) = f(1) - f(-1) = \frac 1 2 (e - e^{(-1)^2}) = 0.
         \end{align}
     \end{itemize}
 \end{solution}
@@ -238,11 +238,11 @@
         Note that the unit tangent vector of $\delta$ is constant!
         \item The unit normal vector is given by the 90 degree clockwise rotation of the unit tangent vector. The corresponding rotation matrix is
         \begin{align}
-            R = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
+            R = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.
         \end{align}
         Hence, we find
         \begin{align}
-            \hat n_\delta(t) = R \hat t_\delta(t) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.
+            \hat n_\delta(t) = R \hat t_\delta(t) = \begin{pmatrix} -1 \\ 0 \end{pmatrix}.
         \end{align}
         \item The curves are regular because their tangent vectors never vanish.
         \item The length of the curves is given by the integral of the speed: For $\gamma$, we find

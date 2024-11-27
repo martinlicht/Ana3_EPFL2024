@@ -335,13 +335,13 @@
 \begin{solution}     
 \begin{itemize}
 \item\begin{align*}
-        \gamma_1 : \left[0,1\right] \to \bbR^2, \quad t \mapsto \left( 0, -t \right).
+        \gamma_1 : \left[0,1\right] \to \bbR^2, \quad t \mapsto \left( 0, 1-t \right).
     \end{align*}
 \begin{align*}
         \gamma_2 : \left[0,1\right] \to \bbR^2, \quad t \mapsto \left( t, 0 \right).
     \end{align*}
 \item \begin{align*}
-\oint_C \vec F dl &= \int_0^1 \begin{pmatrix} -t\\ 0\end{pmatrix}\cdot \begin{pmatrix} 0\\ -1\end{pmatrix}dt +  \int_0^1 \begin{pmatrix} 0\\ -t\end{pmatrix}\cdot \begin{pmatrix} 1\\ 0\end{pmatrix}dt +  \int_0^{\frac{\pi}{2}} \begin{pmatrix} \sin^3t\\ -\cos^3 t\end{pmatrix}\cdot \begin{pmatrix} -3\cos^2 t \sin t\\ 3\sin^2 t \cos t\end{pmatrix}dt\\
+\oint_C \vec F dl &= \int_0^1 \begin{pmatrix} 1-t\\ 0\end{pmatrix}\cdot \begin{pmatrix} 0\\ -1\end{pmatrix}dt +  \int_0^1 \begin{pmatrix} 0\\ -t\end{pmatrix}\cdot \begin{pmatrix} 1\\ 0\end{pmatrix}dt +  \int_0^{\frac{\pi}{2}} \begin{pmatrix} \sin^3t\\ -\cos^3 t\end{pmatrix}\cdot \begin{pmatrix} -3\cos^2 t \sin t\\ 3\sin^2 t \cos t\end{pmatrix}dt\\
 =&\int_0^{\frac{\pi}{2}} -3\cos^2 t\sin^2 tdt\\
 =&\int_0^{\frac{\pi}{2}} -\frac{3}{4}\sin^2 2t dt\\
 =&\int_0^{\frac{\pi}{2}} \frac{3}{4}\left(\frac{1}{2} \cos 4t - \frac{1}{2}\right)dt\\
