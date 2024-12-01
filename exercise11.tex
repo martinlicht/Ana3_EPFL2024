@@ -687,12 +687,15 @@ substituting our Fourier coefficients and $f$ gives:
 \begin{align*}
     \frac{2}{T} \int_0^T f(x)^2 d x&= \frac{a_0}{2}+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
     \frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
-    \implies \int_0^{2\pi} \cos(x)^{16} d x&= \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right)
+    \implies 
+    \int_0^{2\pi} \cos(x)^{16} d x
+    &= 
+    \pi\left(2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2\right)
 \end{align*}
 We simplify this value:
 \begin{align*}
     &
-    \left(\frac{35}{128}\right)^2 
+    2 \left(\frac{35}{128}\right)^2 
     + 
     \left(\frac{7}{16}\right)^2 
     + 
@@ -701,19 +704,17 @@ We simplify this value:
     \left(\frac{1}{16}\right)^2 
     + 
     \left(\frac{1}{128}\right)^2
-    \\&
     =
-    \left(\frac{35}{128}\right)^2 
-    + 
-    \left(\frac{56}{128}\right)^2 
-    + 
-    \left(\frac{28}{128}\right)^2 
-    + 
-    \left(\frac{8}{128}\right)^2 
-    + 
-    \left(\frac{1}{128}\right)^2
-    = 
-    \pi\frac 6435 16384 \approx 1.2339
+    6435
+\end{align*}
+Therefore, in total,
+\begin{align*}
+    \int_0^{2\pi} \cos(x)^{16} d x
+    =
+    \pi 
+    \frac{ 6435 }{ 16384 }
+    \approx 
+    1.233895796
 \end{align*}
 \end{solution}
 

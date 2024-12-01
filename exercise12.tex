@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{12}{5}{December} % parameters are the number of the session and the day
@@ -286,6 +286,39 @@
     \end{align*}
     This completes the discussion. 
 \end{solution}
+
+
+
+\begin{exercise}
+    Suppose that $f : \bbR \rightarrow \bbR$ and $g : \bbR \rightarrow \bbR$ are functions. 
+    Recall that a function is called \textit{even} if 
+    \begin{align*}
+        f(-x) = f(x)
+    \end{align*}
+    and \textit{odd} if 
+    \begin{align*}
+        f(-x) = - f(x)
+    \end{align*}
+    \begin{itemize}
+     \item Show that if $f$ and $g$ are both odd or both even, then $fg$ is even 
+     \item Show that if one of $f$ and $g$ is odd and the other is even, then $fg$ is odd.
+     \item Show that the only function that is both odd and even has constant value zero. 
+    \end{itemize}
+\end{exercise}
+\begin{solution}
+    \begin{itemize}
+     \item 
+     \item 
+     \item Suppose that $f$ is both odd and even. Then 
+     \begin{align*}
+        f(x) = f(-x) = -f(x)
+     \end{align*}
+     for each $x \in \bbR$. But the only number that equals its negative is zero. So $f(x) = 0$ for each $x$.
+    \end{itemize}
+
+\end{solution}
+
+
 
 
 \end{document}
