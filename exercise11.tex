@@ -364,22 +364,15 @@
         \left[ \frac{\sin((n-1)x)}{n-1} - \frac{\sin((n+1)x)}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
         \\&
         =
-        \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
+        \frac{n \left ( \cos(\frac{n \pi}{2}) + \cos(\frac{3 n \pi}{2})\right)}{\pi(1 - n^2)}
+        \\&
+        = \frac{2 n \cos(n \pi) \cos(- \frac{n \pi}{2})}{\pi ( 1 - n^2)} = \frac{2 n (-1)^n \cos(\frac{n \pi}{2})}{\pi ( 1 - n^2)},
     \end{align*}
-    If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
-    Hence $b_n$ is zero if $n$ is odd. 
-    For the even numbers, we have got another case distinction:
-    if $n=1,5,9,\dots$, then 
+    where we have again used a reflection formula an product-to-sum formula to simplify the trigonometric expressions. Now we see immediately, that if $n$ is odd, then $b_n = 0$ since $\cos(\frac{n \pi}{2}) = 0$.
+    Whenever $n$ is even, i.e. $n= 2k$ for some $k \in \mathbb N$, we have
     \begin{align*}
-        b_n = \frac{1}{n-1} - \frac{-1}{n+1} = \frac{1}{n-1} + \frac{1}{n+1} = \frac{n+1+n-1}{n^2+1} = \frac{2n}{n^2+1}.
+        b_n = b_{2k} = \frac{4 k (-1)^k}{\pi (1 - 4 k^2)}
     \end{align*}
-    if $n=3,7,11,\dots$, then 
-    \begin{align*}
-        b_n = \frac{-1}{n-1} - \frac{1}{n+1} = \frac{-n-1-n+1}{n^2+1} = \frac{-2n}{n^2+1}.
-    \end{align*}
-    
-
-    
 \end{itemize}
 \end{solution}
 
