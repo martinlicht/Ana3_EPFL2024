@@ -722,7 +722,7 @@ Therefore, in total,
 \begin{solution}    
 We calculate the complex Fourier coefficients 
 \begin{align*}
-    c_0 = \int_{-1}^1 \cos x dx = [\sin x]_{-1}^1 = 2\sin 1
+    c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin 1
 \end{align*}
 \begin{align*}
     c_n &= \frac 1 2 \int_{-1}^1 \cos x e^{-\pi n x i} dx\\
@@ -734,7 +734,7 @@ We calculate the complex Fourier coefficients
 \end{align*}
 Using $c_n$ we can determine $a_n$ and $b_n$
 $$
-    a_0 = 2\sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
+    a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
 $$
 The Fourier series in standard and in complex notation are given by:
 \begin{align*}
