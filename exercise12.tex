@@ -40,71 +40,53 @@
 \begin{solution}     
     \begin{itemize}
     \item As seen in the lecture we know the Fourier coefficients of a square wave,
-    $$
-    l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<2 \pi\end{cases},
-    $$
-
+    \[
+        l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<2 \pi\end{cases},
+    \]
     are given by:
-
-    $$
-    a_n = 0\quad \text{for } n \geq 0, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{4}{n\pi}, & \text{ if n is even}\end{cases}
-    $$
-
+    \[
+        a_n = 0\quad \text{for } n \geq 0, \quad b_n = \begin{cases}0, & \text { if n is even} \\ \frac{4}{n\pi}, & \text{ if n is odd}\end{cases}
+    \]
     We can express the function $f(x)$ in terms of $l(x)$ as follows:
-
-    $$
-    f(x) = \frac{1}{2} + \frac{1}{2}l(x)
-    $$
-
+    \[
+        f(x) = \frac{1}{2} + \frac{1}{2}l(x)
+    \]
     therefore the Fourier coefficients of $f$ are given by:
-
-    $$
-    a_n = \begin{cases}\frac{1}{2}, & \text { if n} = 0 \\0,& \text{ if n }>0\end{cases}, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{2}{n\pi}, & \text{ if n is even}\end{cases}
-    $$
+    \[
+        a_n = \begin{cases} 1, & \text { if n} = 0 \\0,& \text{ if n }>0\end{cases}, \quad b_n = \begin{cases}0, & \text { if n is odd} \\ \frac{2}{n\pi}, & \text{ if n is even}\end{cases}
+    \]
     \item  As seen in the lecture we know the Fourier coefficients of a triangle wave,
-    $$
-    m(x)= \begin{cases}2 x, & \text { if } 0 \leq x<0.5 \\ 2(1-x), & \text { if } 0.5 \leq x<1\end{cases}
-    $$
-
+    \[
+        m(x)= \begin{cases} 2 x, & \text { if } 0 \leq x<0.5 \\ 2(1-x), & \text { if } 0.5 \leq x<1\end{cases}
+    \]
     are given by:
-
-    $$
-    a_0 = \frac{1}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi^2}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-    $$
-
+    \[
+        a_0 = 1, \quad a_n = \begin{cases}-\frac{4}{n^2\pi^2}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
+    \]
     We can express the function $g(x)$ in terms of $m(x)$ as follows:
-
-    $$
-    g(x) = \pi m(\frac{x}{2\pi})
-    $$
-
+    \[
+        g(x) = \pi m(\frac{x}{2\pi})
+    \]
     therefore the Fourier coefficients of $g$ are given by:
-
-    $$
-    a_0 = \frac{\pi}{2}, \quad a_n = \begin{cases}-\frac{4}{n^2\pi}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
-    $$
+    \[
+        a_0 = \pi, \quad a_n = \begin{cases}-\frac{4}{n^2\pi}, & \text { if n is odd} \\ 0, & \text{ if n is even}\end{cases}, \quad b_n = 0 \text{ for } n > 0
+    \]
     \item As seen in the lecture we know the Fourier coefficients of a sawtooth wave,
-    $$
-    n(x)=x \text { for } 0 \leq x<1
-    $$
-
-    are given by:
-
-    $$
-    a_0 = \frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = -\frac{1}{n\pi} \text{ for } n > 0,
-    $$
-
+    \[
+        n(x)=x \text { for } 0 \leq x<1
+    \]
+    are given by:   
+    \[
+        a_0 = 1, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = -\frac{1}{n\pi} \text{ for } n > 0,
+    \]
     We can express the function $h(x)$ in terms of $n(x)$ as follows:
-
-    $$
-    h(x) = -n(x)
-    $$
-
+    \[
+        h(x) = -n(x)
+    \]
     therefore the Fourier coefficients of $h$ are given by:
-
-    $$
-    a_0 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = \frac{1}{n\pi} \text{ for } n > 0,
-    $$
+    \[
+        a_0 = -1, \quad a_n = 0 \text{ for } n > 0,  \quad a_n = \frac{1}{n\pi} \text{ for } n > 0,
+    \]
     \end{itemize}
 \end{solution}
 
@@ -128,60 +110,60 @@
 \begin{solution}     
     \begin{itemize}
     \item We substitute $m = 2n+1$ to obtain 
-    $$
-            f(x) = \sum_{\substack{m=3\\m \text{ is odd}}}^{\infty} \frac{1}{m^2}\cos(2\pi m x),
-    $$
+    \[
+            f(x) = \sum_{\substack{m=3\\m \text{ is odd}}}^{\infty} \frac{1}{m^2}\sin(2\pi m x),
+    \]
 
     therefore the Fourier coefficients are given by 
-    $$
-    a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}\frac{1}{m^2}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-    $$
+    \[
+    a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}\frac{1}{m^2}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ otherwise }  \end{cases} 
+    \]
 
     and the period is $T = 1$. The derivative of $f(x)$ is given by:
-    $$
+    \[
     f'(x) = \sum_{\substack{m=3\\m \text{ is odd}}}^{\infty} \frac{2\pi}{m}\sin(2\pi m x),
-    $$
+    \]
 
     therefore the Fourier coefficients of the derivative of $f(x)$ are given by 
 
-    $$
-    b_m = 0 \text{ for } m \geq 0, \quad a_m = \begin{cases}\frac{2\pi}{m}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ if m is even and } m \geq 3\\ 0 & \text{ if } 0< m < 3  \end{cases} 
-    $$
+    \[
+    b_m = 0 \text{ for } m \geq 0, \quad a_m = \begin{cases}\frac{2\pi}{m}, & \text { if m is odd and }m \geq 3 \\ 0, & \text{ otherwise }  \end{cases} 
+    \]
 
     \item We substitute $m = 2n-1$ to obtain 
-    $$
+    \[
         g(x) = \sum_{\substack{ m=1 \\ m \text{ is odd}}}^{\infty} \frac{(-1)^{\frac{m+1}{2}}}{m^3}\cos(2\pi m x),
-    $$
+    \]
 
     therefore the Fourier coefficients are given by 
-    $$
+    \[
     b_m = 0 \text{ for } m >0, \quad a_m = \begin{cases}\frac{(-1)^{\frac{m+1}{2}}}{m^3}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-    $$
+    \]
 
     and the period is $T = 1$. The derivative of $g(x)$ is given by:
-    $$
+    \[
     g'(x) = \sum_{\substack{m=1\\m \text{ is odd}}}^{\infty} -\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}\sin(2\pi m x),
-    $$
+    \]
 
     therefore the Fourier coefficients of the derivative of $g(x)$ are given by 
-    $$
+    \[
     a_m = 0 \text{ for } m \geq 0, \quad b_m = \begin{cases}-\frac{2\pi (-1)^{\frac{m+1}{2}}}{m^2}, & \text { if m is odd and }m \geq 1 \\ 0, & \text{ if m is even and } m \geq 1\\ 0 & \text{ if } m = 0  \end{cases} 
-    $$
+    \]
     \item 
     the Fourier coefficients are given by 
-    $$
+    \[
     b_n = 0 \text{ for } n >0, \quad a_n = \begin{cases}\frac{\pi}{3}, & \text { if }n = 0 \\ -\frac{(-1)^n}{n^2}, & \text{ if } n > 1 \end{cases} 
-    $$
+    \]
 
     and the period $T = 2$. The derivative of $h(x)$ is given by:
-    $$
+    \[
     h'(x) =\sum_{n=1}^{\infty} -\frac{\pi(-1)^{n+1}}{n}\sin(\pi n x),
-    $$
+    \]
 
     therefore the Fourier coefficients of the derivative of $h(x)$ are given by 
-    $$
-    a_n = 0 \text{ for } n \geq b, \quad b_n = -\frac{\pi(-1)^{n+1}}{n},\quad \text{for }n > 0
-    $$
+    \[
+    a_n = 0 \text{ for } n \geq 0, \quad b_n = -\frac{\pi(-1)^{n+1}}{n},\quad \text{for }n > 0
+    \]
     \end{itemize}
 \end{solution}
 
@@ -214,9 +196,9 @@
         .
     \end{align*}
     Complete this discussion and find the Fourier series of a function $g(x)$ such that 
-    \begin{align}
+    \begin{align*}
         \int_{x_0}^{x} f(x) = c x + g(x)
-    \end{align}
+    \end{align*}
     for some $c \in \mathbb R$. 
 \end{exercise}
 \begin{solution}
@@ -280,9 +262,9 @@
         b_n \frac{T}{2\pi n} \cos\left(\frac{2\pi n x_0}{T}\right) 
         \right)
         \\
-        A_n := (-b_n) \frac{T}{2\pi n} 
+        A_n &:= (-b_n) \frac{T}{2\pi n} 
         \\
-        B_n := a_n \frac{T}{2\pi n} 
+        B_n &:= a_n \frac{T}{2\pi n} 
     \end{align*}
     This completes the discussion. 
 \end{solution}
@@ -307,9 +289,23 @@
 \end{exercise}
 \begin{solution}
     \begin{itemize}
+     \item If $f$ and $g$ are both even, then 
+     \begin{align*}
+        f(-x)g(-x) = f(x)g(x),
+     \end{align*}
+     and if both are odd, then 
+     \begin{align*}
+        f(-x)g(-x) = (-1)^{2} f(x)g(x) = f(x) g(x),
+     \end{align*}
+     so $fg$ must be an even function.
      \item 
+     Suppose that $f$ is even and that $g$ is odd. Then 
+     \begin{align*}
+        f(-x) g(-x) = f(x) g(-x) = - f(x)g(x),
+     \end{align*}
+     showing that $fg$ is an odd function. The same is true if we switch the role of $f$ and $g$.
      \item 
-     \item Suppose that $f$ is both odd and even. Then 
+     Suppose that $f$ is both odd and even. Then 
      \begin{align*}
         f(x) = f(-x) = -f(x)
      \end{align*}
@@ -343,6 +339,7 @@
     \begin{align*}
         \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
         &=\frac{1}{\sqrt{2 \pi}} \int_{0}^{1} x e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 - \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{-i\alpha} e^{-i \alpha x} d x\\
         &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{i\alpha} e^{-i \alpha x} d x\\
         &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ \frac{1}{\alpha^2} e^{-
         i \alpha x} \right]_{0}^1\\
@@ -351,20 +348,42 @@
         &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} \cos\alpha  + \frac{1}{\alpha} \sin\alpha + \frac{1}{\alpha^2} \cos\alpha - \frac{i}{\alpha^2} \sin\alpha -\frac{1}{\alpha^2}\right)\\ 
     \end{align*}
     Next we do it in terms of sine and cosine functions.
-    $$
+    \[
     \begin{aligned}
     \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
     &=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x)(\cos \alpha x - i\sin\alpha x) d x\\
     & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
     \end{aligned}
-    $$
+    \]
     We evaluate each integral seperately.
-    $$\begin{aligned} \int_0^1 x \cos (\alpha x) d x & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x \\ & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 \\ & =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}\end{aligned}$$
-    $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x \\ & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 \\ & =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha\end{aligned}$$
+    \begin{align*} 
+        \int_0^1 x \cos (\alpha x) d x 
+        & =
+        \left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x 
+        \\ & 
+        =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 
+        \\ & 
+        =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}
+    \end{align*}
+    \begin{align*} 
+        \int_0^1 x \sin (\alpha x) d x 
+        & 
+        =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x 
+        \\ & 
+        =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 
+        \\ & 
+        =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha
+    \end{align*}
     All together we have:
-    $$
-        \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
-    $$
+    \begin{align*}
+        \mathfrak{F}(f)(\alpha)
+        &
+        =
+        \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x 
+        \\&
+        = 
+        \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
+    \end{align*}
 \end{solution}
 
 
@@ -390,10 +409,60 @@
     \end{align*}
 \end{exercise}
 \begin{solution} 
-$$\begin{aligned} \mathcal{F}(f(x))(\alpha) & =\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x\end{aligned}$$
-$$
-\begin{aligned} \Rightarrow \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x & =\left(\frac{1}{1-\frac{1}{\alpha^2}}\right) \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} \\ & =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} \\ & =\frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}\end{aligned}
-$$
+We try to perform integration by parts 
+\begin{align*} 
+    \mathcal{F}(f(x))(\alpha) 
+    & =
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x 
+    \\ & 
+    =
+    \frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}
+    +
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x 
+    \\ & 
+    =
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x 
+    \\ & 
+    =
+    \frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}
+    +
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x 
+    \\ & 
+    =
+    \frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x
+\end{align*}
+It seems we have obtained the term that we started with. However, 
+\begin{align*}
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x 
+    =
+    \frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x
+\end{align*}
+can be rearranged to 
+\begin{align*}
+    \left( 1 - \frac{1}{\alpha^2} \right)
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x 
+    =
+    \frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)
+    .
+\end{align*}
+It follows that 
+\begin{align*}
+    \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x 
+    &
+    =
+    \left( 1 - \frac{1}{\alpha^2} \right)^{-1}
+    \frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)
+    \\&
+    =
+    \left( \frac{\alpha^2-1}{\alpha^2} \right)^{-1}
+    \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} 
+    \\ & 
+    =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} 
+    \\ & 
+    =
+    \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}
+\end{align*}
+which is the desired Fourier transform.
 \end{solution}
 
 
@@ -434,7 +503,7 @@ $$
     \begin{align*}
         \frakF_{3}(f)(\omega) = \sqrt{2\pi} \frakF(f)(\omega).
     \end{align*}
-    For the other transformation:
+    For the other transformation, we write:
     \begin{align*}
         \frakF_2(f)(\xi) 
         &
