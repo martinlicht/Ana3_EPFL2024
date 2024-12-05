@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{12}{5}{December} % parameters are the number of the session and the day
@@ -34,7 +34,7 @@
         \end{align*}
     \end{itemize}
     Find the Fourier coefficients of the Fourier series of these functions. 
-    \textit{You can modify the functions seen in the lecture to get the coefficients.}
+    \textit{You can use the Fourier series seen in the lecture to get the coefficients.}
 \end{exercise}
 
 \begin{solution}     
@@ -315,7 +315,142 @@
      \end{align*}
      for each $x \in \bbR$. But the only number that equals its negative is zero. So $f(x) = 0$ for each $x$.
     \end{itemize}
+\end{solution}
 
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Compute the Fourier transform of the function
+    \begin{gather*}
+        f(x) = \left\{\begin{array}{ll}
+            x   & \text{ if $0 \leq x < 1$ }
+            \\
+            0   & \text{ otherwise }
+          \end{array}\right.
+    \end{gather*}
+    You can either directly use the complex exponential, or you can express it in terms of the sine and cosine function. 
+
+    (Interpretation: the function $f(x)$ describes a localized signal: it is zero at $x=0$, then it rises linearly up to $1$, and then it jumps back to zero and remains zero from there on. The signal is not periodic.)
+\end{exercise}
+\begin{solution}     
+    We write down the solution in two different ways, either using the complex exponential directly, or writing it as a sum of sine and cosine.
+    \begin{align*}
+        \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \int_{0}^{1} x e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{i\alpha} e^{-i \alpha x} d x\\
+        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ \frac{1}{\alpha^2} e^{-
+        i \alpha x} \right]_{0}^1\\
+        &=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\
+        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} e^{-i \alpha } + \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\ 
+        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} \cos\alpha  + \frac{1}{\alpha} \sin\alpha + \frac{1}{\alpha^2} \cos\alpha - \frac{i}{\alpha^2} \sin\alpha -\frac{1}{\alpha^2}\right)\\ 
+    \end{align*}
+    Next we do it in terms of sine and cosine functions.
+    $$
+    \begin{aligned}
+    \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
+    &=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x)(\cos \alpha x - i\sin\alpha x) d x\\
+    & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
+    \end{aligned}
+    $$
+    We evaluate each integral seperately.
+    $$\begin{aligned} \int_0^1 x \cos (\alpha x) d x & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x \\ & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 \\ & =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}\end{aligned}$$
+    $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x \\ & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 \\ & =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha\end{aligned}$$
+    All together we have:
+    $$
+        \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
+    $$
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
+    Find the Fourier transform of 
+    \begin{align*}
+        f(x) = \left\{\begin{array}{ll}
+                \sin(x) & \text{ if } 0 \leq x \leq 2 \pi 
+                \\
+                0 & \text{ otherwise }
+               \end{array}
+               \right.
+    \end{align*}
+\end{exercise}
+\begin{solution} 
+$$\begin{aligned} \mathcal{F}(f(x))(\alpha) & =\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x\end{aligned}$$
+$$
+\begin{aligned} \Rightarrow \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x & =\left(\frac{1}{1-\frac{1}{\alpha^2}}\right) \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} \\ & =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} \\ & =\frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}\end{aligned}
+$$
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}[Extra]
+    We have introduced the Fourier transform 
+    \begin{align*}
+        \frakF(f)(\alpha) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x) e^{-i \alpha x} dx
+    \end{align*}
+    Different authors define the Fourier transform alternatively by:
+    \begin{align*}
+        \frakF_2(f)(\xi) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        ,
+        \quad 
+        \frakF_3(f)(\omega) 
+        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
+        .
+    \end{align*}
+    Express $\frakF_{2}(f)$ and $\frakF_{3}(f)$ in terms of $\frakF(f)$.
+\end{exercise}
+\begin{solution}    
+    Obviously, 
+    \begin{align*}
+        \frakF_{3}(f)(\omega) = \sqrt{2\pi} \frakF(f)(\omega).
+    \end{align*}
+    For the other transformation:
+    \begin{align*}
+        \frakF_2(f)(\xi) 
+        &
+        = 
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
+        = 
+        \sqrt{2\pi} 
+        \cdot 
+        \frakF(f)( 2\pi \xi )
+        .
+    \end{align*}
 \end{solution}
 
 
