@@ -364,22 +364,15 @@
         \left[ \frac{\sin((n-1)x)}{n-1} - \frac{\sin((n+1)x)}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
         \\&
         =
-        \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
+        \frac{n \left ( \cos(\frac{n \pi}{2}) + \cos(\frac{3 n \pi}{2})\right)}{\pi(1 - n^2)}
+        \\&
+        = \frac{2 n \cos(n \pi) \cos(- \frac{n \pi}{2})}{\pi ( 1 - n^2)} = \frac{2 n (-1)^n \cos(\frac{n \pi}{2})}{\pi ( 1 - n^2)},
     \end{align*}
-    If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
-    Hence $b_n$ is zero if $n$ is odd. 
-    For the even numbers, we have got another case distinction:
-    if $n=1,5,9,\dots$, then 
+    where we have again used a reflection formula an product-to-sum formula to simplify the trigonometric expressions. Now we see immediately, that if $n$ is odd, then $b_n = 0$ since $\cos(\frac{n \pi}{2}) = 0$.
+    Whenever $n$ is even, i.e. $n= 2k$ for some $k \in \mathbb N$, we have
     \begin{align*}
-        b_n = \frac{1}{n-1} - \frac{-1}{n+1} = \frac{1}{n-1} + \frac{1}{n+1} = \frac{n+1+n-1}{n^2+1} = \frac{2n}{n^2+1}.
+        b_n = b_{2k} = \frac{4 k (-1)^k}{\pi (1 - 4 k^2)}
     \end{align*}
-    if $n=3,7,11,\dots$, then 
-    \begin{align*}
-        b_n = \frac{-1}{n-1} - \frac{1}{n+1} = \frac{-n-1-n+1}{n^2+1} = \frac{-2n}{n^2+1}.
-    \end{align*}
-    
-
-    
 \end{itemize}
 \end{solution}
 
@@ -617,7 +610,7 @@ We can re-use the results about the sawtooth wave.
 \begin{gather*}
     g(x)=x \text { for } 0 \leq x<1
     \\
-    a_0^g = \frac{1}{2},\quad a_n^g = 0, \quad b_n^g = \frac{-1}{\pi n}
+    a_0^g = 1,\quad a_n^g = 0, \quad b_n^g = \frac{-1}{\pi n}
 \end{gather*}
 Moreover we can write $f$ in terms of $g$ by introducing $x = \frac{y}{2}$
 \[
@@ -625,11 +618,11 @@ Moreover we can write $f$ in terms of $g$ by introducing $x = \frac{y}{2}$
 \]
 which gives us the Fourier coefficients of $f$
 \begin{gather*}
-    a_0^f = 1,\quad a_n^f = 0, \quad b_n^f = \frac{-2}{\pi n}
+    a_0^f = 2,\quad a_n^f = 0, \quad b_n^f = \frac{-2}{\pi n}
 \end{gather*}
 Using this we can obtain the Fourier coefficients $c_n$:
 \[
-    c_0 = a_0 = 1,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
+    c_0 = a_0 = 2,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
 \]
 such that 
 \[
@@ -685,7 +678,7 @@ For the second part we use Parseval's identity which is given by:
 \]
 substituting our Fourier coefficients and $f$ gives: 
 \begin{align*}
-    \frac{2}{T} \int_0^T f(x)^2 d x&= \frac{a_0}{2}+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
+    \frac{2}{T} \int_0^T f(x)^2 d x&= \frac{a_0^2}{2}+\sum_{n=0}^{\infty}\left(a_n\right)^2+\left(b_n\right)^2\\
     \frac{1}{\pi} \int_0^{2\pi} \cos(x)^{16} d x&= 2\left(\frac{35}{128}\right)^2 + \left(\frac{7}{16}\right)^2 + \left(\frac{7}{32}\right)^2 + \left(\frac{1}{16}\right)^2 + \left(\frac{1}{128}\right)^2.\\
     \implies 
     \int_0^{2\pi} \cos(x)^{16} d x
@@ -729,7 +722,7 @@ Therefore, in total,
 \begin{solution}    
 We calculate the complex Fourier coefficients 
 \begin{align*}
-    c_0 = \int_{-1}^1 \cos x dx = [\sin x]_{-1}^1 = 2\sin 1
+    c_0 = \frac 1 2 \int_{-1}^1 \cos x dx = \frac 1 2 [\sin x]_{-1}^1 = \sin 1
 \end{align*}
 \begin{align*}
     c_n &= \frac 1 2 \int_{-1}^1 \cos x e^{-\pi n x i} dx\\
@@ -741,7 +734,7 @@ We calculate the complex Fourier coefficients
 \end{align*}
 Using $c_n$ we can determine $a_n$ and $b_n$
 $$
-    a_0 = 2\sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
+    a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
 $$
 The Fourier series in standard and in complex notation are given by:
 \begin{align*}
