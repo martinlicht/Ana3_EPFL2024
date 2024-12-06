@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 % \usepackage{enumitem}
 \begin{document}
@@ -11,6 +11,27 @@
 
 
 
+
+\begin{exercise}
+    Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
+    where $z$ is one of the following complex numbers:
+    \begin{gather*}
+        z_1 = \frac 1 2,
+        \quad 
+        z_2 = - \frac 1 2,
+        \quad 
+        z_3 = 0.2i,
+        \quad 
+        z_4 = -0.2i,
+        \quad 
+        z_3 = - \frac 1 2 + 0.2i
+        .
+    \end{gather*}
+    \textit{You may use a calculater.}
+\end{exercise}
+
+\begin{solution}     
+\end{solution}
 
 
 
@@ -31,9 +52,9 @@
 \end{exercise}
 \begin{solution}  
     To evaluate the Fourier transform of the derivative of a function we will use the following identity from the lecture:
-    \[
+    \begin{gather*}
         \mathfrak{F}\left(f^{(n)}\right)(\alpha)=(i \alpha)^n \mathfrak{F}(f)(\alpha)
-    \]
+    \end{gather*}
     We then find 
     \begin{itemize}
     \item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
@@ -93,23 +114,6 @@
 
 
 
-\begin{exercise}
-    Find the Laplace transform $F(z)$ of 
-    \begin{align*}
-        f : \bbR_{0}^{+} \to \bbR, \quad t \mapsto t^{2}.
-    \end{align*}
-\end{exercise}
-\begin{solution}     
-    We compute 
-    \begin{align*}
-        F(z)&=\int_0^{\infty} t^2 e^{-z t} d t=\left[-\frac{t^2}{z} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2 t}{z} e^{-z t} d t \\ &=\left[\frac{2 t}{-z^2} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2}{z^2} e^{-z t} d t \\ &=\left[-\frac{2}{z^3} e^{-z t}\right]_0^{\infty} \\ &=0+\frac{2}{z^3} \\ &=\frac{2}{z^3}
-        .
-    \end{align*}
-    Hence 
-    \begin{align*}
-        F(z)=\frac{2}{z^3} \quad \text { for } \mathrm{R}(z)>0.
-    \end{align*}
-\end{solution}
 
 
 
@@ -135,15 +139,23 @@
     \end{align*}
 \end{exercise}
 \begin{solution}   Because of the linearity property we can treat the inverse of each term in seperately. Therefore 
- \begin{itemize}
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{\sin (4 \alpha+3)}{4 a r+3}\right)(x) & =\frac{\frac{1}{4}}{\frac{1}{4}} \mathfrak{F}^{-1}\left(\frac{\sin \left(\frac{\alpha+3 / 4}{\frac{1}{4}}\right)}{\frac{\alpha+\frac{3}{4}}{\frac{1}{4}}}\right)(x) \\ & =\frac{1}{4} e^{-i \frac{3}{4} x} \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{\sin (\alpha)}{\alpha}\right)\left(\frac{x}{4}\right) \\ & = \begin{cases}\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & \text { if }-4 \leq x \leq 4 \\ 0 & \text { else }\end{cases} \end{aligned}$
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{3}{1+\alpha^2}\right)(x) & =3 \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+a^2}\right)(x) \\ & =3 \sqrt{\frac{\pi}{2}} e^{-|x|}\end{aligned}$
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) & =-\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) \\ & =-\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid \\ & =-\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) \\ & =-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}\end{aligned}$
- \end{itemize}
- All together this gives
-    $$
-    f(x) = \begin{cases}-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|}+\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & -4 \leq x \leq 4 \\ -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|} & \text { else }\end{cases}
-    $$
+    First,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{\sin (4 \alpha+3)}{4 a r+3}\right)(x) & =\frac{\frac{1}{4}}{\frac{1}{4}} \mathfrak{F}^{-1}\left(\frac{\sin \left(\frac{\alpha+3 / 4}{\frac{1}{4}}\right)}{\frac{\alpha+\frac{3}{4}}{\frac{1}{4}}}\right)(x) \\ & =\frac{1}{4} e^{-i \frac{3}{4} x} \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{\sin (\alpha)}{\alpha}\right)\left(\frac{x}{4}\right) \\ & = \begin{cases}\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & \text { if }-4 \leq x \leq 4 \\ 0 & \text { else }\end{cases} 
+    \end{align*}
+    Second,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{3}{1+\alpha^2}\right)(x) & =3 \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+a^2}\right)(x) \\ & =3 \sqrt{\frac{\pi}{2}} e^{-|x|}
+    \end{align*}
+    Lastly,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) & =-\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) \\ & =-\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid \\ & =-\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) \\ & =-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}
+    \end{align*}
+    Altogether this gives
+    \begin{align*} 
+        f(x) = \begin{cases}-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|}+\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & -4 \leq x \leq 4 \\ -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|} & \text { else }\end{cases}
+    \end{align*}
+    
 \end{solution}
 
 
@@ -162,27 +174,6 @@
 
 
 
-
-\begin{exercise}
-    Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
-    where $z$ is one of the following complex numbers:
-    \begin{gather*}
-        z_1 = \frac 1 2,
-        \quad 
-        z_2 = - \frac 1 2,
-        \quad 
-        z_3 = 0.2i,
-        \quad 
-        z_4 = -0.2i,
-        \quad 
-        z_3 = - \frac 1 2 + 0.2i
-        .
-    \end{gather*}
-    \textit{You may use a calculater.}
-\end{exercise}
-
-\begin{solution}     
-\end{solution}
 
 \begin{exercise}
     We consider the Poisson problem with Dirichlet boundary conditions over the interval $[0,L]$:
@@ -194,23 +185,47 @@
     \begin{itemize}
         \item Solve this problem directly. The solution is a polynomial of order $4$.
         \item Extend the right-hand side $f(x) = x^2$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$.
+        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$,
+        which solves 
+        \begin{gather*}
+            - \Delta u^f(x) = x^2, \quad 0 < x < L,
+            \\
+            u^f(0) = 0, \quad u^f(L) = 0.
+        \end{gather*}
     \end{itemize}
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
-\begin{exercise}[Extra]
+\begin{exercise}
     Directly compute the solution of the problem
     \begin{gather*}
         - \Delta u(x) = x^2, \quad 0 < x < L,
         \\
-        u(0) = 0, \quad u(L) = 0
+        u(0) = 0, \quad u(L) = 0,
     \end{gather*}
-    and find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
+    using elementary analysis. Then find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
 \end{exercise}
 \begin{solution}     
 \end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{exercise}
     We solve the Poisson problem with homogeneous Dirichlet boundary conditions over $[0,1]$:
@@ -220,27 +235,22 @@
         u(0) = 0, \quad u(1) = 0
     \end{gather*}
     \begin{itemize}
-        \item Extend the right-hand side $f(x)$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+        \item Extend the right-hand side $f(x)$ to an odd function with period $2$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(1) = 0$ is satisfied.
     \end{itemize}
 \end{exercise}
 \begin{solution}     
 \end{solution}
 
-\begin{exercise}
-    We want to find a solution to the boundary value problem 
-    \begin{gather*}
-        - \Delta u(x) + u(x) = x, \quad 0 < x < L,
-        \\
-        u(0) = 0, \quad u(L) = 0.
-    \end{gather*}
-    \begin{itemize}
-        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-\end{solution}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -273,80 +283,103 @@
 \begin{solution}     
 \end{solution}
 
-\begin{exercise}
-    Consider the function 
-    \begin{align*}
-        f : [0,1] \to \bbR, \quad x \mapsto x^{3}.
-    \end{align*}
-    Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
-    Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
-\end{exercise}
-\begin{solution}     
-\end{solution}
 
 
 
 
 \begin{exercise}
-    Given the following functions over an interval $[0,1)$, 
-    \begin{enumerate}[label=(\alph*)]
-        \item $f(x) = x$
-        \item $g(x) = x^2$
-        \item $h(x) = e^x$
-        \item $s(x) = sin(\pi x)$
-    \end{enumerate}
-    sketch their extension to 
-    \begin{itemize}
-        \item a periodic function with period $1$,
-        \item an even periodic function with period $2$,
-        \item an odd periodic function with period $2$.
-    \end{itemize}
-    and state the formulas for these functions over $[-1,1]$.
-\end{exercise}
-
-\begin{solution}     
-\end{solution}
-
-
-
-\begin{exercise}[Fun with Neumann boundary conditions 1]
-    Consider the Poisson problem with Neumann boundary conditions over the interval $[a,b]$ with constant right-hand side: 
-    \begin{gather*}
-        - u''(x) = c, \quad a < x < b,
+    Recall the definition of the Fourier transform:
+    \begin{align}
+        \mathfrak{F}[f](\alpha) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t) e^{-it\alpha} \ d\alpha
+    \end{align}
+    Let $a,b,c \in \mathbb R$ be real parameters with $a \neq 0$. Compute the Fourier transforms of the following:
+    \begin{align}
+        g(t) = f( a t ),
         \\
-        u'(a) = h_a, \quad u'(b) = h_b.
-    \end{gather*}
-    \begin{enumerate}[label=(\alph*)]
-        \item
-        What is the compatibility condition?
-        \item 
-        Since $u$ has a constant second derivative, it must be a quadratic function $u(x) = c_1 x^2 + c_2 x + c_3$. 
-        Assuming the compatibility condition, find the solution(s).
-    \end{enumerate}
+        h(t) = e^{-i t b} f(t),
+        \\
+        m(t) = f( t - c ).
+    \end{align}
+    \textit{Hint: } you have the first two in the lecture and in textbook. You can compute them using results from the lecture or via some standard integral manipulations. 
 \end{exercise}
-\begin{solution}     
+
+\begin{solution}
+We write \( {\hat f}(\alpha) = \mathfrak{F}[f](\alpha) \) for the Fourier transform of $\alpha$. 
+To compute the Fourier transforms of the given functions \( g(t) \), \( h(t) \), and \( m(t) \), we proceed as follows:
+\begin{itemize}
+\item 
+Let \( {\hat g}(\alpha) = \mathfrak{F}[g](\alpha) \). By definition,
+\begin{gather*}
+    {\hat g}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} g(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(at) e^{-it\alpha} \, dt.
+\end{gather*}
+We perform a substitution \( u = at \), so \( du = |a| \, dt \) and \( t = \frac{u}{a} \). This gives
+\begin{gather*}
+    {\hat g}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-i \frac{u}{a} \alpha} \frac{du}{a}
+    =
+    \frac{1}{\sqrt{2\pi}} \cdot \frac{1}{a} \int_{-\infty}^{+\infty} f(u) e^{-i \frac{\alpha}{a} u} \, du.
+\end{gather*}
+Recognizing the integral as the Fourier transform of \( f(t) \), we find:
+\begin{gather*}
+    {\hat g}(\alpha) = \frac{1}{|a|} {\hat f}\left(\frac{\alpha}{a}\right),
+\end{gather*}
+\item 
+Let \( {\hat h}(\alpha) = \mathfrak{F}[h](\alpha) \). Using definitions. 
+\begin{align*}
+    {\hat h}(\alpha) 
+    &
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} h(t) e^{-it\alpha} \, dt
+    \\&
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} e^{-ibt} f(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t) e^{-it(\alpha+b)} \, dt.
+\end{align*}
+We recognizing the integral as the Fourier transform of \( f(t) \). Thus, 
+\begin{gather*}
+    {\hat h}(\alpha) = {\hat f}(\alpha + b).
+\end{gather*}
+\item 
+Let \( {\hat m}(\alpha) = \mathfrak{F}[m](\alpha) \). By definition,
+\begin{gather*}
+    {\hat m}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} m(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t - c) e^{-it\alpha} \, dt.
+\end{gather*}
+We substitute \( u = t - c \), so \( du = dt \) and \( t = u + c \). This gives
+\begin{gather*}
+    {\hat m}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-i(u+c)\alpha} \, du
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-iu\alpha} e^{-ic\alpha} \, du
+    .
+\end{gather*}
+We pull out the factor out \( e^{-ic\alpha} \),
+\begin{gather*}
+    {\hat m}(\alpha) = e^{-ic\alpha} \cdot \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-iu\alpha} \, du,
+\end{gather*}
+and recognize the last integral as the Fourier transform of \( f(t) \). In summary, 
+\begin{gather*}
+    {\hat m}(\alpha) = e^{-ic\alpha} {\hat f}(\alpha).
+\end{gather*}
+\end{itemize}
 \end{solution}
 
-\begin{exercise}[Fun with Neumann boundary conditions 2]
-    Suppose we have got a Poisson problem with Neumann boundary conditions over the interval $[a,b]$. 
-    \begin{gather*}
-        - u''(x) = f(x), \quad a < x < b,
-        \\
-        u'(a) = h_a, \quad u'(b) = h_b.
-    \end{gather*}
-    We need the compatibility condition 
-    \begin{gather*}
-        \int_a^b f(x) dx + ( h_b - h_a ) = 0.
-    \end{gather*}
-    \begin{enumerate}[label=(\alph*)]
-        \item
-        Find a constant function $c^f : [a,b] \to \bbR$ such that $f - c_f$ has integral zero.
-        \item
-        Use this to split up the original problem into two subproblems: 
-        one with homogeneous boundary conditions, one with constant right-hand side, such that both problems satisfy the compatibility condition.
-    \end{enumerate}
-\end{exercise}
-\begin{solution}     
-\end{solution}
+
+
+
+
+
+
+
 
 \end{document}
