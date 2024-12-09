@@ -266,7 +266,7 @@
         \\
         u(0) = 0, \quad u(L) = 0,
     \end{gather*}
-    using elementary analysis. Then find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
+    using elementary analysis. Then find the Fourier coefficients of its odd extension to the interval $[-L, L]$. Compare this with the function $u^f$ from the previous exercise.
 \end{exercise}
 \begin{solution}
 As in the previous exercise, the solution must be of the form $u(x) = ax^4 + bx^3 + cx^2 + dx + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
@@ -307,8 +307,6 @@ with
     &= -\frac{2 L^4 (2 + (-1)^n)((n \pi)^2 - 2)}{(n \pi)^5}.
 \end{align*}
 Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, for $\Tilde b_n$ from the previous exercise.
-
-We point out that strictly speaking, this is not the Fourier series of $u$, since the sine terms are of period $2L$ instead of $L$. However, both series could be converted into Fourier series over $[0, L]$ and we would retrieve the same result.
 \end{solution}
 
 
@@ -338,7 +336,7 @@ We point out that strictly speaking, this is not the Fourier series of $u$, sinc
     \end{gather*}
     \begin{itemize}
         \item Extend the right-hand side $f(x)$ to an odd function with period $2$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(1) = 0$ is satisfied.
+        \item Using these coefficients, find the solution $u$. Verify that the boundary condition $u(0) = u(1) = 0$ is satisfied.
     \end{itemize}
 \end{exercise}
 \begin{solution}
@@ -393,6 +391,7 @@ We point out that strictly speaking, this is not the Fourier series of $u$, sinc
     \begin{align*}
         u(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} b_n \sin(\pi n x).
     \end{align*}
+    Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
 \end{itemize}
 \end{solution}
 
