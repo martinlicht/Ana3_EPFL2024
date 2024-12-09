@@ -309,6 +309,33 @@
     \end{itemize}
 \end{solution}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{exercise}
     Directly compute the solution of the problem
     \begin{gather*}
@@ -344,7 +371,8 @@
 %     \begin{align*}
 %         u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
 %     \end{align*}
-    To check that this solution is equal to the one found in the previous exercise, we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
+    To check that this solution is equal to the one found in the previous exercise, 
+    we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
     \begin{align*}
         \Tilde u(x) = \begin{cases}
             u(x) & \text{if } 0 \leq x \leq L,\\
@@ -428,7 +456,7 @@
     \end{align*}
     \item 
     
-    We define the solution to the Poisson problem in terms of its Fourier series:
+    We define the solution in terms of its Fourier series:
     \begin{align}
         u(x) 
         &
@@ -445,6 +473,8 @@
         - u''(x) = f(x).
     \end{align}
     This shows that $u$ solves the Poisson problem.
+    Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
+    The boundary conditions are satisfied because $u$ is a Fourier sine series. 
     
     
 %     Using the superposition principle, we set $u(x) = \sum_{n \geq 1} u_n(x)$, where $u_n(x)$ solves the Poisson problem
