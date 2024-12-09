@@ -41,7 +41,7 @@
     \begin{itemize}
     \item As seen in the lecture we know the Fourier coefficients of a square wave,
     \[
-        l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<2 \pi\end{cases},
+        l(x)= \begin{cases}1, & \text { if } 0 \leq x<0.5 \\ -1, & \text { if } 0.5 \leq x<1\end{cases},
     \]
     are given by:
     \[
@@ -152,7 +152,7 @@
     \item 
     the Fourier coefficients are given by 
     \[
-    b_n = 0 \text{ for } n >0, \quad a_n = \begin{cases}\frac{\pi}{3}, & \text { if }n = 0 \\ -\frac{(-1)^n}{n^2}, & \text{ if } n > 1 \end{cases} 
+    b_n = 0 \text{ for } n >0, \quad a_n = \begin{cases}\frac{2\pi}{3}, & \text { if }n = 0 \\ -\frac{(-1)^n}{n^2}, & \text{ if } n > 1 \end{cases} 
     \]
 
     and the period $T = 2$. The derivative of $h(x)$ is given by:
@@ -240,7 +240,7 @@
         \sum_{n=1}^\infty 
         \left( 
         (-a_n) \frac{T}{2\pi n} \sin\left(\frac{2\pi n x_0}{T}\right) 
-        - 
+        + 
         b_n \frac{T}{2\pi n} \cos\left(\frac{2\pi n x_0}{T}\right) 
         \right)
         \\&\qquad\qquad\qquad\qquad 
@@ -258,7 +258,7 @@
         \sum_{n=1}^\infty 
         \left( 
         (-a_n) \frac{T}{2\pi n} \sin\left(\frac{2\pi n x_0}{T}\right) 
-        - 
+        + 
         b_n \frac{T}{2\pi n} \cos\left(\frac{2\pi n x_0}{T}\right) 
         \right)
         \\
