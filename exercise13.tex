@@ -185,13 +185,15 @@
     \begin{itemize}
         \item Solve this problem directly. The solution is a polynomial of order $4$.
         \item Extend the right-hand side $f(x) = x^2$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$,
+        \item 
+        Using these coefficients, find the Fourier series of the solution $u^f$,
         which solves 
         \begin{gather*}
             - \Delta u^f(x) = x^2, \quad 0 < x < L,
             \\
             u^f(0) = 0, \quad u^f(L) = 0.
         \end{gather*}
+        How do you use the superposition principle to solve the full problem? 
     \end{itemize}
 \end{exercise}
 \begin{solution}  
@@ -217,7 +219,7 @@
         \begin{align*}
             u(x) = -\frac{1}{12} x^4 + \left(\frac{1}{12} L^3 + \frac{1}{L}\right) x + 1.
         \end{align*}
-        \item We define the odd extension of $f(x) = x^2$ as
+        \item We define the odd extension of $f(x) = x^2$ as the function $\Tilde{f}$ with period $2L$ that satisfies 
         \begin{align*}
             \Tilde{f}(x) = \begin{cases}
                 x^2 & \text{if } 0 \leq x \leq L,\\
@@ -225,7 +227,8 @@
             \end{cases}
         \end{align*}
         By construction, $\Tilde f$ is an odd function with period $2L$. Denote by $\Tilde{a}_n$ and $\Tilde{b}_n$ the Fourier coefficients of $\Tilde{f}$.
-        Therefore, we immediately have $\Tilde{a}_n = 0$ for all $n \in \mathbb N$ and
+        We immediately have $\Tilde{a}_n = 0$ for all $n \in \mathbb N$ because the function is odd.
+        Moreover, by some simple integration by parts 
         \begin{align*}
             \Tilde{b}_n &= \frac{1}{L} \int_{-L}^L \Tilde{f}(x) \sin\left(\frac{\pi n}{L} x\right) dx = \frac{2}{L} \int_{0}^L x^2 \sin\left(\frac{\pi n}{L} x\right) dx\\
             &= -\frac{2 L^2 (2 + (-1)^n ((n \pi)^2 - 2))}{(n\pi)^3}.
@@ -234,28 +237,75 @@
         \begin{align*}
             \Tilde{f}(x) = \sum_{n \geq 1} \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right) = \sum_{n \geq 1} -\frac{2 L^2 (2 + (-1)^n ((n \pi)^2 - 2))}{(n\pi)^3} \sin\left(\frac{\pi n}{L} x\right).
         \end{align*}
-        \item Since we have decomposed the source term $f$ into a Fourier series, we can use the superposition principle to split the Poisson problem into $n$ Poisson problems with homogeneous Dirichlet boundary conditions. The the $n$-th problem is
-        \begin{align*}
-            \begin{cases}
-            -\Delta u_n(x) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right), \quad 0 < x < L,\\
-            u_n(0) &= 0,\\
-            u_n(L) &= 0.
-            \end{cases}
-        \end{align*}
-        We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin\left(\frac{\pi n}{L} x\right)$. Note that this ansatz satisfies the boundary conditions.
-         Inserting this ansatz into the Poisson equation, we find
-        \begin{align*}
-            \left(\frac{\pi n}{L} \right)^2 b_n \sin\left(\frac{\pi n}{L} x\right) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
-        \end{align*}
-        Hence, we must have $b_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$. Therefore, the solution to the $n$-th Poisson problem is
-        \begin{align*}
-            u_n(x) = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right),
-        \end{align*}
-        and the solution to the original Poisson problem is
-        \begin{align*}
-            u^f(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
-        \end{align*}
-
+        \item 
+        To apply the superposition principle, 
+        we split the problem into two Poisson problems: on the one hand,
+        \begin{gather*}
+            - \Delta u^f(x) = x^2, \quad 0 < x < L,
+            \\
+            u^f(0) = 0, \quad u^f(L) = 0, 
+        \end{gather*}
+        and on the other hand, 
+        \begin{gather*}
+            - \Delta u^g(x) = x^2, \quad 0 < x < L,
+            \\
+            u^g(0) = 1, \quad u^g(L) = 2.
+        \end{gather*}
+        The full solution will be the sum of $u^{f}$ and $u^{g}$.
+        
+        We define 
+        \begin{align}
+            u^{f}(x) 
+            &
+            = 
+            - \sum_{n=1}^{\infty} \frac{\Tilde{b}_n}{ -\pi^{2} n^{2} / L^{2} } \sin\left( \pi n x / L \right)
+            \\&
+            = 
+            \sum_{n=1}^{\infty} \frac{\Tilde{b}_n}{ \pi^{2} n^{2} / L^{2} } \sin\left( \pi n x / L \right)
+            .
+        \end{align}
+        Differentation, distributed over the Fourier modes, now shows that 
+        \begin{align}
+            - \partial_{xx} u^{f}(x) = f(x).
+        \end{align}
+        Additionally, $u^{f}$ satisfies the homogeneous Dirichlet boundary conditions. 
+        
+        We can find $u^{g}$ in a manner similar to the previous step. 
+        Since its second-derivative is zero, $u^{g}$ must be a linear function over $[0,L]$, having the form:
+        \begin{align}
+            u^{g}(x) = d x + e.
+        \end{align}
+        The boundary conditions now lead to $u^{g}(x) = \frac{1}{L} x + 1$
+        
+        By the superposition principle, the solution to the original problem is 
+        \begin{align}
+            u(x) = u^{f}(x) + u^{g}(x).
+        \end{align}
+%         
+%         
+% 
+%         we can use the superposition principle to split the Poisson problem into $n$ Poisson problems with homogeneous Dirichlet boundary conditions. 
+%         The the $n$-th problem is
+%         \begin{align*}
+%             \begin{cases}
+%             -\Delta u_n(x) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right), \quad 0 < x < L,\\
+%             u_n(0) &= 0,\\
+%             u_n(L) &= 0.
+%             \end{cases}
+%         \end{align*}
+%         We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin\left(\frac{\pi n}{L} x\right)$. Note that this ansatz satisfies the boundary conditions.
+%          Inserting this ansatz into the Poisson equation, we find
+%         \begin{align*}
+%             \left(\frac{\pi n}{L} \right)^2 b_n \sin\left(\frac{\pi n}{L} x\right) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
+%         \end{align*}
+%         Hence, we must have $b_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$. Therefore, the solution to the $n$-th Poisson problem is
+%         \begin{align*}
+%             u_n(x) = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right),
+%         \end{align*}
+%         and the solution to the original Poisson problem is
+%         \begin{align*}
+%             u^f(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
+%         \end{align*}
     \end{itemize}
 \end{solution}
 
@@ -269,44 +319,57 @@
     using elementary analysis. Then find the Fourier coefficients of its odd extension to the interval $[-L, L]$. Compare this with the function $u^f$ from the previous exercise.
 \end{exercise}
 \begin{solution}
-As in the previous exercise, the solution must be of the form $u(x) = ax^4 + bx^3 + cx^2 + dx + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
-Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
-\begin{align}
-    u(0) &= e = 0, \label{eq:ex4:left bc}\\
-    u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 0, \label{eq:ex4:right bc}\\
-    - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex4:pde}
-\end{align}
-By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex4:pde}, we find
-\begin{align*}
-    - 12 a &= 1,\\
-    - 6 b &= 0,\\
-    - 2 c &= 0.
-\end{align*}
-Hence, we have $a = -\frac{1}{12}, b = 0, c = 0$. Therefore, \eqref{eq:ex4:right bc} simplifies to
-\begin{align*}
-    -\frac{1}{12} L^4 + dL = 0,
-\end{align*}
-from which we deduce that $d = \frac{1}{12} L^3$. Thus, the solution to the Poisson problem is
-\begin{align*}
-    u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
-\end{align*}
-To check that this solution is equal to the one found in the previous exercise, we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
-\begin{align*}
-    \Tilde u(x) = \begin{cases}
-        u(x) & \text{if } 0 \leq x \leq L,\\
-        -u(-x) & \text{if } -L \leq x < 0.
-    \end{cases}
-\end{align*}
-By definition, $\Tilde u$ is an odd function, and therefore we have
-\begin{align*}
-    \Tilde u(x) = \sum_{n \geq 1} \Tilde u_n \sin\left(\frac{\pi n}{L} x\right),
-\end{align*}
-with
-\begin{align*}
-    \Tilde u_n &= \frac{2}{L} \int_0^L u(x) \sin\left(\frac{\pi n}{L} x\right) dx = \frac{2}{L} \int_0^L \left(-\frac{1}{12} x^4 + \frac{1}{12} L^3 x\right) \sin\left(\frac{\pi n}{L} x\right) dx\\
-    &= -\frac{2 L^4 (2 + (-1)^n)((n \pi)^2 - 2)}{(n \pi)^5}.
-\end{align*}
-Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, for $\Tilde b_n$ from the previous exercise.
+    As in the previous exercise, the solution must be of the form $u(x) = ax^4 + bx^3 + cx^2 + dx + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
+    We have already seen how to compute it:
+    \begin{align*}
+        u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
+    \end{align*}
+%     Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
+%     \begin{align}
+%         u(0) &= e = 0, \label{eq:ex4:left bc}\\
+%         u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 0, \label{eq:ex4:right bc}\\
+%         - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex4:pde}
+%     \end{align}
+%     By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex4:pde}, we find
+%     \begin{align*}
+%         - 12 a &= 1,\\
+%         - 6 b &= 0,\\
+%         - 2 c &= 0.
+%     \end{align*}
+%     Hence, we have $a = -\frac{1}{12}, b = 0, c = 0$. Therefore, \eqref{eq:ex4:right bc} simplifies to
+%     \begin{align*}
+%         -\frac{1}{12} L^4 + dL = 0,
+%     \end{align*}
+%     from which we deduce that $d = \frac{1}{12} L^3$. Thus, the solution to the Poisson problem is
+%     \begin{align*}
+%         u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
+%     \end{align*}
+    To check that this solution is equal to the one found in the previous exercise, we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
+    \begin{align*}
+        \Tilde u(x) = \begin{cases}
+            u(x) & \text{if } 0 \leq x \leq L,\\
+            -u(-x) & \text{if } -L \leq x < 0.
+        \end{cases}
+    \end{align*}
+    By definition, $\Tilde u$ is an odd function, and therefore the Fourier series takes the form 
+    \begin{align*}
+        \Tilde u(x) = \sum_{n \geq 1} \Tilde u_n \sin\left(\frac{\pi n}{L} x\right),
+    \end{align*}
+    where $\Tilde u_{n}$ is the Fourier coefficient of the $n$-th cosine mode. 
+    We compute 
+    \begin{align*}
+        \Tilde u_n 
+        &= 
+        \frac{2}{L} \int_0^L u(x) \sin\left(\frac{\pi n}{L} x\right) dx
+        \\&
+        = 
+        \frac{2}{L} \int_0^L \left(-\frac{1}{12} x^4 + \frac{1}{12} L^3 x\right) \sin\left(\frac{\pi n}{L} x\right) dx
+        \\&
+        = 
+        -\frac{2 L^4 (2 + (-1)^n)((n \pi)^2 - 2)}{(n \pi)^5}
+        .
+    \end{align*}
+    Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, for $\Tilde b_n$ from the previous exercise.
 \end{solution}
 
 
@@ -344,54 +407,75 @@ Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, for
     \item We define the odd extension of $f(x)$ as
     \begin{align*}
         \Tilde{f}(x) = \begin{cases}
-            f(x) & \text{if } 0 \leq x \leq 1,\\
-            -f(-x) & \text{if } -1 < x 0.
+            f(x) & \text{if } 0 \leq x < 1,\\
+            -f(-x) & \text{if } -1 < x < 0.
         \end{cases}
     \end{align*}
     As in the previous exercises, we find that
     \begin{align*}
-        \Tilde{f}(x) = \sum_{n \geq 1} \Tilde{f}_n \sin(\pi n x), 
+        \Tilde{f}(x) = \sum_{n \geq 1} \Tilde{f}_n \sin(\pi n x),
     \end{align*}
-    with
+    using that $\Tilde f$ is odd. The Fourier coefficients of the sine modes are 
     \begin{align*}
         \Tilde{f}_n = 2 \int_0^1 f(x) \sin(\pi n x) dx = 2 \int_0^{\frac 1 2} x \sin(\pi n x) dx = \frac{- \pi n \cos (\frac{\pi n}{2}) + 2 \sin(\frac{\pi n}{2})}{(\pi n)^2}.
     \end{align*}
-    More precisely, we have
+    One can check that 
     \begin{align*}
         \Tilde{f}_n = \begin{cases}
             \frac{2}{(\pi n)^2} (-1)^n, & \text{if } n \text{ is odd},\\
             -\frac{1}{\pi n}(-1)^{\frac n 2}, & \text{if } n \text{ is even}.
         \end{cases}
     \end{align*}
-    \item Using the superposition principle, we set $u(x) = \sum_{n \geq 1} u_n(x)$, where $u_n(x)$ solves the Poisson problem
-    \begin{align*}
-        \begin{cases}
-            - \Delta u_n(x) = \Tilde{f}_n \sin(\pi n x), \quad 0 < x < 1,\\
-            u_n(0) = 0,\\
-            u_n(1) = 0.
-        \end{cases}
-    \end{align*}
-    We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin(\pi n x)$. Note that this ansatz satisfies the boundary conditions.
-    Inserting this ansatz into the Poisson equation, we find
-    \begin{align*}
-        - \pi^2 n^2 b_n \sin(\pi n x) = \Tilde{f}_n \sin(\pi n x).
-    \end{align*}
-    Hence, we must have $b_n = -\frac{\Tilde{f}_n}{\pi^2 n^2}$. Therefore, the solution to the $n$-th Poisson problem is
-    \begin{align*}
-        u_n(x) = b_n \sin(\pi n x),
-    \end{align*}
-    with
-    \begin{align*}
-        b_n = \begin{cases}
-            \frac{2}{(\pi n)^4} (-1)^n, & \text{if } n \text{ is odd},\\
-            -\frac{1}{(\pi n)^3}(-1)^{\frac n 2}, & \text{if } n \text{ is even}.
-        \end{cases}
-    \end{align*}
-    Therefore, the solution to the original Poisson problem is
-    \begin{align*}
-        u(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} b_n \sin(\pi n x).
-    \end{align*}
-    Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
+    \item 
+    
+    We define the solution to the Poisson problem in terms of its Fourier series:
+    \begin{align}
+        u(x) 
+        &
+        = 
+        - \sum_{n=1}^{\infty} \frac{\Tilde{f}_n}{ -\pi^{2} n^{2} } \sin\left( \pi n x \right)
+%         \\&
+        = 
+        \sum_{n=1}^{\infty} \frac{\Tilde{f}_n}{ \pi^{2} n^{2} } \sin\left( \pi n x \right)
+        .
+    \end{align}
+    Clearly, $u$ satisfies the homogeneous Dirichlet boundary conditions,
+    and differentiation provides the desired differential equation 
+    \begin{align}
+        - u''(x) = f(x).
+    \end{align}
+    This shows that $u$ solves the Poisson problem.
+    
+    
+%     Using the superposition principle, we set $u(x) = \sum_{n \geq 1} u_n(x)$, where $u_n(x)$ solves the Poisson problem
+%     \begin{align*}
+%         \begin{cases}
+%             - \Delta u_n(x) = \Tilde{f}_n \sin(\pi n x), \quad 0 < x < 1,\\
+%             u_n(0) = 0,\\
+%             u_n(1) = 0.
+%         \end{cases}
+%     \end{align*}
+%     We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin(\pi n x)$. Note that this ansatz satisfies the boundary conditions.
+%     Inserting this ansatz into the Poisson equation, we find
+%     \begin{align*}
+%         - \pi^2 n^2 b_n \sin(\pi n x) = \Tilde{f}_n \sin(\pi n x).
+%     \end{align*}
+%     Hence, we must have $b_n = -\frac{\Tilde{f}_n}{\pi^2 n^2}$. Therefore, the solution to the $n$-th Poisson problem is
+%     \begin{align*}
+%         u_n(x) = b_n \sin(\pi n x),
+%     \end{align*}
+%     with
+%     \begin{align*}
+%         b_n = \begin{cases}
+%             \frac{2}{(\pi n)^4} (-1)^n, & \text{if } n \text{ is odd},\\
+%             -\frac{1}{(\pi n)^3}(-1)^{\frac n 2}, & \text{if } n \text{ is even}.
+%         \end{cases}
+%     \end{align*}
+%     Therefore, the solution to the original Poisson problem is
+%     \begin{align*}
+%         u(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} b_n \sin(\pi n x).
+%     \end{align*}
+%     Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
 \end{itemize}
 \end{solution}
 
