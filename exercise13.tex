@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 % \usepackage{enumitem}
 \begin{document}
@@ -640,6 +640,68 @@ and recognize the last integral as the Fourier transform of \( f(t) \). In summa
 \end{gather*}
 \end{itemize}
 \end{solution}
+
+
+
+
+% \begin{exercise}
+%     Consider the functions
+%     \begin{align}
+%         I_{c}( \omega ) = \int_{0}^{1} \cos( \omega x ) \ dx,
+%         \quad 
+%         I_{s}( \omega ) = \int_{0}^{1} \sin( \omega x ) \ dx,
+%         .
+%     \end{align}
+%     Compute the derivatives of $I_{c}(\omega)$ and $I_{s}(\omega)$ in the variable $\omega$.
+%     Use that to find formulas for 
+%     \begin{align}
+%         \int_{0}^{1} x^{k} \cos( \omega x ) \ dx
+%         ,
+%         \quad 
+%         \int_{0}^{1} x^{k} \sin( \omega x ) \ dx
+%         .
+%     \end{align}
+%     \textit{Hint: You can exchange differentiation and integration.}
+% \end{exercise}
+% \begin{solution}
+%     We find that 
+%     \begin{align}
+%         \partial_\omega^{k} 
+%         = 
+%         \int_{0}^{1} \partial_\omega^{k} \cos( \omega x ) \ dx
+%         =
+%         \int_{0}^{1} \omega^{k} x^{k} \cos^{(k)}( \omega x ) \ dx
+%         =
+%         \omega^{k} \int_{0}^{1} x^{k} \cos^{(k)}( \omega x ) \ dx
+%         .
+%     \end{align}
+%     Similarly,
+%     \begin{align}
+%         \partial_\omega^{k} 
+%         = 
+%         \int_{0}^{1} \partial_\omega^{k} \sin( \omega x ) \ dx
+%         =
+%         \int_{0}^{1} \omega^{k} x^{k} \sin^{(k)}( \omega x ) \ dx
+%         =
+%         \omega^{k} \int_{0}^{1} x^{k} \sin^{(k)}( \omega x ) \ dx
+%         .
+%     \end{align}
+%     On the other hand,
+%     \begin{align}
+%         I_{c}( \omega ) = \int_{0}^{1} \cos( \omega x ) \ dx = \frac{\sin(\omega)}{\omega}
+%         ,
+%         \\ 
+%         I_{s}( \omega ) = \int_{0}^{1} \sin( \omega x ) \ dx = \frac{1-\cos(\omega)}{\omega}
+%         .
+%     \end{align}
+%     We explicitly compute the derivatives in $\omega$:
+%     \begin{align}
+%         \partial_\omega^{k} \frac{\sin(\omega)}{\omega}
+%         =
+%         \sum_{i=0}^{k} \tbinom{k}{i} ....
+%     \end{align}
+% \end{solution}
+
 
 
 
