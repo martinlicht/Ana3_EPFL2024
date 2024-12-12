@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 % \usepackage{enumitem}
 \begin{document}
@@ -43,7 +43,7 @@
     \end{align*}
     is the function 
     \begin{align*}
-        \hat f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+        \hat f(\alpha) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
     \end{align*}
     Find the Fourier transforms of 
     \begin{align*}
@@ -57,10 +57,10 @@
     \end{gather*}
     We then find 
     \begin{itemize}
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f'' \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'    \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f''   \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'''  \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'''' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
     \end{itemize}
     For the Fourier transform of $g(x)$ we use the following identity from the lecture: 
     $g(x)=e^{-i b x} f(a x)$ has the Fourier transform
@@ -149,7 +149,19 @@
     \end{align*}
     Lastly,
     \begin{align*} 
-        \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) & =-\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) \\ & =-\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid \\ & =-\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) \\ & =-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}
+        \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) 
+        & =
+        -\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) 
+        \\ & 
+        =
+        -\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid 
+        \\ &
+        =
+        -\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) 
+        \\ & 
+        =
+        -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}
+        .
     \end{align*}
     Altogether this gives
     \begin{align*} 
@@ -347,30 +359,28 @@
 \end{exercise}
 \begin{solution}
     As in the previous exercise, the solution must be of the form $u(x) = ax^4 + bx^3 + cx^2 + dx + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
-    We have already seen how to compute it:
-    \begin{align*}
-        u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
-    \end{align*}
-%     Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
-%     \begin{align}
-%         u(0) &= e = 0, \label{eq:ex4:left bc}\\
-%         u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 0, \label{eq:ex4:right bc}\\
-%         - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex4:pde}
-%     \end{align}
-%     By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex4:pde}, we find
-%     \begin{align*}
-%         - 12 a &= 1,\\
-%         - 6 b &= 0,\\
-%         - 2 c &= 0.
-%     \end{align*}
-%     Hence, we have $a = -\frac{1}{12}, b = 0, c = 0$. Therefore, \eqref{eq:ex4:right bc} simplifies to
-%     \begin{align*}
-%         -\frac{1}{12} L^4 + dL = 0,
-%     \end{align*}
-%     from which we deduce that $d = \frac{1}{12} L^3$. Thus, the solution to the Poisson problem is
+%     We have already seen how to compute it:
 %     \begin{align*}
 %         u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
 %     \end{align*}
+    Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
+    \begin{align}
+        u(0) &= e = 0, \label{eq:ex4:left bc}\\
+        u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 0, \label{eq:ex4:right bc}\\
+        - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex4:pde}
+    \end{align}
+    By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex4:pde}, we find
+    \begin{align*}
+        - 12 a = 1, \quad - 6 b = 0, \quad - 2 c = 0.
+    \end{align*}
+    Hence, we have $a = -\frac{1}{12}$, $b = 0$, and $c = 0$. Therefore, \eqref{eq:ex4:right bc} simplifies to
+    \begin{align*}
+        -\frac{1}{12} L^4 + dL = 0,
+    \end{align*}
+    from which we deduce that $d = \frac{1}{12} L^3$. Thus, the solution to the Poisson problem is
+    \begin{align*}
+        u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
+    \end{align*}
     To check that this solution is equal to the one found in the previous exercise, 
     we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
     \begin{align*}
@@ -397,7 +407,7 @@
         -\frac{2 L^4 (2 + (-1)^n)((n \pi)^2 - 2)}{(n \pi)^5}
         .
     \end{align*}
-    Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, for $\Tilde b_n$ from the previous exercise.
+    Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, where $\Tilde b_n$ is as in the previous exercise.
 \end{solution}
 
 
@@ -547,7 +557,62 @@
     \end{enumerate}
     In the last item, $\gamma \in \bbR$ is a constant. For which values of $\gamma$ can you always find a solution?
 \end{exercise}
-\begin{solution}     
+\begin{solution}   
+    \begin{itemize}
+     \item 
+     We have 
+     \begin{align*}
+        -u''(x) = - \sum_{n=1}^{\infty} b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{2} \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{2} = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \frac{2\pi n}{T} \right)^{-2} b_{n}^{f}.
+     \end{align*}
+     \item 
+     We have 
+     \begin{align*}
+        u''''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{4} \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{4} = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \frac{2\pi n}{T} \right)^{-4} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        -u''(x) + 25 u = \sum_{n=1}^{\infty} b_{n}^{u} \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right)^{-1} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        u''''(x) - u''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right)^{-1} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        u''''(x) - \gamma \cdot u''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right)^{-1} b_{n}^{f}.
+     \end{align*}
+    \end{itemize}
+    Remark: the second-order equation $-u'' = f$, the Poisson problem, appears in many applications. The fourth-order equation $u'''' = f$ appears in the mathematical theory of elasticity, for example, when modeling the bending of a one-dimensional stick under external force. 
 \end{solution}
 
 
