@@ -18,10 +18,185 @@
         \item an even periodic function with period $2$,
         \item an odd periodic function with period $2$.
     \end{itemize}
-    and state the formulas for these extended functions over the interval $[-1,1]$.
+    State the formulas for the even and odd $2$-periodic extensions over the interval $[-1,1]$.
 \end{exercise}
 
-\begin{solution}     
+\begin{solution}
+    We begin with these plots:
+    \begin{center}
+        \begin{tabular}{cc} % 2x2 matrix structure
+            % Top-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % Unrolled loop for f(x)=x
+                \draw[domain=-2:-1,smooth,variable=\x,blue] plot({\x},{\x+2});
+                \draw[domain=-1:0,smooth,variable=\x,blue] plot({\x},{\x+1});
+                \draw[domain=0:1,smooth,variable=\x,blue] plot({\x},{\x});
+                \draw[domain=1:2,smooth,variable=\x,blue] plot({\x},{\x-1});
+                \node[blue,above right] at (0.5,0.5) {$f(x)=x$};
+            \end{tikzpicture}
+            &
+            % Top-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % Unrolled loop for g(x)=x^2
+                \draw[domain=-2:-1,smooth,variable=\x,red] plot({\x},{(\x+2)*(\x+2)});
+                \draw[domain=-1:0,smooth,variable=\x,red] plot({\x},{(\x+1)*(\x+1)});
+                \draw[domain=0:1,smooth,variable=\x,red] plot({\x},{\x*\x});
+                \draw[domain=1:2,smooth,variable=\x,red] plot({\x},{(\x-1)*(\x-1)});
+                \node[red,above] at (0.5,0.5) {$g(x)=x^2$};
+            \end{tikzpicture}
+            \\
+            % Bottom-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % Unrolled loop for h(x)=e^x
+                \draw[domain=-2:-1,smooth,variable=\x,green] plot({\x},{exp(\x+2)});
+                \draw[domain=-1:0,smooth,variable=\x,green] plot({\x},{exp(\x+1)});
+                \draw[domain=0:1,smooth,variable=\x,green] plot({\x},{exp(\x)});
+                \draw[domain=1:2,smooth,variable=\x,green] plot({\x},{exp(\x-1)});
+                \node[green,above right] at (0.5,1.5) {$h(x)=e^x$};
+            \end{tikzpicture}
+            &
+            % Bottom-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % Unrolled loop for s(x)=sin(pi*x)
+                \draw[domain=-2:-1,smooth,variable=\x,orange] plot({\x},{sin(3.14159*(\x+2) r)});
+                \draw[domain=-1:0,smooth,variable=\x,orange] plot({\x},{sin(3.14159*(\x+1) r)});
+                \draw[domain=0:1,smooth,variable=\x,orange] plot({\x},{sin(3.14159*\x r)});
+                \draw[domain=1:2,smooth,variable=\x,orange] plot({\x},{sin(3.14159*(\x-1) r)});
+                \node[orange,above] at (0.5,0.5) {$s(x)=\sin(\pi x)$};
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+    
+    \begin{center}
+        \begin{tabular}{cc} % 2x2 matrix structure
+            % Top-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % f(x) = |x|, even extension of f(x) = x
+                \draw[domain=-1:1,smooth,variable=\x,blue] plot({\x},{abs(\x)});
+                \draw[domain=1:2,smooth,variable=\x,blue] plot({\x},{abs(\x-2)});
+                \draw[domain=-2:-1,smooth,variable=\x,blue] plot({\x},{abs(\x+2)});
+                \node[blue,above right] at (0.5,0.5) {$f_{\text{even}}(x)=|x|$};
+            \end{tikzpicture}
+            &
+            % Top-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % g(x) = x^2, even extension 
+                \draw[domain=-1:1,smooth,variable=\x,red] plot({\x},{\x*\x});
+                \draw[domain=1:2,smooth,variable=\x,red] plot({\x},{abs(\x-2)*abs(\x-2)});
+                \draw[domain=-2:-1,smooth,variable=\x,red] plot({\x},{abs(\x+2)*abs(\x+2)});
+                \node[red,above] at (0.5,0.5) {$g_{\text{even}}(x)=x^2$};
+            \end{tikzpicture}
+            \\
+            % Bottom-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % h(x) = e^|x|, even extension of h(x) = e^x
+                \draw[domain=-1:1,smooth,variable=\x,green] plot({\x},{exp(abs(\x))});
+                \draw[domain=1:2,smooth,variable=\x,green] plot({\x},{exp(abs(\x-2))});
+                \draw[domain=-2:-1,smooth,variable=\x,green] plot({\x},{exp(abs(\x+2))});
+                \node[green,above right] at (0.5,1.5) {$h_{\text{even}}(x)=e^{|x|}$};
+            \end{tikzpicture}
+            &
+            % Bottom-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % s(x) = sin(pi*|x|), even extension of s(x) = sin(pi*x)
+                \draw[domain=-1:1,smooth,variable=\x,orange] plot({\x},{sin(3.14159*abs(\x) r)});
+                \draw[domain=1:2,smooth,variable=\x,orange] plot({\x},{sin(3.14159*abs(\x-2) r)});
+                \draw[domain=-2:-1,smooth,variable=\x,orange] plot({\x},{sin(3.14159*abs(\x+2) r)});
+                \node[orange,above] at (0.5,0.5) {$s_{\text{even}}(x)=\sin(\pi|x|)$};
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+
+    \begin{center}
+        \begin{tabular}{cc} % 2x2 matrix structure
+            % Top-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % f(x) = x, odd extension of f(x) = x
+                \draw[domain=-1:1,smooth,variable=\x,blue] plot({\x},{\x});
+                \draw[domain=1:2,smooth,variable=\x,blue] plot({\x},{\x-2});
+                \draw[domain=-2:-1,smooth,variable=\x,blue] plot({\x},{\x+2});
+                \node[blue,above right] at (0.5,0.5) {$f_{\text{odd}}(x)=x$};
+            \end{tikzpicture}
+            &
+            % Top-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % g(x) = x^2, odd extension
+                \draw[domain=-2:-1,smooth,variable=\x,red] plot({\x}, {(\x+2)*(\x+2)});
+                \draw[domain=-1: 0,smooth,variable=\x,red] plot({\x},-{\x*\x});
+                \draw[domain= 0: 1,smooth,variable=\x,red] plot({\x}, {\x*\x});
+                \draw[domain= 1: 2,smooth,variable=\x,red] plot({\x},-{(\x-2)*(\x-2)});
+                \node[red,above] at (0.5,0.5) {$g_{\text{odd}}(x)$};
+            \end{tikzpicture}
+            \\
+            % Bottom-left plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % h(x) = e^x, odd extension
+                \draw[domain=-2:-1,smooth,variable=\x,green] plot({\x}, {exp( \x+2)});
+                \draw[domain=-1: 0,smooth,variable=\x,green] plot({\x},-{exp(-\x  )});
+                \draw[domain= 0: 1,smooth,variable=\x,green] plot({\x}, {exp( \x  )});
+                \draw[domain= 1: 2,smooth,variable=\x,green] plot({\x},-{exp(-\x+2)});
+                \node[green,above right] at (0.5,1.5) {$h_{\text{odd}}(x)=e^x$};
+            \end{tikzpicture}
+            &
+            % Bottom-right plot
+            \begin{tikzpicture}[scale=0.6]
+                \draw[->] (-2,0)--(2,0) node[right]{$x$};
+                \draw[->] (0,-3)--(0,3) node[above]{$y$};
+                % s(x) = sin(pi*x), odd extension
+                \draw[domain=-2:2,smooth,variable=\x,orange] plot({\x},{sin(3.14159*\x r)});
+                \node[orange,above] at (0.5,0.5) {$s_{\text{odd}}(x)=\sin(\pi x)$};
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+    We state the formulas for the even and odd extensions of period $2$.
+    Over \([-1,1]\), define the even extensions:
+    \begin{align*}
+        f_{\text{even}}(x) &= |x|, 
+        \\
+        g_{\text{even}}(x) &= x^2,
+        \\
+        h_{\text{even}}(x) &= e^{|x|}, 
+        \\
+        s_{\text{even}}(x) &= |\sin(\pi x)|,
+    \end{align*}
+    and we define the odd extensions:
+    \begin{align*}
+        f_{\text{odd}}(x) &= x, 
+        \\
+        g_{\text{odd}}(x) &= \begin{cases}
+        x^2 & x \in [0,1) \\
+        -(-x)^2 = -x^2 & x \in [-1,0)
+        \end{cases}
+        \\
+        h_{\text{odd}}(x) &= \begin{cases}
+        e^x & x \in [0,1) \\
+        -e^{-x} & x \in [-1,0)
+        \end{cases}, 
+        \\
+        s_{\text{odd}}(x) &= \sin(\pi x).
+    \end{align*}
 \end{solution}
 
 
@@ -34,7 +209,21 @@
     Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
     Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    We first sketch the odd extensions of that function:
+    \begin{center}
+    \begin{tikzpicture}[scale=0.6]
+        \draw[->] (-2,0)--(2,0) node[right]{$x$};
+        \draw[->] (0,-3)--(0,3) node[above]{$y$};
+        % g(x) = x^2, odd extension
+        \draw[domain=-2:-1,smooth,variable=\x,red] plot({\x}, {(\x+2)*(\x+2)*(\x+2)});
+        \draw[domain=-1: 0,smooth,variable=\x,red] plot({\x}, {\x*\x*\x});
+        \draw[domain= 0: 1,smooth,variable=\x,red] plot({\x}, {\x*\x*\x});
+        \draw[domain= 1: 2,smooth,variable=\x,red] plot({\x},-{(\x-2)*(\x-2)*(\x-2)});
+        \node[red,above] at (0.5,0.5) {$g_{\text{odd}}(x)$};
+    \end{tikzpicture}
+    \end{center}
+    
 \end{solution}
 
 
@@ -62,11 +251,11 @@
 
 \begin{exercise}
     Suppose that $f(x) = x^2$ and that
-    \[
+    \begin{align*}
         g(x) = \left\{\begin{array}{cc} \frac 1 2 & \text{ if $-1 < x < 1$ }, \\ 0 & \text{ otherwise. } \end{array}\right.
         \qquad 
         h(x) = \left\{\begin{array}{cc} e^{-x} & \text{ if $x > 0$ }, \\ 0 & \text{ otherwise. } \end{array}\right.
-    \]
+    \end{align*}
     Compute the convolutions $u(x) = (f \star g)(x)$ and $v(x) = (f \star h)(x)$ .
 \end{exercise}
 
@@ -76,30 +265,30 @@
 
 \begin{exercise}
     We have discussed solutions to the differential equation 
-    \[
+    \begin{align*}
         - \Delta u(x) + k^2 u(x) = e^{-|x|}, \quad x \in \mathbb R.
-    \]
+    \end{align*}
     \begin{itemize}
         \item 
         Verify that, in the case $k=1$, we have a solution 
-        \[
+        \begin{align*}
             u(x) = \frac 1 2 (1+|x|) e^{-|x|} 
-        \]
+        \end{align*}
         Verify that every function of the form 
-        \[
+        \begin{align*}
             v(x) = \frac 1 2 (1+|x|) e^{-|x|} + c_1 e^{-x} + c_2 e^{x} 
-        \]
+        \end{align*}
         is a solution. For which values of $c_1$ and $c_2$ does the function decay towards zero as $x$ goes to $\pm \infty$?
         %
         \item 
         Verify that, in the case $k \neq 1$, we have a solution 
-        \[
+        \begin{align*}
             u(x) = - \frac{ e^{-k|x|} }{ 2k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 }
-        \]
+        \end{align*}
         Verify that every function of the form 
-        \[
+        \begin{align*}
             v(x) = - \frac{ e^{-k|x|} }{ 2k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 } + c_1 e^{-kx} + c_2 e^{kx} 
-        \]        
+        \end{align*}        
         is a solution.
     \end{itemize}
 \end{exercise}
