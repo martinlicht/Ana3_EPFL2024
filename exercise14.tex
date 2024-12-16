@@ -5,6 +5,45 @@
 \exsheet{14}{19}{December} % parameters are the number of the session and the day
 
 \begin{exercise}
+    Given the following functions over an interval $[0,1)$, 
+    \begin{enumerate}[label=(\alph*)]
+        \item $f(x) = x$
+        \item $g(x) = x^2$
+        \item $h(x) = e^x$
+        \item $s(x) = sin(\pi x)$
+    \end{enumerate}
+    sketch their extension to 
+    \begin{itemize}
+        \item a periodic function with period $1$,
+        \item an even periodic function with period $2$,
+        \item an odd periodic function with period $2$.
+    \end{itemize}
+    and state the formulas for these extended functions over the interval $[-1,1]$.
+\end{exercise}
+
+\begin{solution}     
+\end{solution}
+
+
+
+\begin{exercise}
+    Consider the function 
+    \begin{align*}
+        f : [0,1] \to \bbR, \quad x \mapsto x^{3}.
+    \end{align*}
+    Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
+    Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
+
+
+
+
+
+\begin{exercise}
     Suppose that
     \begin{align*}
         f(x) = \left\{\begin{array}{cc} x+1 & \text{ if $-1 < x < 0$ }, \\  1-x & \text{ if $ 0 < x < 1$ }, \\  0 & \text{ otherwise. } \end{array}\right.
@@ -50,7 +89,7 @@
         \[
             v(x) = \frac 1 2 (1+|x|) e^{-|x|} + c_1 e^{-x} + c_2 e^{x} 
         \]
-        is a solution 
+        is a solution. For which values of $c_1$ and $c_2$ does the function decay towards zero as $x$ goes to $\pm \infty$?
         %
         \item 
         Verify that, in the case $k \neq 1$, we have a solution 
@@ -66,6 +105,84 @@
 \end{exercise}
 \begin{solution}     
 \end{solution}
+
+
+
+
+
+
+
+\begin{exercise}
+    We want to find a solution to the boundary value problem 
+    \begin{gather*}
+        - \Delta u(x) + k^2 u(x) = x, \quad 0 < x < L,
+        \\
+        u(0) = 0, \quad u(L) = 0.
+    \end{gather*}
+    \begin{itemize}
+        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+    \end{itemize}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
+
+
+\begin{exercise}[Fun with Neumann boundary conditions]
+    Consider the Poisson problem with \textit{Neumann boundary conditions} over the interval $[a,b] = [0,1]$: 
+    \begin{gather*}
+        - u''(x) + k^2 u(x) = x - \frac 1 2, \quad a < x < b,
+        \\
+        u'(a) = 0, \quad u'(b) = 0,
+    \end{gather*}
+    for some $k \geq 0$.
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Extend $f(x) = x - \frac 1 2$ to an \textit{even} function over the real line with period $2$.
+        \item 
+        Compute the Fourier coefficients of that even extension of $f$.
+        \item 
+        Find the Fourier series of a function that satisfies the above differential equation.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+\begin{exercise}[Fun with periodic boundary conditions]
+    Consider the Poisson problem with \textit{periodic boundary conditions} over the interval $[a,b] = [0,1]$: 
+    \begin{gather*}
+        - u''(x) + k^2 u(x) = x - \frac 1 2, \quad a < x < b,
+        \\
+        u(a) = u(b),
+    \end{gather*}
+    for some $k \geq 0$.
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Extend $f(x) = x - \frac 1 2$ to a $1$-periodic function over the real line.
+        \item 
+        Compute the Fourier coefficients of that extension of $f$.
+        \item 
+        Find the Fourier series of a function that satisfies the above differential equation.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}     
+\end{solution}
+
+
+
+% \begin{exercise}
+% \end{exercise}
+% \begin{solution}     
+% \end{solution}
+% 
+% \begin{exercise}
+% \end{exercise}
+% \begin{solution}     
+% \end{solution}
+
+\end{document}
 
 \begin{exercise}
     Find the Laplace transform $F(z)$ of 
@@ -85,77 +202,8 @@
     \end{align*}
 \end{solution}
 
-
-
-
-
-
-\begin{exercise}
-    We want to find a solution to the boundary value problem 
-    \begin{gather*}
-        - \Delta u(x) + u(x) = x, \quad 0 < x < L,
-        \\
-        u(0) = 0, \quad u(L) = 0.
-    \end{gather*}
-    \begin{itemize}
-        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-\end{solution}
-
-\begin{exercise}
-    Consider the function 
-    \begin{align*}
-        f : [0,1] \to \bbR, \quad x \mapsto x^{3}.
-    \end{align*}
-    Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
-    Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
-\end{exercise}
-\begin{solution}     
-\end{solution}
-
-\begin{exercise}
-    Given the following functions over an interval $[0,1)$, 
-    \begin{enumerate}[label=(\alph*)]
-        \item $f(x) = x$
-        \item $g(x) = x^2$
-        \item $h(x) = e^x$
-        \item $s(x) = sin(\pi x)$
-    \end{enumerate}
-    sketch their extension to 
-    \begin{itemize}
-        \item a periodic function with period $1$,
-        \item an even periodic function with period $2$,
-        \item an odd periodic function with period $2$.
-    \end{itemize}
-    and state the formulas for these functions over $[-1,1]$.
-\end{exercise}
-
-\begin{solution}     
-\end{solution}
-
-\begin{exercise}[Fun with Neumann boundary conditions 1]
-    Consider the Poisson problem with Neumann boundary conditions over the interval $[a,b]$ with constant right-hand side: 
-    \begin{gather*}
-        - u''(x) = c, \quad a < x < b,
-        \\
-        u'(a) = h_a, \quad u'(b) = h_b.
-    \end{gather*}
-    \begin{enumerate}[label=(\alph*)]
-        \item
-        What is the compatibility condition?
-        \item 
-        Since $u$ has a constant second derivative, it must be a quadratic function $u(x) = c_1 x^2 + c_2 x + c_3$. 
-        Assuming the compatibility condition, find the solution(s).
-    \end{enumerate}
-\end{exercise}
-\begin{solution}     
-\end{solution}
-
 \begin{exercise}[Fun with Neumann boundary conditions 2]
-    Suppose we have got a Poisson problem with Neumann boundary conditions over the interval $[a,b]$. 
+    Suppose we have got a Poisson problem with Neumann boundary conditions over the interval $[a,b] = [0,1]$. 
     \begin{gather*}
         - u''(x) = f(x), \quad a < x < b,
         \\
@@ -176,14 +224,5 @@
 \begin{solution}     
 \end{solution}
 
-% \begin{exercise}
-% \end{exercise}
-% \begin{solution}     
-% \end{solution}
-% 
-% \begin{exercise}
-% \end{exercise}
-% \begin{solution}     
-% \end{solution}
 
-\end{document}
+
