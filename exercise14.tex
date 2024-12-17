@@ -191,14 +191,31 @@
     \begin{tikzpicture}[scale=0.6]
         \draw[->] (-2,0)--(2,0) node[right]{$x$};
         \draw[->] (0,-3)--(0,3) node[above]{$y$};
-        % g(x) = x^2, odd extension
+        % g(x) = x^3, odd extension
         \draw[domain=-2:-1,smooth,variable=\x,red] plot({\x}, {(\x+2)*(\x+2)*(\x+2)});
         \draw[domain=-1: 0,smooth,variable=\x,red] plot({\x}, {\x*\x*\x});
         \draw[domain= 0: 1,smooth,variable=\x,red] plot({\x}, {\x*\x*\x});
         \draw[domain= 1: 2,smooth,variable=\x,red] plot({\x},-{(\x-2)*(\x-2)*(\x-2)});
+
         \node[red,above] at (0.5,0.5) {$g_{\text{odd}}(x)$};
     \end{tikzpicture}
     \end{center}
+    The odd extension of period 2 is given by
+    \begin{align*}
+        f_{\text{odd}}(x) = x^3, \quad x \in [-1,1].
+    \end{align*}
+    For the Fourier coefficients in standard form, we note that $a_n = 0, n \in \mathbb{N}$ since the function is odd by construction. For the sine-terms, we have
+    \begin{align*}
+        b_n = \int_{-1}^1 f_{\text{odd}}(x) \sin(\pi n x) dx = 2 \int_{0}^1 x^3 \sin(\pi n x) dx = \frac{2(-1)^n (\pi^2 n^2 - 6)}{\pi^3 n^3}.
+    \end{align*}
+    For the complex Fourier coefficients, we find for $n \in \mathbb{N}$:
+    \begin{align*}
+        c_0 &= a_0 = 0,
+        \\
+        c_n &= \frac 1 2 (a_n - i b_n) = \frac{i (-1)^{n+1} (\pi^2 n^2 - 6)}{\pi^3 n^3},
+        \\
+        c_{-n} &= \frac 1 2 (a_n + i b_n) = \frac{i(-1)^n(\pi^2 n^2 - 6)}{\pi^3 n^3}.
+    \end{align*}
     
 \end{solution}
 
@@ -220,7 +237,25 @@
     \end{align*}
     Compute the convolutions $u(x) = (f \star g)(x)$ and $v(x) = (g \star g)(x)$ and $w(x) = (g \star h)(x)$.
 \end{exercise}
-\begin{solution} 
+\begin{solution}
+Note that
+\begin{align*}
+    \hat{f}(\omega) &= \frac{1}{\sqrt{2 \pi}} \left(\frac{\sin(\omega / 2)}{\omega / 2}\right),
+    \\
+    \hat{g}(\omega) &= \frac{1}{\sqrt{2 \pi}} \frac{\sin(\omega)}{\omega}.
+\end{align*}
+Using the Convolution Theorem, we find
+\begin{align*}
+    \hat{v}(\omega) = \sqrt{2 \pi}(\hat g (\omega))^2 = \hat f(2 \omega)
+\end{align*}
+Using the Modulation Theorem, we find
+\begin{align*}
+    v(x) &= \frac 1 2 \mathcal{F}^{-1}(2 \hat f(2 \omega)) = \frac 1 2 f(\frac x 2)\\
+         &= \frac 1 4 \begin{cases}
+            2 + x,& -2 \leq x < 0,\\
+            2 - x,& 0 \leq x < 2.
+        \end{cases}
+\end{align*}
 \end{solution}
 
 
@@ -235,7 +270,11 @@
     Compute the convolutions $u(x) = (f \star g)(x)$ and $v(x) = (f \star h)(x)$ .
 \end{exercise}
 
-\begin{solution}     
+\begin{solution}
+    We find by direct computation:
+    \begin{align*}
+        (f \star g)(x) = (g \star f)(x) = \frac 1 2 \int_{-1}^1 (x - y)^2 dy = x^2 + \frac 1 3.
+    \end{align*}   
 \end{solution}
 
 
@@ -259,16 +298,47 @@
         \item 
         Verify that, in the case $k \neq 1$, we have a solution 
         \begin{align*}
-            u(x) = - \frac{ e^{-k|x|} }{ 2k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 }
+            u(x) = - \frac{ e^{-k|x|} }{ k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 }
         \end{align*}
         Verify that every function of the form 
         \begin{align*}
-            v(x) = - \frac{ e^{-k|x|} }{ 2k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 } + c_1 e^{-kx} + c_2 e^{kx} 
+            v(x) = - \frac{ e^{-k|x|} }{ k (k^2-1) } + \frac{ e^{-|x|} }{ k^2-1 } + c_1 e^{-kx} + c_2 e^{kx} 
         \end{align*}        
         is a solution.
     \end{itemize}
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    We first note that the Fourier transform of $e^{-|x|}$ is given by
+    \begin{align*}
+        \mathcal F(e^{-|x|})(\omega) = \sqrt{\frac{2}{\pi}} \frac{1}{1+\omega^2}.
+    \end{align*}
+    Therefore, if $u(x)$ is a solution, then its Fourier transform $\hat u(\omega)$ satisfies
+    \begin{align*}
+        (\omega^2 + k^2) \hat u(\omega) = \sqrt{\frac{2}{\pi}} \frac{1}{1+\omega^2}.
+    \end{align*}
+    Therefore, if $k = 1$, then
+    \begin{align*}
+        \hat u(\omega) &= \sqrt{\frac{2}{\pi}} \frac{1}{(1+\omega^2)^2}\\
+                    &= \mathcal{F}^{-1}(\frac{1}{2}(1 + |x|) e^{-|x|}).
+    \end{align*}
+    The last step can be seen from the results in the lecture.
+    Thus, it is clear that $u(x) = \frac 1 2 (1+|x|) e^{-|x|}$ is a solution. Furthermore, it is clear that
+    $c_1 \exp(-x)$ and $c_2 \exp(x)$ are solutions to the homogeneous problem, i.e. the one with a vanishing right-hand side.
+    However, for $c_1$ and $c_2$ to ensure that the solution decays towards zero as $x$ goes to $\pm \infty$, we need to have $c_1 = c_2 = 0$.
+
+    For the case $k \neq 1$, note that
+    \begin{align}
+        \mathcal{F}(e^{-k|x|})(\omega) = \sqrt{\frac{2}{\pi}} \frac{k}{k^2 + \omega^2}.
+    \end{align}
+    Therefore, the Fourier transform of the solution $u(x)$ satisfies
+    \begin{align*}
+        (\omega^2 + k^2) \hat u(\omega) &= \sqrt{\frac{2}{\pi}} (k^2 + \omega^2) \left[ \frac{-1}{(k^2 + \omega^2)(k^2 - 1)} + \frac{1}{(\omega^2 + 1)(k^2 - 1)} \right]
+        \\
+        &= \sqrt{\frac{2}{\pi}} (k^2 + \omega^2) \left[ \frac{k^2 -1}{(\omega^2 + 1)(k^2 - 1)(k^2 + \omega^2)} \right]
+        \\
+        &= \sqrt{\frac{2}{\pi}} \frac{1}{(1 + \omega^2)},
+    \end{align*}
+    as desired. The argument for the general solution is the same as for the case $k=1$.
 \end{solution}
 
 
@@ -289,7 +359,33 @@
         \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
     \end{itemize}
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    \begin{itemize}
+        \item The odd extension of period 2 is simply given by
+        \begin{align*}
+            f_{\mathrm{odd}}(x) = x, \quad x \in [-L,L].
+        \end{align*}
+        \item 
+        Since $f_{\mathrm{odd}}$ is odd by construction, we have
+        \begin{align*}
+            f_{\mathrm{odd}}(x) = \sum_{n=1}^{\infty} f_n \sin(\frac{n \pi x}{L}),
+        \end{align*}
+        with
+        \begin{align*}
+            f_n = \frac{2}{L} \int_{0}^{L} x \sin(\frac{n \pi x}{L}) dx = -\frac{L}{\pi n}.
+        \end{align*}
+        \item For the solution, we make a sine ansatz $u(x) = \sum_{n=1}^{\infty} u_n \sin(\frac{n \pi x}{L})$ since the right-hand side does not contain any cosine terms.
+        Then, the PDE can be written in terms of the Fourier coefficients as
+        \begin{align*}
+            \left [k^2 + \left(\frac{2 \pi n}{L} \right)^2 \right]u_n = -\frac{L}{\pi n}, & & \forall n \in \mathbb{N}.
+        \end{align*}
+        Therefore, the solution is given by
+        \begin{align*}
+            u_n = -\frac{L}{\pi n \left[k^2 + \left(\frac{2 \pi}{L}n \right)^2\right]}.
+        \end{align*}
+        Note that the boundary conditions are satisfied.
+    \end{itemize}
+
 \end{solution}
 
 
@@ -312,7 +408,34 @@
         Find the Fourier series of a function that satisfies the above differential equation.
     \end{enumerate}
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    \begin{itemize}
+        \item The even extension of period 2 is given by $f_{\text{even}}(x) = |x| - \frac 1 2, x \in [-1, 1]$.
+        \item Since $f_{\text{even}}$ is even by construction, we only have cosine terms, i.e.
+        \begin{align*}
+            f_{\text{even}}(x) = \frac{f_0}{2} + \sum_{n=1}^{\infty} f_n \cos(\pi n x),
+        \end{align*}
+        with
+        \begin{align*}
+            f_0 = \frac{1}{2} \int_{-1}^{1} (|x| - \frac 1 2) dx = \int_{-1}^1 (x - \frac 1 2) dx = 0,
+        \end{align*}
+        and
+        \begin{align*}
+            f_n = 2 \int_{0}^{1} (x- \frac 1 2) \cos(\pi n x) dx = \frac{2}{\pi^2 n^2}\left( (-1)^n - 1 \right).
+        \end{align*}
+        \item For the solution, we make a cosine ansatz $u(x) = \sum_{n=1}^{\infty} u_n \cos(\pi n x)$ because the right-hand side does not contain any sine terms.
+        Then, the PDE can be written in terms of the Fourier coefficients as
+        \begin{align*}
+            u_0 &= 0,
+            \\
+            \left [k^2 + \pi^2 n^2 \right]u_n &= \frac{2}{\pi^2 n^2}\left( (-1)^n - 1 \right), & & \forall n \in \mathbb{N}.
+        \end{align*}
+        Therefore, the solution is given by 
+        \begin{align*}
+            u(x) = \sum_{n=1}^{\infty} \frac{2}{\pi^2 n^2 \left[k^2 + \pi^2 n^2 \right]}\left( (-1)^n - 1 \right) \cos(\pi n x).
+        \end{align*}
+        Note that the boundary conditions are satisfied.
+    \end{itemize}
 \end{solution}
 
 \begin{exercise}[Fun with periodic boundary conditions]
@@ -332,7 +455,28 @@
         Find the Fourier series of a function that satisfies the above differential equation.
     \end{enumerate}
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    \begin{enumerate}
+        \item The $1$-periodic extension is simply given by $f_{\text{per}}(x) = x - \frac 1 2, x \in [0, 1]$ with periodic continuation.
+        \item For the Fourier coefficients, we note that $f_{\text{per}}$ is odd around $x = \frac 1 2$, so we only have sine terms, i.e.
+        \begin{align*}
+            f_{\text{per}}(x) = \sum_{n=1}^{\infty} f_n \sin(2 \pi n x),
+        \end{align*}
+        with
+        \begin{align*}
+            f_n = 2 \int_{0}^{1} (x- \frac 1 2) \sin(2 \pi n x) dx = - \frac{1}{2\pi n}.
+        \end{align*}
+        \item We make a sine ansatz for the solution: $u(x) = \sum_{n=1}^{\infty} u_n \sin(2 \pi n x)$.
+        Then, the PDE can be written in terms of the Fourier coefficients as
+        \begin{align*}
+            \left [k^2 + (2 \pi n)^2 \right]u_n = -\frac{1}{2\pi n}, & & \forall n \in \mathbb{N}.
+        \end{align*}
+        Therefore, the solution is given by
+        \begin{align*}
+            u(x) = \sum_{n=1}^{\infty} \frac{-1}{2\pi n \left[k^2 + (2 \pi n)^2 \right]} \sin(2 \pi n x).
+        \end{align*}
+        Note that the periodic boundary conditions are satisfied.
+    \end{enumerate}
 \end{solution}
 
 
