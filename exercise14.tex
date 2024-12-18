@@ -275,10 +275,24 @@
     We can compute these convolutions via direct computations or by results from Fourier analysis.
     \begin{itemize}
         \item 
-        This first one is the most difficult one.
-        We can write 
+        This first one is the most difficult one. First, we note that
+        \begin{align*}
+            g(x) = \frac 1 2 1_{[-1,1]}(x), & & 1_{[-1,1]}(x) = \begin{cases}
+                1 & x \in [-1,1],\\
+                0 & \text{otherwise},
+            \end{cases}
+        \end{align*}
+        and
+        \begin{align*}
+            f(x) = (x+1) 1_{[-1,0]}(x) + (1-x) 1_{(0,1]}(x).
+        \end{align*}
+        Furthermore, we have for any $x, y \in \mathbb R$ that
+        \begin{align*}
+            1_{[-1, 1]}(x - y) &= 1_{[x - 1, x + 1]}(y).
+        \end{align*}
+        Hence, we can write
         \begin{align}
-            ( f \star g )(x) = \int_{x-1}^{x+1} f(x).
+            ( f \star g )(x) &= \frac 1 2 \int_{-\infty}^\infty f(y) 1_{[x - 1, x + 1]}(y) dy.
         \end{align}
         We think of this as a subinterval $[x-1,x+1]$ that moves over the real line, 
         and we integrate $f$ over this subinterval. 
@@ -290,19 +304,19 @@
             and so $( f \star g )(x) = 0$.
             \item If $-2 < x < -1$, then we only need to integrate $f$ over $[-1,x+1] \subseteq [-1,0]$. We find 
             \begin{align}
-                ...
+                (f \star g)(x) = \frac 1 2 \int_{-1}^{x + 1} (y + 1) dy = \frac 1 2 (x + 2)^2.
             \end{align}
             \item If $-1 < x < 0$, then we integrate $f$ over $[-1,0] \cup [0,x+1] \subseteq [-1,1]$. We find 
             \begin{align}
-                ...
+                (f \star g)(x) = \int_{-1}^{0} (y + 1) dy + \int_{0}^{x + 1} (1 - y) dy =  1 - \frac 1 2 x^2.
             \end{align}
             \item If $0 < x < 1$, then we integrate $f$ over $[x-1,0] \cup [0,1] \subseteq [-1,1]$. We find 
             \begin{align}
-                ...
+                (f \star g)(x) = \int_{x - 1}^{0} (y + 1) dy + \int_{0}^{1} (1 - y) dy = 1 - \frac 1 2 x^2.
             \end{align}
             \item If $1 < x < 2$, then we integrate $f$ over $[x-1,1] \subseteq [0,1]$. We find 
             \begin{align}
-                ...
+                (f \star g)(x) = \int_{x - 1}^{1} (1 - y) dy = \frac 1 2 ( x - 2)^2
             \end{align}
             \item Lastly, if $2 < x$, the integral is just over the region where $f$ equals zero, 
             and so $( f \star g )(x) = 0$.
