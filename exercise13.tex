@@ -8,49 +8,30 @@
 
 
 
-\begin{exercise}
-    Compute the Fourier transform of the function
-    \begin{gather*}
-        f(x) = \left\{\begin{array}{ll}
-            x   & \text{ if $0 \leq x < 1$ }
-            \\
-            0   & \text{ otherwise }
-          \end{array}\right.
-    \end{gather*}
-    You can either directly use the complex exponential, or you can express it in terms of the sine and cosine function. 
-
-    (Interpretation: the function $f(x)$ describes a localized signal: it is zero at $x=0$, then it rises linearly up to $1$, and then it jumps back to zero and remains zero from there on. The signal is not periodic.)
-\end{exercise}
-\begin{solution}     
-    We write down the solution in two different ways, either using the complex exponential directly, or writing it as a sum of sine and cosine.
-    \begin{align*}
-        \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
-        &=\frac{1}{\sqrt{2 \pi}} \int_{0}^{1} x e^{-i \alpha x} d x\\
-        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \int_{0}^{1} \frac{1}{i\alpha} e^{-i \alpha x} d x\\
-        &=\frac{1}{\sqrt{2 \pi}} \left[ \frac{x}{-i\alpha} e^{-i \alpha x} \right]_0^1 + \frac{1}{\sqrt{2 \pi}} \left[ \frac{1}{\alpha^2} e^{-
-        i \alpha x} \right]_{0}^1\\
-        &=\frac{1}{\sqrt{2 \pi}} \frac{1}{-i\alpha} e^{-i \alpha } + \frac{1}{\sqrt{2 \pi}} \left( \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\
-        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} e^{-i \alpha } + \frac{1}{\alpha^2} e^{-i \alpha} -\frac{1}{\alpha^2}\right)\\ 
-        &=\frac{1}{\sqrt{2 \pi}}\left( \frac{i}{\alpha} \cos\alpha  + \frac{1}{\alpha} \sin\alpha + \frac{1}{\alpha^2} \cos\alpha - \frac{i}{\alpha^2} \sin\alpha -\frac{1}{\alpha^2}\right)\\ 
-    \end{align*}
-    Next we do it in terms of sine and cosine functions.
-    $$
-    \begin{aligned}
-    \mathfrak{F}(f)(\alpha)&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x\\
-    &=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x)(\cos \alpha x - i\sin\alpha x) d x\\
-    & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \cos\alpha x d x - i\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) \sin\alpha x d x
-    \end{aligned}
-    $$
-    We evaluate each integral seperately.
-    $$\begin{aligned} \int_0^1 x \cos (\alpha x) d x & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1-\int_0^1 \frac{1}{\alpha} \sin \alpha x d x \\ & =\left[\frac{x}{\alpha} \sin \alpha x\right]_0^1+\left[\frac{1}{\alpha^2} \cos \alpha x\right]_0^1 \\ & =\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2}\end{aligned}$$
-    $$\begin{aligned} \int_0^1 x \sin (\alpha x) d x & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\int_0^1 \frac{1}{\alpha} \cos (\alpha(x) d x \\ & =\left[-\frac{x}{\alpha} \cos (\alpha x)\right]_0^1+\left[\frac{1}{\alpha^2} \sin \alpha x\right]_0^1 \\ & =-\frac{1}{\alpha} \cos \alpha+\frac{1}{\alpha^2} \sin \alpha\end{aligned}$$
-    All together we have:
-    $$
-        \mathfrak{F}(f)(\alpha)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(x) e^{-i \alpha x} d x = \frac{1}{\sqrt{2\pi}}\left(\frac{1}{\alpha} \sin \alpha+\frac{1}{\alpha^2} \cos \alpha-\frac{1}{\alpha^2} +i\frac{1}{\alpha} \cos \alpha-i\frac{1}{\alpha^2} \sin \alpha\right)
-    $$
-\end{solution}
 
 
+% 
+% 
+% \begin{exercise}
+%     Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
+%     where $z$ is one of the following complex numbers:
+%     \begin{gather*}
+%         z_1 = \frac 1 2,
+%         \quad 
+%         z_2 = - \frac 1 2,
+%         \quad 
+%         z_3 = 0.2i,
+%         \quad 
+%         z_4 = -0.2i,
+%         \quad 
+%         z_3 = - \frac 1 2 + 0.2i
+%         .
+%     \end{gather*}
+%     \textit{You may use a calculater.}
+% \end{exercise}
+% 
+% \begin{solution}     
+% \end{solution}
 
 
 
@@ -62,7 +43,7 @@
     \end{align*}
     is the function 
     \begin{align*}
-        \hat f(x) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
+        \hat f(\alpha) = \frac{1}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}.
     \end{align*}
     Find the Fourier transforms of 
     \begin{align*}
@@ -71,15 +52,15 @@
 \end{exercise}
 \begin{solution}  
     To evaluate the Fourier transform of the derivative of a function we will use the following identity from the lecture:
-    \[
+    \begin{gather*}
         \mathfrak{F}\left(f^{(n)}\right)(\alpha)=(i \alpha)^n \mathfrak{F}(f)(\alpha)
-    \]
+    \end{gather*}
     We then find 
     \begin{itemize}
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f'' \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
-    \item $\mathfrak{F}\left(f' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'    \right)(\alpha) = i \alpha \mathfrak{F}(f)(\alpha) = \frac{i \alpha}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f''   \right)(\alpha) = -\alpha^2 \mathfrak{F}(f)(\alpha) = -\frac{ \alpha^2}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'''  \right)(\alpha) = -i \alpha^3 \mathfrak{F}(f)(\alpha) = \frac{-i \alpha^3}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
+    \item $\mathfrak{F}\left(f'''' \right)(\alpha) = \alpha^4 \mathfrak{F}(f)(\alpha) = \frac{ \alpha^4}{\sqrt{10}} e^{-\frac{\alpha^2}{20}}$
     \end{itemize}
     For the Fourier transform of $g(x)$ we use the following identity from the lecture: 
     $g(x)=e^{-i b x} f(a x)$ has the Fourier transform
@@ -120,23 +101,6 @@
 
 
 
-\begin{exercise}
-    Find the Fourier transform of 
-    \begin{align*}
-        f(x) = \left\{\begin{array}{ll}
-                \sin(x) & \text{ if } 0 \leq x \leq 2 \pi 
-                \\
-                0 & \text{ otherwise }
-               \end{array}
-               \right.
-    \end{align*}
-\end{exercise}
-\begin{solution} 
-$$\begin{aligned} \mathcal{F}(f(x))(\alpha) & =\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\sin x \frac{e^{-i \alpha x}}{-i \alpha}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\cos x}{i \alpha} e^{-\alpha i x} d x \\ & =\frac{1}{\sqrt{2 \pi}}\left[\frac{\cos x}{a^2} e^{-i \alpha x}\right]_0^{2 \pi}+\frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \frac{\sin x}{\alpha^2} e^{-i \alpha x} d x \\ & =\frac{1}{\sqrt{2 \pi} \alpha^2}\left(e^{-2 \pi i \alpha}-1\right)+\frac{1}{\alpha^2} \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x\end{aligned}$$
-$$
-\begin{aligned} \Rightarrow \frac{1}{\sqrt{2 \pi}} \int_0^{2 \pi} \sin x e^{-i \alpha x} d x & =\left(\frac{1}{1-\frac{1}{\alpha^2}}\right) \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi} \alpha^2} \\ & =\frac{\alpha^2}{\alpha^2-1} \frac{\left(e^{-2 \pi i \alpha}-1\right)}{\alpha^2 \sqrt{2 \pi}} \\ & =\frac{\left(e^{-2 \pi i \alpha}-1\right)}{\sqrt{2 \pi}\left(\alpha^2-1\right)}\end{aligned}
-$$
-\end{solution}
 
 
 
@@ -152,67 +116,6 @@ $$
 
 
 
-
-
-
-\begin{exercise}
-    Find the Laplace transform $F(z)$ of 
-    \begin{align*}
-        f : \bbR_{0}^{+} \to \bbR, \quad t \mapsto t^{2}.
-    \end{align*}
-\end{exercise}
-\begin{solution}     
-We compute 
-\begin{align*}
-    F(z)&=\int_0^{\infty} t^2 e^{-z t} d t=\left[-\frac{t^2}{z} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2 t}{z} e^{-z t} d t \\ &=\left[\frac{2 t}{-z^2} e^{-z t}\right]_0^{\infty}+\int_0^{\infty} \frac{2}{z^2} e^{-z t} d t \\ &=\left[-\frac{2}{z^3} e^{-z t}\right]_0^{\infty} \\ &=0+\frac{2}{z^3} \\ &=\frac{2}{z^3}
-    .
-\end{align*}
-Hence 
-\begin{align*}
-    F(z)=\frac{2}{z^3} \quad \text { for } \mathrm{R}(z)>0.
-\end{align*}
-\end{solution}
-
-\begin{exercise}[Extra]
-    We have introduced the Fourier transform 
-    \begin{align*}
-        \frakF(f)(\alpha) := \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x) e^{-i \alpha x} dx
-    \end{align*}
-    Different authors define the Fourier transform alternatively by:
-    \begin{align*}
-        \frakF_2(f)(\xi) 
-        := \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
-        ,
-        \quad 
-        \frakF_3(f)(\omega) 
-        := \int_{-\infty}^{\infty} f(x) e^{-i \omega x} dx
-        .
-    \end{align*}
-    Express $\frakF_{2}(f)$ and $\frakF_{3}(f)$ in terms of $\frakF(f)$.
-\end{exercise}
-\begin{solution}    
-    Obviously, 
-    \begin{align*}
-        \frakF_{3}(f)(\omega) = \sqrt{2\pi} \frakF(f)(\omega).
-    \end{align*}
-    For the other transformation:
-    \begin{align*}
-        \frakF_2(f)(\xi) 
-        &
-        = 
-        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
-        = 
-        \sqrt{2\pi} 
-        \cdot 
-        \frac{1}{\sqrt{2\pi}}
-        \int_{-\infty}^{\infty} f(x) e^{-i 2\pi \xi x} dx
-        = 
-        \sqrt{2\pi} 
-        \cdot 
-        \frakF(f)( 2\pi \xi )
-        .
-    \end{align*}
-\end{solution}
 
 
 
@@ -236,54 +139,53 @@ Hence
     \end{align*}
 \end{exercise}
 \begin{solution}   Because of the linearity property we can treat the inverse of each term in seperately. Therefore 
- \begin{itemize}
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{\sin (4 \alpha+3)}{4 a r+3}\right)(x) & =\frac{\frac{1}{4}}{\frac{1}{4}} \mathfrak{F}^{-1}\left(\frac{\sin \left(\frac{\alpha+3 / 4}{\frac{1}{4}}\right)}{\frac{\alpha+\frac{3}{4}}{\frac{1}{4}}}\right)(x) \\ & =\frac{1}{4} e^{-i \frac{3}{4} x} \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{\sin (\alpha)}{\alpha}\right)\left(\frac{x}{4}\right) \\ & = \begin{cases}\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & \text { if }-4 \leq x \leq 4 \\ 0 & \text { else }\end{cases} \end{aligned}$
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{3}{1+\alpha^2}\right)(x) & =3 \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+a^2}\right)(x) \\ & =3 \sqrt{\frac{\pi}{2}} e^{-|x|}\end{aligned}$
-    \item $\begin{aligned} \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) & =-\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) \\ & =-\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid \\ & =-\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) \\ & =-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}\end{aligned}$
- \end{itemize}
- All together this gives
-    $$
-    f(x) = \begin{cases}-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|}+\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & -4 \leq x \leq 4 \\ -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|} & \text { else }\end{cases}
-    $$
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{exercise}
-    Draw the complex exponentials $e^{zt}$ in the complex plane for $t=0,1,2,3,4$, 
-    where $z$ is one of the following complex numbers:
-    \begin{gather*}
-        z_1 = \frac 1 2,
-        \quad 
-        z_2 = - \frac 1 2,
-        \quad 
-        z_3 = 0.2i,
-        \quad 
-        z_4 = -0.2i,
-        \quad 
-        z_3 = - \frac 1 2 + 0.2i
+    First,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{\sin (4 \alpha+3)}{4 a r+3}\right)(x) & =\frac{\frac{1}{4}}{\frac{1}{4}} \mathfrak{F}^{-1}\left(\frac{\sin \left(\frac{\alpha+3 / 4}{\frac{1}{4}}\right)}{\frac{\alpha+\frac{3}{4}}{\frac{1}{4}}}\right)(x) \\ & =\frac{1}{4} e^{-i \frac{3}{4} x} \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{\sin (\alpha)}{\alpha}\right)\left(\frac{x}{4}\right) \\ & = \begin{cases}\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & \text { if }-4 < x < 4 \\ 0 & \text { else }\end{cases} 
+    \end{align*}
+    Second,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{3}{1+\alpha^2}\right)(x) & =3 \sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+a^2}\right)(x) \\ & =3 \sqrt{\frac{\pi}{2}} e^{-|x|}
+    \end{align*}
+    Lastly,
+    \begin{align*} 
+        \mathfrak{F}^{-1}\left(\frac{-1}{1+4 \alpha^2}\right)(x) 
+        & =
+        -\sqrt{\frac{\pi}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+(2 \alpha)^2}\right)(x) 
+        \\ & 
+        =
+        -\sqrt{\frac{\pi}{2}} \frac{\frac{1}{2}}{\frac{1}{2}} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\left(\frac{\alpha}{\frac{1}{2}}\right)^2}\right)(x \mid 
+        \\ &
+        =
+        -\sqrt{\frac{\pi}{2}} \frac{1}{2} \mathfrak{F}^{-1}\left(\sqrt{\frac{2}{\pi}} \frac{1}{1+\alpha^2}\right)\left(\frac{x}{2}\right) 
+        \\ & 
+        =
+        -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}
         .
-    \end{gather*}
-    \textit{You may use a calculater.}
-\end{exercise}
-
-\begin{solution}     
+    \end{align*}
+    Altogether this gives
+    \begin{align*} 
+        f(x) = \begin{cases}-\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|}+\frac{1}{4} \sqrt{\frac{\pi}{2}} e^{-i \frac{3}{4} x} & -4 \leq x \leq 4 \\ -\frac{1}{2} \sqrt{\frac{\pi}{2}} e^{-\left|\frac{x}{2}\right|}+3 \sqrt{\frac{\pi}{2}} e^{-|x|} & \text { else }\end{cases}
+    \end{align*}
+    
 \end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{exercise}
     We consider the Poisson problem with Dirichlet boundary conditions over the interval $[0,L]$:
@@ -295,23 +197,236 @@ Hence
     \begin{itemize}
         \item Solve this problem directly. The solution is a polynomial of order $4$.
         \item Extend the right-hand side $f(x) = x^2$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item How do you use the superposition principle to split the problem? Using these coefficients, find the Fourier series of the solution $u^f$.
+        \item 
+        Using these coefficients, find the Fourier series of the solution $u^f$,
+        which solves 
+        \begin{gather*}
+            - \Delta u^f(x) = x^2, \quad 0 < x < L,
+            \\
+            u^f(0) = 0, \quad u^f(L) = 0.
+        \end{gather*}
+        How do you use the superposition principle to solve the full problem? 
     \end{itemize}
 \end{exercise}
-\begin{solution}     
+\begin{solution}  
+    \begin{itemize}
+        \item According to the hint, $u(x)$ must be of the form $u(x) = a x^4 + b x^3 + c x^2 + d x + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
+        Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
+        \begin{align}
+            u(0) &= e = 1, \label{eq:ex3:left bc}\\
+            u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 2, \label{eq:ex3:right bc}\\
+            - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex3:pde}
+        \end{align}
+        By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex3:pde}, we find
+        \begin{align*}
+            - 12 a &= 1,\\
+            - 6 b &= 0,\\
+            - 2 c &= 0.
+        \end{align*}
+        Hence, we have $a = -\frac{1}{12}, b = 0, c = 0$. Therefore, \eqref{eq:ex3:right bc} simplifies to
+        \begin{align*}
+            -\frac{1}{12} L^4 + dL + 1 = 2,
+        \end{align*}
+        from which we deduce that $d = \frac{1}{12} L^3 + \frac{1}{L}$. Thus, the solution to the Poisson problem is
+        \begin{align*}
+            u(x) = -\frac{1}{12} x^4 + \left(\frac{1}{12} L^3 + \frac{1}{L}\right) x + 1.
+        \end{align*}
+        \item We define the odd extension of $f(x) = x^2$ as the function $\Tilde{f}$ with period $2L$ that satisfies 
+        \begin{align*}
+            \Tilde{f}(x) = \begin{cases}
+                x^2 & \text{if } 0 \leq x \leq L,\\
+                -x^2 & \text{if } -L \leq x < 0.
+            \end{cases}
+        \end{align*}
+        By construction, $\Tilde f$ is an odd function with period $2L$. Denote by $\Tilde{a}_n$ and $\Tilde{b}_n$ the Fourier coefficients of $\Tilde{f}$.
+        We immediately have $\Tilde{a}_n = 0$ for all $n \in \mathbb N$ because the function is odd.
+        Moreover, by some simple integration by parts 
+        \begin{align*}
+            \Tilde{b}_n &= \frac{1}{L} \int_{-L}^L \Tilde{f}(x) \sin\left(\frac{\pi n}{L} x\right) dx = \frac{2}{L} \int_{0}^L x^2 \sin\left(\frac{\pi n}{L} x\right) dx\\
+            &= -\frac{2 L^2 (2 + (-1)^n ((n \pi)^2 - 2))}{(n\pi)^3}.
+        \end{align*}
+        We conclude that
+        \begin{align*}
+            \Tilde{f}(x) = \sum_{n \geq 1} \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right) = \sum_{n \geq 1} -\frac{2 L^2 (2 + (-1)^n ((n \pi)^2 - 2))}{(n\pi)^3} \sin\left(\frac{\pi n}{L} x\right).
+        \end{align*}
+        \item 
+        To apply the superposition principle, 
+        we split the problem into two Poisson problems: on the one hand,
+        \begin{gather*}
+            - \Delta u^f(x) = x^2, \quad 0 < x < L,
+            \\
+            u^f(0) = 0, \quad u^f(L) = 0, 
+        \end{gather*}
+        and on the other hand, 
+        \begin{gather*}
+            - \Delta u^g(x) = 0, \quad 0 < x < L,
+            \\
+            u^g(0) = 1, \quad u^g(L) = 2.
+        \end{gather*}
+        The full solution will be the sum of $u^{f}$ and $u^{g}$.
+        
+        We define 
+        \begin{align}
+            u^{f}(x) 
+            &
+            = 
+            - \sum_{n=1}^{\infty} \frac{\Tilde{b}_n}{ -\pi^{2} n^{2} / L^{2} } \sin\left( \pi n x / L \right)
+            \\&
+            = 
+            \sum_{n=1}^{\infty} \frac{\Tilde{b}_n}{ \pi^{2} n^{2} / L^{2} } \sin\left( \pi n x / L \right)
+            .
+        \end{align}
+        Differentation, distributed over the Fourier modes, now shows that 
+        \begin{align}
+            - \partial_{xx} u^{f}(x) = f(x).
+        \end{align}
+        Additionally, $u^{f}$ satisfies the homogeneous Dirichlet boundary conditions. 
+        
+        We can find $u^{g}$ in a manner similar to the previous step. 
+        Since its second-derivative is zero, $u^{g}$ must be a linear function over $[0,L]$, having the form:
+        \begin{align}
+            u^{g}(x) = d x + e.
+        \end{align}
+        The boundary conditions now lead to $u^{g}(x) = \frac{1}{L} x + 1$
+        
+        By the superposition principle, the solution to the original problem is 
+        \begin{align}
+            u(x) = u^{f}(x) + u^{g}(x).
+        \end{align}
+%         
+%         
+% 
+%         we can use the superposition principle to split the Poisson problem into $n$ Poisson problems with homogeneous Dirichlet boundary conditions. 
+%         The the $n$-th problem is
+%         \begin{align*}
+%             \begin{cases}
+%             -\Delta u_n(x) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right), \quad 0 < x < L,\\
+%             u_n(0) &= 0,\\
+%             u_n(L) &= 0.
+%             \end{cases}
+%         \end{align*}
+%         We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin\left(\frac{\pi n}{L} x\right)$. Note that this ansatz satisfies the boundary conditions.
+%          Inserting this ansatz into the Poisson equation, we find
+%         \begin{align*}
+%             \left(\frac{\pi n}{L} \right)^2 b_n \sin\left(\frac{\pi n}{L} x\right) &= \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
+%         \end{align*}
+%         Hence, we must have $b_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$. Therefore, the solution to the $n$-th Poisson problem is
+%         \begin{align*}
+%             u_n(x) = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right),
+%         \end{align*}
+%         and the solution to the original Poisson problem is
+%         \begin{align*}
+%             u^f(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n \sin\left(\frac{\pi n}{L} x\right).
+%         \end{align*}
+    \end{itemize}
 \end{solution}
 
-\begin{exercise}[Extra]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercise}
     Directly compute the solution of the problem
     \begin{gather*}
         - \Delta u(x) = x^2, \quad 0 < x < L,
         \\
-        u(0) = 0, \quad u(L) = 0
+        u(0) = 0, \quad u(L) = 0,
     \end{gather*}
-    and find its Fourier coefficients. Compare this with the function $u^f$ from the previous exercise.
+    using elementary analysis. Then find the Fourier coefficients of its odd extension to the interval $[-L, L]$. Compare this with the function $u^f$ from the previous exercise.
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+    As in the previous exercise, the solution must be of the form $u(x) = ax^4 + bx^3 + cx^2 + dx + e$ for some coefficients $a,b,c,d,e \in \mathbb R$.
+%     We have already seen how to compute it:
+%     \begin{align*}
+%         u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
+%     \end{align*}
+    Inserting this ansatz into the Poisson equation and the boundary conditions, we find the system of equations
+    \begin{align}
+        u(0) &= e = 0, \label{eq:ex4:left bc}\\
+        u(L) &= a L^4 + b L^3 + c L^2 + d L + e = 0, \label{eq:ex4:right bc}\\
+        - \Delta u(x) &= - 12 a x^2 - 6 b x - 2 c = x^2. \label{eq:ex4:pde}
+    \end{align}
+    By matching the coefficients of the polynomials on the right- and left-hand side in \eqref{eq:ex4:pde}, we find
+    \begin{align*}
+        - 12 a = 1, \quad - 6 b = 0, \quad - 2 c = 0.
+    \end{align*}
+    Hence, we have $a = -\frac{1}{12}$, $b = 0$, and $c = 0$. Therefore, \eqref{eq:ex4:right bc} simplifies to
+    \begin{align*}
+        -\frac{1}{12} L^4 + dL = 0,
+    \end{align*}
+    from which we deduce that $d = \frac{1}{12} L^3$. Thus, the solution to the Poisson problem is
+    \begin{align*}
+        u(x) = -\frac{1}{12} x^4 + \frac{1}{12} L^3 x.
+    \end{align*}
+    To check that this solution is equal to the one found in the previous exercise, 
+    we compute the Fourier coefficients of the odd extension $\Tilde u$ of $u$ to the interval $[-L,L]$ defined by
+    \begin{align*}
+        \Tilde u(x) = \begin{cases}
+            u(x) & \text{if } 0 \leq x \leq L,\\
+            -u(-x) & \text{if } -L \leq x < 0.
+        \end{cases}
+    \end{align*}
+    By definition, $\Tilde u$ is an odd function, and therefore the Fourier series takes the form 
+    \begin{align*}
+        \Tilde u(x) = \sum_{n \geq 1} \Tilde u_n \sin\left(\frac{\pi n}{L} x\right),
+    \end{align*}
+    where $\Tilde u_{n}$ is the Fourier coefficient of the $n$-th cosine mode. 
+    We compute 
+    \begin{align*}
+        \Tilde u_n 
+        &= 
+        \frac{2}{L} \int_0^L u(x) \sin\left(\frac{\pi n}{L} x\right) dx
+        \\&
+        = 
+        \frac{2}{L} \int_0^L \left(-\frac{1}{12} x^4 + \frac{1}{12} L^3 x\right) \sin\left(\frac{\pi n}{L} x\right) dx
+        \\&
+        = 
+        -\frac{2 L^4 (2 + (-1)^n)((n \pi)^2 - 2)}{(n \pi)^5}
+        .
+    \end{align*}
+    Note that we have $\Tilde u_n = \left(\frac{L}{\pi n}\right)^2 \Tilde{b}_n$, where $\Tilde b_n$ is as in the previous exercise.
 \end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{exercise}
     We solve the Poisson problem with homogeneous Dirichlet boundary conditions over $[0,1]$:
@@ -321,27 +436,98 @@ Hence
         u(0) = 0, \quad u(1) = 0
     \end{gather*}
     \begin{itemize}
-        \item Extend the right-hand side $f(x)$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
+        \item Extend the right-hand side $f(x)$ to an odd function with period $2$ and compute its Fourier coefficients.
+        \item Using these coefficients, find the solution $u$. Verify that the boundary condition $u(0) = u(1) = 0$ is satisfied.
     \end{itemize}
 \end{exercise}
-\begin{solution}     
+\begin{solution}
+\begin{itemize}
+    \item We define the odd extension of $f(x)$ as
+    \begin{align*}
+        \Tilde{f}(x) = \begin{cases}
+            f(x) & \text{if } 0 \leq x < 1,\\
+            -f(-x) & \text{if } -1 < x < 0.
+        \end{cases}
+    \end{align*}
+    As in the previous exercises, we find that
+    \begin{align*}
+        \Tilde{f}(x) = \sum_{n \geq 1} \Tilde{f}_n \sin(\pi n x),
+    \end{align*}
+    using that $\Tilde f$ is odd. The Fourier coefficients of the sine modes are 
+    \begin{align*}
+        \Tilde{f}_n = 2 \int_0^1 f(x) \sin(\pi n x) dx = 2 \int_0^{\frac 1 2} x \sin(\pi n x) dx = \frac{- \pi n \cos (\frac{\pi n}{2}) + 2 \sin(\frac{\pi n}{2})}{(\pi n)^2}.
+    \end{align*}
+    One can check that 
+    \begin{align*}
+        \Tilde{f}_n = \begin{cases}
+            \frac{2}{(\pi n)^2} (-1)^n, & \text{if } n \text{ is odd},\\
+            -\frac{1}{\pi n}(-1)^{\frac n 2}, & \text{if } n \text{ is even}.
+        \end{cases}
+    \end{align*}
+    \item 
+    
+    We define the solution in terms of its Fourier series:
+    \begin{align}
+        u(x) 
+        &
+        = 
+        - \sum_{n=1}^{\infty} \frac{\Tilde{f}_n}{ -\pi^{2} n^{2} } \sin\left( \pi n x \right)
+%         \\&
+        = 
+        \sum_{n=1}^{\infty} \frac{\Tilde{f}_n}{ \pi^{2} n^{2} } \sin\left( \pi n x \right)
+        .
+    \end{align}
+    Clearly, $u$ satisfies the homogeneous Dirichlet boundary conditions,
+    and differentiation provides the desired differential equation 
+    \begin{align}
+        - u''(x) = f(x).
+    \end{align}
+    This shows that $u$ solves the Poisson problem.
+    Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
+    The boundary conditions are satisfied because $u$ is a Fourier sine series. 
+    
+    
+%     Using the superposition principle, we set $u(x) = \sum_{n \geq 1} u_n(x)$, where $u_n(x)$ solves the Poisson problem
+%     \begin{align*}
+%         \begin{cases}
+%             - \Delta u_n(x) = \Tilde{f}_n \sin(\pi n x), \quad 0 < x < 1,\\
+%             u_n(0) = 0,\\
+%             u_n(1) = 0.
+%         \end{cases}
+%     \end{align*}
+%     We choose a sine-wave ansatz for $u_n$, i.e. $u_n(x) = b_n \sin(\pi n x)$. Note that this ansatz satisfies the boundary conditions.
+%     Inserting this ansatz into the Poisson equation, we find
+%     \begin{align*}
+%         - \pi^2 n^2 b_n \sin(\pi n x) = \Tilde{f}_n \sin(\pi n x).
+%     \end{align*}
+%     Hence, we must have $b_n = -\frac{\Tilde{f}_n}{\pi^2 n^2}$. Therefore, the solution to the $n$-th Poisson problem is
+%     \begin{align*}
+%         u_n(x) = b_n \sin(\pi n x),
+%     \end{align*}
+%     with
+%     \begin{align*}
+%         b_n = \begin{cases}
+%             \frac{2}{(\pi n)^4} (-1)^n, & \text{if } n \text{ is odd},\\
+%             -\frac{1}{(\pi n)^3}(-1)^{\frac n 2}, & \text{if } n \text{ is even}.
+%         \end{cases}
+%     \end{align*}
+%     Therefore, the solution to the original Poisson problem is
+%     \begin{align*}
+%         u(x) = \sum_{n \geq 1} u_n(x) = \sum_{n \geq 1} b_n \sin(\pi n x).
+%     \end{align*}
+%     Note that $u$ is not in the form of a Fourier series over the interval $[0, L]$ but in the form of the Fourier series of its odd extension over $[-L, L]$. 
+\end{itemize}
 \end{solution}
 
-\begin{exercise}
-    We want to find a solution to the boundary value problem 
-    \begin{gather*}
-        - \Delta u(x) + u(x) = x, \quad 0 < x < L,
-        \\
-        u(0) = 0, \quad u(L) = 0.
-    \end{gather*}
-    \begin{itemize}
-        \item Extend the right-hand side $f(x) = x$ to an odd function with period $2L$ and compute its Fourier coefficients.
-        \item Using these coefficients, find the Fourier series of the solution $u$. Verify that the boundary condition $u(0) = u(L) = 0$ is satisfied.
-    \end{itemize}
-\end{exercise}
-\begin{solution}     
-\end{solution}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -356,7 +542,7 @@ Hence
         .
     \end{align*}
     Express the Fourier coefficients of $f$ by the Fourier coefficients of $u$, and vice-versa, express the Fourier coefficients of $u$ by the Fourier coefficients of $f$,
-    in the following cases:
+    if $u$ and $f$ are related by the following differential equations:
     \begin{enumerate}[label=(\alph*)]
      \item 
      $-u''(x) = f(x)$.
@@ -371,83 +557,223 @@ Hence
     \end{enumerate}
     In the last item, $\gamma \in \bbR$ is a constant. For which values of $\gamma$ can you always find a solution?
 \end{exercise}
-\begin{solution}     
-\end{solution}
-
-\begin{exercise}
-    Consider the function 
-    \begin{align*}
-        f : [0,1] \to \bbR, \quad x \mapsto x^{3}.
-    \end{align*}
-    Extend this to an odd function with period $T = 2$. Sketch the graph of that function from $-2$ to $2$.
-    Compute its Fourier coefficients in standard form. Compute the complex Fourier coefficients.
-\end{exercise}
-\begin{solution}     
-\end{solution}
-
-
-
-
-\begin{exercise}
-    Given the following functions over an interval $[0,1)$, 
-    \begin{enumerate}[label=(\alph*)]
-        \item $f(x) = x$
-        \item $g(x) = x^2$
-        \item $h(x) = e^x$
-        \item $s(x) = sin(\pi x)$
-    \end{enumerate}
-    sketch their extension to 
+\begin{solution}   
     \begin{itemize}
-        \item a periodic function with period $1$,
-        \item an even periodic function with period $2$,
-        \item an odd periodic function with period $2$.
+     \item 
+     We have 
+     \begin{align*}
+        -u''(x) = - \sum_{n=1}^{\infty} b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{2} \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{2} = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \frac{2\pi n}{T} \right)^{-2} b_{n}^{f}.
+     \end{align*}
+     \item 
+     We have 
+     \begin{align*}
+        u''''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{4} \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \frac{2\pi n}{T} \right)^{4} = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \frac{2\pi n}{T} \right)^{-4} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        -u''(x) + 25 u = \sum_{n=1}^{\infty} b_{n}^{u} \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( -\left( \frac{2\pi n}{T} \right)^{2} + 25 \right)^{-1} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        u''''(x) - u''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \left( \frac{2\pi n}{T} \right)^{4} - \left( \frac{2\pi n}{T} \right)^{2} \right)^{-1} b_{n}^{f}.
+     \end{align*}
+     \item 
+     \begin{align*}
+        u''''(x) - \gamma \cdot u''(x) = \sum_{n=1}^{\infty} b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right) \sin\left( \frac{2\pi n}{T} x \right).
+     \end{align*}
+     Matching coefficients leads to the relationships
+     \begin{align*}
+        b_{n}^{u} \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right) = b_{n}^{f},
+        \quad 
+        b_{n}^{u} = \left( \left( \frac{2\pi n}{T} \right)^{4} - \gamma \cdot \left( \frac{2\pi n}{T} \right)^{2} \right)^{-1} b_{n}^{f}.
+     \end{align*}
     \end{itemize}
-    and state the formulas for these functions over $[-1,1]$.
-\end{exercise}
-
-\begin{solution}     
+    Remark: the second-order equation $-u'' = f$, the Poisson problem, appears in many applications. The fourth-order equation $u'''' = f$ appears in the mathematical theory of elasticity, for example, when modeling the bending of a one-dimensional stick under external force. 
 \end{solution}
 
 
 
-\begin{exercise}[Fun with Neumann boundary conditions 1]
-    Consider the Poisson problem with Neumann boundary conditions over the interval $[a,b]$ with constant right-hand side: 
-    \begin{gather*}
-        - u''(x) = c, \quad a < x < b,
+
+
+\begin{exercise}
+    Recall the definition of the Fourier transform:
+    \begin{align}
+        \mathfrak{F}[f](\alpha) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t) e^{-it\alpha} \ dt
+    \end{align}
+    Let $a,b,c \in \mathbb R$ be real parameters with $a \neq 0$. Compute the Fourier transforms of the following:
+    \begin{align}
+        g(t) = f( a t ),
         \\
-        u'(a) = h_a, \quad u'(b) = h_b.
-    \end{gather*}
-    \begin{enumerate}[label=(\alph*)]
-        \item
-        What is the compatibility condition?
-        \item 
-        Since $u$ has a constant second derivative, it must be a quadratic function $u(x) = c_1 x^2 + c_2 x + c_3$. 
-        Assuming the compatibility condition, find the solution(s).
-    \end{enumerate}
+        h(t) = e^{-i t b} f(t),
+        \\
+        m(t) = f( t - c ).
+    \end{align}
+    \textit{Hint: } you have the first two in the lecture and in textbook. You can compute them using results from the lecture or via some standard integral manipulations. 
 \end{exercise}
-\begin{solution}     
+
+\begin{solution}
+We write \( {\hat f}(\alpha) = \mathfrak{F}[f](\alpha) \) for the Fourier transform of $\alpha$. 
+To compute the Fourier transforms of the given functions \( g(t) \), \( h(t) \), and \( m(t) \), we proceed as follows:
+\begin{itemize}
+\item 
+Let \( {\hat g}(\alpha) = \mathfrak{F}[g](\alpha) \). By definition,
+\begin{gather*}
+    {\hat g}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} g(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(at) e^{-it\alpha} \, dt.
+\end{gather*}
+We perform a substitution \( u = at \), so \( du = |a| \, dt \) and \( t = \frac{u}{a} \). This gives
+\begin{gather*}
+    {\hat g}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-i \frac{u}{a} \alpha} \frac{du}{a}
+    =
+    \frac{1}{\sqrt{2\pi}} \cdot \frac{1}{a} \int_{-\infty}^{+\infty} f(u) e^{-i \frac{\alpha}{a} u} \, du.
+\end{gather*}
+Recognizing the integral as the Fourier transform of \( f(t) \), we find:
+\begin{gather*}
+    {\hat g}(\alpha) = \frac{1}{|a|} {\hat f}\left(\frac{\alpha}{a}\right),
+\end{gather*}
+\item 
+Let \( {\hat h}(\alpha) = \mathfrak{F}[h](\alpha) \). Using definitions. 
+\begin{align*}
+    {\hat h}(\alpha) 
+    &
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} h(t) e^{-it\alpha} \, dt
+    \\&
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} e^{-ibt} f(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t) e^{-it(\alpha+b)} \, dt.
+\end{align*}
+We recognizing the integral as the Fourier transform of \( f(t) \). Thus, 
+\begin{gather*}
+    {\hat h}(\alpha) = {\hat f}(\alpha + b).
+\end{gather*}
+\item 
+Let \( {\hat m}(\alpha) = \mathfrak{F}[m](\alpha) \). By definition,
+\begin{gather*}
+    {\hat m}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} m(t) e^{-it\alpha} \, dt
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t - c) e^{-it\alpha} \, dt.
+\end{gather*}
+We substitute \( u = t - c \), so \( du = dt \) and \( t = u + c \). This gives
+\begin{gather*}
+    {\hat m}(\alpha) 
+    = 
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-i(u+c)\alpha} \, du
+    =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-iu\alpha} e^{-ic\alpha} \, du
+    .
+\end{gather*}
+We pull out the factor out \( e^{-ic\alpha} \),
+\begin{gather*}
+    {\hat m}(\alpha) = e^{-ic\alpha} \cdot \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(u) e^{-iu\alpha} \, du,
+\end{gather*}
+and recognize the last integral as the Fourier transform of \( f(t) \). In summary, 
+\begin{gather*}
+    {\hat m}(\alpha) = e^{-ic\alpha} {\hat f}(\alpha).
+\end{gather*}
+\end{itemize}
 \end{solution}
 
-\begin{exercise}[Fun with Neumann boundary conditions 2]
-    Suppose we have got a Poisson problem with Neumann boundary conditions over the interval $[a,b]$. 
-    \begin{gather*}
-        - u''(x) = f(x), \quad a < x < b,
-        \\
-        u'(a) = h_a, \quad u'(b) = h_b.
-    \end{gather*}
-    We need the compatibility condition 
-    \begin{gather*}
-        \int_a^b f(x) dx + ( h_b - h_a ) = 0.
-    \end{gather*}
-    \begin{enumerate}[label=(\alph*)]
-        \item
-        Find a constant function $c^f : [a,b] \to \bbR$ such that $f - c_f$ has integral zero.
-        \item
-        Use this to split up the original problem into two subproblems: 
-        one with homogeneous boundary conditions, one with constant right-hand side, such that both problems satisfy the compatibility condition.
-    \end{enumerate}
-\end{exercise}
-\begin{solution}     
-\end{solution}
+
+
+
+% \begin{exercise}
+%     Consider the functions
+%     \begin{align}
+%         I_{c}( \omega ) = \int_{0}^{1} \cos( \omega x ) \ dx,
+%         \quad 
+%         I_{s}( \omega ) = \int_{0}^{1} \sin( \omega x ) \ dx,
+%         .
+%     \end{align}
+%     Compute the derivatives of $I_{c}(\omega)$ and $I_{s}(\omega)$ in the variable $\omega$.
+%     Use that to find formulas for 
+%     \begin{align}
+%         \int_{0}^{1} x^{k} \cos( \omega x ) \ dx
+%         ,
+%         \quad 
+%         \int_{0}^{1} x^{k} \sin( \omega x ) \ dx
+%         .
+%     \end{align}
+%     \textit{Hint: You can exchange differentiation and integration.}
+% \end{exercise}
+% \begin{solution}
+%     We find that 
+%     \begin{align}
+%         \partial_\omega^{k} 
+%         = 
+%         \int_{0}^{1} \partial_\omega^{k} \cos( \omega x ) \ dx
+%         =
+%         \int_{0}^{1} \omega^{k} x^{k} \cos^{(k)}( \omega x ) \ dx
+%         =
+%         \omega^{k} \int_{0}^{1} x^{k} \cos^{(k)}( \omega x ) \ dx
+%         .
+%     \end{align}
+%     Similarly,
+%     \begin{align}
+%         \partial_\omega^{k} 
+%         = 
+%         \int_{0}^{1} \partial_\omega^{k} \sin( \omega x ) \ dx
+%         =
+%         \int_{0}^{1} \omega^{k} x^{k} \sin^{(k)}( \omega x ) \ dx
+%         =
+%         \omega^{k} \int_{0}^{1} x^{k} \sin^{(k)}( \omega x ) \ dx
+%         .
+%     \end{align}
+%     On the other hand,
+%     \begin{align}
+%         I_{c}( \omega ) = \int_{0}^{1} \cos( \omega x ) \ dx = \frac{\sin(\omega)}{\omega}
+%         ,
+%         \\ 
+%         I_{s}( \omega ) = \int_{0}^{1} \sin( \omega x ) \ dx = \frac{1-\cos(\omega)}{\omega}
+%         .
+%     \end{align}
+%     We explicitly compute the derivatives in $\omega$:
+%     \begin{align}
+%         \partial_\omega^{k} \frac{\sin(\omega)}{\omega}
+%         =
+%         \sum_{i=0}^{k} \tbinom{k}{i} ....
+%     \end{align}
+% \end{solution}
+
+
+
+
+
+
+
+
+
 
 \end{document}
