@@ -364,18 +364,18 @@
         \left[ \frac{\sin((n-1)x)}{n-1} - \frac{\sin((n+1)x)}{n+1}\right]_{x=0}^{x=\frac{\pi}{2}}
         \\&
         =
-        \frac{\sin((n-1)\frac{\pi}{2})}{n-1} - \frac{\sin((n+1)\frac{\pi}{2})}{n+1}
+        \frac{\sin((n-1)\frac{\pi}{2})}{\pi(n-1)} - \frac{\sin((n+1)\frac{\pi}{2})}{\pi(n+1)}
     \end{align*}
     If $n$ is odd, then $n-1$ and $n+1$ are both even, and so $(n-1)\frac{\pi}{2}$ and $(n+1)\frac{\pi}{2}$ will be integer multiples of $\pi$. 
     Hence $b_n$ is zero if $n$ is odd. 
     For the even numbers, we have got another case distinction:
-    if $n=1,5,9,\dots$, then 
+    if $n=2,6,10,\dots$, then 
     \begin{align*}
-        b_n = \frac{1}{n-1} - \frac{-1}{n+1} = \frac{1}{n-1} + \frac{1}{n+1} = \frac{n+1+n-1}{n^2+1} = \frac{2n}{n^2+1}.
+        b_n = \frac{1}{\pi(n-1)} - \frac{-1}{\pi(n+1)} = \frac{1}{\pi(n-1)} + \frac{1}{\pi(n+1)} = \frac{2n}{\pi(n^2+1)}.
     \end{align*}
-    if $n=3,7,11,\dots$, then 
+    if $n=4,8,12,\dots$, then 
     \begin{align*}
-        b_n = \frac{-1}{n-1} - \frac{1}{n+1} = \frac{-n-1-n+1}{n^2+1} = \frac{-2n}{n^2+1}.
+        b_n = \frac{-1}{\pi(n-1)} - \frac{ 1}{\pi(n+1)} = \frac{-2n}{\pi(n^2+1)}.
     \end{align*}
     
 
