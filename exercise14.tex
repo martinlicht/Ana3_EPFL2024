@@ -380,7 +380,7 @@
             and so $( f \star g )(x) = 0$.
             \item If $-2 < x < -1$, then we only need to integrate $f$ over $[-1,x+1] \subseteq [-1,0]$. We find 
             \begin{align*}
-                (f \star g)(x) = \frac 1 2 \int_{-1}^{x + 1} (y + 1) dy = \frac 1 2 (x + 2)^2.
+                (f \star g)(x) = \frac 1 2 \int_{-1}^{x + 1} (y + 1) dy = \frac 1 4 (x + 2)^2.
             \end{align*}
             \item If $-1 < x < 0$, then we integrate $f$ over $[-1,0] \cup [0,x+1] \subseteq [-1,1]$. We find 
             \begin{align*}
@@ -675,7 +675,7 @@
     \begin{align*}
         v''(x)
         &=
-        \delta_{0} \cdot \frac{ \left( e^{-k|x|} -  e^{-|x|} \right) }{ k^{2}-1 }
+        2\delta_{0} \cdot \frac{ \left( e^{-k|x|} -  e^{-|x|} \right) }{ k^{2}-1 }
         +
         \operatorname{sign}(x)^{2} \frac{ \left( - k e^{-k|x|} + e^{-|x|} \right) }{ k^{2}-1 }
         + 
@@ -832,16 +832,21 @@
             (-1)^{n+1}\frac{2L}{\pi n}
             .
         \end{align*}
-        \item For the solution, we make a sine ansatz $u(x) = \sum_{n=1}^{\infty} u_n \sin(\frac{n \pi x}{L})$ since the right-hand side does not contain any cosine terms.
+        \item 
+        For the solution, we make a sine ansatz $u(x) = \sum_{n=1}^{\infty} u_n \sin(\frac{n \pi x}{L})$ 
+        because this satisfies the boundary conditions. 
         Then, the PDE can be written in terms of the Fourier coefficients as
         \begin{align*}
-            \left [k^2 + \left(\frac{\pi n}{L} \right)^2 \right]u_n = -\frac{L}{\pi n}, & & \forall n \in \mathbb{N}.
+            \left[ k^2 + \left(\frac{\pi n}{L} \right)^2 \right] u_n = (-1)^{n+1}\frac{2L}{\pi n}, & & \forall n \in \mathbb{N}.
         \end{align*}
         Therefore, the solution is given by
         \begin{align*}
-            u_n = -\frac{L}{\pi n \left[k^2 + \left(\frac{\pi n}{L} \right)^2\right]}.
+            u_n 
+            = 
+            (-1)^{n+1}\frac{2L}{\pi n} 
+            \left[ k^2 + \left(\frac{\pi n}{L} \right)^2 \right]^{-1}
+            .
         \end{align*}
-        Note that the boundary conditions are satisfied.
     \end{itemize}
 \end{solution}
 
@@ -917,10 +922,14 @@
         and for any $n \geq 1$,
         \begin{align*}
             f_n 
+            &
             = 
-            2 \int_{0}^{1} (x- \frac 1 2) \cos(\pi n x) \ dx 
+              \int_{-1}^{1} (x- \frac 1 2) \cos(\pi n x) \ dx 
+            \\&
             = 
-            2 \int_{0}^{1} x \cos(\pi n x) \ dx 
+            2 \int_{ 0}^{1} (x- \frac 1 2) \cos(\pi n x) \ dx 
+            = 
+            2 \int_{ 0}^{1} x \cos(\pi n x) \ dx 
             = 
             \frac{2}{\pi^2 n^2}\left( (-1)^n - 1 \right) % OKAY 7
             .
@@ -1011,8 +1020,31 @@
         We explicitly compute 
         \begin{align*}
             b^{f}_n 
-            = 
-            2 \int_{0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+            &= 
+              \int_{-1}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+            \\&= 
+            2 
+            \int_{ 0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+            \\&= 
+            2 
+            \int_{ 0}^{1} x \sin(2 \pi n x) \ dx 
+            - 
+            \int_{ 0}^{1} \sin(2 \pi n x) \ dx 
+            \\&= 
+            2 
+            \int_{ 0}^{1} x \sin(2 \pi n x) \ dx 
+            \\&= 
+            2 
+            \left[ x \frac{(-\cos)}{2\pi n}(2 \pi n x) \right]_{x=0}^{x=1}
+            -
+            \int_{0}^{1} \frac{(-\cos)}{2\pi n}(2 \pi n x) \ dx 
+            \\&= 
+            -
+            2 
+            \frac{1}{2\pi n}
+            + 
+            \frac{1}{2\pi n}
+            \int_{0}^{1} \cos(2 \pi n x) \ dx 
             = 
             - \frac{1}{\pi n} % TODO: OKAY 8
             .
@@ -1035,7 +1067,7 @@
         With our specific choice of coefficients, 
         Therefore, the solution is given by
         \begin{align*}
-            u(x) = a_0 + \sum_{n=1}^{\infty} \frac{-1}{2\pi n \left[k^2 + (2 \pi n)^2 \right]} \sin(2 \pi n x).
+            u(x) = \sum_{n=1}^{\infty} \frac{-1}{\pi n \left[k^2 + (2 \pi n)^2 \right]} \sin(2 \pi n x).
         \end{align*}
         Note that the periodic boundary conditions are satisfied.
     \end{enumerate}

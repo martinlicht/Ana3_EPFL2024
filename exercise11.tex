@@ -733,9 +733,14 @@ We calculate the complex Fourier coefficients
     &= \frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\\
 \end{align*}
 Using $c_n$ we can determine $a_n$ and $b_n$
-$$
-    a_0 = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
-$$
+\begin{gather*}
+    \frac{a_0}{2} = c_0 = \sin 1, 
+    \quad 
+    a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n), 
+    \\
+    b_n = i(c_n - c_{-n}) = 0
+    .
+\end{gather*}
 The Fourier series in standard and in complex notation are given by:
 \begin{align*}
     F f(x)&=\sum_{n=-\infty}^{\infty} \left(\frac{1}{2(1-n\pi)}\sin(1-\pi n) + \frac{1}{2(1+n\pi)}\sin(1+\pi n)\right) e^{\frac{2 \pi n x}{T} i}
