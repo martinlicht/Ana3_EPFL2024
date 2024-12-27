@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+% \def\hidesolutions{}
+\input{header}
+\begin{document}
+\exsheet{14}{19}{December} % parameters are the number of the session and the day
+
+
+\begin{exercise}
+    Recall the ReLU function 
+    \begin{align}
+        \ReLU(x) = \max( 0, x ).
+    \end{align}
+    A shallow neural network with one output neuron, $m$ internal neurons, and $n$ input neurons has the general form 
+    \begin{align}
+        f(x_1,\dots,x_{n}) = \sum_{k=1}^{m} \ReLU\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k} \right)
+    \end{align}
+    where $A_{ki}$ are weights and where $b_{k}$ is a shift parameter. 
+    \begin{itemize}
+        \item Most training algorithms require the gradient of this network. Compute the derivatives $\partial_{i} f$
+        \item There is interest in training algorithms that use the Hessian matrix. Compute the partial derivatives $\partial^{2}_{ij} f$.
+    \end{itemize}
+\end{exercise}
+\begin{solution}
+    We begin with the first derivatives. Obviously,
+    \begin{align}
+        \partial_{i} f(x_1,\dots,x_{n}) = \sum_{k=1}^{m} \partial_{i} \ReLU\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k} \right)
+    \end{align}
+    
+    The ReLU function can only be differentiated in the sense of distributions. Recalling the Heaviside function,
+    \begin{align}
+        H(x) = \begin{cases} 1 & x > 0 \\ 0 & x \leq 0 \end{cases},
+    \end{align}
+    it is now possible to write the derivative as 
+    \begin{align}
+        \partial_{i} f(x_1,\dots,x_{n}) 
+        &= 
+        \sum_{k=1}^{m} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right) A_{ii} 
+        \\&
+        =
+        \sum_{k=1}^{m} A_{ki} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        .
+    \end{align}
+    This computes the first derivatives.\footnote{Remark: the derivative does not have a meaningful value if one of the arguments of the Heaviside function is zero (or close to zero within the range of rounding errors). When training a neural network via gradient descent, this is ``justified'' by the assumption that these arguments being close to zero is very unlikely to happen in practice.}
+    
+    We continue with the second derivatives. Recall that the Heaviside function has a derivative in the sense of distributions, which is the Dirac Delta. Hence 
+    \begin{align}
+        \partial^{2}_{ji} f(x_1,\dots,x_{n}) 
+        &
+        = 
+        \sum_{k=1}^{m} A_{ki} \partial_{j} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        \\&
+        = 
+        \sum_{k=1}^{m} A_{ki} A_{ji} \delta_{0}\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        .
+    \end{align}
+    This computes the second derivatives.\footnote{Remark: the situation here is even worse than with the first derivatives. The Dirac Delta is zero everywhere except at the origin, and it equals a pointmass at the origin. Correspondingly, second-order training algorithms, such as, e.g., Newton's method, are not well-defined for such a network. This is a possible incentive to replace ReLU by other activation functions, such as $S(x) = \ln( 1 + e^{x} )$.}
+\end{solution}
+
+
+\begin{exercise}
+    In standard models of elasticity, a long straight beam of elastic material, such as wood or metal, can be modeled as a one-dimensional interval. 
+    When it is subject to an outside force $f$, such as gravity, than the deformation from the base is modeled by the beam equation 
+    \begin{align}
+        u''''(x) = f(x)
+    \end{align}
+    Here, the fourth derivative $u''''$ can be interpreted as the curvature of a curvature and $f$ describes the direction (upwards, downwards) and magnitude of the force.
+    
+    So-called non-local interactions are modeled via a convolutional term $k \star u$, where $k$ how parts of a beam are influenced by neighboring parts.
+    With that in mind, we consider a generalized beam equation 
+    \begin{align}
+        u''''(x) + c u(x) + ( k \star u )(x) = f(x)
+        .
+    \end{align}
+    This is a so-called integro-differential equation. 
+    
+    Compute the Fourier transform of this differential equation for general source terms,
+    and write it down for the particular example
+    \begin{align}
+        k(x) = e^{-|y|},
+        \quad 
+        f(x) = e^{-y^{2}}.
+    \end{align}
+    \textit{You are not expected to solve this equation.}
+\end{exercise}
+\begin{solution}
+    The Fourier transform of this equation reads
+    \begin{align}
+        (i\alpha)^{4} \hat u(\alpha) + c \hat u(\alpha) + \sqrt{2\pi} \hat k(\alpha) \hat u(\alpha) = \hat f(\alpha)
+        .
+    \end{align}
+    We simplify this to:
+    \begin{align}
+        \alpha^{4} \hat u(\alpha) + c \hat u(\alpha) + \sqrt{2\pi} \hat k(\alpha) \hat u(\alpha) = \hat f(\alpha)
+        .
+    \end{align}
+    
+    We isolate $\hat u(\alpha)$, giving us:
+    \begin{align}
+        \hat u(\alpha)
+        =
+        \frac{\hat f(\alpha)}{ \alpha^{4} + c + \sqrt{2\pi} \hat k(\alpha) }
+        .
+    \end{align}
+\end{solution}
+
+
+
+
+
+
+
+\end{document}
+

@@ -9,15 +9,15 @@
 \begin{exercise}
     We have the vector field 
     \begin{gather*}
-        \vec F( x_1, x_2 ) = \left( x_1 x_2, x_2^{2} \right).
+        \vec F( x_{1}, x_{2} ) = \left( x_{1} x_{2}, x_{2}^{2} \right).
     \end{gather*}
     and the domains 
     \begin{align*}
-        \Omega_1 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1 \right\},
+        \Omega_{1} &:= \left\{ (x_{1},x_{2}) \in \bbR^{2} \suchthat* x_{1}^{2} + x_{2}^{2} < 1 \right\},
         \\
-        \Omega_2 &:= \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1^{2} + x_2^{2} < 1, \; x_1 > 0 \right\},
+        \Omega_{2} &:= \left\{ (x_{1},x_{2}) \in \bbR^{2} \suchthat* x_{1}^{2} + x_{2}^{2} < 1, \; x_{1} > 0 \right\},
      \end{align*}
-    Verify Green's theorem for the vector field $\vec F$ with the domains $\Omega_1$ and $\Omega_2$. 
+    Verify Green's theorem for the vector field $\vec F$ with the domains $\Omega_{1}$ and $\Omega_{2}$. 
     \textit{You need to find parameterizations of the boundary first.}
 \end{exercise}
 \begin{solution}   
@@ -25,12 +25,12 @@
    \begin{gather*}
         \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} 
         = 
-        \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega
+        \int \int_{\Omega} \frac{\partial F_{2}}{\partial x_{1}} - \frac{\partial F_{1}}{\partial x_{2}} \;d \Omega
         .
     \end{gather*}
     Here, $\partial\Omega$ is a curve parameterized in counterclockwise direction. 
     
-    We consider the domain $\Omega_1$. 
+    We consider the domain $\Omega_{1}$. 
     A counterclockwise parameterisation for the boundary is given by 
     $$
         \gamma: [0,2\pi] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)
@@ -48,33 +48,33 @@
     \end{align*}
     On the other hand, 
     \begin{align*}
-        \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega &= \int \int_{\Omega} -x_1 \; d\Omega.
+        \int \int_{\Omega} \frac{\partial F_{2}}{\partial x_{1}} - \frac{\partial F_{1}}{\partial x_{2}} \;d \Omega &= \int \int_{\Omega} -x_{1} \; d\Omega.
     \end{align*}
     There are different ways to compute the last integral. 
-	For example, since $\Omega$ is symmetric along the $x_2$ axis but $-x_1$ is obviously an odd function,
+	For example, since $\Omega$ is symmetric along the $x_{2}$ axis but $-x_{1}$ is obviously an odd function,
 	we can conclude that 
 	\begin{align*}
-        \int \int_{\Omega} -x_1 \; d\Omega = 0.
+        \int \int_{\Omega} -x_{1} \; d\Omega = 0.
     \end{align*}
 	Alternatively, we can use radial coordinates for the disk: 
     \begin{align*}
-        \int \int_{\Omega} -x_1 \; d\Omega
+        \int \int_{\Omega} -x_{1} \; d\Omega
 		= 
-		\int_0^ {2\pi} \int_0^1 -r\cos \theta r \;d\theta\;dr
+		\int_0^ {2\pi} \int_0^1 -r\cos(\theta) r \;d\theta\;dr
         = 
-		-\int_0^ {2\pi} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r = 0,
+		-\int_0^ {2\pi} \cos(\theta) \;d \theta \int_0^1 r^ 2 \;d r = 0,
     \end{align*}
     where we have used that integrating the cosine function over a period is $0$. 
 	Yet another possibility is 
 	\begin{align*}
-        \int \int_{\Omega} -x_1 \; d\Omega
+        \int \int_{\Omega} -x_{1} \; d\Omega
 		= 
 		-
-		\int_{-1}^{1} \int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}}
-		x_1 \;dx_2 \;dx_1
+		\int_{-1}^{1} \int_{-\sqrt{1-x_{1}^2}}^{\sqrt{1-x_{1}^2}}
+		x_{1} \;dx_{2} \;dx_{1}
         = 
 		\int_{-1}^{1} 
-		2x_1 \sqrt{1-x_1^2} \;dx_1
+		2x_{1} \sqrt{1-x_{1}^2} \;dx_{1}
         =
 		0
 		,
@@ -83,36 +83,63 @@
 	In any case, the integral of the domain and the integral along the boundary give the same value, 
 	thereby verifying Green's theorem.
     
-    We consider domain $\Omega_2$. A parameterisation for the boundary is given by two seperate curves. For the circular arc we have $\gamma: [-\frac{\pi}{2},\frac{\pi}{2}] \mapsto \mathbb{R}^2, \quad t\mapsto  (\cos t, \sin t)$ and for the vertical line we have  $\gamma: [1,-1] \mapsto \mathbb{R}^2, \quad t\mapsto  (0, t)$. 
+    We consider domain $\Omega_{2}$. 
+    A parameterisation for the boundary is given by two seperate curves, one for the circular arc and one for the straight line.
+    For the circular arc we have 
+    \begin{align}
+        \gamma: \left[-\frac{\pi}{2},\frac{\pi}{2}\right] \mapsto \mathbb{R}^2, \quad t \mapsto  (\cos t, \sin t)
+    \end{align}
+    and for the vertical line we have
+    \begin{align}
+        \delta: \left[-1,1\right] \mapsto \mathbb{R}^2, \quad t \mapsto (0,-t).
+    \end{align}
+    With that, we compute 
     \begin{align*}
         \int_{\partial \Omega} \vec{F} \cdot \;d\vec{s} 
         &= 
+        \int_{\gamma} \vec{F} \cdot \;d\vec{s} 
+        +
+        \int_{\delta} \vec{F} \cdot \;d\vec{s} 
+        \\&
+        = 
         \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} 
-        \begin{pmatrix}\sin t \cos t\\ -\sin^2 t \end{pmatrix} 
+        \begin{pmatrix}\sin t \cos t\\ \sin^2 t \end{pmatrix} 
         \cdot 
         \begin{pmatrix}-\sin t \\ \cos t \end{pmatrix} \; d t 
         + 
-        \int_1^ {-1} 
+        \int_{-1}^1 
         \begin{pmatrix} 0 \\ t^2 \end{pmatrix}
         \cdot 
-        \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+        \begin{pmatrix} 0 \\ -1 \end{pmatrix}
         \\&
         = 
-        \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt + \int_{1}^ {-1} t^ 2 \;d t
+        \int_0^{2\pi} -\sin^2 t\cos t + \sin^ 2 t \cos t \;dt 
+        - 
+        \int_{-1}^{1} t^2 \;d t
         \\&
-        = \left[\frac{1}{3} t^ 3\right]_1^ {-1}
-        = -\frac{2}{3}
+        = 
+        - \left[\frac{1}{3} t^3 \right]_{-1}^{1}
+        = 
+        -\frac{2}{3}
         .
     \end{align*}
-    Thus, 
+    We compute the integral over the domain: 
     \begin{align*}
-        \int \int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \;d \Omega &= \int \int_{\Omega} -x_1 \; d\Omega
-        \\&= \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \int_0^1 -r\cos \theta r \;d\theta\;dr
-        \\&= -\int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \cos \theta \;d \theta \int_0^1 r^ 2 \;d r
-        = \left[\sin \theta\right]_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \left[-\frac{1}{3}r^ 3\right]_0^{1} = -\frac{2}{3}
+        \int \int_{\Omega} \frac{\partial F_{2}}{\partial x_{1}} - \frac{\partial F_{1}}{\partial x_{2}} \;d \Omega 
+        &
+        = 
+        \int \int_{\Omega} -x_{1} \; d\Omega
+        \\&
+        = 
+        \int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \int_0^1 -r \cos(\theta) r \;d\theta\;dr
+        \\&
+        = 
+        -\int_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \cos(\theta) \;d \theta \int_0^1 r^ 2 \;d r
+        = 
+        \left[\sin \theta\right]_{-\frac{\pi}{2}}^ {\frac{\pi}{2}} \left[-\frac{1}{3}r^ 3\right]_0^{1} = -\frac{2}{3}
         .
     \end{align*}
-    Both integrals give the same value thereby verifying Green's theorem.
+    Both integrals give the same value, thereby verifying Green's theorem.
 \end{solution}
 
 
@@ -122,11 +149,11 @@
 \begin{exercise}
     Consider the triangle domain 
     \begin{gather*}
-        T := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* x_1 > 0, \; x_2 > 0, \; x_1+x_2 < 1 \right\}.
+        T := \left\{ (x_{1},x_{2}) \in \bbR^{2} \suchthat* x_{1} > 0, \; x_{2} > 0, \; x_{1}+x_{2} < 1 \right\}.
     \end{gather*}
     and the vector field 
     \begin{gather*}
-        \vec F(x_1,x_2) = \left( x_1x_2 + \frac{x_1}{1+x_1^2+x_2^2}, x_1x_2 + \frac{x_2}{1+x_1^2+x_2^2} \right)
+        \vec F(x_{1},x_{2}) = \left( x_{1}x_{2} + \frac{x_{1}}{1+x_{1}^2+x_{2}^2}, x_{1}x_{2} + \frac{x_{2}}{1+x_{1}^2+x_{2}^2} \right)
     \end{gather*}
     Find the curve integral of $\vec F$ along the boundary of $T$ using Green's theorem.
 \end{exercise}
@@ -134,22 +161,22 @@
 \begin{align*}
     \int_{\partial \Omega} \vec{F} \cdot \; d \vec{s}
     &= 
-    \int\int_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}\; d \Omega
+    \int\int_{\Omega} \frac{\partial F_{2}}{\partial x_{1}} - \frac{\partial F_{1}}{\partial x_{2}}\; d \Omega
     \\
     &= 
-    \int\int_{\Omega} x_2 + \frac{-2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^2} - x_1 - \frac{-2x_1x_2}{(1+x_1^ 2 + x_2^ 2)^2} \; d \Omega
+    \int\int_{\Omega} x_{2} + \frac{-2x_{1}x_{2}}{(1+x_{1}^ 2 + x_{2}^ 2)^2} - x_{1} - \frac{-2x_{1}x_{2}}{(1+x_{1}^ 2 + x_{2}^ 2)^2} \; d \Omega
     \\
     &= 
-    \int\int_{\Omega} x_2  - x_1\; d \Omega
+    \int\int_{\Omega} x_{2}  - x_{1}\; d \Omega
     \\
     &= 
-    \int_0^ 1\int_0^ {1-x_1} x_2 - x_1 \;dx_2\;dx_1
+    \int_0^ 1\int_0^ {1-x_{1}} x_{2} - x_{1} \;dx_{2}\;dx_{1}
     \\
     &= 
-    \int_0^ 1 \frac{1}{2}(1-x_1)^ 2 - x_1(1-x_1) \;d x
+    \int_0^ 1 \frac{1}{2}(1-x_{1})^ 2 - x_{1}(1-x_{1}) \;d x
     \\
     &= 
-    \left[ -\frac{1}{6}(1-x_1)^ 3 - \frac{1}{2} x_1^2 + \frac{1}{3}x_1^ 3 \right]_0^1 = -\frac{1}{2} + \frac{1}{3} - \frac{-1}{6} = 0
+    \left[ -\frac{1}{6}(1-x_{1})^ 3 - \frac{1}{2} x_{1}^2 + \frac{1}{3}x_{1}^ 3 \right]_0^1 = -\frac{1}{2} + \frac{1}{3} - \frac{-1}{6} = 0
 \end{align*}
 \end{solution}
 
@@ -171,19 +198,19 @@
 \begin{exercise}
     Consider the parabolic arc 
     \begin{gather*}
-        \Gamma := \left\{ (x_1,x_2) \in \bbR^{2} \suchthat* -1 < x_1 < 1, \; x_2 = 3 ( 1 - x_1^2 ) \right\}.
+        \Gamma := \left\{ (x_{1},x_{2}) \in \bbR^{2} \suchthat* -1 < x_{1} < 1, \; x_{2} = 3 ( 1 - x_{1}^2 ) \right\}.
     \end{gather*}
     Find the curve integral $\int_\Gamma \vec F \cdot \vec{n} \;dl$, where 
     \begin{gather*}
-        \vec F(x_1,x_2) 
+        \vec F(x_{1},x_{2}) 
         = 
         \left( 
-            x_1 ( 2 - \cos(x_1x_2)^{2} )
+            x_{1} ( 2 - \cos(x_{1}x_{2})^{2} )
             , 
-            x_2 ( 2 + \cos(x_1x_2)^{2} ) 
+            x_{2} ( 2 + \cos(x_{1}x_{2})^{2} ) 
         \right)
     \end{gather*}
-    and where $\vec{n}$ is the unit vector along $\Gamma$, perpendicular to $\Gamma$ and having non-negative $x_2$ component.
+    and where $\vec{n}$ is the unit vector along $\Gamma$, perpendicular to $\Gamma$ and having non-negative $x_{2}$ component.
 \end{exercise}
 \begin{solution}
     % Draw a line between arc endpoints to enclose a domain.
@@ -216,13 +243,13 @@
     \begin{align*}
         4\int_{\Omega} 1\;d \Omega
         &=
-        4 \int_{-1}^1\int_{0}^{3(1-x_1^2)} 1 \;d x_2 \;d x_1
+        4 \int_{-1}^1\int_{0}^{3(1-x_{1}^2)} 1 \;d x_{2} \;d x_{1}
         \\&=
-        4 \int_{-1}^1\left[x_2\right]_{0}^{3(1-x_1^2)} \;d x_1
+        4 \int_{-1}^1\left[x_{2}\right]_{0}^{3(1-x_{1}^2)} \;d x_{1}
         \\&=
-        4 \int_{-1}^1 3( 1-x_1^2)\;d x_1
+        4 \int_{-1}^1 3( 1-x_{1}^2)\;d x_{1}
         \\&=
-        4 \left[ 3 x_1 - x_1^3 \right]_{-1}^1
+        4 \left[ 3 x_{1} - x_{1}^3 \right]_{-1}^1
         =
         4 \left( \left[ 3 - 1 \right] - \left[ -3 + 1 \right] \right)
         = 
@@ -233,7 +260,7 @@
     \begin{align*}
         \int_{\Delta} \vec{F} \cdot \binom{0}{-1} \; dl
         =
-        \int_{-1}^1 0 \; dx_1
+        \int_{-1}^1 0 \; dx_{1}
         =
         0
         .
@@ -244,7 +271,7 @@
         = 
         \int_{\Gamma\cup \Delta} \vec{F} \cdot \vec{n} \; dl
         =
-        \left[ 12 x_1 - 4 x_1^3 \right]_{-1}^1
+        \left[ 12 x_{1} - 4 x_{1}^3 \right]_{-1}^1
         =
         ( 12 - 4 ) - ( -12 + 4 )
         = 
@@ -314,7 +341,7 @@
     \end{gather*}
     Find the integral of the function 
     \[
-        f(x_1,x_2,x_3) := x_1 x_2 x_3
+        f(x_{1},x_{2},x_3) := x_{1} x_{2} x_3
     \]
     over the graph of $\phi$ over $\Omega$. 
 \end{exercise}
@@ -501,9 +528,9 @@
 
 
 \begin{exercise}
-    Let $f(x_1,x_2,x_3) = x_1 x_2 + x_3^2$ and consider the surface 
+    Let $f(x_{1},x_{2},x_3) = x_{1} x_{2} + x_3^2$ and consider the surface 
     \begin{gather*}
-        S := \left\{ \; (x_1,x_2,x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_1^2 + x_2^2 = x_3^2 \;  \right\}
+        S := \left\{ \; (x_{1},x_{2},x_3) \in \mathbb R^3 \suchthat* 0 < x_3 < 1, \; x_{1}^2 + x_{2}^2 = x_3^2 \;  \right\}
     \end{gather*}
     Find a parameterization of $S$ and compute the surface integral $\iint_S f \;d\sigma$. 
 \end{exercise}
