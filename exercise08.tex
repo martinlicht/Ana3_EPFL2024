@@ -33,41 +33,123 @@
     \end{itemize}
 \end{exercise}
 \begin{solution}     
+    We conduct this in several steps.
     \begin{itemize}
     \item 
-    $$
-        \Phi: \Omega:= [0,2\pi)\times[0,\frac{\pi}{2}) \mapsto S: (\theta,\phi)\mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi) 
-    $$
-    $$
-        \vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} = \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}
-    $$
+    One possible parameterisation of the surface $S$ reads:
+    \begin{gather*}
+        \Omega:= [0,2\pi)\times[0,\tfrac{\pi}{2}),
+        \\
+        \Phi: \Omega \rightarrow S, \quad (\theta,\phi)\mapsto
+        (
+            \cos\theta\sin\phi,
+            \sin\theta\sin\phi,
+            \cos\phi
+        ) 
+    \end{gather*}
+    We compute the partial derivatives:
+    \begin{gather*}
+        \Phi
+        =
+        \begin{pmatrix}
+            \cos\theta\sin\phi
+            \\
+            \sin\theta\sin\phi
+            \\
+            \cos\phi
+        \end{pmatrix} 
+        \\
+        \partial_{\theta} \Phi
+        =
+        \begin{pmatrix}
+            -\sin \theta \sin \phi
+            \\
+             \cos \theta \sin \phi
+            \\
+            0
+        \end{pmatrix} 
+        ,
+        \quad 
+        \partial_{\phi} \Phi
+        =
+        \begin{pmatrix}
+            \cos\theta \cos\phi
+            \\
+            \sin\theta \cos\phi
+            \\
+            -\sin\phi
+        \end{pmatrix} 
+        .
+    \end{gather*}
+    \begin{align}
+        \partial_{\theta} \Phi \times \partial_{\phi} \Phi
+        =
+        \begin{pmatrix}
+            - \cos\theta \sin^2\phi
+            \\
+            - \sin\theta \sin^2\phi
+            \\
+            -\sin\phi \cos\phi
+        \end{pmatrix} 
+        .
+    \end{align}
+    The norm of this cross product equals $\sin\phi$. Hence 
+    \begin{gather*}
+        \vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} 
+        = 
+        \begin{pmatrix} -\cos\theta\sin\phi \\ -\sin\theta\sin\phi \\ -\cos\phi\end{pmatrix}
+    \end{gather*}
 
     \item 
     We first parameterize the boundary of the parameter space $\Omega$ 
-    $$
-        \gamma:[0,2\pi) \mapsto \partial \Omega : \theta \mapsto(\theta, \frac{\pi}{2}),
-    $$
+    \begin{gather*}
+        \gamma : [0,2\pi) \mapsto \partial \Omega, \quad \theta \mapsto(\theta, \frac{\pi}{2}),
+    \end{gather*}
 	which gives us the parameterization of the boundary as follows:
-    $$
-        \Phi\circ \gamma:[0,2\pi) \mapsto \partial C : \theta \mapsto(\cos\theta,\sin\theta,0).
-    $$
+    \begin{gather*}
+        \Phi\circ \gamma :[0,2\pi) \mapsto \partial C, \quad \theta \mapsto(\cos\theta,\sin\theta,0).
+    \end{gather*}
 
     \item 
     We have to show that:
-    $$
+    \begin{gather*}
     \iint_S \nabla \times \vec{F} d\sigma = \oint_C \vec{F} d\ell
-    $$
+    \end{gather*}
+    On the one hand,
     \begin{align*}
-        \iint_S \nabla \times \vec{F} d\sigma &= \iint_S \nabla \times \vec{F}\cdot \vec{n}||\partial_{\theta}\Phi\times \partial_{\phi}\Phi|| d\sigma\\
-        &= \iint_S \begin{pmatrix} 0\\ 0\\ 2 \end{pmatrix}\cdot \begin{pmatrix}\cos\theta\sin\phi \\ \sin\theta\sin\phi\\ \cos\phi\end{pmatrix}\sin\phi d\sigma\\
-        &= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi d\phi d\theta\\
-        &= \int_0^{2\pi}\int_0^{\frac{\pi}{2}} \sin2\phi d\phi d\theta\\
-        &= 2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}} = 2\pi\\
+        \iint_S \nabla \times \vec{F} d\sigma 
+        &
+        = \iint_S \nabla \times \vec{F}\cdot \vec{n}||\partial_{\theta}\Phi\times \partial_{\phi}\Phi|| \ d\sigma
+        \\&
+        = 
+        \iint_S 
+        \begin{pmatrix} 0\\ 0\\ 2 \end{pmatrix}
+        \cdot
+        \begin{pmatrix} -\cos\theta\sin\phi \\ -\sin\theta\sin\phi \\ -\cos\phi\end{pmatrix} \sin\phi \ d\sigma
+        \\&
+        = 
+        \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
+        \\&
+        = 
+        2\pi \int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
+        \\&
+        = 
+        2\pi \int_0^{\frac{\pi}{2}} \sin(2\phi) \ d\phi d\theta
+        \\&
+        = 
+        2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}}
+        = 
+        2\pi
+        .
     \end{align*}   
+    On the other hand,
     \begin{align*}
-        \oint_C \vec{F} d\ell &= \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta\\
-        &= \int_0^{2\pi} \begin{pmatrix} -\sin\theta\\ \cos\theta\\ 0 \end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\ \cos\phi \\ 0\end{pmatrix} d \theta\\
-        &= \int_0^{2\pi} 1 d \theta = 2\pi\\
+        \oint_C \vec{F} d\ell &= \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta
+        \\&
+        = 
+        \int_0^{2\pi} \begin{pmatrix} -\sin\theta\\ \cos\theta\\ 0 \end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\ \cos\phi \\ 0\end{pmatrix} d \theta
+        %\\&
+        = \int_0^{2\pi} 1 d \theta = 2\pi\\
     \end{align*}   
     \end{itemize}
 \end{solution}
@@ -120,7 +202,7 @@
     \begin{itemize}
     \item
     In a similar fashion as Exercise 1 Subquestion 2 we obtain the following normal vector:
-		$$\vec{n} = \begin{pmatrix} x_1\\x_2\\0 \end{pmatrix}$$
+		\begin{gather*}\vec{n} = \begin{pmatrix} x_1\\x_2\\0 \end{pmatrix}\end{gather*}
     \item 
 	\begin{align*}
 	\vec F \cdot \vec n & = \begin{pmatrix}x_2x_3 \\ -x_1x_3\\0\end{pmatrix}\cdot \begin{pmatrix}x_1 \\ x_2\\0\end{pmatrix} = x_1x_2x_3 - x_1x_2x_3 = 0
@@ -130,9 +212,9 @@
      \end{align*}
     \item
     We define the parameterisation: 
-	$$
+	\begin{gather*}
 	\Phi: [0,2\pi) \times [-1,1] \mapsto S, (\theta ,z) \mapsto (\cos\theta, \sin\theta ,z)
-	$$
+	\end{gather*}
 	\begin{align*}
         \int_\Omega \vec F(\Phi) \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt &=\int_0^{2\pi} \int_{-1}^1 \begin{pmatrix}z\sin\theta\\ -z\cos\theta \\ 0\end{pmatrix} \cdot \begin{pmatrix}\cos\theta\\ \sin\theta \\ 0\end{pmatrix} dsdt \\
 	    & = \int_0^{2\pi} \int_{-1}^1 0  dsdt  = 0\\
@@ -328,7 +410,7 @@
     \begin{itemize}
         \item Find parameterizations of the other two curves.
         \item With the $\vec F(x_1,x_2) = (x_2,-x_1)$ compute the curve integral 
-        \[ \oint_C \vec F dl \]
+        \begin{gather*} \oint_C \vec F dl \end{gather*}
         \item Use Green's theorem to explain how to compute the size of the area enclosed by the curve $C$.
     \end{itemize}
 \end{exercise}
@@ -348,33 +430,33 @@
 =&\int_0^{\frac{\pi}{2}} -\frac{3}{8}dt = -\frac{3\pi}{16}
 \end{align*}
 \item We want to evaluate:
-$$
+\begin{gather*}
 \iint_{\Omega} 1 dxdy
-$$
+\end{gather*}
 
 and Green's theorem tells us that:
 
-$$
+\begin{gather*}
 \oint_C \vec F dl  = \iint_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} dx_1dx_2
-$$
+\end{gather*}
 
 In the previous exercise we solved the line integral with the vector field $\vec F(x_1,x_2) = (x_2,-x_1)$. If we apply Greens theorem for this vector field then
 
-$$
+\begin{gather*}
 -\frac{3\pi}{16} = \oint_C \vec F dl  =  \iint_{\Omega} \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} dx_1dx_2 = \iint_{\Omega} -2 dx_1dx_2
-$$
+\end{gather*}
 
 Therefore we have that
 
-$$
+\begin{gather*}
 -\frac{3\pi}{16} =  \iint_{\Omega} -2 dx_1dx_2
-$$
+\end{gather*}
 
 and consequently 
 
-$$
+\begin{gather*}
 \frac{3\pi}{32} =  \iint_{\Omega} dx_1dx_2
-$$
+\end{gather*}
 \end{itemize}
 \end{solution}
 
@@ -397,7 +479,7 @@ $$
     \end{itemize}
 \end{exercise}
 \begin{solution}     
-The surface is parameterized by $$\Omega := [0,\pi]\times[0,\frac{\pi}{2}] \mapsto S: (\theta, \phi) \mapsto (\cos\theta\sin\phi, \sin\theta\sin\phi, \cos\phi)$$
+The surface is parameterized by \begin{gather*}\Omega := [0,\pi]\times[0,\frac{\pi}{2}] \mapsto S: (\theta, \phi) \mapsto (\cos\theta\sin\phi, \sin\theta\sin\phi, \cos\phi)\end{gather*}
 The boundary of domain $S$ is parameterised by two curves
 \begin{align*}
         &\gamma_1 : \left[0,\pi\right] \to \bbR^3, \quad t \mapsto (\cos t, \sin t, 0),\\
@@ -421,9 +503,9 @@ Note that we do not need $\Phi\circ\gamma_3$ to parameterise the boundary of $S$
 % \begin{exercise}
 %     \textit{This is for fun and entertainment only.}
 %     Compute 
-%     \[
+%     \begin{gather*}
 %         \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 }
-%     \]
+%     \end{gather*}
 %     without using a calculator.
 % \end{exercise}
 % \begin{solution}
@@ -448,9 +530,9 @@ Note that we do not need $\Phi\circ\gamma_3$ to parameterise the boundary of $S$
 %         .
 %     \end{align*}
 %     Therefore,
-%     \[
+%     \begin{gather*}
 %         \sqrt{ 500 \cdot 501 \cdot 502 \cdot 503 + 1 } = 500^2 + 3 \cdot 500 + 1 = 250000 + 1500 + 1
-%     \]
+%     \end{gather*}
 %     The total result is $251501$. Which happens to be a prime number.
 % \end{solution}
 

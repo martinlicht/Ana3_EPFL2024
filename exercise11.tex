@@ -38,7 +38,7 @@
     \[
         \frac{ a_0 }{2}
         = 
-        \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} e^{x-\pi} dx  = \frac{1}{2\pi}\left[ e^{x-\pi} \right]_{0}^{2\pi} = \frac{1}{\pi}\left(e^{\pi} - e^{-\pi}\right)
+        \frac{1}{2\pi}\int_{0}^{2\pi} f(x) dx  = \frac{1}{2\pi}\int_{0}^{2\pi} e^{x-\pi} dx  = \frac{1}{2\pi}\left[ e^{x-\pi} \right]_{0}^{2\pi} = \frac{1}{2\pi}\left(e^{\pi} - e^{-\pi}\right)
     \]
     For other coefficients, we apply integration by parts twice, and see that we obtain the same integral again:
     \begin{align*}
@@ -623,7 +623,7 @@ which gives us the Fourier coefficients of $f$
 \end{gather*}
 Using this we can obtain the Fourier coefficients $c_n$:
 \[
-    c_0 = a_0 = 2,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
+    c_0 = \frac{ a_0 }{2} = 2,\quad c_n=\frac{a_n}{2}-\frac{b_n}{2} i = \frac{1}{n\pi}i, \quad c_{-n}=\frac{a_n}{2}+\frac{b_n}{2} i = -\frac{1}{n\pi}i
 \]
 such that 
 \[
@@ -735,7 +735,11 @@ We calculate the complex Fourier coefficients
 \end{align*}
 Using $c_n$ we can determine $a_n$ and $b_n$
 $$
-    \frac{a_0}{2} = \sin 1,\quad a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n)\\, \quad b_n = i(c_n - c_{-n}) = 0
+    \frac{a_0}{2} = c_0 = \sin 1,
+    \quad 
+    a_n = c_n + c_{-n} = \frac{1}{(1-n\pi)}\sin(1-\pi n) + \frac{1}{(1+n\pi)}\sin(1+\pi n),
+    \\
+    b_n = i(c_{-n} - c_{n}) = 0
 $$
 The Fourier series in standard and in complex notation are given by:
 \begin{align*}
