@@ -1021,7 +1021,7 @@
         \begin{align*}
             b^{f}_n 
             &= 
-              \int_{-1}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+            \int_{-1}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
             \\&= 
             2 
             \int_{ 0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
@@ -1033,7 +1033,15 @@
             \\&= 
             2 
             \int_{ 0}^{1} x \sin(2 \pi n x) \ dx 
-            \\&= 
+        \end{align*}
+        Via integration by parts:
+        \begin{align*}
+            b^{f}_{n}
+            = 
+            2 
+            \int_{ 0}^{1} x \sin(2 \pi n x) \ dx 
+            &
+            =
             2 
             \left[ x \frac{(-\cos)}{2\pi n}(2 \pi n x) \right]_{x=0}^{x=1}
             -
@@ -1045,41 +1053,43 @@
             + 
             \frac{1}{2\pi n}
             \int_{0}^{1} \cos(2 \pi n x) \ dx 
-            = 
-            \int_{0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
-            \\&
-            = 
-            \int_{0}^{1} x \sin(2 \pi n x) \ dx 
-            -
-            \int_{0}^{1} \sin(2 \pi n x) \ dx 
-            = 
-            \int_{0}^{1} x \sin(2 \pi n x) \ dx 
-            .
-        \end{align*}
-        Via integration by parts:
-        \begin{align*}
-            \int_{0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
-            &
-            = 
-            \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
-            -
-            \int_{0}^{1} \frac{-1}{2 \pi n} \cos(2 \pi n x) \ dx
-            \\&
-            = 
-            \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
-            +
-            \frac{1}{ 4 \pi^{2} n^{2} } 
-            \left[ \sin( 2 \pi n x ) \right]_{x=0}^{x=1}
-            \\&
-            = 
-            \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
-            \\&
-            = 
-            \frac{-1}{2 \pi n} \cos(2 \pi n) 
             =
-            \frac{-1}{2 \pi n} 
+            \frac{-1}{\pi n}
+%             = 
+%             \int_{0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+%             \\&
+%             = 
+%             \int_{0}^{1} x \sin(2 \pi n x) \ dx 
+%             -
+%             \int_{0}^{1} \sin(2 \pi n x) \ dx 
+%             = 
+%             \int_{0}^{1} x \sin(2 \pi n x) \ dx 
             .
         \end{align*}
+%         Via integration by parts:
+%         \begin{align*}
+%             \int_{0}^{1} \left( x- \frac 1 2 \right) \sin(2 \pi n x) \ dx 
+%             &
+%             = 
+%             \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
+%             -
+%             \int_{0}^{1} \frac{-1}{2 \pi n} \cos(2 \pi n x) \ dx
+%             \\&
+%             = 
+%             \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
+%             +
+%             \frac{1}{ 4 \pi^{2} n^{2} } 
+%             \left[ \sin( 2 \pi n x ) \right]_{x=0}^{x=1}
+%             \\&
+%             = 
+%             \left[ x \frac{-1}{2 \pi n} \cos(2 \pi n x) \right]_{x=0}^{x=1}
+%             \\&
+%             = 
+%             \frac{-1}{2 \pi n} \cos(2 \pi n) 
+%             =
+%             \frac{-1}{2 \pi n} 
+%             .
+%         \end{align*}
 
         \item 
         We use a full Fourier series for the solution of the Poisson problem with periodic boundary conditions,
@@ -1099,7 +1109,7 @@
         With our specific choice of coefficients, 
         Therefore, the solution is given by
         \begin{align*}
-            u(x) = \sum_{n=1}^{\infty} \frac{-1}{2\pi n \left[k^2 + (2 \pi n)^2 \right]} \sin(2 \pi n x).
+            u(x) = \sum_{n=1}^{\infty} \frac{-1}{\pi n \left[k^2 + (2 \pi n)^2 \right]} \sin(2 \pi n x).
         \end{align*}
         Note that the periodic boundary conditions are satisfied.
     \end{enumerate}

@@ -1,8 +1,8 @@
 \documentclass[11pt]{article}
-% \def\hidesolutions{}
+\def\hidesolutions{}
 \input{header}
 \begin{document}
-\exsheet{14}{19}{December} % parameters are the number of the session and the day
+\exsheet{Extra}{29}{December} % parameters are the number of the session and the day
 
 
 \begin{exercise}
@@ -65,7 +65,7 @@
     \end{align}
     Here, the fourth derivative $u''''$ can be interpreted as the curvature of a curvature and $f$ describes the direction (upwards, downwards) and magnitude of the force.
     
-    So-called non-local interactions are modeled via a convolutional term $k \star u$, where $k$ how parts of a beam are influenced by neighboring parts.
+    So-called non-local interactions are modeled via a convolutional term $k \star u$, where $k$ indicates how parts of a beam are influenced by neighboring parts.
     With that in mind, we consider a generalized beam equation 
     \begin{align}
         u''''(x) + c u(x) + ( k \star u )(x) = f(x)
@@ -101,6 +101,33 @@
         \frac{\hat f(\alpha)}{ \alpha^{4} + c + \sqrt{2\pi} \hat k(\alpha) }
         .
     \end{align}
+    In the particular case of 
+    \begin{align}
+        k(x) = e^{-|y|},
+        \quad 
+        f(x) = e^{-y^{2}},
+    \end{align}
+    one finds
+    \begin{align}
+        \hat k(x) = \sqrt{\frac{2}{\pi}} \frac{1}{1 + \alpha^{2}},
+        \quad 
+        \hat f(x) = \frac{1}{\sqrt{2}} e^{-\alpha^{2}/4}.
+    \end{align}
+    One can simplify
+    \begin{align}
+        \hat u(\alpha)
+        =
+        \frac{\hat f(\alpha)}{ \alpha^{4} + c + \sqrt{2\pi} \hat k(\alpha) }
+        =
+        \frac{\hat f(\alpha)}{ \alpha^{4} + c + \frac{2}{1 + \alpha^{2}} }
+        =
+        \frac{1 + \alpha^{2}}{ \alpha^{4} + c + 2 } \hat f(\alpha)
+        .
+    \end{align}
+    The solution of the ODE can be found if we know the inverse Fourier transform $h(x)$ of the factor $\hat h(\alpha) = (1+\alpha^{2})/(\alpha^{4}+2+c)$.
+    Then the product of $\hat h(\alpha) \hat f(\alpha)$ can be transformed into the convolution $\sqrt{2\pi} h \star f$. 
+    Finding the inverse Fourier transform of such a factor will be possible with techniques of complex analysis, 
+    to be discussed next semester. 
 \end{solution}
 
 
