@@ -38,15 +38,18 @@
     \item 
     One possible parameterisation of the surface $S$ reads:
     \begin{gather*}
-        \Omega:= [0,2\pi)\times[0,\tfrac{\pi}{2}),
+        \Omega := [0,2\pi)\times[0,\tfrac{\pi}{2}),
         \\
         \Phi: \Omega \rightarrow S, \quad (\theta,\phi)\mapsto
         (
             \cos\theta\cos\phi,
             \sin\theta\cos\phi,
             \sin\phi
-        ) 
+        )
+        .
     \end{gather*}
+    We think of this as a parameterization of the upper hemisphere. 
+    The first variable $\theta$ parameterizes the equator-like lines (latitude) and the second variable paramterizes the longitude (how far up north, starting at the equator).
     We compute the partial derivatives:
     \begin{gather*}
         \Phi
@@ -58,7 +61,8 @@
             \\
             \sin\phi
         \end{pmatrix} 
-        \\
+        ,
+        \quad
         \partial_{\theta} \Phi
         =
         \begin{pmatrix}
@@ -73,13 +77,13 @@
         \partial_{\phi} \Phi
         =
         \begin{pmatrix}
-            \cos\theta \sin\phi
+            - \cos\theta \sin\phi
             \\
-            \sin\theta \sin\phi
+            - \sin\theta \sin\phi
             \\
             \cos\phi
         \end{pmatrix} 
-        .
+        ,
         \\
         \partial_{\theta} \Phi \times \partial_{\phi} \Phi
         =
@@ -88,7 +92,7 @@
             \\
             \sin\theta \cos^2\phi
             \\
-            -\sin\phi \cos\phi
+            \sin\phi \cos\phi
         \end{pmatrix} 
         .
     \end{gather*}
@@ -125,17 +129,24 @@
     \begin{gather*}
         \vec{n} 
         = 
-        \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} 
+        \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{\|\partial_{\theta}\Phi\times \partial_{\phi}\Phi\|} 
         = 
         \begin{pmatrix}    
             \cos\theta\cos\phi 
             \\ 
             \sin\theta\cos\phi 
             \\ 
-            -\sin\phi
+            \sin\phi
         \end{pmatrix}
     \end{gather*}
-
+    According to the right-hand rule, when walking along the boundary with our right hand pointing into the first direction and our left-hand pointing into the interior of the surface, the resulting normal points will be the one pointing away from the origin.
+    
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.20]{Northern_Hemisphere.png}
+    \caption{The first variable eastwards. The second variable points up north. The resulting normal is pointing away from the origin. Remark: if we only consider the upper hemisphere surface, then there is no outside or inside pointing normal. Indeed, if you cut open the Earth and only consider the upper hemisphere, then there would be inside left.}
+    \end{figure}
+    
     \item 
     We first parameterize the boundary of the parameter space $\Omega$ 
     \begin{gather*}
@@ -155,7 +166,7 @@
     \begin{align*}
         \iint_S \nabla \times \vec{F} d\sigma 
         &
-        = \iint_S \nabla \times \vec{F}\cdot \vec{n}||\partial_{\theta}\Phi\times \partial_{\phi}\Phi|| \ d\sigma
+        = \iint_S \nabla \times \vec{F}\cdot \vec{n}\|\partial_{\theta}\Phi\times \partial_{\phi}\Phi\| \ d\sigma
         \\&
         = 
         \iint_S 
@@ -166,31 +177,36 @@
             \\ 
             \sin\theta\cos\phi 
             \\ 
-            -\cos\phi
+            \cos\phi
         \end{pmatrix}
         \sin\phi \ d\phi d\theta 
         \\&
         = 
-        -\int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
+        \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
         \\&
         = 
-        -2\pi \int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
-        \\&
+        2\pi \int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
         = 
-        -2\pi \int_0^{\frac{\pi}{2}} \sin(2\phi) \ d\phi d\theta
-        \\&
+        2\pi \int_0^{\frac{\pi}{2}} \sin(2\phi) \ d\phi d\theta
         = 
         2\pi \left[ \frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}}
         = 
-        -2\pi
+        2\pi
         .
     \end{align*}   
     On the other hand,
     \begin{align*}
-        \oint_C \vec{F} d\ell &= \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta
+        \oint_C \vec{F} d\ell 
+        &
+        = 
+        \int_0^{2\pi} \vec{F}(\Phi\circ \gamma)\cdot \frac{d(\Phi\circ \gamma)}{d\theta}  d \theta
         \\&
         = 
-        \int_0^{2\pi} \begin{pmatrix} -\sin\theta\\ \cos\theta\\ 0 \end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\ \cos\phi \\ 0\end{pmatrix} d \theta
+        \int_0^{2\pi} 
+        \begin{pmatrix} -\sin\theta \\ \cos\theta \\ 0 \end{pmatrix}
+        \cdot 
+        \begin{pmatrix} -\sin\theta \\ \cos\theta \\ 0 \end{pmatrix} 
+        d \theta
         %\\&
         = \int_0^{2\pi} 1 d \theta = 2\pi\\
     \end{align*}   
@@ -228,7 +244,7 @@
     \item
      Compute the integral using the formula 
      \begin{align*}
-        \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
+        \int_\Omega \vec F \cdot ( \partial_s \Phi \times \partial_t \Phi ) dsdt
      \end{align*}
      and compare the result. 
     \item 
@@ -357,8 +373,8 @@
 	\end{align*}
     \item
 	\begin{align*}
-        \int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi ) dsdt &=\int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi )\frac{||\partial_S \Phi \times \partial_t \Phi ||}{||\partial_S \Phi \times \partial_t \Phi ||} dsdt \\
-        &=\int_{\Omega} \vec{F}(\Phi) \cdot \vec{n}||\partial_S \Phi \times \partial_t \Phi || dsdt \\
+        \int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi ) dsdt &=\int_{\Omega} \vec{F}(\Phi) \cdot  ( \partial_S \Phi \times \partial_t \Phi )\frac{\|\partial_S \Phi \times \partial_t \Phi \|}{\|\partial_S \Phi \times \partial_t \Phi \|} dsdt \\
+        &=\int_{\Omega} \vec{F}(\Phi) \cdot \vec{n}\|\partial_S \Phi \times \partial_t \Phi \| dsdt \\
         &=\int_S \vec{F}\cdot \vec{n} d\sigma
 	\end{align*}
     \item
