@@ -408,7 +408,7 @@
         \int \int_{\Omega} \nabla \cdot \vec{F} \;d x_1 \:d x_2 
         =
         &
-        \int_{\partial \Omega}\vec{F}\cdot\vec{n} \;d\ell,
+        \int_{\partial \Omega}\vec{F}\cdot\vec{n} \;d\ell
         \\&=
         \int_{-1}^1 \vec{F}( x_1,  -1)\cdot\begin{pmatrix}0\\-1\end{pmatrix} \;dx_1 
         + 
@@ -419,9 +419,18 @@
         + 
         \int_{-1}^1 \vec{F}(   1, x_2)\cdot\begin{pmatrix}1\\0\end{pmatrix} \;dx_2
         \\&=
-        \int_{-1}^1 (1-x_1^ 2)^ 5 \;dx_1 
+        -\int_{-1}^1 (x_1^ 2-1)^ 5 \;dx_1 
         + 
         \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1 
+        \\&\qquad 
+        + 
+        (-1)\int_{-1}^1 \sin(-1)(-x_2)\;dx_2
+        +
+        \int_{-1}^1 \sin(1)x_2\;dx_2
+        \\&=
+        \int_{-1}^1 (1-x_1^2)^ 5 \;dx_1 
+        + 
+        \int_{-1}^1 (1+x_1^2)^ 5 \;dx_1 
         \\&\qquad 
         + 
         (-1)\int_{-1}^1 \sin(-1)(-x_2)\;dx_2
@@ -456,7 +465,7 @@
         &=
         \int_{\partial \Omega}\vec{F}\cdot\vec{n} \;d\ell,
         \\&=
-        \int_{-1}^1 (1-x_1^2)^5 \;dx_1 + \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1
+        \int_{-1}^1 (1-x_1^2)^5 \;dx_1 + \int_{-1}^1 (1+x_1^2)^ 5 \;dx_1
         \\&=
         \sum_{k = 0}^5 \binom{5}{k} (-1)^{k} \int_{-1}^1 (x)^{2k} \;dx_1 + \sum_{k = 0}^5 \binom{5}{k}\int_{-1}^1 (x)^{2k} \;dx_1
         \\&=

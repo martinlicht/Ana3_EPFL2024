@@ -42,9 +42,9 @@
         \\
         \Phi: \Omega \rightarrow S, \quad (\theta,\phi)\mapsto
         (
-            \cos\theta\sin\phi,
-            \sin\theta\sin\phi,
-            \cos\phi
+            \cos\theta\cos\phi,
+            \sin\theta\cos\phi,
+            \sin\phi
         ) 
     \end{gather*}
     We compute the partial derivatives:
@@ -52,19 +52,19 @@
         \Phi
         =
         \begin{pmatrix}
-            \cos\theta\sin\phi
+            \cos\theta\cos\phi
             \\
-            \sin\theta\sin\phi
+            \sin\theta\cos\phi
             \\
-            \cos\phi
+            \sin\phi
         \end{pmatrix} 
         \\
         \partial_{\theta} \Phi
         =
         \begin{pmatrix}
-            -\sin \theta \sin \phi
+            -\sin \theta \cos \phi
             \\
-             \cos \theta \sin \phi
+             \cos \theta \cos \phi
             \\
             0
         \end{pmatrix} 
@@ -73,37 +73,73 @@
         \partial_{\phi} \Phi
         =
         \begin{pmatrix}
-            \cos\theta \cos\phi
+            \cos\theta \sin\phi
             \\
-            \sin\theta \cos\phi
+            \sin\theta \sin\phi
             \\
-            -\sin\phi
+            \cos\phi
         \end{pmatrix} 
         .
-    \end{gather*}
-    \begin{align}
+        \\
         \partial_{\theta} \Phi \times \partial_{\phi} \Phi
         =
         \begin{pmatrix}
-            - \cos\theta \sin^2\phi
+            \cos\theta \cos^2\phi
             \\
-            - \sin\theta \sin^2\phi
+            \sin\theta \cos^2\phi
             \\
             -\sin\phi \cos\phi
         \end{pmatrix} 
         .
-    \end{align}
-    The norm of this cross product equals $\sin\phi$. Hence 
+    \end{gather*}
+    The norm of this cross product is
+    \begin{align*}
+        \left\| \partial_{\theta} \Phi \times \partial_{\phi} \Phi \right\|
+        &=
+        \sqrt{
+            \cos^{2}\theta \cos^{4}\phi
+            +
+            \sin^{2}\theta \cos^{4}\phi
+            +
+            \sin^{2}\phi \cos^{2}\phi
+        }
+        \\
+        &=
+        \sqrt{
+            \cos^{4}\phi
+            +
+            \sin^{2}\phi \cos^{2}\phi
+        }
+        =
+        \cos\phi
+        \sqrt{
+            \cos^{2}\phi
+            +
+            \sin^{2}\phi
+        }
+        =
+        \cos\phi
+        .
+    \end{align*}
+    Hence 
     \begin{gather*}
-        \vec{n} = \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} 
+        \vec{n} 
         = 
-        \begin{pmatrix} -\cos\theta\sin\phi \\ -\sin\theta\sin\phi \\ -\cos\phi\end{pmatrix}
+        \frac{\partial_{\theta}\Phi\times \partial_{\phi}\Phi}{||\partial_{\theta}\Phi\times \partial_{\phi}\Phi||} 
+        = 
+        \begin{pmatrix}    
+            \cos\theta\cos\phi 
+            \\ 
+            \sin\theta\cos\phi 
+            \\ 
+            -\sin\phi
+        \end{pmatrix}
     \end{gather*}
 
     \item 
     We first parameterize the boundary of the parameter space $\Omega$ 
     \begin{gather*}
-        \gamma : [0,2\pi) \mapsto \partial \Omega, \quad \theta \mapsto(\theta, \frac{\pi}{2}),
+        \gamma : [0,2\pi) \mapsto \partial \Omega, \quad \theta \mapsto \left( \theta, \frac{\pi}{2} \right),
     \end{gather*}
 	which gives us the parameterization of the boundary as follows:
     \begin{gather*}
@@ -113,7 +149,7 @@
     \item 
     We have to show that:
     \begin{gather*}
-    \iint_S \nabla \times \vec{F} d\sigma = \oint_C \vec{F} d\ell
+        \iint_S \nabla \times \vec{F} d\sigma = \oint_C \vec{F} d\ell
     \end{gather*}
     On the one hand,
     \begin{align*}
@@ -125,21 +161,28 @@
         \iint_S 
         \begin{pmatrix} 0\\ 0\\ 2 \end{pmatrix}
         \cdot
-        \begin{pmatrix} -\cos\theta\sin\phi \\ -\sin\theta\sin\phi \\ -\cos\phi\end{pmatrix} \sin\phi \ d\sigma
+        \begin{pmatrix}    
+            \cos\theta\cos\phi 
+            \\ 
+            \sin\theta\cos\phi 
+            \\ 
+            -\cos\phi
+        \end{pmatrix}
+        \sin\phi \ d\phi d\theta 
         \\&
         = 
-        \int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
+        -\int_0^{2\pi}\int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
         \\&
         = 
-        2\pi \int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
+        -2\pi \int_0^{\frac{\pi}{2}} 2\cos\phi\sin\phi \ d\phi d\theta
         \\&
         = 
-        2\pi \int_0^{\frac{\pi}{2}} \sin(2\phi) \ d\phi d\theta
+        -2\pi \int_0^{\frac{\pi}{2}} \sin(2\phi) \ d\phi d\theta
         \\&
         = 
-        2\pi \left[ -\frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}}
+        2\pi \left[ \frac{1}{2}\cos2\phi \right]_0^{\frac{\pi}{2}}
         = 
-        2\pi
+        -2\pi
         .
     \end{align*}   
     On the other hand,
@@ -170,13 +213,13 @@
 
 \begin{exercise} % 4
     Let $S$ be the surface with parameterization $\Phi : \Omega \to S$ as follows:
-    \begin{align}
+    \begin{align*}
      S := \left\{ \vec x \in \bbR^3 \suchthat* x_1^2 + x_2^2 = 1, \; -1 < x_3 < 1 \right\},
-    \end{align}
+    \end{align*}
     Suppose we have a vector field 
-    \begin{align}
+    \begin{align*}
         \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, 0 ).
-    \end{align}
+    \end{align*}
     \begin{itemize}
     \item
      Find a parameterization of the unit normal $\vec n$ given associated with that parameterization.
@@ -184,17 +227,17 @@
      Compute the scalar field $\vec F \cdot \vec n$ and calculate the integrals of this scalar fields over $S$.
     \item
      Compute the integral using the formula 
-     \begin{align}
+     \begin{align*}
         \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
-     \end{align}
+     \end{align*}
      and compare the result. 
     \item 
      Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
     \item 
      Compute the integrals 
-     \begin{align}
+     \begin{align*}
         \oint_C \vec F dl.
-     \end{align}
+     \end{align*}
 
     \end{itemize}
 \end{exercise}
@@ -273,17 +316,17 @@
 
 \begin{exercise} % 3
     Let $S$ be a surface with parameterization $\Phi : \Omega \to S$ as follows:
-    \begin{gather}
+    \begin{gather*}
      S := \left\{ \vec x \in \bbR^3 \suchthat* x_1 + x_2 + x_3 = 1, \; x_1, x_2, x_3 > 0 \right\},
      \\
      \Omega = \left\{ (s,t) \in \bbR^2 \suchthat* s + t < 1, \; s, t > 0 \right\},
      \\ 
      \Phi : \Omega \to S, \quad (s,t) \mapsto (s,t,1-s-t).
-    \end{gather}
+    \end{gather*}
     We consider the vector fields 
-    \begin{align}
+    \begin{align*}
         \vec F(x_1,x_2,x_3) := (x_2 x_3, -x_1 x_3, x_1 x_2), \quad \vec G(x_1,x_2,x_3) := (-x_2, x_1,x_3)
-    \end{align}
+    \end{align*}
     \begin{itemize}
     \item
      Find the unit normal $\vec n$ given associated with that parameterization.
@@ -291,17 +334,17 @@
      Compute the scalar fields $\vec F \cdot \vec n$ and $\vec G \cdot \vec n$ and calculate the integrals of these scalar fields over $S$.
     \item
      Compute the integrals using the formula 
-     \begin{align}
+     \begin{align*}
         \int_\Omega \vec F \cdot ( \partial_S \Phi \times \partial_t \Phi ) dsdt
-     \end{align}
+     \end{align*}
      and compare the result. 
     \item 
      Find a counterclockwise parameterization of $\partial\Omega$ and use it build a parameterization of the curve $C = \partial S$.
     \item 
      Compute the integrals 
-     \begin{align}
+     \begin{align*}
         \oint_C \vec F dl, \quad \oint_C \vec G dl.
-     \end{align}
+     \end{align*}
     \item 
      Can you exclude that $\vec F$ or $\vec G$ are gradients of a scalar field?
     \end{itemize}
