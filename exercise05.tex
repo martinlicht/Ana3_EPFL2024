@@ -410,13 +410,39 @@
         &
         \int_{\partial \Omega}\vec{F}\cdot\vec{n} \;d\ell,
         \\&=
-        \int_{-1}^1 \vec{F}(x_1,-1)\cdot\begin{pmatrix}0\\-1\end{pmatrix} \;dx_1 + \int_{-1}^1 \vec{F}(x_1,1)\cdot\begin{pmatrix}0\\1\end{pmatrix} \;dx_1,
-        \\
-        & + \int_{-1}^1 \vec{F}(-1,x_2)\cdot\begin{pmatrix}-1\\0\end{pmatrix} \;dx_2 + \int_{-1}^1 \vec{F}(1,x_2)\cdot\begin{pmatrix}1\\0\end{pmatrix} \;dx_2,s
+        \int_{-1}^1 \vec{F}( x_1,  -1)\cdot\begin{pmatrix}0\\-1\end{pmatrix} \;dx_1 
+        + 
+        \int_{-1}^1 \vec{F}(-x_1,   1)\cdot\begin{pmatrix}0\\1\end{pmatrix} \;dx_1
+        \\&\qquad 
+        + 
+        \int_{-1}^1 \vec{F}(  -1,-x_2)\cdot\begin{pmatrix}-1\\0\end{pmatrix} \;dx_2 
+        + 
+        \int_{-1}^1 \vec{F}(   1, x_2)\cdot\begin{pmatrix}1\\0\end{pmatrix} \;dx_2
         \\&=
-        \int_{-1}^1 (1-x_1^ 2)^ 5 \;dx_1 + \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1 + \int_{-1}^1 \sin(1)x_2\;dx_2 +  \int_{-1}^1 -\sin(-1)x_2\;dx_2,\\
+        \int_{-1}^1 (1-x_1^ 2)^ 5 \;dx_1 
+        + 
+        \int_{-1}^1 (x_1^2 + 1)^ 5 \;dx_1 
+        \\&\qquad 
+        + 
+        (-1)\int_{-1}^1 \sin(-1)(-x_2)\;dx_2
+        +
+        \int_{-1}^1 \sin(1)x_2\;dx_2
+        .
     \end{align*}
-    Since $x_2$ is an odd function, so the last two integrals are 0. To evaluate the first two integrals,
+    We observe the last two integrals are zero: either because $x_2$ is an odd function, or because 
+    \begin{align*}
+        (-1)\int_{-1}^1 \sin(-1)(-x_2)\;dx_2
+        +
+        \int_{-1}^1 \sin(1)x_2\;dx_2
+        =
+        \int_{-1}^1 \sin(1) (-x_2)\;dx_2
+        +
+        \int_{-1}^1 \sin(1)  x_2  \;dx_2
+        =
+        0
+        .
+    \end{align*}
+    To evaluate the remaining two integrals,
     we can either compute the quintic powers manually, which is a lot of work, or we utilize the binomial theorem:
     \begin{gather*}
         (x+y)^n=\sum_{k=0}^n\left(\begin{array}{l}
