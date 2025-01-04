@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\def\hidesolutions{}
+% \def\hidesolutions{}
 \input{header}
 \begin{document}
 \exsheet{Extra}{29}{December} % parameters are the number of the session and the day
@@ -128,6 +128,201 @@
     Then the product of $\hat h(\alpha) \hat f(\alpha)$ can be transformed into the convolution $\sqrt{2\pi} h \star f$. 
     Finding the inverse Fourier transform of such a factor will be possible with techniques of complex analysis, 
     to be discussed next semester. 
+\end{solution}
+
+
+
+
+\begin{exercise}
+    Solve the integro-differential equation 
+    \[
+        9u(x)+2\int_{-\infty}^{+\infty}\left(u''(t)-4u(t)\right)e^{-2|x-t|}dt=\frac{1}{x^2+1}.
+    \]
+\end{exercise}
+\begin{solution}
+    We use the Fourier transform. First, we transform the equation.
+    Beginning with the source term, we use the convolution theorem and transform the derivatives:
+    \begin{align}
+        \mathfrak{F} \left[ \frac{1}{x^2+1} \right]
+        &
+        =
+        9 \mathfrak{F}[ u ]
+        +
+        2
+        \mathfrak{F}\left[ \int_{-\infty}^{+\infty}\left(u''(t)-4u(t)\right)e^{-2|x-t|}dt \right]
+        \\&
+        =
+        9 \mathfrak{F}[ u ]
+        +
+        2
+        \sqrt{2\pi}
+        \mathfrak{F}\left[ u''-4u \right]
+        \cdot 
+        \mathfrak{F}\left[ e^{-2|x|} \right]
+        \\&
+        =
+        9 \mathfrak{F}[ u ]
+        +
+        2
+        \left( -\alpha^{2} \mathfrak{F}\left[ u \right] - 4 \mathfrak{F}\left[ u \right] \right)
+        \cdot 
+        \mathfrak{F}\left[ e^{-2|x|} \right]
+        .
+    \end{align}
+    For convenience, we use the $\hat u$ notation for the Fourier transform and use the Fourier transform table:
+    \begin{align}
+        \sqrt{\frac{\pi}{2}} 
+        e^{-|\alpha|}
+        &
+        =
+        9 \hat u(\alpha)
+        -
+        2
+        \sqrt{2\pi}
+        \left( \alpha^{2} \hat{u}(\alpha) + 4 \hat{u}(\alpha) \right)
+        \cdot 
+        2
+        \sqrt{\frac{2}{\pi}} 
+        \frac{1}{4+\alpha^{2}}
+        \\&
+        =
+        9 \hat u(\alpha)
+        -
+        2
+        \sqrt{2\pi}
+        \hat{u}(\alpha) \left( \alpha^{2} + 4 \right)
+        \cdot 
+        2
+        \sqrt{\frac{2}{\pi}} 
+        \frac{1}{4+\alpha^{2}}
+        \\&
+        =
+        9 \hat u(\alpha)
+        -
+        2
+        \sqrt{2\pi}
+        \hat{u}(\alpha) 
+        \cdot 
+        2
+        \sqrt{\frac{2}{\pi}} 
+        \\&
+        =
+        9 \hat u(\alpha)
+        -
+        8
+        \hat{u}(\alpha) 
+        =
+        \hat{u}(\alpha).
+    \end{align}
+    We transform back and obtain the solution 
+    \begin{align}
+        u(x) = \frac{1}{1+x^{2}}.
+    \end{align}
+\end{solution}
+
+
+
+
+
+
+\begin{exercise}
+    Solve the integral equation 
+    \[
+        f(t) + \lambda \int_{0}^{+\infty} e^{-|\tau|} f( t - \tau ) \ d\tau = g(t).
+    \]
+\end{exercise}
+\begin{solution}
+    We observe that this is a convolutional integral equation 
+    \[
+        f(t) + \lambda ( K \star f )(t) = g(t)
+    \]
+    with 
+    \[
+        % \lambda = 3, \qquad 
+        K(t) = \begin{cases} e^{-t} & t > 0 \\ 0 & \text{ otherwise} \end{cases}, 
+        \qquad 
+        g(t) = e^{-|t|}
+        .
+    \]
+    We look up the Fourier transforms:
+    \[
+        \hat K(\alpha) = \frac{1}{\sqrt{2\pi}} \frac{1}{ 1 + i \alpha },
+        \quad 
+        \hat g(\alpha) = \sqrt{ \frac{2}{\pi} } \frac{1}{1+\alpha^2}
+    \]
+    We Fourier transform the equation, 
+    \[
+        \hat f(t) + \lambda \sqrt{2\pi} \hat K(\alpha) \cdot \hat f(\alpha) = \hat g(\alpha),
+    \]
+    isolate $\hat f$, and find 
+    \[
+        \hat f(\alpha) = \frac{ \hat g(\alpha) }{ 1 + \lambda \sqrt{2\pi} \hat K(\alpha) },
+    \]
+    Let us simplify this. Using $1+\alpha^{2} = 1 - i^{2}\alpha^{2} = ( 1 + i \alpha) ( 1 - i \alpha )$, we obtain 
+    \begin{align*}
+        \hat f(\alpha) 
+        &
+        = 
+        \frac{ \hat g(\alpha) }{ 1 + \lambda \frac{1}{ 1 + i \alpha } }
+        \\&
+        = 
+        \frac{ \hat g(\alpha) ( 1 + i \alpha ) }{ ( 1 + i \alpha ) + \lambda }
+        =
+        \sqrt{ \frac{2}{\pi} } 
+        \frac{ \quad \frac{ 1 + i \alpha }{ 1 + \alpha^2 } \quad  }{ ( 1 + \lambda ) + i \alpha }
+        =
+        \sqrt{ \frac{2}{\pi} } 
+        \frac{ 1 }{ 1 - i \alpha }
+        \cdot 
+        \frac{ 1 }{ ( 1 + \lambda ) + i \alpha }
+        .
+    \end{align*}
+    We already know that 
+    \[
+        \hat u(\alpha) = \frac{ 1 }{ ( 1 + \lambda ) + i \alpha }
+        \quad \implies \quad 
+             u(t)      = \sqrt{2\pi} \begin{cases} e^{-( 1 + \lambda )t} & t > 0 \\ 0 & \text{ otherwise} \end{cases} 
+        .
+    \]
+    Using the modulation identity, we find 
+    \[
+        \hat v(\alpha) = \frac{ 1 }{ 1 - i \alpha }
+        \quad \implies \quad 
+             v(t)      = \sqrt{2\pi} \begin{cases} e^{t} & t < 0 \\ 0 & \text{ otherwise} \end{cases} 
+        .
+    \]
+    Hence 
+    \[
+        \hat f(\alpha)  = \hat u(\alpha) \hat v(\alpha) 
+    \]
+    which means 
+    \[
+        f(t) = \frac{1}{\sqrt{2\pi}} ( u \star v )(t)
+    \]
+    Explicitly, 
+    \begin{align*}
+        f(t) 
+        = 
+        \int_{0}^{+\infty} e^{-(1+\lambda)\tau} v( t - \tau ) \ d\tau
+        &
+        = 
+        \int_{t}^{+\infty} e^{-(1+\lambda)\tau} v( t - \tau ) \ d\tau
+        \\&
+        = 
+        e^t
+        \int_{t}^{+\infty} e^{ -(1+\lambda)\tau - \tau } \ d\tau
+        \\&
+        = 
+        e^t
+        \int_{t}^{+\infty} e^{ -(2+\lambda)\tau } \ d\tau
+        %\\&
+        = 
+        e^t
+        \frac{ e^{ -(2+\lambda)t } }{ 2+\lambda }
+        = 
+        \frac{ e^{ -(1+\lambda)t } }{ 2+\lambda }
+        .
+    \end{align*}
 \end{solution}
 
 
