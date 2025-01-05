@@ -228,45 +228,45 @@
 \begin{exercise}
     Solve the integral equation 
     \[
-        f(t) + \lambda \int_{0}^{+\infty} e^{-|\tau|} f( t - \tau ) \ d\tau = g(t).
+        u(t) + \lambda \int_{0}^{+\infty} e^{-|\tau|} u( t - \tau ) \ d\tau = e^{-|t|}.
     \]
 \end{exercise}
 \begin{solution}
     We observe that this is a convolutional integral equation 
     \[
-        f(t) + \lambda ( K \star f )(t) = g(t)
+        u(t) + \lambda ( K \star u )(t) = f(t)
     \]
     with 
     \[
         % \lambda = 3, \qquad 
         K(t) = \begin{cases} e^{-t} & t > 0 \\ 0 & \text{ otherwise} \end{cases}, 
         \qquad 
-        g(t) = e^{-|t|}
+        f(t) = e^{-|t|}
         .
     \]
     We look up the Fourier transforms:
     \[
         \hat K(\alpha) = \frac{1}{\sqrt{2\pi}} \frac{1}{ 1 + i \alpha },
         \quad 
-        \hat g(\alpha) = \sqrt{ \frac{2}{\pi} } \frac{1}{1+\alpha^2}
+        \hat f(\alpha) = \sqrt{ \frac{2}{\pi} } \frac{1}{1+\alpha^2}
     \]
     We Fourier transform the equation, 
     \[
-        \hat f(t) + \lambda \sqrt{2\pi} \hat K(\alpha) \cdot \hat f(\alpha) = \hat g(\alpha),
+        \hat u(t) + \lambda \sqrt{2\pi} \hat K(\alpha) \cdot \hat u(\alpha) = \hat f(\alpha),
     \]
-    isolate $\hat f$, and find 
+    and isolating $\hat u$ we find 
     \[
-        \hat f(\alpha) = \frac{ \hat g(\alpha) }{ 1 + \lambda \sqrt{2\pi} \hat K(\alpha) },
+        \hat u(\alpha) = \frac{ \hat f(\alpha) }{ 1 + \lambda \sqrt{2\pi} \hat K(\alpha) },
     \]
     Let us simplify this. Using $1+\alpha^{2} = 1 - i^{2}\alpha^{2} = ( 1 + i \alpha) ( 1 - i \alpha )$, we obtain 
     \begin{align*}
-        \hat f(\alpha) 
+        \hat u(\alpha) 
         &
         = 
-        \frac{ \hat g(\alpha) }{ 1 + \lambda \frac{1}{ 1 + i \alpha } }
+        \frac{ \hat f(\alpha) }{ 1 + \lambda \frac{1}{ 1 + i \alpha } }
         \\&
         = 
-        \frac{ \hat g(\alpha) ( 1 + i \alpha ) }{ ( 1 + i \alpha ) + \lambda }
+        \frac{ \hat f(\alpha) ( 1 + i \alpha ) }{ ( 1 + i \alpha ) + \lambda }
         =
         \sqrt{ \frac{2}{\pi} } 
         \frac{ \quad \frac{ 1 + i \alpha }{ 1 + \alpha^2 } \quad  }{ ( 1 + \lambda ) + i \alpha }
@@ -279,34 +279,34 @@
     \end{align*}
     We already know that 
     \[
-        \hat u(\alpha) = \frac{ 1 }{ ( 1 + \lambda ) + i \alpha }
+        \hat v(\alpha) = \frac{ 1 }{ ( 1 + \lambda ) + i \alpha }
         \quad \implies \quad 
-             u(t)      = \sqrt{2\pi} \begin{cases} e^{-( 1 + \lambda )t} & t > 0 \\ 0 & \text{ otherwise} \end{cases} 
+             v(t)      = \sqrt{2\pi} \begin{cases} e^{-( 1 + \lambda )t} & t > 0 \\ 0 & \text{ otherwise} \end{cases} 
         .
     \]
     Using the modulation identity, we find 
     \[
-        \hat v(\alpha) = \frac{ 1 }{ 1 - i \alpha }
+        \hat w(\alpha) = \frac{ 1 }{ 1 - i \alpha }
         \quad \implies \quad 
-             v(t)      = \sqrt{2\pi} \begin{cases} e^{t} & t < 0 \\ 0 & \text{ otherwise} \end{cases} 
+             w(t)      = \sqrt{2\pi} \begin{cases} e^{t} & t < 0 \\ 0 & \text{ otherwise} \end{cases} 
         .
     \]
     Hence 
     \[
-        \hat f(\alpha)  = \hat u(\alpha) \hat v(\alpha) 
+        \hat u(\alpha)  = \hat v(\alpha) \hat w(\alpha) 
     \]
     which means 
     \[
-        f(t) = \frac{1}{\sqrt{2\pi}} ( u \star v )(t)
+        u(t) = \frac{1}{\sqrt{2\pi}} ( v \star w )(t)
     \]
     Explicitly, 
     \begin{align*}
-        f(t) 
+        u(t) 
         = 
-        \int_{0}^{+\infty} e^{-(1+\lambda)\tau} v( t - \tau ) \ d\tau
+        \int_{0}^{+\infty} e^{-(1+\lambda)\tau} w( t - \tau ) \ d\tau
         &
         = 
-        \int_{t}^{+\infty} e^{-(1+\lambda)\tau} v( t - \tau ) \ d\tau
+        \int_{t}^{+\infty} e^{-(1+\lambda)\tau} w( t - \tau ) \ d\tau
         \\&
         = 
         e^t
