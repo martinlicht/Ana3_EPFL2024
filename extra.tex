@@ -1,9 +1,9 @@
 \documentclass[11pt]{article}
 % \def\hidesolutions{}
 \input{header}
+% \usepackage[margin=5mm]{geometry}
 \begin{document}
 \exsheet{Extra}{29}{December} % parameters are the number of the session and the day
-
 
 \begin{exercise}
     Recall the ReLU function 
@@ -121,7 +121,7 @@
         =
         \frac{\hat f(\alpha)}{ \alpha^{4} + c + \frac{2}{1 + \alpha^{2}} }
         =
-        \underbrace{\frac{ 1 + \alpha^{2} }{ ( 1 + \alpha^{2} ) ( \alpha^{4} + c ) + 2 }}_{\hat h(\alpha)}
+        \underbrace{ \frac{ 1 + \alpha^{2} }{ ( 1 + \alpha^{2} )( \alpha^{4} + c ) + 2 } }_{ =: \hat h(\alpha) }
         \hat f(\alpha)
         .
     \end{align}
@@ -229,7 +229,7 @@
 \begin{exercise}
     Solve the integral equation 
     \[
-        u(t) + \lambda \int_{0}^{+\infty} e^{-|\tau|} u( t - \tau ) \ d\tau = e^{-|t|}.
+        u(t) + \lambda \int_{0}^{+\infty} e^{-|y|} u( t - y ) \ dy = e^{-|t|}.
     \]
 \end{exercise}
 \begin{solution}
@@ -240,7 +240,7 @@
     with 
     \[
         % \lambda = 3, \qquad 
-        K(t) = \begin{cases} e^{-t} & t > 0 \\ 0 & \text{ otherwise} \end{cases}, 
+        K(t) = \begin{cases} e^{-t} & t > 0 \\ 0 & \text{ otherwise,} \end{cases} 
         \qquad 
         f(t) = e^{-|t|}
         .
@@ -253,7 +253,7 @@
     \]
     We Fourier transform the equation, 
     \[
-        \hat u(t) + \lambda \sqrt{2\pi} \hat K(\alpha) \cdot \hat u(\alpha) = \hat f(\alpha),
+        \hat u(\alpha) + \lambda \sqrt{2\pi} \hat K(\alpha) \hat u(\alpha) = \hat f(\alpha),
     \]
     and isolating $\hat u$ we find 
     \[
@@ -282,48 +282,217 @@
     \[
         \hat v(\alpha) = \frac{ 1 }{ ( 1 + \lambda ) + i \alpha }
         \quad \implies \quad 
-             v(t)      = \sqrt{2\pi} \begin{cases} e^{-( 1 + \lambda )t} & t > 0 \\ 0 & \text{ otherwise} \end{cases} 
-        .
+             v(t)      = \sqrt{2\pi} \begin{cases} e^{-( 1 + \lambda )t} & t > 0 \\ 0 & \text{ otherwise.} \end{cases} 
     \]
     Using the modulation identity, we find 
     \[
         \hat w(\alpha) = \frac{ 1 }{ 1 - i \alpha }
         \quad \implies \quad 
-             w(t)      = \sqrt{2\pi} \begin{cases} e^{t} & t < 0 \\ 0 & \text{ otherwise} \end{cases} 
-        .
+             w(t)      = \sqrt{2\pi} \begin{cases} e^{t} & t < 0 \\ 0 & \text{ otherwise.} \end{cases} 
     \]
     Hence 
     \[
-        \hat u(\alpha)  = \hat v(\alpha) \hat w(\alpha) 
+        \hat u(\alpha)  = \sqrt{ \frac{2}{\pi} } \hat v(\alpha) \hat w(\alpha) 
     \]
     which means 
     \[
-        u(t) = \frac{1}{\sqrt{2\pi}} ( v \star w )(t)
+        u(t) = \sqrt{ \frac{2}{\pi} } \frac{1}{\sqrt{2\pi}} ( v \star w )(t)
     \]
-    Explicitly, 
+    We calculate 
     \begin{align*}
         u(t) 
-        = 
-        \int_{0}^{+\infty} e^{-(1+\lambda)\tau} w( t - \tau ) \ d\tau
         &
         = 
-        \int_{t}^{+\infty} e^{-(1+\lambda)\tau} w( t - \tau ) \ d\tau
-        \\&
+        \sqrt{ \frac{2}{\pi} } 
+        \frac{1}{\sqrt{2\pi}}
+        \int_{0}^{+\infty} \sqrt{2\pi} e^{-(1+\lambda)y} w( t - y ) \ d y
         = 
-        e^t
-        \int_{t}^{+\infty} e^{ -(1+\lambda)\tau - \tau } \ d\tau
-        \\&
-        = 
-        e^t
-        \int_{t}^{+\infty} e^{ -(2+\lambda)\tau } \ d\tau
-        %\\&
-        = 
-        e^t
-        \frac{ e^{ -(2+\lambda)t } }{ 2+\lambda }
-        = 
-        \frac{ e^{ -(1+\lambda)t } }{ 2+\lambda }
+        \sqrt{ \frac{2}{\pi} } 
+        \int_{0}^{+\infty} e^{-(1+\lambda)y} w( t - y ) \ d y
         .
     \end{align*}
+    The function $w$ vanishes for $t - y > 0$, that is, $t > y$. 
+    Hence we only need to consider the case $t < y$.
+    For negative $t < 0$, the condition $t < y$ is already implied by $0 < y$, and thus 
+    \begin{align}
+        u(t) 
+        &
+        = 
+        \sqrt{ \frac{2}{\pi} } 
+        \sqrt{2\pi} 
+        \int_{0}^{\infty} 
+        e^{-(1+\lambda)y} e^{ t - y } \ dy
+        \\&
+        \qquad\qquad 
+        =
+        2
+        e^{t}
+        \int_{0}^{\infty} 
+        e^{-(2+\lambda)y} \ dy
+        =
+        2
+        e^{t}
+        \int_{0}^{\infty} 
+        e^{-(2+\lambda)y} \ dy
+        =
+        2 e^{t} \frac{1}{2+\lambda}
+        .
+    \end{align}
+    For non-negative $t \geq 0$, we further simplify 
+    \begin{align*}
+        u(t) 
+        &
+        = 
+        \sqrt{ \frac{2}{\pi} } 
+        \sqrt{2\pi} 
+        \int_{t}^{\infty} 
+        e^{-(1+\lambda)y} e^{ t - y } \ dy
+        \\&
+        = 
+        2 
+        e^{t}
+        \int_{t}^{\infty} 
+        e^{-(2+\lambda)y} \ dy
+        = 
+        2 
+        \frac{ e^{t} }{ -(2+\lambda) }
+        \left( 0 - e^{-(2+\lambda) t} \right)
+        = 
+        2 
+        \frac{ e^{t} }{ 2+\lambda }
+        e^{-(2+\lambda) t} 
+        = 
+        2 \frac{ e^{-(1+\lambda) t}  }{ 2+\lambda }
+        .
+    \end{align*}
+    For completeness only, we check that this satisfies the equation. 
+    When $t < 0$, then 
+    \begin{align}
+        &
+        2
+        \frac{e^{t}}{2+\lambda}
+        + 
+        \lambda 
+        \int_{0}^{+\infty} 
+        e^{-y} 
+        2
+        \frac{e^{t-y}}{2+\lambda}
+        \ dy 
+        \\&\qquad
+        =
+        \frac{2}{2+\lambda}
+        e^{t}
+        + 
+        \frac{ 2 \lambda }{2+\lambda}
+        e^{t}
+        \int_{0}^{+\infty} e^{-2y} \ dy 
+        = 
+        \frac{2}{2 + \lambda}
+        e^{t}
+        +
+        \frac{\lambda}{2 + \lambda}
+        e^{t}
+        = 
+        e^{t}
+        =
+        e^{-|t|}
+        .
+    \end{align}
+    When $t > 0$, we split the integral to switch between the two different regimes of $u$. We find 
+    \begin{align*}
+        &
+        u(t)
+        +
+        \lambda \int_{0}^{t} e^{-y} u(t-y) \ dy
+        +
+        \lambda \int_{t}^{\infty} e^{-y} u(t-y) \ dy
+        \\&
+        =
+        u(t)
+        +
+        \lambda \int_{0}^{t} e^{-y} 
+        2 \frac{ e^{-(1+\lambda) (t-y)}  }{ 2+\lambda }
+        \ dy
+        +
+        \lambda \int_{t}^{\infty} e^{-y} 
+        2 e^{t-y} \frac{1}{2+\lambda}
+        \ dy
+        \\&
+        =
+        u(t)
+        +
+        \frac{2}{2+\lambda}
+        e^{-(1+\lambda)t}
+        \lambda \int_{0}^{t} e^{-y} 
+        e^{(1+\lambda)y}
+        \ dy
+        +
+        \frac{2}{2+\lambda}
+        e^{t}
+        \lambda \int_{t}^{\infty} e^{-y} 
+        e^{-y}
+        \ dy
+        \\&
+        =
+        u(t)
+        +
+        u(t)
+        \lambda \int_{0}^{t} e^{ \lambda y}
+        \ dy
+        +
+        \frac{2}{2+\lambda}
+        e^{t}
+        \lambda \int_{t}^{\infty} e^{-2y} \ dy
+        \\&
+        =
+        u(t)
+        +
+        u(t)
+        \left( e^{\lambda t}-1 \right)
+        +
+        \frac{2\lambda}{2+\lambda}
+        e^{t}
+        \frac{e^{-2t}}{2}
+        \\&
+        =
+        u(t)
+        +
+        u(t)
+        \left( e^{\lambda t}-1 \right)
+        +
+        \frac{\lambda }{2+\lambda} e^{-t}
+        .
+    \end{align*}
+    We plug in the definition of $u(t)$ for $t \geq 0$ and observe 
+    \begin{align*}
+        &
+        u(t)
+        +
+        u(t)
+        \left( e^{\lambda t}-1 \right)
+        +
+        \frac{\lambda }{2+\lambda} e^{-t}
+        \\&
+        =
+        \frac{ 2 }{ 2+\lambda } e^{-(1+\lambda) t}
+        +
+        \frac{ 2 }{ 2+\lambda } e^{-(1+\lambda) t}
+        \left( e^{\lambda t}-1 \right)
+        +
+        \frac{\lambda }{2+\lambda} e^{-t}
+        \\&
+        =
+        \frac{ 2 }{ 2+\lambda } e^{-(1+\lambda) t}
+        +
+        \frac{ 2 }{ 2+\lambda } 
+        \left( e^{-t} - e^{-(1+\lambda) t} \right)
+        +
+        \frac{\lambda }{2+\lambda} e^{-t}
+        =
+        e^{-t}
+        .
+    \end{align*}
+    This completes the verification of the solution.
 \end{solution}
 
 
