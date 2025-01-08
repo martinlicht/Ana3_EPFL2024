@@ -34,10 +34,10 @@
     \begin{align}
         \partial_{i} f(x_1,\dots,x_{n}) 
         &= 
-        \sum_{k=1}^{m} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right) A_{ii} 
+        \sum_{k=1}^{m} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right) A_{ii} 
         \\&
         =
-        \sum_{k=1}^{m} A_{ki} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        \sum_{k=1}^{m} A_{ki} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right)
         .
     \end{align}
     This computes the first derivatives.\footnote{Remark: the derivative does not have a meaningful value if one of the arguments of the Heaviside function is zero (or close to zero within the range of rounding errors). When training a neural network via gradient descent, this is ``justified'' by the assumption that these arguments being close to zero is very unlikely to happen in practice.}
@@ -47,10 +47,10 @@
         \partial^{2}_{ji} f(x_1,\dots,x_{n}) 
         &
         = 
-        \sum_{k=1}^{m} A_{ki} \partial_{j} H\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        \sum_{k=1}^{m} A_{ki} \partial_{j} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right)
         \\&
         = 
-        \sum_{k=1}^{m} A_{ki} A_{ji} \delta_{0}\left( \sum_{i=1}^{n} A_{ki} x_{i} \right)
+        \sum_{k=1}^{m} A_{ki} A_{kj} \delta_{0}\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right)
         .
     \end{align}
     This computes the second derivatives.\footnote{Remark: the situation here is even worse than with the first derivatives. The Dirac Delta is zero everywhere except at the origin, and it equals a pointmass at the origin. Correspondingly, second-order training algorithms, such as, e.g., Newton's method, are not well-defined for such a network. This is a possible incentive to replace ReLU by other activation functions, such as $S(x) = \ln( 1 + e^{x} )$.}
@@ -121,10 +121,11 @@
         =
         \frac{\hat f(\alpha)}{ \alpha^{4} + c + \frac{2}{1 + \alpha^{2}} }
         =
-        \frac{1 + \alpha^{2}}{ \alpha^{4} + c + 2 } \hat f(\alpha)
+        \underbrace{\frac{ 1 + \alpha^{2} }{ ( 1 + \alpha^{2} ) ( \alpha^{4} + c ) + 2 }}_{\hat h(\alpha)}
+        \hat f(\alpha)
         .
     \end{align}
-    The solution of the ODE can be found if we know the inverse Fourier transform $h(x)$ of the factor $\hat h(\alpha) = (1+\alpha^{2})/(\alpha^{4}+2+c)$.
+    The solution of the ODE can be found if we know the inverse Fourier transform $h(x)$ of the factor $\hat h(\alpha)$.
     Then the product of $\hat h(\alpha) \hat f(\alpha)$ can be transformed into the convolution $\sqrt{2\pi} h \star f$. 
     Finding the inverse Fourier transform of such a factor will be possible with techniques of complex analysis, 
     to be discussed next semester. 
@@ -327,6 +328,89 @@
 
 
 
+
+\begin{comment}
+\begin{exercise}
+    Use the divergence theorem to integrate 
+    \begin{align*}
+        f( x, y ) = e^{x+y}
+    \end{align*}
+    % over $\Omega = [0,1]^{2}$.
+    over the triangle 
+    \begin{align*}
+        \Omega = \left\{ (x,y) \in \mathbb R^2 \suchthat 0 < x, \ 0 < y, \ x+y < 1 \right\}
+    \end{align*}
+\end{exercise}
+\begin{solution}
+%     We first integrate as usual:
+%     \begin{align*}
+%         \int_{0}^{1} \int_{0}^{1} e^{x+y} \ dy \ dx
+%         =
+%         \int_{0}^{1} e^{x+1} - e^{x} \ dx
+%         =
+%         e^{2} - e^{1} - e^{1} + 1
+%         =
+%         e^{2} - 2 e^{1} + 1
+%         .
+%     \end{align*}
+    We notice that $f$ is the divergence of the vector field 
+    \begin{align*}
+        F(x,y) = \begin{pmatrix} \tfrac 1 2 e^{x+y} \\ \tfrac 1 2 e^{x+y} end{pmatrix}.
+    \end{align*}
+    We parameterize the boundary parts in the counter clockwise direction:
+    \begin{align*}
+        \gamma_{1} : [0,1] \rightarrow \bbR^{2}, \quad t \mapsto (t,0),
+        \\
+        \gamma_{2} : [0,1] \rightarrow \bbR^{2}, \quad t \mapsto (1-t,t),
+        \\
+        \gamma_{3} : [0,1] \rightarrow \bbR^{2}, \quad t \mapsto (0,1-t).
+    \end{align*}
+    Hence 
+    \begin{align*}
+        \int_{\Omega} f
+        &
+        =
+        \int_{\gamma_1} F(\gamma) \cdot (0,1) \d l
+        +
+        \int_{\gamma_2} F(\gamma) \cdot \frac{1}{\sqrt 2} (1,1) \d l
+        +
+        \int_{\gamma_3} F(\gamma) \cdot (-1,0) \d l
+        \\&
+        =
+        \int_{0}^{1} \tfrac 1 2 e^{t} \ dt
+        +
+        \int_{0}^{1} \tfrac 1 2 ( e^{1} + e^{1} ) \ dt
+        +
+        \int_{0}^{1} \tfrac 1 2 e^{1-t} \ dt
+        \\&
+        =
+        \tfrac{1}{2}
+        \left( 
+            \int_{0}^{1} e^{t} \ dt
+            +
+            \int_{0}^{1} ( e^{1} + e^{1} ) \ dt
+            +
+            \int_{0}^{1} e^{1-t} \ dt
+        \right)
+        \\&
+        =
+        \tfrac{1}{2}
+        \left( 
+            e - 1 
+            +
+            2 e
+            +
+            1 - e 
+        \right)
+        =
+        e
+        .
+    \end{align*}
+
+
+    
+\end{solution}
+\end{comment}
 
 
 
