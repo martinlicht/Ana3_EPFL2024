@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 % \def\hidesolutions{}
 \input{header}
-% \usepackage[margin=5mm]{geometry}
+\usepackage[margin=5mm]{geometry}
 \begin{document}
 \exsheet{Extra}{29}{December} % parameters are the number of the session and the day
 
@@ -34,7 +34,7 @@
     \begin{align}
         \partial_{i} f(x_1,\dots,x_{n}) 
         &= 
-        \sum_{k=1}^{m} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right) A_{ii} 
+        \sum_{k=1}^{m} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right) A_{ki} 
         \\&
         =
         \sum_{k=1}^{m} A_{ki} H\left( \sum_{i=1}^{n} A_{ki} x_{i} + b_{k}  \right)
